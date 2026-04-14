@@ -838,13 +838,16 @@ async function renderPart(slug, num) {
    ════════════════════════════════════════════════════════════════ */
 async function renderSystem() {
   app.appendChild(h('section', { class: 'hero reveal' },
-    h('div', { class: 'hero-kicker' }, '● SYSTEM'),
-    h('h1', { class: 'hero-title' }, '시스템 ', h('span', { class: 'accent' }, '상태')),
-    h('p', { class: 'hero-subtitle' }, '검증·측정 도구를 원클릭으로 실행. Lint 4종 · Smoke 테스트 · 비용 계산기 · 브랜드 & 테마 갤러리를 한 화면에서.')
+    h('div', { class: 'hero-kicker' }, '● SYSTEM · 개발자 도구'),
+    h('h1', { class: 'hero-title' }, '시스템 ', h('span', { class: 'accent' }, '점검')),
+    h('p', { class: 'hero-subtitle' }, '설치가 제대로 됐는지, 비용은 얼마나 나올지 확인하는 도구들입니다. 평소엔 안 써도 돼요.')
   ));
 
-  // 4 lint 실행
+  // Lint 4종
   app.appendChild(h('h2', {}, '🔍 Lint 4종'));
+  app.appendChild(h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
+    '프로젝트 설정이 규칙에 맞는지 자동 점검합니다 (이식성·테마 토큰·경로·브랜드 컨텍스트). ✅가 뜨면 문제 없음.'
+  ));
   const lintBtn = h('button', { class: 'btn btn-gold', onclick: runLint }, '▶ 전체 Lint 실행');
   const lintResults = h('div', { class: 'lint-grid', style: { marginTop: '16px' } });
   app.appendChild(lintBtn);
@@ -865,6 +868,9 @@ async function renderSystem() {
 
   // Smoke
   app.appendChild(h('h2', {}, '🧪 Smoke Test'));
+  app.appendChild(h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
+    '필수 폴더·파일·의존성이 모두 제자리에 있는지 빠르게 확인합니다. 새로 설치한 뒤 한 번 눌러 보세요.'
+  ));
   const smokeBtn = h('button', { class: 'btn btn-gold', onclick: runSmoke }, '▶ Smoke 실행');
   const smokeOut = h('pre', { class: 'log-pane', style: { height: '300px', display: 'none' } });
   app.appendChild(smokeBtn);
@@ -881,13 +887,24 @@ async function renderSystem() {
 
   // Cost 계산기
   app.appendChild(h('h2', {}, '💰 비용 계산기'));
-  const costParts = h('input', { type: 'number', value: '6', min: '1', max: '50' });
-  const costBatch = h('input', { type: 'checkbox' });
+  app.appendChild(h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
+    '강의를 만들 때 Claude API에 얼마나 드는지 미리 계산합니다. 홈 마법사에도 같은 계산이 실시간으로 표시돼요.'
+  ));
+  const costPartsId = 'sys-cost-parts';
+  const costBatchId = 'sys-cost-batch';
+  const costParts = h('input', { id: costPartsId, type: 'number', value: '6', min: '1', max: '50' });
+  const costBatch = h('input', { id: costBatchId, type: 'checkbox' });
   const costBtn = h('button', { class: 'btn', onclick: runCost }, '계산');
   const costOut = h('pre', { class: 'cost-preview' }, '파트 수 입력 후 계산 버튼');
   app.appendChild(h('div', { class: 'checkbox-row' },
-    h('label', {}, '파트 수', costParts),
-    h('label', {}, costBatch, h('span', {}, '--batch 할인'))
+    h('label', { for: costPartsId, style: { display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px' } },
+      h('span', {}, h('strong', {}, '파트 수'), ' · ', h('span', { class: 'muted', style: { fontSize: '11px' } }, '총 몇 강으로 만들지. 예: 6강')),
+      costParts
+    ),
+    h('label', { for: costBatchId, style: { alignItems: 'flex-start' } },
+      costBatch,
+      h('span', {}, h('strong', {}, '배치 할인'), h('br'), h('span', { class: 'muted', style: { fontSize: '11px' } }, '50% 저렴하지만 속도 느림 (당일 급하지 않을 때)'))
+    )
   ));
   app.appendChild(costBtn);
   app.appendChild(costOut);
@@ -897,29 +914,4 @@ async function renderSystem() {
     const r = await api(`/api/cost?parts=${costParts.value}&batch=${costBatch.checked ? 1 : 0}`);
     costOut.textContent = r.stdout.split('\n').slice(-22).join('\n');
   }
-
-  // 브랜드·테마 목록
-  app.appendChild(h('h2', {}, '🎨 브랜드 / 테마'));
-  const [brands, themes] = await Promise.all([api('/api/brands'), api('/api/themes')]);
-  app.appendChild(h('h3', {}, `브랜드 ${brands.length}개`));
-  app.appendChild(h('ul', { class: 'file-list' },
-    ...brands.map(b => h('li', {}, h('span', {}, `${b.name} · ${b.slug}`), h('span', { class: 'muted' }, b.type)))
-  ));
-  app.appendChild(h('h3', {}, `테마 ${themes.length}개`));
-  const themeGallery = h('div', { class: 'theme-card-grid' });
-  for (const t of themes) {
-    themeGallery.appendChild(h('div', { class: 'theme-card' },
-      t.preview
-        ? h('img', { src: t.preview, alt: t.displayName, loading: 'lazy' })
-        : h('div', { class: 'theme-card-noimg' }, t.slug),
-      h('div', { class: 'theme-card-body' },
-        h('div', { class: 'theme-card-name' }, t.displayName),
-        h('div', { class: 'theme-card-meta' },
-          h('span', { class: 'theme-variant v-' + t.variant }, t.variant),
-          h('span', { class: 'muted' }, t.slug)
-        )
-      )
-    ));
-  }
-  app.appendChild(themeGallery);
 }
