@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Portability lint
+        run: node .claude/scripts/portability-check.mjs .
+
+      - name: Theme lint
+        run: node .claude/scripts/theme-lint.mjs .
+
+      - name: Path lint
+        run: node .claude/scripts/path-lint.mjs .
+
+      - name: Smoke test
+        run: node tests/e2e/smoke.mjs
+
+      - name: Cost estimator sanity
+        run: node .claude/scripts/cost-estimator.mjs 6

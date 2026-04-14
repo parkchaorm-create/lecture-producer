@@ -36,19 +36,29 @@
 - 전: 시스템 프롬프트에 "이 단어 쓰지 마라" 주입
 - 후: 결과 grep 검증, 1건이라도 검출 시 재작성
 
-## K5 · 실측 우선 (v1.1)
+## K5 · 실측 우선 (v1.1 · 활성)
 
 추정 금지. 아래만 신뢰:
-- 좌표 · 크기: Playwright `getBBox()` 실측
-- 글자 수: `(str.length)` 직접 계산
-- 웹 사실: WebSearch 결과의 1차 출처
-- 시간: 실제 스크립트 낭독 시간(분당 300자 기준)
+- 좌표 · 크기: Playwright `getBBox()` 실측 (`svg-self-verify.mjs`)
+- 글자 수: `str.length` 직접 계산 (JS 내장)
+- 웹 사실: WebSearch 1차 출처 (`web-research-protocol.md`)
+- 시간: 실제 낭독 분량 = 글자수 ÷ 300 (분당 평균)
+- 시각 결과: Playwright 스크린샷 (`capture-ppt-slides.mjs`·`diff-capture.mjs`)
 
-## K6 · 회귀 사례 강제 학습 (v1.1)
+**금지 표현 (생성 결과물 내부)**:
+- "약", "대략", "~쯤", "정도" (정량 수치 근처에서)
+- "아마도", "추정하건대"
+→ grep 검출 시 재작성
 
-`regression-briefing.md` (기존 visual-verification.md의 발견 사례 누적분)을:
-- svg-designer·html-renderer·lecture-writer 시스템 프롬프트에 **의무 주입**
-- 최근 5건 + 심각도 HIGH 전부
+## K6 · 회귀 사례 강제 학습 (v1.1 · 활성)
+
+`_design/regression-briefing.md`를 매 파트 생성 시 자동 주입:
+- 소스: `.claude/rules/visual-verification.md` 하단 "발견 사례 누적" + `output/<slug>/_postmortem.md` 이전 강의
+- 추출 대상: 최근 5건 + 심각도 HIGH 전부 (문자열 "🔴"·"ERROR" 포함)
+- 주입 위치: svg-designer·html-renderer·lecture-writer 시스템 프롬프트 헤더
+- 스크립트: `.claude/scripts/regression-briefing.mjs`가 자동 생성
+
+예상 길이: 500~1500자. 초과 시 심각도 HIGH만 남기고 축약.
 
 ## K7 · 포스트모템 (v1.0)
 

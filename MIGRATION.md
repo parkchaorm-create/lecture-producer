@@ -31,17 +31,24 @@ node .claude/scripts/portability-check.mjs
 node .claude/scripts/theme-lint.mjs
 ```
 
-## v1.1 예상 변경 (로드맵)
+## v1.1 (2026-04-14 릴리스)
 
-- Playwright 시각 검증 워크플로우 자동 통합
-- `samples/_gold-standard/content/` 추가 (콘텐츠 골드)
-- `cost-estimator.mjs` · `diff-capture.mjs` · `citation-check.mjs` 활성화
-- 접근성 (WCAG AA) qa-checklist 확장
-- 평가 슬라이드 (`--with-quiz`) 자동 추가
+### 추가된 것 (모두 opt-in · 기존 output/ 호환)
+- 검증 스크립트: `cost-estimator` · `citation-check` · `similarity-check` · `diff-capture`
+- 자동화: `backup.mjs` · `regression-briefing.mjs`
+- 규칙: `accessibility.md` · `quiz-slide.md` · qa-checklist A10·A11
+- 콘텐츠 골드: `samples/_gold-standard/content/`
+- 공식 Skill 표준: `.claude/skills/*/SKILL.md` (`commands/`와 병행)
+- CI: `.github/workflows/ci.yml` + `tests/e2e/smoke.mjs`
 
-### v1.0 → v1.1 영향
-- 기존 output/ 그대로 호환
-- 새 기능은 opt-in (플래그 필요)
+### v1.0 → v1.1 업그레이드
+```bash
+git pull origin main
+node tests/e2e/smoke.mjs   # 통과 확인
+```
+- 기존 `output/<slug>/` 그대로 유지 · 호환
+- 신규 파트 생성 시 자동으로 v1.1 검증 적용
+- 강제 전환 없음 — 이전 파트 재검증 원하면 `/verify-all`
 
 ## v2.0 예상 변경 (로드맵)
 
