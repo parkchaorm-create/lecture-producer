@@ -31,6 +31,28 @@ node .claude/scripts/portability-check.mjs
 node .claude/scripts/theme-lint.mjs
 ```
 
+## v1.3 (2026-04-14 릴리스)
+
+### 추가 (모두 opt-in)
+- Zero-dependency 로컬 대시보드 (`dashboard/`)
+- `npm run dashboard` → `http://127.0.0.1:3737`
+- 4 페이지: Home · 신규 · 강의 상세 · 강별 상세 · 시스템
+- Exec 모드로 ▶ 실행 버튼 클릭 → Claude Code CLI 실시간 실행 (SSE 로그)
+
+### v1.2 → v1.3 업그레이드
+```bash
+git pull origin master
+npm run smoke          # 94/94 확인
+npm run dashboard
+```
+기존 CLI·파이프라인 그대로. 대시보드는 opt-in. Exec은 `.claude/local-config.json`에서 명시 활성.
+
+### 대시보드 토큰 비용
+- 자체: 0원 (로컬 Node)
+- ▶ 실행 버튼 클릭: 해당 파이프라인 1회 비용 (v1.2 --batch ~$9.87)
+
+---
+
 ## v1.2 (2026-04-14 릴리스)
 
 ### 추가 (모두 opt-in · 기존 output/·brand-context/ 호환)

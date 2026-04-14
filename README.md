@@ -41,13 +41,22 @@ cp templates/lecture-brief.md input/brief/
 cp -r samples/mode-1-references/input/mode-1-references/* input/mode-1-references/
 ```
 
-### 3. 실행
+### 3. 실행 (두 가지 방법)
 
+**방법 A · Claude Code CLI 직접**
 ```
 /produce-lecture
 ```
 
 오디언스 선택 질문에 답한 후, 3단계 휴먼인루프 게이트에서 1강 산출물을 승인하면 N강 일괄 생성.
+
+**방법 B · 로컬 대시보드 (v1.3)**
+```bash
+npm run dashboard
+# → http://127.0.0.1:3737
+```
+
+브라우저에서 강의 목록·진행률·비용을 한눈에. `#/new`에서 폼 채우고 ▶ 실행 버튼 · 실시간 로그. 상세는 [dashboard/README.md](dashboard/README.md).
 
 ---
 

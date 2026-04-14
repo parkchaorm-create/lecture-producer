@@ -1,0 +1,25 @@
+{
+  "name": "lecture-producer",
+  "version": "1.3.0",
+  "description": "풀코스 강의 제작기 · 한국어 강의 스크립트+PPT+실습 튜토리얼 자동 생성 스킬팩. 파자마보스 테마 · 휴먼인루프 3게이트 · Zero-dependency 로컬 대시보드.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/parkchaorm-create/lecture-producer.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dashboard": "node dashboard/server.mjs",
+    "smoke": "node tests/e2e/smoke.mjs",
+    "lint:portability": "node .claude/scripts/portability-check.mjs .",
+    "lint:theme": "node .claude/scripts/theme-lint.mjs .",
+    "lint:path": "node .claude/scripts/path-lint.mjs .",
+    "lint:brand": "node .claude/scripts/brand-context-lint.mjs --all",
+    "lint": "npm run lint:portability && npm run lint:theme && npm run lint:path && npm run lint:brand",
+    "cost": "node .claude/scripts/cost-estimator.mjs 6",
+    "cost:batch": "node .claude/scripts/cost-estimator.mjs 6 --batch"
+  }
+}

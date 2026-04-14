@@ -142,6 +142,18 @@ test('skill · deploy-ppt', () => {
   if (!existsSync('.claude/skills/deploy-ppt/SKILL.md')) throw new Error('없음');
 });
 
+// v1.3 · 대시보드
+test('dashboard · server.mjs', () => { if (!existsSync('dashboard/server.mjs')) throw new Error('없음'); });
+test('dashboard · public/index.html', () => { if (!existsSync('dashboard/public/index.html')) throw new Error('없음'); });
+test('dashboard · public/app.js', () => { if (!existsSync('dashboard/public/app.js')) throw new Error('없음'); });
+test('dashboard · public/dashboard.css', () => { if (!existsSync('dashboard/public/dashboard.css')) throw new Error('없음'); });
+test('dashboard · README.md', () => { if (!existsSync('dashboard/README.md')) throw new Error('없음'); });
+test('package.json · dashboard 스크립트', () => {
+  const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+  if (!pkg.scripts?.dashboard) throw new Error('scripts.dashboard 없음');
+});
+test('server.mjs 구문 유효', () => { execSync('node --check dashboard/server.mjs', { stdio: 'pipe' }); });
+
 // 7. VERSION 일치
 test('VERSION 일치', () => {
   const v = readFileSync('.claude/VERSION', 'utf8').trim();

@@ -17,7 +17,7 @@ const PATTERNS = [
   { re: /\/home\/[a-z0-9_-]+\//gi, label: '절대경로(Linux · home)', exceptIn: /portability\.md$/ },
   { re: /aiMarketer/g, label: 'aiMarketer 특화' },
   { re: /output2_AI_marketer_course/g, label: 'output2 특화' },
-  { re: /공공기관/g, label: '공공기관 특화(branding/public-lecture·audience-profiles·예시 맥락은 예외)', exceptIn: /(branding[\\\/]public-lecture|brand-context[\\\/]_template|audience-profiles\.md|human-in-loop\.md|expert-council\.md|lecture-writer\.md|brand-context\.md|init-brand\.md|brand-injector\.md|accessibility\.md)/ },
+  { re: /공공기관/g, label: '공공기관 특화(branding/public-lecture·audience-profiles·예시 맥락은 예외)', exceptIn: /(branding[\\\/]public-lecture|brand-context[\\\/]_template|audience-profiles\.md|human-in-loop\.md|expert-council\.md|lecture-writer\.md|brand-context\.md|init-brand\.md|brand-injector\.md|accessibility\.md|dashboard[\\\/]|slide-composer\.md|script-splitter-budget\.md)/ },
   { re: /가상 클라이언트 4종/g, label: 'aiMarketer 가상 클라이언트 특화' },
   { re: /슬랙 채널 6개 표준/g, label: 'aiMarketer 슬랙 특화' },
   { re: /\b(api[_ ]?key|password|secret)\b\s*[:=]\s*['"]([^'"]+)['"]/gi, label: '하드코딩된 시크릿 의심', placeholderFilter: v => !/^(your-|REPLACE_|xxxxx|example|placeholder|<|secret_REPLACE)/i.test(v) }

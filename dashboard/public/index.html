@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>lecture-producer · Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+<nav class="topbar">
+  <div class="brand">🎓 lecture-producer</div>
+  <div class="nav-links">
+    <a href="#/" data-route="/">🏠 홈</a>
+    <a href="#/new" data-route="/new">➕ 신규</a>
+    <a href="#/system" data-route="/system">⚙️ 시스템</a>
+  </div>
+  <div class="status" id="statusBadge">v?.? · ?</div>
+</nav>
+
+<main id="app"></main>
+
+<div id="toastHost"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

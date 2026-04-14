@@ -1,5 +1,43 @@
 # Changelog
 
+## [1.3.0] · 2026-04-14 · 로컬 대시보드 (Zero-dependency)
+
+### 추가 · 대시보드
+- `dashboard/server.mjs` — Node 내장 http만 · 127.0.0.1:3737 로컬 바인딩
+- `dashboard/public/` — Vanilla JS SPA · 파자마보스 테마 재활용 · 빌드 단계 0
+- `dashboard/README.md` — 실행·Exec 모드·API 가이드
+- `package.json` 신규 · `npm run dashboard`·`lint`·`cost` 등
+
+### 4 페이지 · 모든 페이지 즉시 반영
+- `#/` Home — 강의 카드 그리드 + 진행률 + 요약 통계
+- `#/new` 신규 — 폼 + 실시간 비용 미리보기 + ▶ 실행 버튼 (SSE 로그)
+- `#/lecture/<slug>` 강의 상세 — 강 카드 그리드 (스크립트·PPT·튜토 완료 상태 표시)
+- `#/lecture/<slug>/part/<N>` 강별 상세 — PPT iframe + 스크립트·튜토·피드백 탭
+- `#/system` 시스템 — Lint 4종·Smoke·비용·브랜드/테마 갤러리
+
+### ▶ 실행 모드 (Exec)
+- `.claude/local-config.json`의 `dashboard.allowExec: true`로 활성
+- 버튼 → 서버가 `claude -p` spawn → SSE 실시간 로그 스트리밍
+- 비활성 시 📋 명령어 복사 폴백
+- command 화이트리스트(`claude`·`node`만) · path traversal 차단
+
+### 토큰 비용
+- 대시보드 **자체: 0원** (로컬 Node · Claude 호출 없음)
+- ▶ 실행 시에만 해당 파이프라인 비용 (v1.2 --batch ~$9.87/6강)
+
+### smoke 94/94 통과
+v1.2의 87 + 대시보드 검증 7 = 94
+
+### v1.2 → v1.3 Upgrade
+```bash
+git pull origin master
+npm run smoke       # 94/94 확인
+npm run dashboard   # → http://127.0.0.1:3737
+```
+기존 CLI·output/·brand-context/ 모두 그대로 동작. 대시보드는 opt-in.
+
+---
+
 ## [1.2.0] · 2026-04-14 · 토큰 최적화 -50% + 브랜드 컨텍스트 체계
 
 ### 추가 · 토큰 최적화 (O8~O15 · 3인 전문가 토론 합의)
