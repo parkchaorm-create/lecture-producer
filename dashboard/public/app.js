@@ -890,33 +890,4 @@ async function renderSystem() {
     smokeBtn.disabled = false;
   }
 
-  // Cost 계산기
-  app.appendChild(h('h2', {}, '💰 비용 계산기'));
-  app.appendChild(h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
-    '강의를 만들 때 Claude API에 얼마나 드는지 미리 계산합니다. 홈 마법사에도 같은 계산이 실시간으로 표시돼요.'
-  ));
-  const costPartsId = 'sys-cost-parts';
-  const costBatchId = 'sys-cost-batch';
-  const costParts = h('input', { id: costPartsId, type: 'number', value: '6', min: '1', max: '50' });
-  const costBatch = h('input', { id: costBatchId, type: 'checkbox' });
-  const costBtn = h('button', { class: 'btn', onclick: runCost }, '계산');
-  const costOut = h('pre', { class: 'cost-preview' }, '파트 수 입력 후 계산 버튼');
-  app.appendChild(h('div', { class: 'checkbox-row' },
-    h('label', { for: costPartsId, style: { display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px' } },
-      h('span', {}, h('strong', {}, '파트 수'), ' · ', h('span', { class: 'muted', style: { fontSize: '11px' } }, '총 몇 강으로 만들지. 예: 6강')),
-      costParts
-    ),
-    h('label', { for: costBatchId, style: { alignItems: 'flex-start' } },
-      costBatch,
-      h('span', {}, h('strong', {}, '배치 할인'), h('br'), h('span', { class: 'muted', style: { fontSize: '11px' } }, '50% 저렴하지만 속도 느림 (당일 급하지 않을 때)'))
-    )
-  ));
-  app.appendChild(costBtn);
-  app.appendChild(costOut);
-
-  async function runCost() {
-    costOut.textContent = '계산 중...';
-    const r = await api(`/api/cost?parts=${costParts.value}&batch=${costBatch.checked ? 1 : 0}`);
-    costOut.textContent = r.stdout.split('\n').slice(-22).join('\n');
-  }
 }
