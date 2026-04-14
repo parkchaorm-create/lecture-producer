@@ -2,7 +2,9 @@
 
 > `html-renderer` 에이전트의 필수 참조. 모든 PPT HTML은 이 구조를 따른다.
 
-## SVG 애니메이션 클래스 금지 (불변 0조 · 2026-04-13)
+<!-- rule-id="html" version="1.2" sections="invariant0,document,slide-types,bullet,outro,data-attrs,kicker,counter,delay,thumbs,arrow,js,reference,validate" -->
+
+## <section id="invariant0"> SVG 애니메이션 클래스 금지 (불변 0조 · 2026-04-13)
 
 렌더링 시 SVG 내 `class="svg-pulse"`·`svg-stagger`·`svg-rotate-slow`·`svg-ripple`·`svg-twinkle` 등 CSS 애니메이션 클래스가 있으면 **제거**한 뒤 HTML에 기록한다. 이유·대체: `.claude/rules/svg-design.md` 불변 0조.
 

@@ -10,16 +10,21 @@ description: 풀코스 강의 1편을 input 폴더로부터 e2e 자동 생성. 3
 ## 사용법
 
 ```
-/produce-lecture [--slug <name>] [--theme <name>] [--with-quiz] [--upload-notion] [--ascii-paths] [--asset-base <url>]
+/produce-lecture [--slug <name>] [--theme <name>] [--brand <brand-slug>] [--with-quiz] [--upload-notion] [--ascii-paths] [--asset-base <url>] [--batch] [--plan-only] [--skip-hil]
 ```
 
 ## 옵션
 - `--slug <name>` — 강의 식별자 (영문 kebab-case). 미지정 시 brief에서 자동 추출 또는 사용자 질의
 - `--theme <name>` — 시각 테마. 기본 `pajamaboss`
-- `--with-quiz` — 강 끝에 평가 슬라이드 자동 추가 (v1.1 예정)
+- `--brand <brand-slug>` — 제공자 브랜드 (v1.2) · 미지정 시 `_default` 중립 브랜드
+- `--with-quiz` — 강 끝에 평가 슬라이드 자동 추가 (v1.1)
 - `--upload-notion` — 튜토리얼을 노션으로 업로드 (NOTION_TOKEN 필요)
 - `--ascii-paths` — 출력 파일명을 ASCII slug로 (Windows 경로 길이 회피용)
 - `--asset-base <url>` — assets를 절대 URL로 (CDN/GitHub Pages 배포용)
+- `--batch` — **v1.2 O13** · 1강 승인 후 2~N강을 Message Batches API로 묶어 50% 할인. `ANTHROPIC_API_KEY` 필요
+- `--plan-only` — **v1.2 O14 legacy** · slide-composer 대신 기존 slide-planner + bullet-writer 2단계 사용
+- `--skip-hil` — (위험) 휴먼인루프 3게이트 모두 자동 승인. 운영 환경 금지 · 개발 전용
+- `--deploy [worktree|separate:<o>/<r>|local]` — **v1.2** · 모든 강 완성 후 GitHub Pages 자동 배포 (상대경로 rewrite 포함)
 
 ## 파이프라인 (3 Stage)
 

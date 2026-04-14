@@ -2,7 +2,9 @@
 
 > `svg-designer` 에이전트의 필수 참조 문서. 모든 SVG는 이 규칙을 따른다.
 
-## 불변 0조 · CSS 애니메이션 클래스 금지 (2026-04-13 신설)
+<!-- rule-id="svg" version="1.2" sections="invariant0,basic,archetypes,animation,advanced,slides,reuse,boundary,uniqueness,partone" -->
+
+## <section id="invariant0"> 불변 0조 · CSS 애니메이션 클래스 금지 (2026-04-13 신설)
 
 **SVG `<g>` 또는 `<text>` 등 요소에 애니메이션 클래스(`svg-stagger`·`svg-pulse`·`svg-rotate-slow` 등)를 부여하지 말 것.**
 

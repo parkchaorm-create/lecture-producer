@@ -31,6 +31,31 @@ node .claude/scripts/portability-check.mjs
 node .claude/scripts/theme-lint.mjs
 ```
 
+## v1.2 (2026-04-14 릴리스)
+
+### 추가 (모두 opt-in · 기존 output/·brand-context/ 호환)
+- 토큰 최적화 8종 (O8~O15): XML 섹션화·Few-shot 하이브리드·Phase 0 glossary·프롬프트 캐시 구조·모델 분배·배치 API·slide-composer 통합·Extended thinking
+- 브랜드 컨텍스트 체계: `brand-context/_template` · `_default` · `/init-brand` · `brand-injector` · `brand-context-lint`
+- GitHub Pages 자동 배포: `/deploy-ppt` + `produce-lecture --deploy` (상대경로 자동 rewrite 포함)
+- 증분 검증 모드 (qa-validator) · diff-only 2차 회의 (expert-council)
+
+### v1.1 → v1.2 업그레이드
+```bash
+git pull origin master
+node tests/e2e/smoke.mjs                        # 통과 확인
+node .claude/scripts/cost-estimator.mjs 6 --batch  # 실측 $9.87 확인
+```
+- 기존 `output/<slug>/`·`_design/` 그대로 동작
+- `brand-context/` 미설정 시 `_default` 자동
+- 신규 플래그는 opt-in · 기본 경로 그대로 사용 가능
+- `slide-composer`가 기본, 기존 2에이전트 경로 원하면 `--plan-only`
+
+### 실측 효과
+- 일반: v1.1 $19.93 → v1.2 **$15.69** (-21%)
+- 배치: v1.2 --batch **$9.87** (v1.1 대비 -50%)
+
+---
+
 ## v1.1 (2026-04-14 릴리스)
 
 ### 추가된 것 (모두 opt-in · 기존 output/ 호환)

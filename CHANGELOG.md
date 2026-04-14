@@ -1,5 +1,57 @@
 # Changelog
 
+## [1.2.0] · 2026-04-14 · 토큰 최적화 -50% + 브랜드 컨텍스트 체계
+
+### 추가 · 토큰 최적화 (O8~O15 · 3인 전문가 토론 합의)
+- **O8** 규칙 XML 섹션화 — bullet-writing·svg-design·html-structure 인덱스 태그로 선택 로드 가능
+- **O9** Few-shot 하이브리드 — 처음 3건 본문 + 이후 구조 JSON (`templates/fewshot-structured.json`)
+- **O10** Phase 0 glossary 공유 — `shared/phase-0-glossary.md` 1곳에 통합
+- **O11** 프롬프트 캐시 구조 강제 — `.claude/rules/cache-structure.md` SSOT + 에이전트 frontmatter `cache_blocks:`
+- **O12** 모델 분배 활성화 — `.claude/models.json` + `rules/model-allocation.md` (qa-validator Haiku·lecture-writer Opus 등)
+- **O13** 배치 API 도입 — `.claude/scripts/batch-orchestrator.mjs` + `--batch` 플래그 · 2~N강 50% 단가
+- **O14** 호출 통합 — `.claude/agents/slide-composer.md` (slide-planner + bullet-writer 통합) + `--plan-only` legacy
+- **O15** Extended thinking 선별 적용 — expert-council·lecture-writer·svg-designer frontmatter 활성
+
+### 추가 · 브랜드 컨텍스트 체계 (사용자 지적 반영)
+- `brand-context/_template/` — 신규 브랜드 복사 원본 (brand.yaml·profile·assets/logo·copy·channels·tokens)
+- `brand-context/_default/` — 공백 시 자동 폴백 중립 브랜드
+- `.claude/agents/brand-injector.md` — PPT Cover·META·Foot·Outro + 튜토리얼 md 헤더/푸터 주입
+- `.claude/commands/init-brand.md` — `/init-brand <slug>` 인터뷰 생성
+- `.claude/rules/brand-context.md` — 3계층 독립성 SSOT (오디언스 × 브랜드 × 테마)
+- `.claude/scripts/brand-context-lint.mjs` — 필수 파일·SVG 규격·저작권·치환 변수 검증
+- qa-checklist A12 · 브랜드 적용 정합성
+
+### 추가 · 파이프라인 개선
+- `expert-council` 2차 회의 **diff-only 모드** (T3-C) — 1차 대비 -53% 입력
+- `qa-validator` **증분 검증 모드** (T3-D) — 이전 파트 캐시 재사용
+- `svg-designer` **파트 단위 일괄** (T3-A) — 슬라이드 9회 → 파트당 1회
+- `produce-lecture` 플래그 확장 — `--batch`·`--plan-only`·`--brand`·`--deploy`
+
+### 추가 · GitHub Pages 자동 배포
+- `.claude/scripts/deploy-ppt.mjs` — 3가지 target 모드 (worktree · separate · local)
+- `.claude/skills/deploy-ppt/SKILL.md` — `/deploy-ppt <slug>` 진입점
+- **자동 상대경로 rewrite** — `../../../assets/...` → `./assets/themes/pajamaboss/...` 평탄화 (배포 구조 불일치 해결)
+- `.nojekyll` 자동 삽입 · 루트 `index.html`에 강의 목록 자동 생성 (worktree 모드)
+
+### 실측 효과 (`cost-estimator.mjs 6`)
+- v1.0 추정: $25 · v1.1 실측: $19.93 · **v1.2 (no batch): $15.69** · **v1.2 --batch: $9.87**
+- v1.1 대비 -21% (일반) · **-50% (배치 모드)**
+
+### 규칙·문서 갱신
+- `rules/quality-method.md` — K5 실측 우선·K6 회귀 주입 디테일 완성
+- `rules/qa-checklist.md` — A10 통과율·A11 접근성·A12 브랜드 섹션 추가
+- `rules/bullet-writing.md`·`svg-design.md`·`html-structure.md` — XML 섹션 인덱스
+
+### 테스트
+- `tests/e2e/smoke.mjs` — 58+ 항목 (v1.1 53 + v1.2 신규 검증)
+- v1.2 brand-context-lint·cost-estimator --batch 자동 실행
+
+### Upgrade
+- v1.1 → v1.2 무중단. 기존 `output/`·`_design/` 호환. 새 기능 전부 opt-in.
+- 브랜드 컨텍스트는 `--brand` 미지정 시 `_default` 자동 폴백 · 에러 아님
+
+---
+
 ## [1.1.0] · 2026-04-14 · 퀄리티 자동 보증
 
 ### 추가 · 검증 스크립트 4개

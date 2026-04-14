@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">My Brand Logo</title>
+  <desc id="logo-desc">사용자 브랜드 로고 (템플릿). brand.yaml의 name에 맞게 교체.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <cc:Work>
+        <dc:title>My Brand Logo (Template)</dc:title>
+        <dc:creator>lecture-producer user</dc:creator>
+        <dc:rights>Replace with your brand license</dc:rights>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect width="60" height="60" fill="none" stroke="#e2c793" stroke-width="2"/>
+  <text x="30" y="40" text-anchor="middle" font-family="'Pretendard Variable', sans-serif" font-size="24" font-weight="900" fill="#e2c793">M</text>
+  <text x="75" y="38" font-family="'Pretendard Variable', sans-serif" font-size="18" font-weight="800" fill="#F7F0DF" letter-spacing="1">BRAND</text>
+</svg>

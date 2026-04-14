@@ -2,7 +2,10 @@
 
 > 모든 bullet-text와 bullet-detail은 이 규칙을 따른다. `bullet-writer` 에이전트의 필수 참조 문서.
 
-## bullet-text 규칙
+<!-- rule-id="bullet" version="1.2" sections="pattern,length,ban,tone,detail,title,fewshot" -->
+<!-- O8: XML 섹션 인덱스 · 에이전트가 필요 섹션만 선택 로드 가능 -->
+
+## <section id="pattern"> bullet-text 규칙
 
 ### 패턴 (필수)
 ```

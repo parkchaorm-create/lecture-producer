@@ -1,0 +1,33 @@
+{
+  "$schema": "./models.schema.json",
+  "version": "1.2.0",
+  "description": "에이전트별 권장 모델 매핑 (O12). 사용자가 override 시 .claude/local-config.json의 modelsOverride 필드 사용.",
+
+  "recommended": {
+    "expert-council":   { "model": "opus",   "extendedThinking": true,  "rationale": "6인 역할극 + 장문 회의록" },
+    "lecture-writer":   { "model": "opus",   "extendedThinking": true,  "rationale": "장문 한국어 + 출처 검증" },
+    "svg-designer":     { "model": "opus",   "extendedThinking": true,  "rationale": "9 아키타입 창의 + 정밀 좌표" },
+
+    "slide-composer":   { "model": "sonnet", "extendedThinking": false, "rationale": "구조 + 불릿 통합 생성" },
+    "slide-planner":    { "model": "sonnet", "extendedThinking": false, "rationale": "JSON 구조 (legacy · --plan-only)" },
+    "bullet-writer":    { "model": "sonnet", "extendedThinking": false, "rationale": "정형 텍스트" },
+    "html-renderer":    { "model": "sonnet", "extendedThinking": false, "rationale": "템플릿 조립" },
+    "demo-kit-builder": { "model": "sonnet", "extendedThinking": false, "rationale": "패턴 추출" },
+    "brand-injector":   { "model": "sonnet", "extendedThinking": false, "rationale": "단순 삽입" },
+    "script-splitter":  { "model": "sonnet", "extendedThinking": false, "rationale": "분할 로직" },
+
+    "qa-validator":     { "model": "haiku",  "extendedThinking": false, "rationale": "체크리스트 grep" },
+    "notion-uploader":  { "model": "haiku",  "extendedThinking": false, "rationale": "MCP 호출만" }
+  },
+
+  "overrideRules": {
+    "public-lecture":    { "lecture-writer": "opus" },
+    "mode-4-framework":  { "lecture-writer": "opus", "slide-composer": "opus" }
+  },
+
+  "fallback": {
+    "model": "sonnet",
+    "extendedThinking": false,
+    "note": "매핑 없을 시 Sonnet 기본. opus 원하면 local-config.json에서 오버라이드."
+  }
+}

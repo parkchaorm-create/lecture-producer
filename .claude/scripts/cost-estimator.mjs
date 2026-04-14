@@ -15,27 +15,38 @@ const PRICING = {
   haiku:  { in:  1 / 1e6, out:  5 / 1e6 }
 };
 
-// 단계별 token budget · rules/token-optimization.md C7'
+// v1.2 단계별 token budget · token-optimization.md C7' + O12 모델 분배 + O14 slide-composer 통합
+// 입력은 cache 히트율 70% 가정 (O11) · 실효 평균 0.55배로 반영
+const CACHE_HIT_RATIO = 0.7;
+const CACHE_SAVING = 0.9;          // 캐시 히트 토큰은 원가 10%
+const effectiveInput = (n) => n * (1 - CACHE_HIT_RATIO * CACHE_SAVING);
+
 const STAGES = [
-  { name: '6인 1차 회의',      model: 'opus',   in: 60_000, out: 10_000, perPart: false },
-  { name: '스크립트 작성',      model: 'opus',   in: 40_000, out: 12_000, perPart: true  },
-  { name: '6인 2차 검수',      model: 'opus',   in: 60_000, out:  8_000, perPart: false },
-  { name: 'slide-planner',    model: 'sonnet', in: 15_000, out:  5_000, perPart: true  },
-  { name: 'bullet-writer',    model: 'sonnet', in: 15_000, out:  4_000, perPart: true  },
-  { name: 'svg-designer',     model: 'opus',   in: 20_000, out:  6_000, perPart: true  },
-  { name: 'html-renderer',    model: 'sonnet', in: 10_000, out:  8_000, perPart: true  },
-  { name: 'demo-kit-builder', model: 'sonnet', in: 12_000, out:  4_000, perPart: true  },
-  { name: 'qa-validator',     model: 'sonnet', in: 15_000, out:  2_000, perPart: true  }
+  { name: '6인 1차 회의',      model: 'opus',   in: 60_000, out: 10_000, perPart: false, cacheable: true  },
+  { name: '스크립트 작성',      model: 'opus',   in: 35_000, out: 12_000, perPart: true,  cacheable: true  }, // O8·O9·O10 반영 -12.5%
+  { name: '6인 2차 검수 (diff)', model: 'opus',  in: 28_000, out:  6_000, perPart: false, cacheable: true  }, // T3-C diff-only
+  { name: 'slide-composer',   model: 'sonnet', in: 22_000, out:  7_000, perPart: true,  cacheable: true  }, // O14: slide-planner + bullet-writer 통합
+  { name: 'svg-designer (파트)', model: 'opus', in: 28_000, out: 10_000, perPart: true,  cacheable: true  }, // T3-A 파트 단위 1회
+  { name: 'html-renderer',    model: 'sonnet', in:  8_000, out:  7_000, perPart: true,  cacheable: true  },
+  { name: 'brand-injector',   model: 'sonnet', in:  5_000, out:  2_000, perPart: false, cacheable: true  }, // v1.2 신규 · 1회만
+  { name: 'demo-kit-builder', model: 'sonnet', in: 10_000, out:  4_000, perPart: true,  cacheable: true  },
+  { name: 'qa-validator (증분)', model: 'haiku', in: 12_000, out: 2_000, perPart: true,  cacheable: true  }  // O12 Haiku 승격·T3-D 증분
 ];
 
-function estimate(totalParts) {
+function estimate(totalParts, batchDiscount = false) {
   let totalIn = 0, totalOut = 0, totalCost = 0;
   const rows = [];
   for (const s of STAGES) {
     const n = s.perPart ? totalParts : 1;
     const inTok = s.in * n;
     const outTok = s.out * n;
-    const cost = inTok * PRICING[s.model].in + outTok * PRICING[s.model].out;
+    const effIn = s.cacheable ? effectiveInput(inTok) : inTok;
+    // 배치 할인: perPart 단계의 part-02~N만 50% (part-01은 실시간)
+    let batchFactor = 1;
+    if (batchDiscount && s.perPart && totalParts > 1) {
+      batchFactor = (1 + (totalParts - 1) * 0.5) / totalParts;
+    }
+    const cost = (effIn * PRICING[s.model].in + outTok * PRICING[s.model].out) * batchFactor;
     totalIn += inTok; totalOut += outTok; totalCost += cost;
     rows.push({ stage: s.name, model: s.model, n, inTok, outTok, cost });
   }
@@ -46,9 +57,11 @@ function fmt(n) { return n.toLocaleString('en-US'); }
 function money(n) { return '$' + n.toFixed(2); }
 
 const parts = parseInt(process.argv[2] || '6', 10);
-const r = estimate(parts);
+const batch = process.argv.includes('--batch');
+const r = estimate(parts, batch);
 
-console.log(`\n💰 Cost Estimate · ${parts} parts\n`);
+console.log(`\n💰 Cost Estimate · ${parts} parts${batch ? ' · BATCH 할인 적용' : ''}\n`);
+console.log(`(v1.2 · 캐시 히트율 ${(CACHE_HIT_RATIO * 100)|0}% 가정 · O8·O9·O10·O11·O12·O14 반영)\n`);
 console.log('Stage                 Model   ×N   Input       Output     Cost');
 console.log('─'.repeat(70));
 for (const row of r.rows) {

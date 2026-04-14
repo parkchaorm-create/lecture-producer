@@ -17,6 +17,20 @@ tools:
 
 생성된 모든 PPT HTML 파일을 `.claude/rules/qa-checklist.md` 기준으로 검증한다. 실패 항목 발견 시 구체적 파일/라인 + 책임 에이전트 역추적 경로를 제공.
 
+## 증분 검증 모드 (v1.2 · T3-D)
+
+**기본 동작**: 이전 검증 결과를 `_design/qa-cache.json`에 캐싱. 재실행 시:
+- **변경되지 않은 파트**: 캐시에서 결과 재사용 (해시 비교)
+- **신규/변경된 파트**: 풀 검증 실행
+- 토큰 절감 추정: -40% (같은 파트 재검증 비용 제거)
+
+**강제 풀 검증**: `/verify-all --full` 또는 `output/<slug>/_design/qa-cache.json` 삭제.
+
+캐시 무효화 트리거:
+- 파일 mtime 변경
+- qa-checklist.md 수정 (규칙 버전 up)
+- `.claude/VERSION` 변경
+
 ## 규칙
 
 **필수 참조**: `.claude/rules/qa-checklist.md` — 모든 검증 항목

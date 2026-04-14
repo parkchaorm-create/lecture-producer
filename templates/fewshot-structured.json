@@ -1,0 +1,88 @@
+{
+  "$schema": "./fewshot-structured.schema.json",
+  "description": "v1.2 O9 · Few-shot 하이브리드 스키마. 첫 3건은 전체 본문, 이후는 구조 요약 JSON만.",
+  "version": "1.2.0",
+
+  "policy": {
+    "fullBodyCount": 3,
+    "structuredAfterCount": "unlimited",
+    "trigger": "생성 에이전트(bullet-writer·svg-designer·demo-kit-builder·slide-composer)는 이 스키마대로 Few-shot을 구성"
+  },
+
+  "fullBodyExample": {
+    "path": "samples/_gold-standard/content/bullet-examples.md",
+    "format": "markdown 본문 그대로",
+    "use": "처음 3건 · 스타일·어조·구조 뉘앙스 학습"
+  },
+
+  "structuredExample": {
+    "format": "JSON",
+    "schema": {
+      "bullet": {
+        "emoji": "string (1글자)",
+        "keyword": "string (2~6자)",
+        "hook": "string (핵심 구문)",
+        "detailLen": "number (40~120)",
+        "tone": "enum [formal, casual, neutral]",
+        "citationCount": "number"
+      },
+      "svg": {
+        "archetype": "enum [A1..A9]",
+        "viewBox": "0 0 400 260",
+        "textCount": "number (≤8)",
+        "slots": ["string"],
+        "palette": ["#e2c793", "#F7F0DF", "#7a7666", "#3a3730"],
+        "strokeWidth": "number (1~2)",
+        "dominantLayout": "enum [symmetric, asymmetric, radial, grid]",
+        "animations": []
+      },
+      "demoKit": {
+        "tldr": "string (≤30자)",
+        "estimatedMin": "number",
+        "difficulty": "enum [beginner, intermediate, advanced]",
+        "checkpointCount": "number (≥3)",
+        "categoryIds": ["links", "commands", "prompts", "paths", "configs", "troubleshoot"]
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "index": 0,
+      "type": "full-body",
+      "for": "bullet-writer",
+      "source": "samples/_gold-standard/content/bullet-examples.md#bullet-1"
+    },
+    {
+      "index": 1,
+      "type": "full-body",
+      "for": "bullet-writer",
+      "source": "samples/_gold-standard/content/bullet-examples.md#bullet-2"
+    },
+    {
+      "index": 2,
+      "type": "full-body",
+      "for": "bullet-writer",
+      "source": "samples/_gold-standard/content/bullet-examples.md#bullet-3"
+    },
+    {
+      "index": 3,
+      "type": "structured",
+      "for": "bullet-writer",
+      "example": {
+        "emoji": "📊",
+        "keyword": "주간 리포트",
+        "hook": "AI가 3줄 요약",
+        "detailLen": 72,
+        "tone": "neutral",
+        "citationCount": 1
+      }
+    }
+  ],
+
+  "tokenImpact": {
+    "before": "파트당 Few-shot 전체 본문 5~9개 = 3000~5500 토큰",
+    "after": "첫 3개 본문 + 이후 N개 구조 JSON = 1200~1800 토큰",
+    "reduction": "-60% (Few-shot 섹션만)"
+  }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-labelledby="logomark-title">
+  <title id="logomark-title">My Brand Mark</title>
+  <rect x="2" y="2" width="36" height="36" fill="none" stroke="#e2c793" stroke-width="2"/>
+  <text x="20" y="28" text-anchor="middle" font-family="'Pretendard Variable', sans-serif" font-size="22" font-weight="900" fill="#e2c793">M</text>
+</svg>

@@ -1,0 +1,29 @@
+name: my-brand
+displayName: "나의 브랜드명"
+type: instructor  # instructor | organization | channel | studio
+locale: ko-KR
+version: 1.0.0
+license: All-Rights-Reserved  # 또는 CC-BY-4.0 · CC-BY-NC-4.0 · MIT 등
+defaultTheme: pajamaboss
+
+inheritTokens:
+  accentOverride: false   # true면 tokens.json의 accent가 theme 색을 override
+
+logos:
+  primary: assets/logo/logo.svg       # Cover·Outro 대형
+  mark: assets/logo/logomark.svg      # Footer 워터마크·Favicon용
+  watermark: assets/watermark.svg     # 슬라이드 우하단
+
+portraits:
+  default: assets/portraits/instructor.jpg
+  bw: assets/portraits/instructor-bw.jpg  # 선택
+
+channels:
+  website: https://example.com
+  primarySocial: youtube              # 주력 플랫폼 (Outro CTA에 우선)
+
+# 치환 변수 (copy/*.md 안에서 {{website}}처럼 사용)
+variables:
+  website: https://example.com
+  subscribe_url: https://youtube.com/@my-channel
+  contact_email: hello@example.com

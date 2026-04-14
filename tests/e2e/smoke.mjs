@@ -47,7 +47,31 @@ const REQUIRED = [
   'samples/mode-1-references/README.md',
   'samples/_gold-standard/structure/README.md',
   'samples/_gold-standard/content/README.md',
-  'docs/notion-setup.md'
+  'docs/notion-setup.md',
+  // v1.2 신규 필수
+  'shared/phase-0-glossary.md',
+  '.claude/models.json',
+  '.claude/rules/model-allocation.md',
+  '.claude/rules/cache-structure.md',
+  '.claude/rules/brand-context.md',
+  '.claude/agents/slide-composer.md',
+  '.claude/agents/brand-injector.md',
+  '.claude/commands/init-brand.md',
+  '.claude/skills/slide-composer/SKILL.md',
+  '.claude/scripts/batch-orchestrator.mjs',
+  '.claude/scripts/token-cache-advisor.mjs',
+  '.claude/scripts/brand-context-lint.mjs',
+  '.claude/scripts/backup.mjs',
+  '.claude/scripts/regression-briefing.mjs',
+  'templates/fewshot-structured.json',
+  'brand-context/README.md',
+  'brand-context/_template/brand.yaml',
+  'brand-context/_template/profile/instructor.md',
+  'brand-context/_template/assets/logo/logo.svg',
+  'brand-context/_template/copy/legal.md',
+  'brand-context/_default/brand.yaml',
+  'brand-context/_default/assets/logo/logo.svg',
+  'brand-context/_default/copy/legal.md'
 ];
 for (const f of REQUIRED) {
   test(`파일 존재 · ${f}`, () => {
@@ -56,11 +80,11 @@ for (const f of REQUIRED) {
 }
 
 // 3. 필수 에이전트·커맨드·규칙
-const AGENTS = ['expert-council','lecture-writer','notion-uploader','bullet-writer','demo-kit-builder','html-renderer','qa-validator','script-splitter','slide-planner','svg-designer'];
+const AGENTS = ['expert-council','lecture-writer','notion-uploader','bullet-writer','demo-kit-builder','html-renderer','qa-validator','script-splitter','slide-planner','svg-designer','slide-composer','brand-injector'];
 for (const a of AGENTS) test(`에이전트 · ${a}`, () => {
   if (!existsSync(`.claude/agents/${a}.md`)) throw new Error('없음');
 });
-const RULES = ['audience-profiles','input-mode-detection','web-research-protocol','human-in-loop','error-handling','quality-method','token-optimization','voice-lock','script-splitter-budget','accessibility','quiz-slide'];
+const RULES = ['audience-profiles','input-mode-detection','web-research-protocol','human-in-loop','error-handling','quality-method','token-optimization','voice-lock','script-splitter-budget','accessibility','quiz-slide','model-allocation','cache-structure','brand-context'];
 for (const r of RULES) test(`규칙 · ${r}`, () => {
   if (!existsSync(`.claude/rules/${r}.md`)) throw new Error('없음');
 });
@@ -82,6 +106,40 @@ test('레퍼런스 PPT 슬림 (≤600줄)', () => {
 test('cost-estimator 실행', () => {
   const out = execSync('node .claude/scripts/cost-estimator.mjs 6', { stdio: 'pipe' }).toString();
   if (!/TOTAL/.test(out)) throw new Error('TOTAL 출력 없음');
+});
+
+// v1.2 · brand-context-lint 통과
+test('brand-context-lint · _template + _default 통과', () => {
+  execSync('node .claude/scripts/brand-context-lint.mjs --all', { stdio: 'pipe' });
+});
+
+// v1.2 · models.json 파싱
+test('models.json 파싱', () => {
+  const m = JSON.parse(readFileSync('.claude/models.json', 'utf8'));
+  if (!m.recommended || !m.recommended['lecture-writer']) throw new Error('lecture-writer 매핑 없음');
+  if (!m.fallback) throw new Error('fallback 없음');
+});
+
+// v1.2 · fewshot-structured.json 파싱
+test('fewshot-structured.json 파싱', () => {
+  const f = JSON.parse(readFileSync('templates/fewshot-structured.json', 'utf8'));
+  if (!f.policy || !f.structuredExample) throw new Error('스키마 키 누락');
+});
+
+// v1.2 · batch 할인 동작
+test('cost-estimator --batch 모드', () => {
+  const out = execSync('node .claude/scripts/cost-estimator.mjs 6 --batch', { stdio: 'pipe' }).toString();
+  if (!/BATCH/.test(out)) throw new Error('BATCH 표기 없음');
+});
+
+// v1.2 · deploy-ppt 스크립트 존재
+test('deploy-ppt.mjs 존재', () => {
+  if (!existsSync('.claude/scripts/deploy-ppt.mjs')) throw new Error('없음');
+});
+
+// v1.2 · deploy-ppt skill
+test('skill · deploy-ppt', () => {
+  if (!existsSync('.claude/skills/deploy-ppt/SKILL.md')) throw new Error('없음');
 });
 
 // 7. VERSION 일치

@@ -18,6 +18,23 @@ outputs:
   - "_design/citation-index.md (출처 ID 인덱스)"
 tools:
   - Read, Write, Edit, Grep, Glob, WebSearch, WebFetch
+# v1.2 O15 · Extended thinking 활성 (장문 한국어·출처 검증 품질 ↑)
+extended_thinking: true
+# v1.2 O11 · 캐시 친화 블록 (static·semi_static·variable 3층 구조)
+cache_blocks:
+  static:
+    - .claude/rules/design-tokens.md
+    - shared/phase-0-glossary.md
+    - .claude/rules/web-research-protocol.md
+  semi_static:
+    - branding/{{audience}}/tone-guide.md
+    - branding/{{audience}}/glossary.md
+    - branding/{{audience}}/persona.md
+    - _design/intake.json
+  variable:
+    - _design/voice-lock.md
+    - _design/human-feedback-*.md
+    - _design/web-cache-*.md
 ---
 
 ## 역할

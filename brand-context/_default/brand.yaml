@@ -1,0 +1,22 @@
+name: _default
+displayName: "강의 제작자"
+type: studio
+locale: ko-KR
+version: 1.0.0
+license: MIT
+defaultTheme: pajamaboss
+
+logos:
+  primary: assets/logo/logo.svg
+  mark: assets/logo/logo.svg
+
+portraits: {}
+
+channels: {}
+
+variables:
+  website: ""
+  subscribe_url: ""
+  contact_email: ""
+
+_note: "brand-context/_default/ 는 사용자가 --brand 미지정 시 자동 폴백. 실제 운영 전 브랜드 지정 강력 권장."

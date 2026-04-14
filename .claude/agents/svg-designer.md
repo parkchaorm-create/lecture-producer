@@ -14,6 +14,24 @@ outputs:
   - "slide_plan/part-XX.json (svg 필드 추가, 업데이트)"
 tools:
   - Read, Write, Edit, Grep, Glob, Bash
+# v1.2 O15 · Extended thinking 활성 (정밀 좌표·창의 아키타입 품질 ↑)
+extended_thinking: true
+# v1.2 T3-A · 파트 단위 일괄 호출 (슬라이드 9개를 1회로)
+batch_mode: per-part
+# v1.2 O11 · 캐시 친화 블록
+cache_blocks:
+  static:
+    - .claude/rules/design-tokens.md
+    - .claude/rules/svg-design.md
+    - assets/svg_components/index.json
+    - shared/phase-0-glossary.md
+  semi_static:
+    - _design/visual-language-meeting.md
+    - _design/deck-outline.md
+    - _design/density-budget.json
+    - _design/regression-briefing.md
+  variable:
+    - slide_plan/part-{{partNum}}.json
 ---
 
 ## 역할

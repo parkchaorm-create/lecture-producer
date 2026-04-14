@@ -1,6 +1,6 @@
 ---
 name: lecture-producer
-version: 1.1.0
+version: 1.2.0
 description: 한국어 풀코스 강의(스크립트 + PPT + 실습 튜토리얼) 자동 생성 스킬팩. 4 input 모드 × 4 오디언스 × 파자마보스 테마. 6인 전문가 가상 회의 + 휴먼인루프 3게이트.
 author: lecture-producer contributors
 license: MIT
