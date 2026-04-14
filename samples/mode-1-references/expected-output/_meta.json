@@ -1,0 +1,22 @@
+{
+  "slug": "ai-bakery-course",
+  "title": "AI로 운영하는 동네 빵집 마케팅 풀코스",
+  "audience": "online-course",
+  "theme": "pajamaboss",
+  "input_mode": "mode-1-references",
+  "total_parts": 6,
+  "act_distribution": {
+    "ACT1": 1,
+    "ACT2": 2,
+    "ACT3": 2,
+    "ACT4": 1
+  },
+  "part_length_target_chars": [2000, 3000],
+  "part_duration_target_min": [25, 40],
+  "created_at": "<timestamp>",
+  "version": "1.0.0",
+  "notion": {
+    "parentPageId": null,
+    "uploaded": false
+  }
+}

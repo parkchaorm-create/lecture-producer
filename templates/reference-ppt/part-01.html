@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 01 · 슬림 레퍼런스 — Lecture Producer 템플릿</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="../../assets/themes/pajamaboss/common.css">
+</head>
+<body>
+
+<canvas id="bgcanvas"></canvas>
+<div class="dot-grid"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="topbar">
+  <div class="brand">CLAUDE CODE · MASTERCLASS</div>
+  <div class="topbar-center">PART 01 · 클로드 코드 개념</div>
+  <div class="topbar-right">
+    <a class="nav-arrow" href="part-00.html" title="이전 파트">◀ PART 00</a>
+    <a class="nav-arrow" href="index.html">INDEX</a>
+    <a class="nav-arrow" href="part-02.html" title="다음 파트">PART 02 ▶</a>
+  </div>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<main class="deck" id="deck">
+
+    <section class="slide slide-cover" data-slide="0">
+      <div class="cover-bg-shapes">
+        <svg class="float-shape fs1" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="none" stroke="#e2c793" stroke-width="1"/></svg>
+        <svg class="float-shape fs2" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#e2c793" stroke-width="1"/></svg>
+        <svg class="float-shape fs3" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="none" stroke="#e2c793" stroke-width="1" transform="rotate(15 50 50)"/></svg>
+        <svg class="float-shape fs4" viewBox="0 0 100 100"><polygon points="50,5 95,30 95,70 50,95 5,70 5,30" fill="none" stroke="#e2c793" stroke-width="1"/></svg>
+      </div>
+      <div class="cover-kicker reveal">ACT 1 · 공연장 세팅</div>
+      <div class="cover-number reveal" style="transition-delay:0.1s">PART 01</div>
+      <h1 class="cover-title typewriter-target" data-text="클로드 코드란? + 요금제 완벽 정리">&nbsp;</h1>
+      <div class="cover-sub reveal" style="transition-delay:0.6s">ChatGPT = 이론 선생님 · Claude Code = 실전 악단</div>
+      <div class="cover-meta reveal" style="transition-delay:0.8s">
+        <span class="meta-dot"></span>
+        <span>인터랙티브 슬라이드 · 마우스·키보드로 조작</span>
+      </div>
+      <div class="cover-hint reveal" style="transition-delay:1s">⌨ ← → 이동 · <kbd>F</kbd> 전체화면 · <kbd>?</kbd> 도움말 · <kbd>T</kbd> 썸네일</div>
+    </section>
+
+    <section class="slide slide-section" data-slide="1" data-diagram="meta">
+      <div class="section-head">
+        <div class="section-kicker reveal">META · 파트 메타</div>
+        <div class="section-counter reveal">00 / 00</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">18분 · 클로드 코드 정체 + 요금제</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">🎻 이론 선생 vs 실전 악단 · 차이 완벽 이해</span><span class="bullet-arrow">→</span><div class="bullet-detail">ChatGPT는 음악 이론 선생님 — "이렇게 하세요" 설명만. Claude Code는 직접 연주하는 악단 — 파일 생성·스캔·저장까지 실행합니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">💳 Free / Pro / Max · 어떤 플랜이 내 돈값?</span><span class="bullet-arrow">→</span><div class="bullet-detail">Free=견학만(Claude Code 사용 불가), Pro=$20/월=왕초보 추천, Max=$25~100/월=헤비유저용. 결론: Pro로 시작하세요.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">🚕 토큰 · 택시 미터기 원리 + 절약 꿀팁 3가지</span><span class="bullet-arrow">→</span><div class="bullet-detail">대화 길수록 미터기 상승. 꿀팁: ① /clear로 리셋 ② 작업별 새 세션 ③ 가벼운 작업은 Haiku 모델(경차 택시).</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-stagger">
+    <circle cx="200" cy="70" r="16" fill="none" stroke="#e2c793" stroke-width="2"/>
+    <line x1="200" y1="86" x2="200" y2="130" stroke="#e2c793" stroke-width="2"/>
+    <line x1="200" y1="100" x2="176" y2="118" stroke="#e2c793" stroke-width="1.6"/>
+    <line x1="200" y1="100" x2="226" y2="88" stroke="#e2c793" stroke-width="1.6"/>
+    <line x1="200" y1="130" x2="188" y2="158" stroke="#e2c793" stroke-width="1.6"/>
+    <line x1="200" y1="130" x2="212" y2="158" stroke="#e2c793" stroke-width="1.6"/>
+    <circle cx="230" cy="85" r="3.5" fill="#e2c793" class="svg-pulse"/>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.2s">
+    <circle cx="70" cy="170" r="15" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="70" y="175" text-anchor="middle" font-size="11" fill="#e2c793">♪</text>
+    <circle cx="118" cy="195" r="15" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="118" y="200" text-anchor="middle" font-size="11" fill="#e2c793">♫</text>
+    <circle cx="166" cy="208" r="15" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="166" y="213" text-anchor="middle" font-size="11" fill="#e2c793">♪</text>
+    <circle cx="234" cy="208" r="15" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="234" y="213" text-anchor="middle" font-size="11" fill="#e2c793">♫</text>
+    <circle cx="282" cy="195" r="15" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="282" y="200" text-anchor="middle" font-size="11" fill="#e2c793">♪</text>
+    <circle cx="330" cy="170" r="15" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="330" y="175" text-anchor="middle" font-size="11" fill="#e2c793">♫</text>
+  </g>
+  <path d="M 70 170 Q 200 248 330 170" stroke="#e2c793" stroke-width="0.8" stroke-dasharray="3 4" fill="none" opacity="0.5" class="svg-draw-path"/>
+  <text x="200" y="248" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" letter-spacing="3">PART 01</text>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag"></div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="2" data-diagram="hook">
+      <div class="section-head">
+        <div class="section-kicker reveal">HOOK · 오프닝 훅</div>
+        <div class="section-counter reveal">01 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">ChatGPT 있는데 왜 또 돈 내?</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">🤔 "그냥 AI 챗봇 하나 더 아닌가?" · 저도 그랬습니다</span><span class="bullet-arrow">→</span><div class="bullet-detail">"클로드 코드가 뭔지는 아는데, ChatGPT랑 뭐가 다른 건지 모르겠어요." 이렇게 생각하시는 분 많으시죠?</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">💡 써보고 한 마디로 정리 · 설명 vs 실행의 차이</span><span class="bullet-arrow">→</span><div class="bullet-detail">써보고 나서 한 마디로 정리됐습니다. "설명만 해주는 선생님"과 "직접 행동하는 악단"의 차이.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">🎻 음악 이론 선생님 vs 직접 연주하는 악단</span><span class="bullet-arrow">→</span><div class="bullet-detail">이걸 이해하면 왜 우리 오케스트라의 핵심 엔진이 Claude Code여야 하는지 바로 납득됩니다. 요금제까지 한 번에 정리해드릴게요.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic" data-anim="pulse">
+  <g class="svg-stagger">
+    <rect x="20" y="50" width="150" height="160" rx="6" fill="none" stroke="#7a7666" stroke-width="1.4"/>
+    <circle cx="95" cy="105" r="32" fill="none" stroke="#7a7666" stroke-width="1.6"/>
+    <text x="95" y="112" text-anchor="middle" font-size="20" font-weight="900" fill="#7a7666">💬</text>
+    <text x="95" y="172" text-anchor="middle" font-size="11" font-weight="900" fill="#7a7666" letter-spacing="1">ChatGPT</text>
+    <text x="95" y="188" text-anchor="middle" font-size="9" fill="#7a7666">이론 선생님</text>
+  </g>
+  <text x="200" y="138" text-anchor="middle" font-size="28" font-weight="900" fill="#e2c793" font-family="serif" class="svg-pulse">VS</text>
+  <g class="svg-stagger" style="animation-delay:0.18s">
+    <rect x="230" y="50" width="150" height="160" rx="6" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <rect x="230" y="50" width="150" height="160" rx="6" fill="#e2c793" opacity="0.06"/>
+    <circle cx="305" cy="105" r="32" fill="none" stroke="#e2c793" stroke-width="2" class="svg-pulse2"/>
+    <text x="305" y="112" text-anchor="middle" font-size="20" font-weight="900" fill="#F7F0DF">🎻</text>
+    <text x="305" y="172" text-anchor="middle" font-size="11" font-weight="900" fill="#F7F0DF" letter-spacing="1">Claude Code</text>
+    <text x="305" y="188" text-anchor="middle" font-size="9" fill="#e2c793">직접 연주</text>
+  </g>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">HOOK</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="3" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">02 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">설명만 vs 직접 실행</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">💬 ChatGPT · "SEO 분석해줘" → 방법만 알려줌</span><span class="bullet-arrow">→</span><div class="bullet-detail">"SEO를 분석하려면 이런 걸 확인하셔야 합니다"라고 방법을 알려주죠. 음악 선생님이 "이 곡은 이렇게 연주하면 좋습니다"라고 설명하는 것과 같습니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">🎻 Claude Code · 같은 질문 → 스캔 → 리포트 파일 저장</span><span class="bullet-arrow">→</span><div class="bullet-detail">실제로 블로그를 스캔하고, 문제점 리스트를 만들고, 수정 방법까지 파일로 저장합니다. 악단이 직접 연주해서 녹음까지 해주는 거죠.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">📂 내 PC에서 실행 · 파일 접근 + 수정 + 생성 가능</span><span class="bullet-arrow">→</span><div class="bullet-detail">Claude Code는 여러분 컴퓨터 안에서 실행됩니다. 그래서 파일에 직접 접근해서 수정할 수 있는 거죠.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">🏠 악단이 내 거실에 상주 · 필요할 때 즉시 연주</span><span class="bullet-arrow">→</span><div class="bullet-detail">오케스트라로 치면, 악단이 우리 집 거실에 상주하는 겁니다. 필요할 때마다 내 악보(파일)를 가져다가 직접 연주해주니까요.</div></li><li class="tilt-card reveal" style="transition-delay:0.48s"><span class="bullet-num">05</span><span class="bullet-text">⚡ 핵심 · "설명" vs "실행" = 진짜 자동화의 차이</span><span class="bullet-arrow">→</span><div class="bullet-detail">챗봇은 "이렇게 하세요"라고 설명만, Claude Code는 직접 파일 만들어서 저장까지. 이게 진짜 자동화입니다.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-stagger">
+    <rect x="20" y="50" width="150" height="160" rx="6" fill="none" stroke="#7a7666" stroke-width="1.4"/>
+    <circle cx="95" cy="100" r="30" fill="none" stroke="#7a7666" stroke-width="1.6"/>
+    <text x="95" y="106" text-anchor="middle" font-size="16" fill="#7a7666">📖</text>
+    <line x1="50" y1="150" x2="140" y2="150" stroke="#7a7666" stroke-width="1"/>
+    <line x1="50" y1="162" x2="140" y2="162" stroke="#7a7666" stroke-width="1"/>
+    <line x1="50" y1="174" x2="115" y2="174" stroke="#7a7666" stroke-width="1"/>
+    <text x="95" y="198" text-anchor="middle" font-size="10" font-weight="900" fill="#7a7666" letter-spacing="1">설명만</text>
+  </g>
+  <text x="200" y="138" text-anchor="middle" font-size="28" font-weight="900" fill="#e2c793" font-family="serif" class="svg-pulse">→</text>
+  <g class="svg-stagger" style="animation-delay:0.18s">
+    <rect x="230" y="50" width="150" height="160" rx="6" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <rect x="230" y="50" width="150" height="160" rx="6" fill="#e2c793" opacity="0.06"/>
+    <rect x="255" y="70" width="100" height="24" rx="2" fill="none" stroke="#e2c793" stroke-width="1.2"/>
+    <text x="305" y="86" text-anchor="middle" font-size="8" font-weight="700" fill="#F7F0DF" font-family="monospace">SCAN...</text>
+    <rect x="255" y="100" width="100" height="6" rx="1" fill="#e2c793" opacity="0.3"/>
+    <rect x="255" y="100" width="82" height="6" rx="1" fill="#e2c793" class="svg-progress"/>
+    <text x="305" y="130" text-anchor="middle" font-size="9" fill="#e2c793">report.md</text>
+    <text x="305" y="148" text-anchor="middle" font-size="9" fill="#e2c793">fix-list.md</text>
+    <text x="305" y="198" text-anchor="middle" font-size="10" font-weight="900" fill="#F7F0DF" letter-spacing="1">실행까지</text>
+  </g>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="4" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">03 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">사업자용 활용법 10가지</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">🎬 콘텐츠 3종 · 소셜미디어 + 뉴스레터 + 영상 스크립트</span><span class="bullet-arrow">→</span><div class="bullet-detail">URL 하나 넣으면 인스타·유튜브·블로그 동시 생산. 뉴스레터는 브랜드 보이스 맞춤, 스크립트도 뚝딱.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">🔍 분석 4종 · SEO 감사 + GEO(AI 검색) + GA4 + 경쟁사</span><span class="bullet-arrow">→</span><div class="bullet-detail">SEO 문제점 우선순위 정리, GEO로 AI 검색 노출 최적화, GA4 인사이트 한국어 요약, 경쟁사 비교 분석까지.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">🤖 오케스트라 2종 · 멀티 에이전트 팀 + 자동 트리거</span><span class="bullet-arrow">→</span><div class="bullet-detail">리서처·카피라이터·SEO AI를 팀으로 편성. 매주 월요일 자동 콘텐츠 계획도 가능.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">🛠️ 실용 2종 · 이메일 A/B 테스트 + 랜딩페이지 최적화</span><span class="bullet-arrow">→</span><div class="bullet-detail">시퀀스 이메일 초안부터 A/B 문구 작성, 랜딩페이지 전환율 높이는 카피 수정·코드 수정까지.</div></li><li class="tilt-card reveal" style="transition-delay:0.48s"><span class="bullet-num">05</span><span class="bullet-text">🏁 오늘 악기를 하나씩 만들고 · 마지막에 합주!</span><span class="bullet-arrow">→</span><div class="bullet-detail">10가지 중 핵심을 직접 실습합니다. 악기 하나씩 만들고, 마지막에 전부 합주하는 거죠!</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-stagger">
+    <circle cx="200" cy="130" r="40" fill="none" stroke="#e2c793" stroke-width="2"/>
+    <circle cx="200" cy="130" r="28" fill="#e2c793" opacity="0.15" class="svg-pulse"/>
+    <text x="200" y="128" text-anchor="middle" font-size="13" font-weight="900" fill="#F7F0DF" font-family="monospace">10×</text>
+    <text x="200" y="142" text-anchor="middle" font-size="8" fill="#e2c793">USE CASES</text>
+  </g>
+  <path d="M 168 110 Q 130 80 90 60" stroke="#e2c793" stroke-width="1.4" fill="none" class="svg-draw-path"/>
+  <g class="svg-stagger" style="animation-delay:0.18s">
+    <circle cx="70" cy="50" r="24" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="70" y="48" text-anchor="middle" font-size="9" font-weight="700" fill="#F7F0DF">분석</text>
+    <text x="70" y="60" text-anchor="middle" font-size="7" fill="#e2c793">SEO · GA4</text>
+  </g>
+  <path d="M 232 110 Q 270 80 310 60" stroke="#e2c793" stroke-width="1.4" fill="none" class="svg-draw-path" style="animation-delay:0.1s"/>
+  <g class="svg-stagger" style="animation-delay:0.3s">
+    <circle cx="330" cy="50" r="24" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="330" y="48" text-anchor="middle" font-size="9" font-weight="700" fill="#F7F0DF">콘텐츠</text>
+    <text x="330" y="60" text-anchor="middle" font-size="7" fill="#e2c793">소셜 · 영상</text>
+  </g>
+  <path d="M 168 150 Q 130 180 90 208" stroke="#e2c793" stroke-width="1.4" fill="none" class="svg-draw-path" style="animation-delay:0.2s"/>
+  <g class="svg-stagger" style="animation-delay:0.42s">
+    <circle cx="70" cy="212" r="24" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="70" y="210" text-anchor="middle" font-size="9" font-weight="700" fill="#F7F0DF">자동화</text>
+    <text x="70" y="222" text-anchor="middle" font-size="7" fill="#e2c793">트리거</text>
+  </g>
+  <path d="M 232 150 Q 270 180 310 208" stroke="#e2c793" stroke-width="1.4" fill="none" class="svg-draw-path" style="animation-delay:0.3s"/>
+  <g class="svg-stagger" style="animation-delay:0.54s">
+    <circle cx="330" cy="212" r="24" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="330" y="210" text-anchor="middle" font-size="9" font-weight="700" fill="#F7F0DF">실용</text>
+    <text x="330" y="222" text-anchor="middle" font-size="7" fill="#e2c793">이메일</text>
+  </g>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="5" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">04 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">왜 지금? 한국 6배 성장</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">📈 4개월간 · 한국 WAU 6배 폭증</span><span class="bullet-arrow">→</span><div class="bullet-detail">최근 4개월 동안 한국의 주간 활성 Claude Code 사용자가 6배 성장했습니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">🥇 전 세계 성장률 1위 · 한국</span><span class="bullet-arrow">→</span><div class="bullet-detail">전 세계에서 한국 사용자 성장률이 가장 높습니다. 데이터가 증명하죠.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">🎭 마케팅 오케스트라 운영자 · 아직 극소수</span><span class="bullet-arrow">→</span><div class="bullet-detail">한국 시장에서 Claude Code로 마케팅 오케스트라를 돌리는 사람은 아직 극소수입니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">💺 관객석 아직 빈자리 · 지금 무대에 서면 첫 줄</span><span class="bullet-arrow">→</span><div class="bullet-detail">지금은 관객석이 다 안 찬 상태. 무대에 올라가면 첫 번째 줄에서 공연하는 겁니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.48s"><span class="bullet-num">05</span><span class="bullet-text">🚀 지금이 딱 · 진입 타이밍</span><span class="bullet-arrow">→</span><div class="bullet-detail">나중에는 뒷줄에서 서서 볼 수도 있습니다. 지금이 최고의 타이밍이에요.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <circle cx="200" cy="120" r="108" fill="none" stroke="#e2c793" stroke-width="0.8" opacity="0.3" class="svg-ripple"/>
+  <circle cx="200" cy="120" r="82" fill="none" stroke="#e2c793" stroke-width="0.8" opacity="0.4" class="svg-ripple" style="animation-delay:0.6s"/>
+  <circle cx="200" cy="120" r="56" fill="none" stroke="#e2c793" stroke-width="0.8" opacity="0.5" class="svg-ripple" style="animation-delay:1.2s"/>
+  <text x="200" y="148" text-anchor="middle" font-size="96" font-weight="900" fill="#F7F0DF" font-family="monospace" class="svg-countup" data-target="6">0</text>
+  <text x="268" y="148" text-anchor="start" font-size="44" font-weight="900" fill="#e2c793" font-family="serif">×</text>
+  <text x="200" y="188" text-anchor="middle" font-size="11" font-weight="700" fill="#e2c793" letter-spacing="3">4개월 · WAU</text>
+  <text x="200" y="220" text-anchor="middle" font-size="10" fill="#7a7666" letter-spacing="2">한국 성장률 1위</text>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="6" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">05 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">요금제 · 공연장 대관료</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">💰 월 $20(약 3만 원) · 무대 빌려야 공연 가능</span><span class="bullet-arrow">→</span><div class="bullet-detail">3만 원이 오케스트라 공연장 대관료입니다. 공연장 없이는 악단이 연주할 무대가 없잖아요?</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">🚫 Free · Claude Code 사용 불가 · 견학만</span><span class="bullet-arrow">→</span><div class="bullet-detail">무료라서 매력적이지만 치명적 단점 — Claude Code를 사용할 수 없습니다. 공연장 견학만 가능.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">⭐ Pro $20/월 · 전체 기능 · 왕초보 추천</span><span class="bullet-arrow">→</span><div class="bullet-detail">Claude Code 전체 기능 사용 가능. 하루에 상당한 양을 작업할 수 있습니다. 오늘 시작할 플랜.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">🏟️ Max $25~100/월 · 헤비유저용 · 지금은 불필요</span><span class="bullet-arrow">→</span><div class="bullet-detail">매일 몇 시간씩 돌리는 헤비유저용. 여러 단계가 있지만 왕초보 단계에서는 필요 없습니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.48s"><span class="bullet-num">05</span><span class="bullet-text">✅ 결론 · Pro로 시작하세요</span><span class="bullet-arrow">→</span><div class="bullet-detail">왕초보 단계에서는 Pro로 충분합니다. 한국 카드 전부 결제 가능.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-stagger">
+    <rect x="60" y="170" width="70" height="60" fill="none" stroke="#7a7666" stroke-width="1.4"/>
+    <text x="95" y="160" text-anchor="middle" font-size="10" font-weight="900" fill="#7a7666" letter-spacing="1">FREE</text>
+    <text x="95" y="205" text-anchor="middle" font-size="14" font-weight="900" fill="#7a7666" font-family="monospace">$0</text>
+    <text x="95" y="222" text-anchor="middle" font-size="8" fill="#7a7666">견학</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.12s">
+    <rect x="155" y="90" width="70" height="140" fill="none" stroke="#e2c793" stroke-width="2"/>
+    <rect x="155" y="90" width="70" height="140" fill="#e2c793" opacity="0.12" class="svg-pulse"/>
+    <text x="190" y="80" text-anchor="middle" font-size="11" font-weight="900" fill="#e2c793" letter-spacing="1">PRO</text>
+    <text x="190" y="155" text-anchor="middle" font-size="18" font-weight="900" fill="#F7F0DF" font-family="monospace">$20</text>
+    <text x="190" y="172" text-anchor="middle" font-size="8" fill="#e2c793">/ 월</text>
+    <text x="190" y="210" text-anchor="middle" font-size="9" fill="#F7F0DF">왕초보</text>
+    <text x="190" y="222" text-anchor="middle" font-size="7" fill="#e2c793">★ 추천</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.24s">
+    <rect x="250" y="50" width="70" height="180" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="285" y="40" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" letter-spacing="1">MAX</text>
+    <text x="285" y="130" text-anchor="middle" font-size="15" font-weight="900" fill="#F7F0DF" font-family="monospace">$100</text>
+    <text x="285" y="147" text-anchor="middle" font-size="8" fill="#e2c793">/ 월</text>
+    <text x="285" y="210" text-anchor="middle" font-size="9" fill="#F7F0DF">헤비</text>
+  </g>
+  <line x1="30" y1="232" x2="360" y2="232" stroke="#e2c793" stroke-width="0.8" opacity="0.5"/>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="7" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">06 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">토큰 · 택시 미터기</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">🚕 대화 길이 = 이동 거리 · 길수록 미터기 상승</span><span class="bullet-arrow">→</span><div class="bullet-detail">택시 타면 이동 거리에 따라 미터기가 올라가듯, AI도 대화가 길수록 토큰이 올라갑니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">📏 내 질문 + AI 답변 · 양쪽 다 토큰 소모</span><span class="bullet-arrow">→</span><div class="bullet-detail">제가 말을 많이 하고, AI가 답을 많이 할수록 미터기(토큰)가 올라갑니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">⏸️ Pro · 하루 주행 한도 있음</span><span class="bullet-arrow">→</span><div class="bullet-detail">Pro 플랜은 하루에 탈 수 있는 택시 거리가 정해져 있습니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">🐢 한도 초과 · 속도 저하 또는 일시 중지</span><span class="bullet-arrow">→</span><div class="bullet-detail">한도를 초과하면 그날은 속도가 느려지거나 일시 중지됩니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.48s"><span class="bullet-num">05</span><span class="bullet-text">📅 팁 · 몰아쓰기 금지 · 하루 1~2시간 꾸준히</span><span class="bullet-arrow">→</span><div class="bullet-detail">작업을 몰아서 하지 말고 하루 1~2시간씩 꾸준히 쓰는 게 좋습니다.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-stagger">
+    <rect x="120" y="40" width="160" height="130" rx="8" fill="none" stroke="#e2c793" stroke-width="2"/>
+    <rect x="132" y="52" width="136" height="56" rx="3" fill="#e2c793" opacity="0.1"/>
+    <text x="200" y="90" text-anchor="middle" font-size="28" font-weight="900" fill="#F7F0DF" font-family="monospace" class="svg-countup" data-target="42">0</text>
+    <text x="200" y="104" text-anchor="middle" font-size="8" fill="#e2c793" letter-spacing="2">TOKEN</text>
+    <circle cx="150" cy="138" r="9" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <circle cx="200" cy="138" r="9" fill="#e2c793" opacity="0.5" class="svg-pulse"/>
+    <circle cx="250" cy="138" r="9" fill="none" stroke="#e2c793" stroke-width="1.4"/>
+    <text x="150" y="162" text-anchor="middle" font-size="7" fill="#7a7666">RUN</text>
+    <text x="200" y="162" text-anchor="middle" font-size="7" fill="#e2c793" font-weight="900">ON</text>
+    <text x="250" y="162" text-anchor="middle" font-size="7" fill="#7a7666">OFF</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.2s">
+    <line x1="120" y1="190" x2="280" y2="190" stroke="#e2c793" stroke-width="1.6"/>
+    <circle cx="150" cy="208" r="16" fill="none" stroke="#e2c793" stroke-width="1.6"/>
+    <circle cx="150" cy="208" r="6" fill="none" stroke="#e2c793" stroke-width="1"/>
+    <circle cx="250" cy="208" r="16" fill="none" stroke="#e2c793" stroke-width="1.6"/>
+    <circle cx="250" cy="208" r="6" fill="none" stroke="#e2c793" stroke-width="1"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" letter-spacing="3">TAXI METER</text>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="8" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">07 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">Pro 구독 vs API 직접 호출</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">📞 API · AI한테 직접 전화 · 주문 전화번호</span><span class="bullet-arrow">→</span><div class="bullet-detail">API는 쉽게 말해 음식점 주문 전화번호. 배달 앱 대신 직접 전화 걸어서 주문하는 방식입니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">⚙️ 설정 복잡 + 비용 예측 불가 + 폭탄 위험</span><span class="bullet-arrow">→</span><div class="bullet-detail">설정이 복잡하고, 비용이 얼마나 나올지 예측도 어렵고, 실수로 비용 폭탄 맞는 경우도 있습니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">⚠️ 왕초보 · API 직접 사용 비추</span><span class="bullet-arrow">→</span><div class="bullet-detail">왕초보한테 API 직접 사용은 비추입니다. 리스크 대비 이점이 없어요.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">✅ Pro 구독 · 월정액 택시 · 편하고 안전</span><span class="bullet-arrow">→</span><div class="bullet-detail">Pro 구독으로 Claude Code 쓰는 게 훨씬 편하고 안전합니다. 월 정액제 택시라고 생각하세요.</div></li><li class="tilt-card reveal" style="transition-delay:0.48s"><span class="bullet-num">05</span><span class="bullet-text">🎯 결론 · Pro로 시작이 정답</span><span class="bullet-arrow">→</span><div class="bullet-detail">나중에 사용량이 늘면 그때 API나 Max를 고려해도 늦지 않습니다.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-stagger">
+    <rect x="140" y="40" width="120" height="170" rx="4" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <rect x="140" y="40" width="120" height="22" fill="#e2c793" opacity="0.15"/>
+    <text x="200" y="55" text-anchor="middle" font-size="9" font-weight="900" fill="#e2c793" letter-spacing="2">ORDER #01</text>
+    <line x1="155" y1="82" x2="245" y2="82" stroke="#e2c793" stroke-width="0.6" opacity="0.5"/>
+    <text x="155" y="78" font-size="8" fill="#F7F0DF" font-family="monospace">→ POST /api</text>
+    <line x1="155" y1="105" x2="245" y2="105" stroke="#e2c793" stroke-width="0.6" opacity="0.5"/>
+    <text x="155" y="101" font-size="8" fill="#F7F0DF" font-family="monospace">→ Auth key</text>
+    <line x1="155" y1="128" x2="245" y2="128" stroke="#e2c793" stroke-width="0.6" opacity="0.5"/>
+    <text x="155" y="124" font-size="8" fill="#F7F0DF" font-family="monospace">→ JSON body</text>
+    <line x1="155" y1="151" x2="245" y2="151" stroke="#e2c793" stroke-width="0.6" opacity="0.5"/>
+    <text x="155" y="147" font-size="8" fill="#F7F0DF" font-family="monospace">→ Response</text>
+    <line x1="155" y1="174" x2="245" y2="174" stroke="#e2c793" stroke-width="0.6" opacity="0.5"/>
+    <text x="155" y="170" font-size="8" fill="#e2c793" font-family="monospace">= $0.42</text>
+    <text x="200" y="198" text-anchor="middle" font-size="8" fill="#7a7666">per call</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.2s">
+    <circle cx="305" cy="70" r="16" fill="none" stroke="#e2c793" stroke-width="1.6" class="svg-pulse"/>
+    <text x="305" y="76" text-anchor="middle" font-size="14" fill="#e2c793">🔔</text>
+  </g>
+  <text x="200" y="250" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" letter-spacing="3">API CALL</text>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="9" data-diagram="concept">
+      <div class="section-head">
+        <div class="section-kicker reveal">CONCEPT · 개념</div>
+        <div class="section-counter reveal">08 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">토큰 절약 꿀팁 3선</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">🔄 /clear · 대화 리셋 = 미터기 초기화</span><span class="bullet-arrow">→</span><div class="bullet-detail">/clear 명령어로 대화를 주기적으로 초기화. 미터기를 리셋하는 거라고 생각하세요.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">🚕 작업별 새 세션 · 새 택시 타기</span><span class="bullet-arrow">→</span><div class="bullet-detail">작업별로 새 세션을 시작하세요. 새 택시 타는 겁니다. 이전 대화 맥락이 토큰을 잡아먹지 않아요.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">⚡ 가벼운 작업 · Haiku 모델 = 경차 택시</span><span class="bullet-arrow">→</span><div class="bullet-detail">가벼운 작업은 Haiku 모델을 쓰세요. 경차 택시라서 기본료가 쌉니다. 뒤에서 더 자세히 다룹니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">💡 원리 · 말 길수록 토큰 상승 · 짧고 명확하게</span><span class="bullet-arrow">→</span><div class="bullet-detail">프롬프트를 짧고 명확하게 쓰면 토큰을 절약할 수 있습니다. 장문보다 핵심만.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <g class="svg-check-row" style="animation-delay:0s">
+    <rect x="50" y="50" width="24" height="24" rx="3" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <path d="M 55 62 L 61 68 L 71 55" stroke="#e2c793" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg-check-mark"/>
+    <line x1="88" y1="62" x2="355" y2="62" stroke="#e2c793" stroke-width="0.6" opacity="0.3"/>
+    <text x="88" y="58" font-size="11" font-weight="900" fill="#F7F0DF" font-family="monospace">/clear</text>
+    <text x="88" y="72" font-size="9" fill="#e2c793">대화 리셋 · 미터기 초기화</text>
+  </g>
+  <g class="svg-check-row" style="animation-delay:0.18s">
+    <rect x="50" y="100" width="24" height="24" rx="3" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <path d="M 55 112 L 61 118 L 71 105" stroke="#e2c793" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg-check-mark"/>
+    <line x1="88" y1="112" x2="355" y2="112" stroke="#e2c793" stroke-width="0.6" opacity="0.3"/>
+    <text x="88" y="108" font-size="11" font-weight="900" fill="#F7F0DF">세션 분리</text>
+    <text x="88" y="122" font-size="9" fill="#e2c793">작업별 · 새 택시 타기</text>
+  </g>
+  <g class="svg-check-row" style="animation-delay:0.36s">
+    <rect x="50" y="150" width="24" height="24" rx="3" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <path d="M 55 162 L 61 168 L 71 155" stroke="#e2c793" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg-check-mark"/>
+    <line x1="88" y1="162" x2="355" y2="162" stroke="#e2c793" stroke-width="0.6" opacity="0.3"/>
+    <text x="88" y="158" font-size="11" font-weight="900" fill="#F7F0DF">Haiku 모델</text>
+    <text x="88" y="172" font-size="9" fill="#e2c793">가벼운 작업 · 경차 택시</text>
+  </g>
+  <rect x="50" y="196" width="310" height="34" rx="4" fill="#e2c793" opacity="0.08" stroke="#e2c793" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <text x="205" y="218" text-anchor="middle" font-size="9" fill="#e2c793" letter-spacing="1">원리 · 말이 길수록 토큰 ↑</text>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">CONCEPT</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="10" data-diagram="recap">
+      <div class="section-head">
+        <div class="section-kicker reveal">RECAP · 복습</div>
+        <div class="section-counter reveal">09 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">Part 01 · 요약 세 줄</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">🎻 Claude Code · 설명이 아닌 실행 · 직접 연주하는 악단</span><span class="bullet-arrow">→</span><div class="bullet-detail">ChatGPT는 설명만 해주는 선생님. Claude Code는 직접 파일을 만들고 실행까지 해주는 악단입니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">💰 Pro $20/월로 시작 · 왕초보에겐 이것으로 충분</span><span class="bullet-arrow">→</span><div class="bullet-detail">Free는 사용 불가, Max는 아직 불필요. Pro 플랜 월 3만 원이 정답입니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">🔄 토큰 = 택시 미터기 · /clear 리셋으로 아껴 쓰기</span><span class="bullet-arrow">→</span><div class="bullet-detail">토큰은 택시 미터기. /clear로 리셋, 작업별 세션 분리, Haiku 활용으로 절약하세요.</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <circle cx="200" cy="130" r="90" fill="none" stroke="#3a3730" stroke-width="6"/>
+  <circle cx="200" cy="130" r="90" fill="none" stroke="#e2c793" stroke-width="6" stroke-dasharray="565" stroke-dashoffset="0" transform="rotate(-90 200 130)" stroke-linecap="round" class="svg-progress"/>
+  <text x="200" y="122" text-anchor="middle" font-size="42" font-weight="900" fill="#F7F0DF" font-family="monospace" class="svg-countup" data-target="100">0</text>
+  <text x="200" y="150" text-anchor="middle" font-size="10" font-weight="700" fill="#e2c793" letter-spacing="3">PART 01 %</text>
+  <g class="svg-spin">
+    <circle cx="200" cy="40" r="4" fill="#e2c793"/>
+    <circle cx="290" cy="130" r="3" fill="#e2c793" opacity="0.7"/>
+    <circle cx="200" cy="220" r="3" fill="#e2c793" opacity="0.5"/>
+    <circle cx="110" cy="130" r="3" fill="#e2c793" opacity="0.7"/>
+  </g>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">RECAP</div>
+      </div>
+    </section>
+
+    <section class="slide slide-section" data-slide="11" data-diagram="bridge">
+      <div class="section-head">
+        <div class="section-kicker reveal">BRIDGE · 다음 악장</div>
+        <div class="section-counter reveal">10 / 10</div>
+      </div>
+      <div class="section-grid">
+        <div class="section-body">
+          <h2 class="section-title">NEXT · Part 02 예고</h2>
+          <ul class="bullet-list"><li class="tilt-card reveal" style="transition-delay:0.0s"><span class="bullet-num">01</span><span class="bullet-text">✅ 공연장 대관 완료 · Part 01 끝</span><span class="bullet-arrow">→</span><div class="bullet-detail">공연장 대관 끝났습니다! 이제 실제로 Claude Code를 설치할 차례.</div></li><li class="tilt-card reveal" style="transition-delay:0.12s"><span class="bullet-num">02</span><span class="bullet-text">🔧 Part 02 · Claude Code 설치 (Win / Mac)</span><span class="bullet-arrow">→</span><div class="bullet-detail">공연장에 무대 장비를 세팅하는 겁니다. 윈도우든 맥이든 상관없습니다.</div></li><li class="tilt-card reveal" style="transition-delay:0.24s"><span class="bullet-num">03</span><span class="bullet-text">🎛️ 무대 장비 세팅 · 따라하면 완성</span><span class="bullet-arrow">→</span><div class="bullet-detail">같이 따라하시면 됩니다. 설치 과정을 단계별로 안내해드릴게요.</div></li><li class="tilt-card reveal" style="transition-delay:0.36s"><span class="bullet-num">04</span><span class="bullet-text">💬 설치 직후 · 첫 대화까지 실습</span><span class="bullet-arrow">→</span><div class="bullet-detail">설치 끝나면 바로 첫 대화까지 해볼 겁니다. 시작할게요!</div></li></ul>
+        </div>
+        <div class="section-visual reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 400 260" class="infographic">
+  <line x1="40" y1="130" x2="360" y2="130" stroke="#e2c793" stroke-width="1.6" class="svg-draw"/>
+  <g class="svg-stagger">
+    <circle cx="70" cy="130" r="15" fill="none" stroke="#e2c793" stroke-width="2" class="svg-pulse2"/>
+    <circle cx="70" cy="130" r="7" fill="#e2c793"/>
+    <text x="70" y="96" text-anchor="middle" font-size="10" font-weight="900" fill="#F7F0DF" letter-spacing="1">P01</text>
+    <text x="70" y="158" text-anchor="middle" font-size="9" fill="#e2c793">개념</text>
+    <text x="70" y="172" text-anchor="middle" font-size="7" fill="#7a7666">DONE</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.15s">
+    <circle cx="165" cy="130" r="13" fill="none" stroke="#e2c793" stroke-width="1.8"/>
+    <circle cx="165" cy="130" r="6" fill="#e2c793" opacity="0.7"/>
+    <text x="165" y="96" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" letter-spacing="1">P02</text>
+    <text x="165" y="158" text-anchor="middle" font-size="9" fill="#F7F0DF">설치</text>
+    <text x="165" y="172" text-anchor="middle" font-size="7" fill="#7a7666">NEXT</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.3s">
+    <circle cx="260" cy="130" r="11" fill="none" stroke="#e2c793" stroke-width="1.4" opacity="0.6"/>
+    <circle cx="260" cy="130" r="5" fill="#e2c793" opacity="0.6"/>
+    <text x="260" y="96" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" opacity="0.7">P03</text>
+    <text x="260" y="158" text-anchor="middle" font-size="9" fill="#7a7666">터미널</text>
+  </g>
+  <g class="svg-stagger" style="animation-delay:0.45s">
+    <circle cx="340" cy="130" r="11" fill="none" stroke="#e2c793" stroke-width="1.4" opacity="0.5"/>
+    <circle cx="340" cy="130" r="5" fill="#e2c793" opacity="0.5"/>
+    <text x="340" y="96" text-anchor="middle" font-size="10" font-weight="900" fill="#e2c793" opacity="0.6">P04</text>
+    <text x="340" y="158" text-anchor="middle" font-size="9" fill="#7a7666">CLAUDE.md</text>
+  </g>
+</svg>
+        </div>
+      </div>
+      <div class="section-foot">
+        <div class="audio-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="foot-tag">BRIDGE</div>
+      </div>
+    </section>
+
+    <section class="slide slide-outro" data-slide="12">
+      <div class="outro-radial"></div>
+      <div class="outro-kicker reveal">END OF PART</div>
+      <h2 class="outro-title reveal" style="transition-delay:0.15s">Part 01 · 끝</h2>
+      <div class="outro-sub reveal" style="transition-delay:0.3s">NEXT · Part 02 · 설치 &amp; 첫 대화</div>
+      <div class="outro-actions reveal" style="transition-delay:0.5s">
+        <a class="btn btn-ghost" href="./index.html">← 전체 목차</a>
+        <button class="btn btn-gold" onclick="goFirst()">처음으로 ↺</button>
+        <a class="btn btn-gold" href="./part-02.html">다음으로 →</a>
+      </div>
+    </section>
+</main>
+
+<div class="controls">
+  <div class="ctrl-left">
+    <button class="ctrl-btn" onclick="prev()" title="이전 (←)">◀</button>
+    <button class="ctrl-btn" onclick="next()" title="다음 (→)">▶</button>
+    <div class="ctrl-counter"><strong id="curNum">01</strong> / <span id="totalNum">13</span></div>
+  </div>
+  <div class="ctrl-dots" id="dots"></div>
+  <div class="ctrl-right">
+    <button class="ctrl-btn" onclick="toggleThumbs()" title="썸네일 (T)">▦</button>
+    <button class="ctrl-btn" onclick="toggleHelp()" title="도움말 (?)">?</button>
+    <button class="ctrl-btn" onclick="toggleFullscreen()" title="전체화면 (F)">⛶</button>
+  </div>
+</div>
+
+<div class="thumb-strip" id="thumbStrip">
+  <div class="thumb-strip-inner" id="thumbInner">
+    <div class="thumb" data-idx="0"><span class="thumb-num">01</span><span class="thumb-label">COVER</span></div><div class="thumb" data-idx="1"><span class="thumb-num">02</span><span class="thumb-label">META</span></div><div class="thumb" data-idx="2"><span class="thumb-num">03</span><span class="thumb-label">HOOK</span></div><div class="thumb" data-idx="3"><span class="thumb-num">04</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="4"><span class="thumb-num">05</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="5"><span class="thumb-num">06</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="6"><span class="thumb-num">07</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="7"><span class="thumb-num">08</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="8"><span class="thumb-num">09</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="9"><span class="thumb-num">10</span><span class="thumb-label">CONCEPT</span></div><div class="thumb" data-idx="10"><span class="thumb-num">11</span><span class="thumb-label">RECAP</span></div><div class="thumb" data-idx="11"><span class="thumb-num">12</span><span class="thumb-label">BRIDGE</span></div><div class="thumb" data-idx="12"><span class="thumb-num">13</span><span class="thumb-label">END</span></div>
+  </div>
+</div>
+
+<div class="help-overlay" id="helpOverlay" onclick="toggleHelp()">
+  <div class="help-box" onclick="event.stopPropagation()">
+    <h3>KEYBOARD SHORTCUTS</h3>
+    <div class="help-row"><span>다음 슬라이드</span><span class="help-key"><kbd>→</kbd><kbd>Space</kbd></span></div>
+    <div class="help-row"><span>이전 슬라이드</span><span class="help-key"><kbd>←</kbd></span></div>
+    <div class="help-row"><span>처음으로</span><span class="help-key"><kbd>Home</kbd></span></div>
+    <div class="help-row"><span>마지막으로</span><span class="help-key"><kbd>End</kbd></span></div>
+    <div class="help-row"><span>전체화면</span><span class="help-key"><kbd>F</kbd></span></div>
+    <div class="help-row"><span>썸네일 스트립</span><span class="help-key"><kbd>T</kbd></span></div>
+    <div class="help-row"><span>도움말</span><span class="help-key"><kbd>?</kbd></span></div>
+    <div class="help-close">아무 곳이나 클릭하면 닫힙니다</div>
+  </div>
+</div>
+
+<script src="../../assets/themes/pajamaboss/common.js"></script>
+</body>
+</html>
