@@ -1,0 +1,25 @@
+name: mono-editorial
+displayName: Mono Editorial · 흑백 에디토리얼
+version: 1.0.0
+variant: light
+author: lecture-producer
+license: MIT
+compatibleVersion: ">=1.0.0"
+
+description: |
+  흑백 에디토리얼 라이트 테마. 순백(#ffffff) 배경 + 순흑 텍스트 + 1% 레드(#c8102e) 악센트.
+  타이트한 애니메이션·큰 포커스 아웃라인(3px)·WCAG AAA 목표.
+  학술·대학원·저널리즘·문서 중심 교육 적합.
+
+requiredFonts:
+  - family: Pretendard Variable
+    cdn: https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css
+    fallback: ['Georgia', 'Noto Serif KR', '-apple-system', 'Times New Roman', 'serif']
+
+files:
+  tokens: tokens.json
+  styles: common.css
+  scripts: common.js
+
+backgroundModes: [FLOW, WAVES, VORONOI, NETWORK, CONSTELLATION]
+defaultBackgroundMode: VORONOI

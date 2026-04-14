@@ -1,0 +1,25 @@
+name: warm-pastel
+displayName: Warm Pastel · 세이지 + 블러시
+version: 1.0.0
+variant: light
+author: lecture-producer
+license: MIT
+compatibleVersion: ">=1.0.0"
+
+description: |
+  부드러운 파스텔 라이트 테마. 크림 배경(#faf5ed) + 세이지 그린(#7a9576) + 블러시 핑크(#d87b8b).
+  느긋한 애니메이션(stagger 0.14s).
+  라이프스타일·여성 창업자·힐링 콘텐츠·공공기관 40·50대 여성 교육 적합.
+
+requiredFonts:
+  - family: Pretendard Variable
+    cdn: https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css
+    fallback: ['-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo', 'Malgun Gothic', 'sans-serif']
+
+files:
+  tokens: tokens.json
+  styles: common.css
+  scripts: common.js
+
+backgroundModes: [FLOW, WAVES, VORONOI, NETWORK, CONSTELLATION]
+defaultBackgroundMode: CONSTELLATION

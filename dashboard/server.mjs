@@ -9,8 +9,8 @@
  * - Exec 모드는 .claude/local-config.json의 dashboard.allowExec: true 필요
  */
 import { createServer } from 'http';
-import { readFileSync, existsSync, readdirSync, statSync, createReadStream } from 'fs';
-import { extname, join, resolve } from 'path';
+import { readFileSync, existsSync, readdirSync, statSync, createReadStream, mkdirSync, writeFileSync, appendFileSync } from 'fs';
+import { extname, join, resolve, basename } from 'path';
 import { spawn } from 'child_process';
 import { URL } from 'url';
 
@@ -110,10 +110,63 @@ function listThemes() {
   return readdirSync(dir)
     .filter(d => { try { return statSync(join(dir, d)).isDirectory(); } catch { return false; } })
     .map(slug => {
-      const tp = join(dir, slug, 'tokens.json');
+      const td = join(dir, slug);
+      const tp = join(td, 'tokens.json');
       const tokens = existsSync(tp) ? safeJson(tp) : {};
-      return { slug, displayName: tokens.displayName || slug, variant: tokens.variant || 'dark' };
+      const hasPreview = existsSync(join(td, 'preview.svg'));
+      return {
+        slug,
+        displayName: tokens.displayName || slug,
+        variant: tokens.variant || 'dark',
+        description: tokens.description || '',
+        accent: tokens.palette?.gold || null,
+        bg: tokens.palette?.black || null,
+        preview: hasPreview ? `/assets/themes/${slug}/preview.svg` : null
+      };
     });
+}
+
+/* ──── v1.4-G · Multipart parser (minimal · zero-dep) ──── */
+async function parseMultipart(req, contentType) {
+  const m = contentType.match(/boundary=(?:"([^"]+)"|([^;]+))/);
+  if (!m) throw new Error('boundary 없음');
+  const boundary = '--' + (m[1] || m[2]).trim();
+  const chunks = [];
+  const LIMIT = 50 * 1024 * 1024; // 50MB
+  let total = 0;
+  for await (const c of req) {
+    total += c.length;
+    if (total > LIMIT) throw new Error('파일 크기 50MB 초과');
+    chunks.push(c);
+  }
+  const buf = Buffer.concat(chunks);
+  const bBuf = Buffer.from(boundary);
+  const parts = [];
+  let idx = 0;
+  while (idx < buf.length) {
+    const start = buf.indexOf(bBuf, idx);
+    if (start < 0) break;
+    const next = buf.indexOf(bBuf, start + bBuf.length);
+    if (next < 0) break;
+    // 파트 본문 (헤더 + body)
+    const partBuf = buf.slice(start + bBuf.length + 2, next - 2); // +2 CRLF, -2 CRLF
+    const headerEnd = partBuf.indexOf(Buffer.from('\r\n\r\n'));
+    if (headerEnd < 0) { idx = next; continue; }
+    const headerText = partBuf.slice(0, headerEnd).toString('utf8');
+    const body = partBuf.slice(headerEnd + 4);
+    const disp = headerText.match(/Content-Disposition:\s*form-data;([^\r\n]+)/i);
+    if (disp) {
+      const filenameMatch = disp[1].match(/filename="([^"]+)"/);
+      const nameMatch = disp[1].match(/name="([^"]+)"/);
+      parts.push({
+        name: nameMatch ? nameMatch[1] : null,
+        filename: filenameMatch ? filenameMatch[1] : null,
+        data: body
+      });
+    }
+    idx = next;
+  }
+  return parts;
 }
 
 /* ──── API · cost estimate ──── */
@@ -141,6 +194,100 @@ const server = createServer(async (req, res) => {
   if (path === '/api/lectures') return json(res, listLectures());
   if (path === '/api/brands') return json(res, listBrands());
   if (path === '/api/themes') return json(res, listThemes());
+
+  // v1.4-G · 자료 업로드 (파일)
+  if (path === '/api/upload' && method === 'POST') {
+    const contentType = req.headers['content-type'] || '';
+    if (!contentType.startsWith('multipart/form-data')) return json(res, { error: 'multipart/form-data 필요' }, 400);
+    const mode = u.searchParams.get('mode') || 'mode-1-references';
+    if (!/^mode-[1-4]-/.test(mode)) return json(res, { error: 'invalid mode' }, 400);
+    try {
+      const files = await parseMultipart(req, contentType);
+      const savedAt = [];
+      const uploadDir = join(ROOT, 'input', mode, 'uploads');
+      mkdirSync(uploadDir, { recursive: true });
+      for (const f of files) {
+        if (!f.filename) continue;
+        // sanitize: 경로 구분자·상위경로 제거
+        const safe = basename(f.filename).replace(/[^\w.\-가-힣]/g, '_');
+        const ts = Date.now();
+        const dst = join(uploadDir, `${ts}-${safe}`);
+        writeFileSync(dst, f.data);
+        savedAt.push({ name: f.filename, saved: `input/${mode}/uploads/${ts}-${safe}`, size: f.data.length });
+      }
+      return json(res, { ok: true, files: savedAt });
+    } catch (e) {
+      return json(res, { error: e.message }, 500);
+    }
+  }
+
+  // v1.4 · 브랜드 에셋 업로드 (마법사 Step 2)
+  if (path === '/api/brand-upload' && method === 'POST') {
+    const contentType = req.headers['content-type'] || '';
+    if (!contentType.startsWith('multipart/form-data')) return json(res, { error: 'multipart/form-data 필요' }, 400);
+    const brandSlug = (u.searchParams.get('slug') || '').trim();
+    if (!/^[a-z0-9-]+$/.test(brandSlug)) return json(res, { error: 'slug는 영문 소문자·숫자·하이픈만' }, 400);
+    if (brandSlug.startsWith('_')) return json(res, { error: '_로 시작하는 slug 금지' }, 400);
+    try {
+      const files = await parseMultipart(req, contentType);
+      const brandDir = join(ROOT, 'brand-context', brandSlug);
+      const uploadDir = join(brandDir, 'uploads');
+      mkdirSync(uploadDir, { recursive: true });
+      // brand.yaml 스텁 (최초 업로드 시에만)
+      const yamlPath = join(brandDir, 'brand.yaml');
+      if (!existsSync(yamlPath)) {
+        const stub = `name: ${brandSlug}\ndisplayName: ${brandSlug}\ntype: personal\nlicense: All rights reserved\n# dashboard 마법사에서 자동 생성 · 이후 수동 편집 권장\n`;
+        writeFileSync(yamlPath, stub);
+      }
+      const savedAt = [];
+      for (const f of files) {
+        if (!f.filename) continue;
+        const safe = basename(f.filename).replace(/[^\w.\-가-힣]/g, '_');
+        const ts = Date.now();
+        const dst = join(uploadDir, `${ts}-${safe}`);
+        writeFileSync(dst, f.data);
+        savedAt.push({ name: f.filename, saved: `brand-context/${brandSlug}/uploads/${ts}-${safe}`, size: f.data.length });
+      }
+      return json(res, { ok: true, slug: brandSlug, files: savedAt });
+    } catch (e) {
+      return json(res, { error: e.message }, 500);
+    }
+  }
+
+  // v1.4-G · 외부 URL 참조 등록
+  if (path === '/api/refs' && method === 'POST') {
+    let body = '';
+    req.on('data', d => body += d);
+    req.on('end', () => {
+      let payload;
+      try { payload = JSON.parse(body); } catch { return json(res, { error: 'invalid JSON' }, 400); }
+      const { mode, url, note } = payload;
+      if (!mode || !/^mode-[1-4]-/.test(mode)) return json(res, { error: 'invalid mode' }, 400);
+      if (!url || !/^https?:\/\//.test(url)) return json(res, { error: 'invalid url (http/https)' }, 400);
+      const refDir = join(ROOT, 'input', mode, 'refs');
+      mkdirSync(refDir, { recursive: true });
+      const refFile = join(refDir, 'external-refs.md');
+      const entry = `\n## ${new Date().toISOString()}\n- URL: ${url}${note ? '\n- 메모: ' + note : ''}\n`;
+      appendFileSync(refFile, entry);
+      return json(res, { ok: true, saved: `input/${mode}/refs/external-refs.md` });
+    });
+    return;
+  }
+
+  // v1.4-G · 업로드된 자료 목록
+  if (path === '/api/uploads') {
+    const mode = u.searchParams.get('mode') || 'mode-1-references';
+    const uploadDir = join(ROOT, 'input', mode, 'uploads');
+    const refFile = join(ROOT, 'input', mode, 'refs', 'external-refs.md');
+    const files = existsSync(uploadDir)
+      ? readdirSync(uploadDir).map(f => {
+          const st = statSync(join(uploadDir, f));
+          return { name: f, size: st.size, mtime: st.mtimeMs };
+        }).sort((a, b) => b.mtime - a.mtime)
+      : [];
+    const refsText = existsSync(refFile) ? readFileSync(refFile, 'utf8') : '';
+    return json(res, { files, refsText });
+  }
 
   if (path === '/api/cost' && method === 'GET') {
     const parts = parseInt(u.searchParams.get('parts') || '6', 10);
@@ -230,15 +377,15 @@ const server = createServer(async (req, res) => {
     return;
   }
 
-  // 정적 파일 (public/ + output/ + assets/ + brand-context/ 읽기)
-  const staticRoots = {
-    '/': join(import.meta.dirname, 'public'),
-    '/output/': join(ROOT, 'output'),
-    '/assets/': join(ROOT, 'assets'),
-    '/brand-context/': join(ROOT, 'brand-context')
-  };
+  // 정적 파일 (더 긴 prefix 먼저)
+  const staticRoots = [
+    ['/output/', join(ROOT, 'output')],
+    ['/assets/', join(ROOT, 'assets')],
+    ['/brand-context/', join(ROOT, 'brand-context')],
+    ['/', join(import.meta.dirname, 'public')]
+  ];
   let filePath;
-  for (const [prefix, base] of Object.entries(staticRoots)) {
+  for (const [prefix, base] of staticRoots) {
     if (path.startsWith(prefix)) {
       const rel = path.slice(prefix.length) || 'index.html';
       filePath = join(base, decodeURIComponent(rel));

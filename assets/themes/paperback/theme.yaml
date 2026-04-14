@@ -1,0 +1,25 @@
+name: paperback
+displayName: Paperback · 라이트 크림 서적풍
+version: 1.0.0
+variant: light
+author: lecture-producer
+license: MIT
+compatibleVersion: ">=1.0.0"
+
+description: |
+  종이책 질감의 라이트 테마. 오프화이트 배경(#f5efdd) + 잉크 블랙 텍스트 + 와인색(#8e2b3b) 악센트.
+  세리프 폴백을 앞세워 인쇄물 같은 인상을 부여.
+  온라인 강의·독서 모임·인문학·역사 교육에 적합.
+
+requiredFonts:
+  - family: Pretendard Variable
+    cdn: https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css
+    fallback: ['-apple-system', 'BlinkMacSystemFont', 'Georgia', 'Noto Serif KR', 'serif']
+
+files:
+  tokens: tokens.json
+  styles: common.css
+  scripts: common.js
+
+backgroundModes: [FLOW, WAVES, VORONOI, NETWORK, CONSTELLATION]
+defaultBackgroundMode: WAVES
