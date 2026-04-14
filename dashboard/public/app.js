@@ -843,15 +843,30 @@ async function renderSystem() {
     h('p', { class: 'hero-subtitle' }, '설치가 제대로 됐는지, 비용은 얼마나 나올지 확인하는 도구들입니다. 평소엔 안 써도 돼요.')
   ));
 
-  // Lint 4종
-  app.appendChild(h('h2', {}, '🔍 Lint 4종'));
-  app.appendChild(h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
-    '프로젝트 설정이 규칙에 맞는지 자동 점검합니다 (이식성·테마 토큰·경로·브랜드 컨텍스트). ✅가 뜨면 문제 없음.'
-  ));
+  // Lint 4종 · Smoke Test 좌우 배치
   const lintBtn = h('button', { class: 'btn btn-gold', onclick: runLint }, '▶ 전체 Lint 실행');
-  const lintResults = h('div', { class: 'lint-grid', style: { marginTop: '16px' } });
-  app.appendChild(lintBtn);
-  app.appendChild(lintResults);
+  const lintResults = h('div', { class: 'lint-grid', style: { marginTop: '12px' } });
+  const smokeBtn = h('button', { class: 'btn btn-gold', onclick: runSmoke }, '▶ Smoke 실행');
+  const smokeOut = h('pre', { class: 'log-pane', style: { height: '260px', marginTop: '12px', display: 'none' } });
+
+  app.appendChild(h('div', { class: 'diag-grid' },
+    h('div', { class: 'diag-card' },
+      h('h2', { style: { margin: '0 0 6px' } }, '🔍 Lint 4종'),
+      h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
+        '프로젝트 설정이 규칙에 맞는지 자동 점검합니다 (이식성·테마 토큰·경로·브랜드 컨텍스트). ✅가 뜨면 문제 없음.'
+      ),
+      lintBtn,
+      lintResults
+    ),
+    h('div', { class: 'diag-card' },
+      h('h2', { style: { margin: '0 0 6px' } }, '🧪 Smoke Test'),
+      h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
+        '필수 폴더·파일·의존성이 모두 제자리에 있는지 빠르게 확인합니다. 새로 설치한 뒤 한 번 눌러 보세요.'
+      ),
+      smokeBtn,
+      smokeOut
+    )
+  ));
 
   async function runLint() {
     lintBtn.disabled = true; lintBtn.textContent = '실행 중...';
@@ -865,16 +880,6 @@ async function renderSystem() {
     }
     lintBtn.disabled = false; lintBtn.textContent = '▶ 전체 Lint 실행';
   }
-
-  // Smoke
-  app.appendChild(h('h2', {}, '🧪 Smoke Test'));
-  app.appendChild(h('p', { class: 'muted', style: { fontSize: '13px', marginBottom: '14px' } },
-    '필수 폴더·파일·의존성이 모두 제자리에 있는지 빠르게 확인합니다. 새로 설치한 뒤 한 번 눌러 보세요.'
-  ));
-  const smokeBtn = h('button', { class: 'btn btn-gold', onclick: runSmoke }, '▶ Smoke 실행');
-  const smokeOut = h('pre', { class: 'log-pane', style: { height: '300px', display: 'none' } });
-  app.appendChild(smokeBtn);
-  app.appendChild(smokeOut);
 
   async function runSmoke() {
     smokeBtn.disabled = true;
