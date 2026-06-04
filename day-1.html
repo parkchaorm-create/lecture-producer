@@ -140,9 +140,20 @@ hr{border:none;border-top:1px solid var(--s3);margin:2rem 0}
 
 /* FOOTER */
 footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+/* === DAY BAR (cross-day nav) === */
+.daybar{position:sticky;top:0;z-index:300;background:#080808;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.3rem;padding:.5rem 1rem;overflow-x:auto}
+.daybar .db-home{color:var(--gold);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .6rem;white-space:nowrap;margin-right:.3rem}
+.daybar .db-home:hover{text-decoration:underline}
+.daybar .db-link{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .65rem;border-radius:5px;white-space:nowrap;border:1px solid transparent}
+.daybar .db-link:hover{color:var(--gold);border-color:var(--s3)}
+.daybar .db-link.active{background:var(--gold2);color:#000}
+.daybar .db-sep{color:var(--s3);font-size:.78rem;margin:0 .15rem}
+
 </style>
 </head>
 <body>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link active">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a></div>
 
 <!-- NAV -->
 <nav class="nav">
