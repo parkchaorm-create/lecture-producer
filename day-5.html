@@ -162,7 +162,7 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
   <span class="nav-sep">|</span>
   <a href="#lec1">Supercomputer란?</a>
   <a href="#lec2">런칭 5단계</a>
-  <a href="#lec3">MCP 워크플로</a>
+  <a href="#lec3">전과정 한 번에</a>
   <span class="nav-sep">|</span>
   <a href="#project">🚀 통합 실습</a>
   <a href="#p0">0 브랜드 정하기</a>
@@ -198,7 +198,7 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
   <div class="tl-times">
     <span>0:00 Supercomputer란?</span>
     <span>0:25 런칭 5단계</span>
-    <span>1:05 MCP 워크플로</span>
+    <span>1:05 전과정 묶기</span>
     <span>1:30 실습 시작</span>
     <span>4:00 끝</span>
   </div>
@@ -272,7 +272,6 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
     <li><strong style="color:var(--gold)">모델 자동 선택</strong> — 작업마다 최적 모델을 라우팅하고, 파라미터 튜닝·재시도까지 자동으로 처리</li>
     <li><strong style="color:var(--gold)">실제 프레임 분석</strong> — 이미지·영상을 텍스트 요약이 아니라 <strong>실제 프레임으로 직접 분석</strong>해 훅·페이싱을 파악</li>
     <li><strong style="color:var(--gold)">skills</strong> — 힉스필드 팀이 만든 프로덕션 워크플로 + 내 작업 패턴을 자동 학습해 <strong>개인 스킬로 저장</strong></li>
-    <li><strong style="color:var(--gold)">MCP import</strong> — 다른 에이전트(Claude·Hermes·OpenClaw)의 메모리·스킬을 <strong>2클릭</strong>으로 가져옴 (보너스 <a href="day-9.html" style="color:var(--gold)">Day 9</a> 연계)</li>
   </ul>
 </div>
 
@@ -370,37 +369,38 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 3 · MCP 워크플로
+     강의 PART 3 · 전과정 한 번에
      ════════════════════════════════ -->
 <div class="sec" id="lec3">
   <span class="badge b-lec">강의</span>
-  <h2>Part 3 · Claude Code MCP로 Supercomputer 워크플로</h2>
+  <h2>Part 3 · Supercomputer로 전 과정 한 번에</h2>
   <span class="timer">1:05 – 1:25 · 20분</span>
 </div>
 
 <div class="card">
-  <h3>자연어로 전 단계를 한 번에 묶기</h3>
-  <p>지금까지의 5단계를 <strong>매번 따로 명령하지 않고</strong>, Claude Code의 MCP 연결을 통해 하나의 워크플로로 묶어 실행할 수 있습니다. 채팅창에서 "브랜드 런칭 전과정을 돌려줘"라고 말하면 에이전트가 ①~⑤를 순서대로 진행합니다.</p>
+  <h3>5단계를 하나의 요청으로 묶기</h3>
+  <p>지금까지의 5단계를 <strong>매번 따로 명령하지 않고</strong>, Supercomputer 채팅에 <strong>전 과정을 한 번에</strong> 요청할 수도 있습니다. "브랜드 런칭 전과정을 진행해줘"라고 말하면 Supercomputer가 ①~⑤를 스스로 순서대로 진행합니다 — 단계마다 도구를 바꿀 필요가 없습니다.</p>
   <ul style="margin-top:.65rem">
-    <li><strong style="color:var(--gold)">폴링(polling)</strong> — 영상·이미지 생성에는 시간이 걸립니다. 에이전트가 작업 상태를 주기적으로 확인하며 완료될 때까지 기다립니다.</li>
-    <li><strong style="color:var(--gold)">배치(batch)</strong> — 소재 10종, 영상 3편처럼 여러 개를 한 요청으로 묶어 동시에 처리합니다.</li>
+    <li><strong style="color:var(--gold)">skills</strong> — 자주 쓰는 워크플로를 스킬로 저장해 다음에 한 번에 재실행</li>
+    <li><strong style="color:var(--gold)">memory</strong> — 내 브랜드 정보를 기억해 이후 모든 작업에 자동 반영</li>
+    <li><strong style="color:var(--gold)">tasks</strong> — 영상처럼 오래 걸리는 작업을 큐로 관리하며 완료까지 진행</li>
   </ul>
 </div>
 
 <div class="prompt">
-  <div class="plabel">Claude Code MCP · 런칭 전과정 한 명령</div>
-  <code id="cmd-mcp">내 [카테고리] 브랜드 런칭 전과정을 진행해줘.
+  <div class="plabel">Supercomputer 채팅 · 런칭 전과정 한 요청</div>
+  <code id="cmd-all">내 [카테고리] 브랜드 런칭 전과정을 진행해줘.
 순서대로:
 1) 브랜드 기획서 작성
 2) 시장조사 요약
 3) 4주 런칭 전략
-4) 광고 소재 5종 이상 생성 (배치)
+4) 광고 소재 5종 이상 생성
 5) 9:16 숏폼 1편 이상 생성
-각 단계 결과를 보여주고, 영상은 완료될 때까지 상태를 확인(폴링)해줘.</code>
-  <button class="copy-btn" onclick="cp('cmd-mcp',this)">복사</button>
+각 단계 결과를 보여줘.</code>
+  <button class="copy-btn" onclick="cp('cmd-all',this)">복사</button>
 </div>
 
-<div class="callout c-tip"><span class="ico">🔗</span><p>MCP 연결·CLI 설정의 상세는 <strong>보너스 강의 <a href="day-9.html" style="color:var(--gold)">⭐ MCP (Day 9)</a></strong>에서 다룹니다. 오늘은 "자연어 한 명령으로 묶을 수 있다"는 개념만 잡으면 충분합니다.</p></div>
+<div class="callout c-tip"><span class="ico">💡</span><p>오늘 실습은 전부 <strong>힉스필드 웹의 Supercomputer 채팅</strong>에서만 진행합니다. 한 채팅 안에서 기획부터 영상까지 스스로 오케스트레이션하므로 다른 도구가 필요 없습니다.</p></div>
 
 <hr>
 
@@ -787,7 +787,7 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
       <td>4단계에서 만든 제품컷·UGC 중 가장 강한 1장을 첫 프레임으로 지정</td>
     </tr>
     <tr>
-      <td>전과정 한 명령(MCP)이 중간에 끊김</td>
+      <td>전과정 한 요청이 중간에 끊김</td>
       <td>5단계를 한 번에 묶지 말고, 단계별 프롬프트(①~⑤)를 순서대로 따로 실행</td>
     </tr>
   </tbody>
