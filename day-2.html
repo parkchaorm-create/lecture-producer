@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 2 · 이미지 편집 심화 & AI 인플루언서(Soul ID) — 6일 워크숍</title>
+<title>Day 2 · AI 인플루언서 시리즈 — Soul ID 고정 &amp; Adobe 마무리 — 8일 워크숍</title>
 <style>
 :root {
   --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
@@ -35,8 +35,8 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
 .tl-wrap{max-width:960px;margin:1.75rem auto;padding:0 2rem}
 .tl-label{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
 .tl-bar{display:flex;border-radius:6px;overflow:hidden;height:40px}
-.tl-lec{background:#2d2050;color:#b0a0e0;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:3}
-.tl-prac{background:#1a3328;color:#70c098;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:5}
+.tl-lec{background:#2d2050;color:#b0a0e0;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:5}
+.tl-prac{background:#1a3328;color:#70c098;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:7}
 .tl-times{display:flex;justify-content:space-between;margin-top:.35rem;font-size:.68rem;color:var(--muted)}
 
 /* PAGE */
@@ -141,15 +141,6 @@ hr{border:none;border-top:1px solid var(--s3);margin:2rem 0}
 /* FOOTER */
 footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
 
-/* FINAL TASK — 눈에 띄는 스타일 */
-.final-box{background:#161008;border:2px solid var(--gold2);border-radius:10px;padding:1.5rem 1.75rem;margin:1rem 0}
-.final-box h3{color:var(--gold);font-size:1.05rem;margin-bottom:.75rem;font-weight:700}
-
-/* BEFORE-AFTER LABEL */
-.ba-label{font-size:.8rem;font-weight:700;text-align:center;padding:.45rem;letter-spacing:.05em}
-.ba-before{background:#2a1616;color:#c88080}
-.ba-after{background:#162a1e;color:#70c098}
-
 /* === DAY BAR (cross-day nav) === */
 .daybar{position:sticky;top:0;z-index:300;background:#080808;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.3rem;padding:.5rem 1rem;overflow-x:auto}
 .daybar .db-home{color:var(--gold);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .6rem;white-space:nowrap;margin-right:.3rem}
@@ -162,37 +153,37 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 </style>
 </head>
 <body>
-<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link active">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a></div>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link active">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">Day 8</a><a class="db-link" href="day-9.html">⭐ 보너스</a></div>
+
+
 
 <!-- NAV -->
 <nav class="nav">
   <a href="#overview">전체 흐름</a>
   <span class="nav-sep">|</span>
-  <a href="#lec1">Flux Kontext</a>
-  <a href="#lec2">Soul Location</a>
-  <a href="#lec3">Soul ID</a>
-  <a href="#lec4">강사 시연</a>
+  <a href="#lec1">Soul ID 고정</a>
+  <a href="#lec2">일관 시리즈</a>
+  <a href="#lec3">Adobe 마무리</a>
+  <a href="#demo">시연</a>
   <span class="nav-sep">|</span>
-  <a href="#prac-a">실습 A</a>
-  <a href="#prac-b">실습 B</a>
-  <a href="#prac-c">실습 C</a>
-  <a href="#prac-d">실습 D</a>
-  <a href="#prac-e">실습 E·MCP</a>
-  <a href="#web-apps">웹 Apps</a>
+  <a href="#prac-a">실습 A·학습</a>
+  <a href="#prac-b">실습 B·시리즈</a>
+  <a href="#prac-c">실습 C·Adobe</a>
+  <a href="#prac-d">실습 D·MCP</a>
   <a href="#final-task">🏆 과제</a>
   <a href="#trouble">❓ 도움말</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-chip">HIGGSFIELD 6-DAY WORKSHOP · DAY 2</div>
-  <h1>이미지 편집 심화 &amp;<br><em>AI 인플루언서 (Soul ID)</em></h1>
-  <p>Flux Kontext로 기존 이미지 변환 + Soul Location 배경 생성 + Soul ID로 나만의 AI 인플루언서 제작</p>
+  <div class="hero-chip">HIGGSFIELD 7-DAY WORKSHOP · DAY 2</div>
+  <h1>AI 인플루언서 시리즈 —<br><em>Soul ID 고정</em> &amp; Adobe 마무리</h1>
+  <p>Day 1이 "다양하게 만들기(폭)"였다면, 오늘은 캐릭터 하나를 골라 Soul ID로 고정하고 일관된 시리즈로 깊이 있게 + Adobe 무료 툴로 마무리합니다.</p>
   <div class="hero-pills">
     <div class="pill">⏱ <strong>총 4시간</strong></div>
-    <div class="pill">🎯 <strong>목표</strong>: AI 인플루언서 이미지 세트 완성</div>
-    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + Day 1 결과물</div>
-    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h30m · 실습 2h30m</div>
+    <div class="pill">🎯 <strong>목표</strong>: 같은 얼굴로 일관 시리즈 만들기</div>
+    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + Day 1 캐릭터 + Adobe 무료 계정</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h20m · 실습 2h40m</div>
   </div>
 </div>
 
@@ -200,14 +191,14 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="tl-wrap" id="overview">
   <div class="tl-label">오늘 4시간 흐름</div>
   <div class="tl-bar">
-    <div class="tl-lec">📖 강의·시연 (1h 30m)</div>
-    <div class="tl-prac">🖥️ 실습 A·B·C·D·E (2h 30m)</div>
+    <div class="tl-lec">📖 강의·시연 (1h 20m)</div>
+    <div class="tl-prac">🖥️ 실습 A·B·C·D (2h 40m)</div>
   </div>
   <div class="tl-times">
-    <span>0:00 Flux Kontext</span>
-    <span>0:30 Soul Location</span>
-    <span>0:50 Soul ID</span>
-    <span>1:30 실습 시작</span>
+    <span>0:00 Soul ID 고정</span>
+    <span>0:40 일관 시리즈</span>
+    <span>1:10 Adobe 마무리</span>
+    <span>1:40 실습 시작</span>
     <span>3:50 공유</span>
     <span>4:00 끝</span>
   </div>
@@ -215,669 +206,402 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 
 <div class="page">
 
+<!-- 복습 한 줄 -->
+<div class="callout c-info" style="margin-top:1.5rem"><span class="ico">🔁</span><p><strong>Day 1 복습</strong>: 어제 여러 캐릭터를 만들어봤다면, <strong>오늘은 그중 하나를 골라 고정합니다.</strong> Day 1에서 배운 Flux Kontext 배경 교체·레퍼런스 첨부 기법은 오늘 "일관 시리즈"에 그대로 응용합니다.</p></div>
+
 <!-- ════════════════════════════════
-     강의 PART 1 · Flux Kontext
+     강의 PART 1 · Soul ID로 캐릭터 고정
      ════════════════════════════════ -->
 <div class="sec" id="lec1">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 1 · Flux Kontext — 기존 이미지 편집</h2>
-  <span class="timer">0:00 – 0:30 · 30분</span>
+  <span class="badge b-lec">강의 핵심</span>
+  <h2>Part 1 · Soul ID로 캐릭터 고정하기</h2>
+  <span class="timer">0:00 – 0:40 · 40분</span>
 </div>
 
 <div class="card">
-  <h3>Flux Kontext가 뭔가요?</h3>
-  <p>이미 만든 이미지를 <strong>AI가 이해하고</strong> 원하는 부분만 수정하거나 스타일을 완전히 바꾸는 모델입니다.<br>
-  원본의 구도와 피사체 배치는 최대한 유지하면서, 분위기·색감·배경을 교체할 수 있습니다.</p>
+  <h3>Soul ID란?</h3>
+  <p>사진 <strong>3~5장을 학습</strong>시켜, 어떤 장면·배경·의상에도 <strong>항상 같은 얼굴</strong>로 등장하는 나만의 AI 캐릭터입니다.<br>
+  Day 1의 1회성 생성과의 <strong>결정적 차이 = 일관성</strong>. 어제는 "비슷한 인물"이 매번 조금씩 달랐다면, Soul ID는 "바로 이 사람"으로 고정됩니다.</p>
 </div>
 
+<!-- 1회성 vs Soul ID 비교표 -->
 <div class="card">
-  <h3>image-to-image vs Flux Kontext — 무엇이 다른가요?</h3>
-  <table style="margin-top:.5rem">
-    <thead><tr><th>방식</th><th>동작 원리</th><th>언제 쓰나</th></tr></thead>
+  <h3>1회성 캐릭터 vs Soul ID 학습</h3>
+  <table>
+    <thead><tr><th>구분</th><th>1회성 캐릭터 (Day 1)</th><th>Soul ID 학습 (Day 2)</th></tr></thead>
     <tbody>
-      <tr>
-        <td><strong>image-to-image</strong></td>
-        <td>원본 이미지를 참고해서 <strong>새로 생성</strong>. 원본과 달라질 수 있음</td>
-        <td>다른 분위기의 이미지가 필요할 때</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--gold)">Flux Kontext ← 오늘</strong></td>
-        <td>원본의 구조를 <strong>유지하면서</strong> 지정한 부분만 변경</td>
-        <td>피사체 동일하게 유지하고 스타일·배경만 바꿀 때</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="callout c-tip" style="margin-top:.75rem"><span class="ico">💡</span><p>"내가 만든 커피 이미지를 유지하면서 배경만 다크무디로 바꾸고 싶다" → <strong>Flux Kontext</strong></p></div>
-</div>
-
-<div class="card">
-  <h3>사용 방법 — 3단계</h3>
-  <ol class="steps" style="margin-top:.5rem">
-    <li><div class="snum">1</div><div class="sbody"><strong>모델 → Flux Kontext 선택</strong><span>Image 메뉴 → 모델 드롭다운에서 <strong style="color:var(--gold)">Flux Kontext</strong> 선택</span></div></li>
-    <li><div class="snum">2</div><div class="sbody"><strong>원본 이미지 업로드</strong><span>프롬프트창 옆 📎 아이콘 → 변환하고 싶은 이미지 첨부</span></div></li>
-    <li><div class="snum">3</div><div class="sbody"><strong>프롬프트 입력 — 공식 사용</strong><span>아래 Flux Kontext 프롬프트 공식을 그대로 써서 입력</span></div></li>
-  </ol>
-</div>
-
-<div class="formula">Keep [유지할 것] exactly the same. &nbsp;Change [바꿀 것] to [원하는 스타일/내용].</div>
-
-<div class="card">
-  <h3>프롬프트 공식 사용 예시</h3>
-  <table style="margin-top:.5rem">
-    <thead><tr><th>유지할 것</th><th>바꿀 것</th><th>완성 프롬프트 예</th></tr></thead>
-    <tbody>
-      <tr><td>커피잔과 구도</td><td>분위기 → 다크 무디</td><td><code style="font-size:.78rem;color:#a8c8e8">Keep the coffee cup and composition exactly the same. Change the overall mood to dark and moody, deep shadows, dramatic noir lighting.</code></td></tr>
-      <tr><td>피사체(인물)</td><td>배경 → 카페</td><td><code style="font-size:.78rem;color:#a8c8e8">Keep the person exactly the same. Change the background to a cozy cafe interior with warm ambient light.</code></td></tr>
-      <tr><td>제품과 위치</td><td>색감 → 빈티지 70s</td><td><code style="font-size:.78rem;color:#a8c8e8">Keep the product placement exactly the same. Change the color grading to vintage 1970s film aesthetic, warm browns and yellows.</code></td></tr>
+      <tr><td><strong>얼굴 일관성</strong></td><td>매번 조금씩 다름</td><td><strong style="color:var(--green)">항상 동일</strong></td></tr>
+      <tr><td><strong>준비물</strong></td><td>프롬프트 한 줄</td><td>같은 인물 사진 3~5장</td></tr>
+      <tr><td><strong>소요</strong></td><td>즉시 생성</td><td>학습 5~10분 (1회) → 이후 즉시</td></tr>
+      <tr><td><strong>적합 용도</strong></td><td>아이디어 탐색·다양한 시안</td><td><strong>연재 시리즈·팔로워가 기억하는 인플루언서</strong></td></tr>
+      <tr><td><strong>다른 툴 연동</strong></td><td>그때그때 새로 생성</td><td>학습 후 전 툴(Image·Video·Marketing)에서 호출</td></tr>
     </tbody>
   </table>
 </div>
 
-<!-- Before/After 예시 grid-4 -->
-<p style="margin:1.5rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">Before / After 예시 — 동일 커피 이미지, 스타일만 변환</p>
+<!-- 학습 절차 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">Soul ID 학습 절차</h3>
+<ol class="steps">
+  <li><div class="snum">1</div><div class="sbody"><strong>AI Influencer 메뉴 열기</strong><span>힉스필드 좌측 메뉴 → <strong>AI Influencer</strong> → Soul ID 만들기 / Create Character</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>학습용 사진 3~5장 업로드</strong><span>같은 인물, <strong>다양한 각도</strong>(정면·측면·반측면)·표정. 단독·선명·고해상도일수록 정확.</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>학습 시작 (5~10분 대기)</strong><span>AI가 얼굴 특징을 학습합니다. 창을 닫지 말고 기다리세요.</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>전 툴에서 호출해서 사용</strong><span>학습이 끝나면 Image·Soul Location·Video 등에서 <strong>내 캐릭터를 선택</strong>해 어떤 장면이든 같은 얼굴로 생성.</span></div></li>
+</ol>
 
-<div class="grid-4">
+<div class="callout c-err"><span class="ico">⚠️</span><p><strong>초상권 주의</strong>: 학습에 쓰는 사진은 <strong>① 본인 사진 ② 동의받은 사람 ③ AI로 만든 가상 인물</strong>만 사용하세요. 타인의 사진을 무단으로 학습시키면 초상권·법적 문제가 됩니다. (오늘은 Day 1에서 만든 AI 가상 캐릭터 사용을 권장)</p></div>
+
+<!-- Soul 2.0 vs Soul Cinematic -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">Soul 2.0 vs Soul Cinematic</h3>
+<div class="card">
+  <p>같은 캐릭터라도 <strong>어떤 Soul 모델</strong>로 뽑느냐에 따라 톤이 달라집니다.</p>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>모델</th><th>느낌</th><th>용도</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold)">Soul 2.0</strong></td><td>자연스럽고 일상적인 실사</td><td>UGC·SNS 일상 콘텐츠·라이프스타일</td></tr>
+      <tr><td><strong style="color:var(--gold)">Soul Cinematic</strong></td><td>영화 같은 드라마틱한 톤·조명</td><td>화보·브랜드 캠페인·임팩트 컷</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="margin:1.25rem 0 .6rem;font-size:.88rem;color:var(--cream)"><strong>같은 인물 — Soul 2.0(일상 UGC) vs Soul Cinematic(영화적)</strong></p>
+<div class="grid-2">
   <div class="img-card">
-    <div class="ba-label ba-before">BEFORE · 원본</div>
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260603_235654_546155b6-0d6a-4372-b1b5-66e3a266036f.png" alt="원본 커피" loading="lazy">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="Soul 2.0 원본" loading="lazy">
     <div class="img-info">
-      <span class="tag">원본 이미지</span>
-      <div class="kw-row"><span class="kw">Day 1 실습 A 결과물</span></div>
-      <span class="desc">자연광, 따뜻한 홈카페 분위기</span>
+      <span class="tag">Soul 2.0 · 일상 UGC</span>
+      <span class="desc">자연스러운 실사 톤. SNS 일상 콘텐츠에 어울림.</span>
     </div>
   </div>
   <div class="img-card">
-    <div class="ba-label ba-after">AFTER · 다크 무디</div>
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012306_7d281f8c-a072-4dfa-a50a-b69d18163641.png" alt="다크 무디" loading="lazy">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012325_4d87e1ac-2aa5-4f50-b6e9-5058cfe5c5f7.png" alt="Soul Cinematic" loading="lazy">
     <div class="img-info">
-      <span class="tag">다크 무디</span>
-      <div class="kw-row"><span class="kw hi">dark moody</span><span class="kw">dramatic noir</span><span class="kw">deep shadows</span></div>
-      <span class="desc">어둡고 무게감 있는 분위기로 변환</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <div class="ba-label ba-after">AFTER · 봄 파스텔</div>
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012310_3e5db7e2-94cc-47fe-8eac-0d743a83c6cb.png" alt="봄 파스텔" loading="lazy">
-    <div class="img-info">
-      <span class="tag">봄 파스텔</span>
-      <div class="kw-row"><span class="kw hi">spring pastel</span><span class="kw">soft pink tones</span><span class="kw">airy bright</span></div>
-      <span class="desc">밝고 화사한 봄 감성으로 변환</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <div class="ba-label ba-after">AFTER · 빈티지 70s</div>
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012313_c292023a-b3bb-4220-a910-fa5ef3ff4cfa.png" alt="빈티지 70s" loading="lazy">
-    <div class="img-info">
-      <span class="tag">빈티지 70s</span>
-      <div class="kw-row"><span class="kw hi">vintage 1970s</span><span class="kw">warm brown</span><span class="kw">film grain</span></div>
-      <span class="desc">레트로 필름 느낌의 빈티지 색감으로 변환</span>
+      <span class="tag">Soul Cinematic · 영화적</span>
+      <span class="desc">같은 인물, 드라마틱한 조명·톤. 화보·캠페인용.</span>
     </div>
   </div>
 </div>
 
-<div class="callout c-tip"><span class="ico">📌</span><p>세 가지 After 이미지 모두 <strong>동일한 원본 커피 이미지</strong>에 Flux Kontext 프롬프트만 바꿔 생성했습니다. 피사체 위치와 구도는 그대로 유지됩니다.</p></div>
+<div class="callout c-tip"><span class="ico">💡</span><p><strong>일관성의 가치</strong>: 같은 얼굴로 시리즈를 쌓으면 팔로워가 "이 사람"으로 기억합니다. 매번 얼굴이 다른 채널보다 신뢰·친근감이 훨씬 빨리 쌓입니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 2 · Soul Location
+     강의 PART 2 · 일관된 시리즈 (Soul Location)
      ════════════════════════════════ -->
 <div class="sec" id="lec2">
   <span class="badge b-lec">강의</span>
-  <h2>Part 2 · Soul Location — AI 배경 생성</h2>
-  <span class="timer">0:30 – 0:50 · 20분</span>
+  <h2>Part 2 · 일관된 시리즈 만들기 — Soul Location 배경</h2>
+  <span class="timer">0:40 – 1:10 · 30분</span>
 </div>
 
 <div class="card">
-  <h3>Soul Location이 뭔가요?</h3>
-  <p>배경과 장소만 전문적으로 생성하는 <strong>힉스필드 전용 모델</strong>입니다.<br>
-  인물 없이 배경만 먼저 만들어두고, 나중에 Soul ID 캐릭터와 합성할 수 있습니다.</p>
-  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">💡</span><p>"AI 인플루언서를 강남 루프탑에 배치하고 싶다" → Soul Location으로 배경 먼저 생성 → Soul 2.0 캐릭터와 합성</p></div>
+  <h3>Soul Location이란?</h3>
+  <p><strong>배경 전용 생성</strong> 도구입니다. (Day 1엔 없던 새 도구)<br>
+  학습된 캐릭터를 <strong>그대로 두고 배경만 바꿔</strong> 시리즈를 찍습니다.</p>
+  <div class="formula" style="margin-top:.75rem">같은 캐릭터 (Soul ID) + 다른 배경 (Soul Location) = 시리즈</div>
 </div>
 
-<div class="card">
-  <h3>사용 방법</h3>
-  <ol class="steps" style="margin-top:.5rem">
-    <li><div class="snum">1</div><div class="sbody"><strong>모델 → Soul Location 선택</strong><span>Image 메뉴 → 모델 드롭다운에서 <strong style="color:var(--gold)">Soul Location</strong> 선택</span></div></li>
-    <li><div class="snum">2</div><div class="sbody"><strong>장소·분위기·시간대 프롬프트 입력</strong><span>장소 설명 + 조명 + 분위기 3가지를 조합해서 입력</span></div></li>
-    <li><div class="snum">3</div><div class="sbody"><strong>9:16 비율로 생성</strong><span>배경은 나중에 인물과 합성하므로 <strong>인물이 설 공간</strong>을 고려해 구도 잡기</span></div></li>
-  </ol>
-</div>
-
-<div class="card">
-  <h3>Soul Location 프롬프트 구성</h3>
-  <div class="formula">[장소 설명] + [조명 / 시간대] + [분위기 키워드] + [카메라 설정]</div>
-  <div class="word-grid" style="margin-top:.85rem">
-    <div class="word-box">
-      <div class="wlabel">장소 예시</div>
-      <div class="wlist">Gangnam rooftop terrace<br>white minimal studio<br>forest trail in autumn<br>Tokyo street at night<br>Santorini terrace</div>
-    </div>
-    <div class="word-box">
-      <div class="wlabel">조명 / 시간대</div>
-      <div class="wlist">golden hour sunset<br>bright natural daylight<br>blue hour dusk<br>neon night<br>overcast soft light</div>
-    </div>
-    <div class="word-box">
-      <div class="wlabel">분위기 키워드</div>
-      <div class="wlist">luxury lifestyle<br>minimal and clean<br>lush and green<br>urban chic<br>dreamy and soft</div>
-    </div>
-    <div class="word-box">
-      <div class="wlabel">배경용 구도 팁</div>
-      <div class="wlist">empty foreground<br>space for a person<br>shallow depth of field<br>vertical 9:16<br>wide establishing shot</div>
-    </div>
-  </div>
-</div>
-
-<!-- Soul Location 배경 3종 예시 -->
-<p style="margin:1.5rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">배경 예시 3종 — Soul Location 생성</p>
-
+<p style="margin:1.25rem 0 .6rem;font-size:.88rem;color:var(--cream)"><strong>같은 캐릭터 · 배경 3종 — 강사 예시</strong></p>
 <div class="grid-3">
   <div class="img-card">
     <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012317_d29cc11d-5e98-41fe-8b24-814789e4b55a.png" alt="강남 루프탑" loading="lazy">
     <div class="img-info">
-      <span class="tag">강남 루프탑</span>
-      <div class="kw-row"><span class="kw hi">Gangnam rooftop</span><span class="kw">golden hour</span><span class="kw">city skyline</span></div>
-      <span class="desc">도심 야경이 보이는 루프탑 테라스. 패션·라이프스타일 콘텐츠에 최적.</span>
+      <span class="tag">배경 1 · 강남 루프탑</span>
+      <div class="kw-row"><span class="kw hi">Gangnam rooftop</span><span class="kw">city skyline</span></div>
+      <span class="desc">도심 야외. 트렌디·라이프스타일 톤.</span>
     </div>
   </div>
   <div class="img-card">
     <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012319_a2083a8a-69e3-466a-b350-7c3654fb7b6e.png" alt="화이트 스튜디오" loading="lazy">
     <div class="img-info">
-      <span class="tag">화이트 스튜디오</span>
-      <div class="kw-row"><span class="kw hi">white minimal studio</span><span class="kw">soft box light</span><span class="kw">clean</span></div>
-      <span class="desc">깔끔한 화이트 배경. 뷰티·패션 광고에 범용으로 활용 가능.</span>
+      <span class="tag">배경 2 · 화이트 스튜디오</span>
+      <div class="kw-row"><span class="kw hi">white studio</span><span class="kw">clean minimal</span></div>
+      <span class="desc">깔끔한 실내. 제품·브랜딩 컷에 적합.</span>
     </div>
   </div>
   <div class="img-card">
     <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012323_2e5a19b1-3532-47b8-bfd4-6588bd858574.png" alt="숲길" loading="lazy">
     <div class="img-info">
-      <span class="tag">숲길</span>
-      <div class="kw-row"><span class="kw hi">forest trail</span><span class="kw">dappled sunlight</span><span class="kw">lush green</span></div>
-      <span class="desc">자연광이 내리쬐는 초록빛 숲길. 힐링·라이프스타일 감성.</span>
+      <span class="tag">배경 3 · 숲길</span>
+      <div class="kw-row"><span class="kw hi">forest path</span><span class="kw">natural light</span></div>
+      <span class="desc">자연 야외. 감성·웰니스 콘텐츠 톤.</span>
     </div>
   </div>
 </div>
 
-<p style="font-size:.82rem;color:var(--muted);margin:.35rem 0 1rem;text-align:center">각 배경에 사용한 프롬프트 ↓</p>
+<!-- 레퍼런스 첨부 응용 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">같은 인물을 여러 배경·상황에 배치하는 법</h3>
+<div class="card">
+  <p>Day 1 실습F에서 배운 <strong>레퍼런스 첨부 기법</strong>을 "일관 시리즈"에 응용합니다.<br>
+  학습된 Soul 캐릭터(또는 인물 레퍼런스 사진)를 첨부하고, 배경·상황만 바꿔 프롬프트를 작성하세요.</p>
+</div>
 
-<div class="prompt">
-  <div class="plabel">강남 루프탑 프롬프트</div>
-  <code id="sl1">A luxurious rooftop terrace in Gangnam Seoul, city skyline view at golden hour sunset, warm orange light reflecting on glass buildings, empty foreground space for a person to stand, vertical 9:16, photorealistic, luxury lifestyle</code>
-  <button class="copy-btn" onclick="cp('sl1',this)">복사</button>
+<div class="grid-2">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="원본 캐릭터" loading="lazy">
+    <div class="img-info">
+      <span class="tag">기준 · 학습된 캐릭터</span>
+      <span class="desc">이 얼굴을 고정한 채 장면만 바꿉니다.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012341_5536a797-5fb1-4d15-a533-8adaa31e69d7.png" alt="스트리트 장면" loading="lazy">
+    <div class="img-info">
+      <span class="tag" style="color:var(--green)">✅ 같은 인물 · 스트리트 장면</span>
+      <span class="desc">얼굴은 동일, 배경·상황만 도심 스트리트로.</span>
+    </div>
+  </div>
 </div>
 
 <div class="prompt">
-  <div class="plabel">화이트 스튜디오 프롬프트</div>
-  <code id="sl2">A clean minimal white photography studio, professional soft box lighting from the left, smooth white seamless background, empty space for a model, airy and bright atmosphere, vertical 9:16, photorealistic</code>
-  <button class="copy-btn" onclick="cp('sl2',this)">복사</button>
+  <div class="plabel">일관 시리즈 프롬프트 (Soul 캐릭터 호출 / 인물 레퍼런스 첨부)</div>
+  <code id="ploc">My Soul character (same face, same identity), in [배경/상황: a Gangnam rooftop / white studio / forest path], consistent lighting and color grading, lifestyle content series, 9:16 vertical, photorealistic</code>
+  <button class="copy-btn" onclick="cp('ploc',this)">복사</button>
 </div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>핵심은 <strong>얼굴은 고정, 배경/상황만 교체</strong>. 시리즈 전체에 같은 조명·색감 키워드를 공통으로 넣어야 톤이 통일됩니다.</p></div>
 
-<div class="prompt">
-  <div class="plabel">숲길 프롬프트</div>
-  <code id="sl3">A serene forest trail in autumn, dappled golden sunlight filtering through green leaves, soft bokeh background, lush and dreamy atmosphere, empty path for a person, vertical 9:16, photorealistic</code>
-  <button class="copy-btn" onclick="cp('sl3',this)">복사</button>
+<!-- 시리즈 기획 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">콘텐츠 시리즈 기획 — "월~금 다른 컨셉"</h3>
+<div class="card">
+  <p>같은 캐릭터로 <strong>요일별·테마별 연재</strong>를 설계하면 채널이 됩니다.</p>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>요일</th><th>컨셉</th><th>배경 예시</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>출근룩·오피스</td><td>화이트 스튜디오 / 모던 오피스</td></tr>
+      <tr><td><strong>화</strong></td><td>카페 데일리</td><td>아늑한 카페 인테리어</td></tr>
+      <tr><td><strong>수</strong></td><td>시티 스트리트</td><td>도심 스트리트 / 강남 루프탑</td></tr>
+      <tr><td><strong>목</strong></td><td>웰니스·자연</td><td>숲길 / 공원</td></tr>
+      <tr><td><strong>금</strong></td><td>나이트·드라마틱</td><td>네온 도시 (Soul Cinematic)</td></tr>
+    </tbody>
+  </table>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>5장 모두 <strong>같은 얼굴</strong>이면 팔로워가 "이 사람의 일주일"로 인식 → 스토리가 생깁니다.</p></div>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 3 · Soul ID & AI Influencer
+     강의 PART 3 · Adobe 무료 툴 마무리
      ════════════════════════════════ -->
 <div class="sec" id="lec3">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 3 · Soul ID &amp; AI 인플루언서</h2>
-  <span class="timer">0:50 – 1:30 · 40분</span>
+  <span class="badge b-lec">강의 + 실습 안내</span>
+  <h2>Part 3 · Adobe 무료 툴로 마무리 보정</h2>
+  <span class="timer">1:10 – 1:40 · 30분</span>
 </div>
+
+<div class="callout c-info"><span class="ico">🖥️</span><p>이 파트는 강사 예시 이미지가 아니라 <strong>수강생이 직접 브라우저에서 Adobe Express(무료)로 체험</strong>하는 가이드입니다. (Day 1의 "웹에서 직접 체험" 패턴과 동일)</p></div>
 
 <div class="card">
-  <h3>Soul ID란?</h3>
-  <p>사진 <strong>3~5장을 학습</strong>시켜 어디서든 동일한 얼굴로 생성되는 <strong>AI 캐릭터 ID</strong>입니다.<br>
-  한 번 학습하면 Soul 2.0, Soul Cinematic, Soul Location 등 모든 툴에서 동일 얼굴 사용 가능합니다.</p>
-  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">🤖</span><p>Soul ID = 나의 AI 분신. "내가 직접 촬영하지 않아도 어떤 배경·스타일에서도 같은 얼굴의 콘텐츠를 무한히 생성"</p></div>
+  <h3>왜 Adobe로 마무리하나요?</h3>
+  <p><strong>힉스필드는 "생성"에 강하고, Adobe는 "후보정·텍스트·배포 포맷"에 강합니다.</strong><br>
+  힉스필드로 만든 AI 이미지를 그대로 올리기보다, 배경을 깔끔하게 정리하고 텍스트·로고를 얹어 플랫폼별 비율로 내보내면 완성도가 확 올라갑니다.</p>
+  <div class="formula" style="margin-top:.75rem">힉스필드 (생성) → Adobe Express (배경 제거 · 텍스트 · 리사이즈) → SNS 게시물</div>
 </div>
 
-<div class="card">
-  <h3>AI Influencer Studio 개념도</h3>
-  <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.65rem 0;font-size:.85rem;justify-content:center">
-    <span style="background:var(--s2);padding:.4rem .8rem;border-radius:4px;text-align:center"><strong style="color:var(--gold)">Soul ID</strong><br><span style="font-size:.75rem;color:var(--muted)">학습된 얼굴</span></span>
-    <span style="color:var(--gold);font-size:1.2rem">+</span>
-    <span style="background:var(--s2);padding:.4rem .8rem;border-radius:4px;text-align:center"><strong style="color:var(--blue)">Soul Location</strong><br><span style="font-size:.75rem;color:var(--muted)">배경</span></span>
-    <span style="color:var(--gold);font-size:1.2rem">+</span>
-    <span style="background:var(--s2);padding:.4rem .8rem;border-radius:4px;text-align:center"><strong>스타일 프롬프트</strong><br><span style="font-size:.75rem;color:var(--muted)">의상·무드</span></span>
-    <span style="color:var(--gold);font-size:1.2rem">→</span>
-    <span style="background:var(--gold2);color:#000;padding:.4rem .8rem;border-radius:4px;font-weight:700;text-align:center">무한 콘텐츠</span>
-  </div>
-</div>
+<!-- 무료 기능 표 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">Adobe 무료 가입자가 쓸 수 있는 기능 (오늘 실습 대상)</h3>
+<table>
+  <thead><tr><th>기능</th><th>도구</th><th>용도</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">배경 제거</strong></td><td>Adobe Express (무료)</td><td>인물/제품 컷아웃, 합성</td></tr>
+    <tr><td><strong style="color:var(--gold)">텍스트·로고 추가</strong></td><td>Adobe Express (무료)</td><td>SNS 카드, 자막, 브랜딩</td></tr>
+    <tr><td><strong style="color:var(--gold)">리사이즈·자르기</strong></td><td>Adobe Express (무료)</td><td>9:16 ↔ 1:1 ↔ 16:9 플랫폼별</td></tr>
+    <tr><td><strong style="color:var(--gold)">기본 필터·밝기·색보정</strong></td><td>Adobe Express (무료)</td><td>톤 통일</td></tr>
+    <tr><td><strong style="color:var(--gold)">템플릿 적용</strong></td><td>Adobe Express (무료)</td><td>빠른 SNS 게시물</td></tr>
+  </tbody>
+</table>
 
-<div class="card">
-  <h3>Soul 2.0 vs Soul Cinematic — 어떻게 다른가요?</h3>
-  <table style="margin-top:.5rem">
-    <thead><tr><th>모델</th><th>특징</th><th>어울리는 콘텐츠</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong style="color:var(--gold)">Soul 2.0</strong></td>
-        <td>현실적이고 자연스러운 인물. UGC·SNS 감성</td>
-        <td>패션, 라이프스타일, 뷰티, 인스타 피드</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--purple)">Soul Cinematic</strong></td>
-        <td>영화적이고 드라마틱한 조명. 강한 분위기</td>
-        <td>영화 포스터, 브랜드 캠페인, 럭셔리 광고</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!-- 유료/크레딧 표 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">유료·크레딧 필요 (참고만 — "이런 것도 있다")</h3>
+<table>
+  <thead><tr><th>기능</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Generative Fill (생성형 채우기)</strong></td><td>Firefly 크레딧 / 유료</td></tr>
+    <tr><td><strong>Generative Expand (캔버스 확장)</strong></td><td>Firefly 크레딧</td></tr>
+    <tr><td><strong>Photoshop 고급 합성·리터칭</strong></td><td>유료 구독</td></tr>
+    <tr><td><strong>Premiere / After Effects 플러그인</strong></td><td>유료 (영상 편집, Day 5~7 연계)</td></tr>
+  </tbody>
+</table>
 
-<!-- Soul ID 학습 절차 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">Soul ID 학습 절차</h3>
+<!-- 실습 가이드 steps -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">실습 가이드 — Adobe Express 무료 마무리</h3>
 <ol class="steps">
-  <li>
-    <div class="snum">1</div>
-    <div class="sbody">
-      <strong>AI Influencer 메뉴로 이동</strong>
-      <span>상단 메뉴 → <strong style="color:var(--gold)">AI Influencer</strong> → Soul ID 탭</span>
-    </div>
-  </li>
-  <li>
-    <div class="snum">2</div>
-    <div class="sbody">
-      <strong>사진 3~5장 업로드</strong>
-      <ul>
-        <li>정면 촬영, 얼굴이 선명하게 보이는 사진</li>
-        <li>다양한 각도 (정면 1장 + 측면 1장 + 45도 1장 권장)</li>
-        <li>배경이 단순할수록 학습 품질 높음</li>
-      </ul>
-    </div>
-  </li>
-  <li>
-    <div class="snum">3</div>
-    <div class="sbody">
-      <strong>학습 실행 (5~10분)</strong>
-      <span>업로드 완료 → Train / Create 버튼 클릭 → 5~10분 대기</span>
-    </div>
-  </li>
-  <li>
-    <div class="snum">4</div>
-    <div class="sbody">
-      <strong>학습 완료 → 모든 툴에서 사용</strong>
-      <span>Image → Soul 2.0 또는 Soul Cinematic 모델 선택 → 프롬프트에 Soul ID 불러오기</span>
-    </div>
-  </li>
+  <li><div class="snum">1</div><div class="sbody"><strong>무료 가입</strong><span>브라우저에서 <strong style="color:var(--gold)">express.adobe.com</strong> → 무료 계정으로 로그인/가입</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>힉스필드 이미지 업로드</strong><span>오늘 만든 시리즈 이미지 1장을 업로드</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>배경 제거</strong><span>Remove Background (무료) → 인물만 깔끔하게 컷아웃</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>텍스트/로고 추가</strong><span>제목·캡션·브랜드 로고 얹기</span></div></li>
+  <li><div class="snum">5</div><div class="sbody"><strong>9:16로 리사이즈</strong><span>Resize → 인스타 릴스/틱톡/쇼츠 비율로 맞추기</span></div></li>
+  <li><div class="snum">6</div><div class="sbody"><strong>다운로드</strong><span>완성본 내보내기 (PNG/JPG)</span></div></li>
 </ol>
 
-<div class="callout c-err">
-  <span class="ico">⚠️</span>
-  <p><strong>초상권 주의</strong>: Soul ID 학습에는 반드시 <strong>본인 사진</strong>, <strong>동의받은 사진</strong>, 또는 <strong>가상 캐릭터</strong>만 사용하세요. 타인의 사진을 무단으로 사용하면 초상권 침해가 될 수 있습니다.</p>
-</div>
-
-<!-- 예시 이미지 2종 -->
-<p style="margin:1.5rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">Soul 2.0 vs Soul Cinematic — 같은 캐릭터, 다른 모델</p>
-<div class="grid-2">
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="Soul 2.0 원본 인플루언서" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Soul 2.0 · 원본 인플루언서</span>
-      <div class="kw-row"><span class="kw hi">Soul 2.0</span><span class="kw">natural lifestyle</span><span class="kw">warm studio</span></div>
-      <span class="desc">자연스럽고 현실적인 인물. SNS 콘텐츠 최적. 일상·패션·뷰티에 어울림.</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012325_4d87e1ac-2aa5-4f50-b6e9-5058cfe5c5f7.png" alt="Soul Cinematic 드라마틱 포트레이트" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Soul Cinematic · 드라마틱 포트레이트</span>
-      <div class="kw-row"><span class="kw hi">Soul Cinematic</span><span class="kw">dramatic lighting</span><span class="kw">cinematic</span></div>
-      <span class="desc">영화적 조명과 강한 분위기. 브랜드 캠페인·럭셔리 콘텐츠에 어울림.</span>
-    </div>
-  </div>
-</div>
-
-<!-- Soul 2.0 스트리트 스타일 (레퍼런스 첨부) -->
-<p style="margin:1.5rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">레퍼런스 이미지 첨부 → Soul 2.0 다른 장면 생성</p>
-<div class="grid-2">
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="레퍼런스 원본" loading="lazy">
-    <div class="img-info">
-      <span class="tag">📎 레퍼런스 첨부</span>
-      <span class="desc">원본 인플루언서 이미지 업로드</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012341_5536a797-5fb1-4d15-a533-8adaa31e69d7.png" alt="Soul 2.0 스트리트 스타일" loading="lazy">
-    <div class="img-info">
-      <span class="tag" style="color:var(--green)">✅ Soul 2.0 스트리트 스타일</span>
-      <div class="kw-row"><span class="kw hi">street fashion</span><span class="kw">urban</span><span class="kw">dynamic pose</span></div>
-      <span class="desc">동일 캐릭터 → 스트리트 패션 장면으로 생성</span>
-    </div>
-  </div>
-</div>
-
-<div class="prompt">
-  <div class="plabel">레퍼런스 첨부 → Soul 2.0 스트리트 스타일 프롬프트</div>
-  <code id="soul-street">The same person from the reference photo, street fashion editorial, urban city background, dynamic confident pose, oversized jacket, natural daylight, 9:16 vertical, photorealistic</code>
-  <button class="copy-btn" onclick="cp('soul-street',this)">복사</button>
-</div>
-<div class="callout c-tip" style="margin-top:-.3rem"><span class="ico">📌</span><p>모델을 <strong>Soul 2.0</strong>으로 선택 + 원본 인플루언서 이미지를 레퍼런스로 첨부 후 생성하세요.</p></div>
+<div class="callout c-tip"><span class="ico">📌</span><p>힉스필드 메뉴의 <strong>"Plugins"</strong>는 Adobe <strong>Premiere / After Effects(영상)</strong>용이며 <strong>유료</strong>입니다. <strong>이미지 보정에는 Adobe Express 무료가 적합</strong>합니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
      강사 시연
      ════════════════════════════════ -->
-<div class="sec" id="lec4">
+<div class="sec" id="demo">
   <span class="badge b-demo">강사 시연</span>
-  <h2>Part 4 · 강사 라이브 시연</h2>
-  <span class="timer">1:00 – 1:30 · 30분</span>
+  <h2>강사 라이브 시연</h2>
+  <span class="timer">시연 · 20분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">👀</span><p>지금은 따라하지 말고 지켜보세요. 어떻게 작동하는지 흐름을 파악하는 것이 목표입니다.</p></div>
+<div class="callout c-info"><span class="ico">👀</span><p>지금은 따라하지 말고 지켜보세요. 방법을 보고 나서 실습합니다.</p></div>
 
 <ol class="steps">
-  <li>
-    <div class="snum">1</div>
-    <div class="sbody">
-      <strong>Soul Location 배경 3종 라이브 생성</strong>
-      <span>Image → Soul Location → 강남 루프탑 / 화이트 스튜디오 / 숲길 프롬프트 순서로 생성. 각 배경이 어떻게 다른지 실시간 확인.</span>
-    </div>
-  </li>
-  <li>
-    <div class="snum">2</div>
-    <div class="sbody">
-      <strong>Soul ID 학습 절차 시연 (또는 기학습 캐릭터 데모)</strong>
-      <span>AI Influencer 메뉴 → 사진 업로드 과정 시연. 학습 시간 동안 기학습된 캐릭터로 결과 미리 보기.</span>
-    </div>
-  </li>
-  <li>
-    <div class="snum">3</div>
-    <div class="sbody">
-      <strong>Flux Kontext 실시간 스타일 변환</strong>
-      <span>Day 1 결과 이미지 업로드 → Flux Kontext 모델 선택 → 다크 무디 / 봄 파스텔 순서로 변환. 프롬프트 입력 방법 상세 설명.</span>
-    </div>
-  </li>
+  <li><div class="snum">1</div><div class="sbody"><strong>Soul ID 학습 시연</strong><span>AI Influencer → 가상 인물 사진 3~5장 업로드 → 학습 (또는 미리 학습해둔 캐릭터로 데모)</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>같은 캐릭터 → 배경 3곳에 배치</strong><span>Soul Location으로 강남 루프탑·화이트 스튜디오·숲길 — 얼굴 동일, 배경만 교체</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>Soul Cinematic 버전 1장</strong><span>같은 인물을 영화적 톤으로 한 컷</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>Adobe Express 무료로 마무리</strong><span>배경 제거 + 텍스트 얹어 SNS 카드 완성까지 시연</span></div></li>
 </ol>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 A · Flux Kontext 스타일 변환
+     실습 A · Soul ID 학습
      ════════════════════════════════ -->
 <div class="sec" id="prac-a">
   <span class="badge b-prac">실습 A</span>
-  <h2>내 이미지 Flux Kontext로 3가지 변환</h2>
-  <span class="timer">1:30 – 2:00 · 30분</span>
+  <h2>내 캐릭터 1명 선정 &amp; Soul ID 학습</h2>
+  <span class="timer">1:40 – 2:20 · 40분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">🖥️</span><p>Day 1 실습에서 만든 내 이미지를 Flux Kontext로 3가지 스타일로 변환합니다. 같은 이미지가 얼마나 달라지는지 직접 확인하세요.</p></div>
+<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 따라합니다. 막히면 손을 들거나 옆 사람에게 물어보세요.</p></div>
 
 <ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>Image 메뉴 → 모델 → Flux Kontext 선택</strong></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>Day 1에서 만든 내 이미지 업로드</strong><span>프롬프트창 옆 📎 아이콘 → Day 1 결과 이미지 첨부</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>아래 프롬프트 3가지를 차례로 복사 → 붙여넣기 → Generate</strong></div></li>
+  <li><div class="snum">1</div><div class="sbody"><strong>Day 1 캐릭터 중 1명 선정</strong><p>어제 실습 G에서 만든 캐릭터 중 <strong>가장 마음에 드는 1명</strong>을 고릅니다. (실사 인플루언서 권장)</p></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>학습용 사진 3~5장 준비</strong><p>같은 인물의 <strong>정면·측면·반측면</strong>·다른 표정 컷을 모읍니다. 부족하면 Day 1 레퍼런스 첨부 기법으로 각도를 더 생성.</p></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>AI Influencer → Soul ID 학습</strong><p>메뉴에서 캐릭터 생성 → 사진 업로드 → 학습 시작 → 5~10분 대기.</p></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>테스트 1장 생성</strong><p>학습 완료 후 아무 배경으로 1장 뽑아 <strong>같은 얼굴인지</strong> 확인.</p></div></li>
 </ol>
 
-<div class="prompt">
-  <div class="plabel">변환 1 · 다크 무디</div>
-  <code id="pka1">Keep the main subject and composition exactly the same. Change the overall mood to dark and moody with dramatic chiaroscuro lighting, deep rich shadows, cinematic noir atmosphere.</code>
-  <button class="copy-btn" onclick="cp('pka1',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">변환 2 · 봄 파스텔</div>
-  <code id="pka2">Keep the main subject and composition exactly the same. Change the color palette to soft spring pastels, bright airy atmosphere, gentle pink and cream tones, fresh and light mood.</code>
-  <button class="copy-btn" onclick="cp('pka2',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">변환 3 · 빈티지 70s</div>
-  <code id="pka3">Keep the main subject and composition exactly the same. Change the color grading to vintage 1970s film aesthetic, warm brown and yellow tones, slight overexposure, nostalgic film grain texture.</code>
-  <button class="copy-btn" onclick="cp('pka3',this)">복사</button>
-</div>
-
 <div class="challenge">
-  <h4>📋 실습 A 체크리스트</h4>
+  <h4>🎯 실습 A 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">Flux Kontext 모델 선택 확인</li>
-    <li><input type="checkbox">Day 1 내 이미지 업로드 완료</li>
-    <li><input type="checkbox">변환 1 (다크 무디) 생성 완료</li>
-    <li><input type="checkbox">변환 2 (봄 파스텔) 생성 완료</li>
-    <li><input type="checkbox">변환 3 (빈티지 70s) 생성 완료</li>
-    <li><input type="checkbox">3가지 중 가장 마음에 드는 변환 선택 → 다운로드</li>
+    <li><input type="checkbox">캐릭터 1명 선정 완료</li>
+    <li><input type="checkbox">학습용 사진 3~5장 준비 (다양한 각도)</li>
+    <li><input type="checkbox">Soul ID 학습 시작 → 완료</li>
+    <li><input type="checkbox">테스트 1장 → 얼굴 일관성 확인</li>
+    <li><input type="checkbox">캐릭터 이름·컨셉 메모</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 B · Soul Location 배경 생성
+     실습 B · 일관 시리즈 3종
      ════════════════════════════════ -->
 <div class="sec" id="prac-b">
   <span class="badge b-prac">실습 B</span>
-  <h2>Soul Location으로 내 캐릭터 배경 3종 생성</h2>
-  <span class="timer">2:00 – 2:25 · 25분</span>
+  <h2>일관 시리즈 이미지 3종</h2>
+  <span class="timer">2:20 – 3:00 · 40분</span>
 </div>
 
-<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">나중에 Soul 2.0 AI 인플루언서를 배치할 <strong>배경 3종</strong>을 미리 생성해둡니다. 내 캐릭터 컨셉에 어울리는 장소를 골라보세요.</p>
-
-<ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>Image → 모델 → Soul Location 선택</strong></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>장소·분위기 프롬프트 입력 (아래 3가지 중 선택 또는 직접 작성)</strong></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>9:16, 1k로 생성 → 3종 다운로드</strong></div></li>
-</ol>
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">학습된 캐릭터 + Soul Location 배경으로 <strong>같은 인물 3장면</strong>을 만듭니다. 얼굴은 고정, 배경/상황만 바꿉니다.</p>
 
 <div class="prompt">
-  <div class="plabel">배경 A · 강남 루프탑 (복사 후 편집 가능)</div>
-  <code id="pkb1">A luxurious rooftop terrace in Gangnam Seoul, city skyline at golden hour, warm sunset glow, empty foreground space for a person, urban luxury lifestyle, vertical 9:16, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pkb1',this)">복사</button>
+  <div class="plabel">시리즈 ① 실내</div>
+  <code id="pb1">My Soul character (same face, same identity), in a clean white studio interior, soft even lighting, lifestyle brand shoot, consistent warm color grading, 9:16 vertical, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pb1',this)">복사</button>
 </div>
 
 <div class="prompt">
-  <div class="plabel">배경 B · 화이트 스튜디오 (복사 후 편집 가능)</div>
-  <code id="pkb2">A clean minimalist white photography studio, professional soft box lighting, smooth white seamless background, empty space for a model to stand, bright and airy, vertical 9:16, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pkb2',this)">복사</button>
+  <div class="plabel">시리즈 ② 야외</div>
+  <code id="pb2">My Soul character (same face, same identity), walking on a Gangnam rooftop with city skyline, golden hour light, street style content, consistent warm color grading, 9:16 vertical, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pb2',this)">복사</button>
 </div>
 
 <div class="prompt">
-  <div class="plabel">배경 C · 자연 (복사 후 편집 가능)</div>
-  <code id="pkb3">A beautiful forest trail with autumn leaves, dappled golden sunlight through trees, lush green bokeh background, peaceful and dreamy atmosphere, empty path for a person, vertical 9:16, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pkb3',this)">복사</button>
+  <div class="plabel">시리즈 ③ 클로즈업</div>
+  <code id="pb3">My Soul character (same face, same identity), close-up portrait, natural glowy makeup, soft window light, consistent warm color grading, 9:16 vertical, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pb3',this)">복사</button>
 </div>
 
-<div class="callout c-tip"><span class="ico">💡</span><p>위 장소가 내 콘텐츠와 안 맞으면 자유롭게 교체하세요. 예: <span class="kw">Tokyo street at night</span>, <span class="kw">Santorini terrace at sunset</span>, <span class="kw">minimal café interior</span></p></div>
+<div class="prompt">
+  <div class="plabel">+ Soul Cinematic 버전 1장</div>
+  <code id="pb4">My Soul character (same face, same identity), dramatic cinematic portrait, moody film lighting, deep shadows, magazine cover aesthetic, 9:16 vertical, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pb4',this)">복사</button>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>3장 모두 <strong>같은 색감 키워드</strong>(예: <code style="color:var(--gold);font-size:.82rem">consistent warm color grading</code>)를 넣어야 시리즈 톤이 통일됩니다.</p></div>
 
 <div class="challenge">
-  <h4>📋 실습 B 체크리스트</h4>
+  <h4>🎯 실습 B 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">Soul Location 모델 선택 확인</li>
-    <li><input type="checkbox">배경 1 생성 완료</li>
-    <li><input type="checkbox">배경 2 생성 완료</li>
-    <li><input type="checkbox">배경 3 생성 완료</li>
-    <li><input type="checkbox">3종 모두 다운로드 (나중에 합성용)</li>
+    <li><input type="checkbox">시리즈 ① 실내 생성</li>
+    <li><input type="checkbox">시리즈 ② 야외 생성</li>
+    <li><input type="checkbox">시리즈 ③ 클로즈업 생성</li>
+    <li><input type="checkbox">Soul Cinematic 버전 1장 생성</li>
+    <li><input type="checkbox">4장 나란히 보고 얼굴 일관성 확인 → 안 맞으면 재생성</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 C · Soul 2.0 캐릭터 포트레이트
+     실습 C · Adobe Express 마무리
      ════════════════════════════════ -->
 <div class="sec" id="prac-c">
   <span class="badge b-prac">실습 C</span>
-  <h2>Soul 2.0으로 AI 인플루언서 포트레이트 만들기</h2>
-  <span class="timer">2:25 – 2:55 · 30분</span>
+  <h2>Adobe Express 무료로 마무리</h2>
+  <span class="timer">3:00 – 3:40 · 40분</span>
 </div>
 
-<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">Soul 2.0 모델로 <strong>실사 인플루언서 스타일</strong>의 포트레이트를 만들어봅니다. Day 1에서 만든 캐릭터를 Soul 2.0으로 재생성하거나, 새로운 AI 인플루언서를 제작해보세요.</p>
+<div class="callout c-info"><span class="ico">🖥️</span><p>브라우저에서 <strong>express.adobe.com</strong>으로 직접 체험합니다. 실습 B에서 만든 이미지 1장을 가져오세요.</p></div>
 
 <ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>Image → 모델 → Soul 2.0 선택</strong></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>(선택) Day 1에서 만든 캐릭터 이미지 레퍼런스로 첨부</strong><span>📎 아이콘 → Day 1 실사 캐릭터 이미지 첨부. 유사한 얼굴로 생성됩니다.</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>아래 프롬프트 중 선택 → 복사 → 생성</strong></div></li>
+  <li><div class="snum">1</div><div class="sbody"><strong>무료 가입/로그인</strong><p><strong style="color:var(--gold)">express.adobe.com</strong> 접속 → 무료 계정</p></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>이미지 업로드</strong><p>실습 B 이미지 1장 업로드</p></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>배경 제거</strong><p>Remove Background (무료) → 인물 컷아웃</p></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>텍스트/로고 추가</strong><p>제목·캡션·로고 얹기</p></div></li>
+  <li><div class="snum">5</div><div class="sbody"><strong>9:16 리사이즈</strong><p>릴스/쇼츠 비율로 맞추기</p></div></li>
+  <li><div class="snum">6</div><div class="sbody"><strong>다운로드</strong><p>완성본 내보내기</p></div></li>
 </ol>
 
-<div class="prompt">
-  <div class="plabel">포트레이트 1 · 자연스러운 라이프스타일</div>
-  <code id="pkc1">A stylish young woman, natural glowy skin, soft editorial portrait, warm studio lighting with bokeh background, confident relaxed expression, minimal chic outfit, 9:16 vertical, Soul 2.0, photorealistic, UGC lifestyle</code>
-  <button class="copy-btn" onclick="cp('pkc1',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">포트레이트 2 · 패션 에디토리얼</div>
-  <code id="pkc2">A fashion model with sharp editorial look, clean minimal studio background, high-contrast professional lighting, sophisticated outfit, strong gaze directly at camera, 9:16 vertical, Soul 2.0, photorealistic, fashion magazine editorial</code>
-  <button class="copy-btn" onclick="cp('pkc2',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">포트레이트 3 · 아웃도어 감성</div>
-  <code id="pkc3">A young woman in a bright outdoor setting, golden hour natural light, warm and approachable expression, casual lifestyle fashion, lush green bokeh background, medium shot 9:16, Soul 2.0, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pkc3',this)">복사</button>
-</div>
+<div class="callout c-tip"><span class="ico">📌</span><p>Generative Fill 같은 기능은 막히면 <strong>Firefly 무료 크레딧 소진</strong> 때문입니다. 오늘은 <strong>무료 한도 기능</strong>(배경 제거·텍스트·리사이즈)만으로 충분합니다.</p></div>
 
 <div class="challenge">
-  <h4>📋 실습 C 체크리스트</h4>
+  <h4>🎯 실습 C 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">Soul 2.0 모델 선택 확인</li>
-    <li><input type="checkbox">포트레이트 1 생성 완료</li>
-    <li><input type="checkbox">포트레이트 2 생성 완료</li>
-    <li><input type="checkbox">포트레이트 3 생성 완료 (또는 나만의 변형 생성)</li>
-    <li><input type="checkbox">가장 마음에 드는 1장 선택 → 다운로드 (Soul ID 학습용으로 사용 가능)</li>
+    <li><input type="checkbox">express.adobe.com 무료 가입/로그인</li>
+    <li><input type="checkbox">힉스필드 이미지 업로드</li>
+    <li><input type="checkbox">배경 제거 완료</li>
+    <li><input type="checkbox">텍스트 또는 로고 추가</li>
+    <li><input type="checkbox">9:16 리사이즈 + 다운로드</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 D · Soul Cinematic
+     실습 D · MCP (선택)
      ════════════════════════════════ -->
 <div class="sec" id="prac-d">
-  <span class="badge b-prac">실습 D</span>
-  <h2>Soul Cinematic으로 드라마틱 포트레이트 변환</h2>
-  <span class="timer">2:55 – 3:25 · 30분</span>
+  <span class="badge b-prac">실습 D · 선택</span>
+  <h2>MCP — 캐릭터+배경 결합 자동화</h2>
+  <span class="timer">선택 · 20분</span>
 </div>
 
-<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">실습 C에서 만든 Soul 2.0 결과물을 <strong>Soul Cinematic 모델</strong>로 동일하게 생성해서 비교해봅니다. 같은 캐릭터 느낌이라도 얼마나 다른 분위기가 나오는지 직접 확인하세요.</p>
-
-<div class="card">
-  <h3>Soul Cinematic 특징</h3>
-  <ul style="margin-top:.4rem">
-    <li><strong>영화적 조명</strong>: 스크린 속 주인공 같은 강하고 연출된 빛</li>
-    <li><strong>드라마틱 대비</strong>: 밝음과 어두움이 극적으로 대비</li>
-    <li><strong>피부 표현</strong>: 실제처럼 섬세하지만 영화 속 캐릭터처럼 완성도 높음</li>
-    <li><strong>용도</strong>: 럭셔리 브랜드 광고, 영화 포스터, 고급 패션 캠페인</li>
-  </ul>
-</div>
+<div class="callout c-info"><span class="ico">⚙️</span><p>Claude Code MCP가 연결되어 있다면, 채팅 한 번으로 <strong>같은 캐릭터를 여러 배경에 배치한 이미지</strong>를 한꺼번에 생성할 수 있습니다. (Day 1 MCP 맛보기 연장)</p></div>
 
 <div class="prompt">
-  <div class="plabel">Soul Cinematic · 드라마틱 포트레이트</div>
-  <code id="pkd1">A stunning cinematic portrait, dramatic chiaroscuro lighting from the side, deep rich shadows with golden highlights, intense and captivating gaze, luxurious atmosphere, 9:16 vertical, Soul Cinematic, photorealistic, movie poster quality</code>
-  <button class="copy-btn" onclick="cp('pkd1',this)">복사</button>
+  <div class="plabel">MCP 프롬프트 — 캐릭터+배경 결합 자동화</div>
+  <code id="pd-mcp">내 Soul 캐릭터(첨부한 인물 레퍼런스와 같은 얼굴)를 아래 3개 배경에 각각 배치한 9:16 이미지를 한 번에 만들어줘. 얼굴은 완전히 동일하게, 색감은 warm color grading으로 통일.
+1) 강남 루프탑, 골든아워
+2) 화이트 스튜디오, 부드러운 조명
+3) 숲길, 자연광
+photorealistic, lifestyle content series</code>
+  <button class="copy-btn" onclick="cp('pd-mcp',this)">복사</button>
 </div>
 
-<div class="prompt">
-  <div class="plabel">Soul Cinematic · 럭셔리 브랜드 캠페인</div>
-  <code id="pkd2">A high-end fashion campaign portrait, elegant woman with flawless skin, dramatic backlight creating a glowing halo effect, dark luxurious background, mysterious and sophisticated mood, 9:16 vertical, Soul Cinematic, photorealistic, luxury brand aesthetic</code>
-  <button class="copy-btn" onclick="cp('pkd2',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">📌</span><p>모델을 <strong>Soul Cinematic</strong>으로 선택하고, 실습 C에서 사용한 것과 유사한 묘사를 입력하면 같은 캐릭터 느낌으로 영화적 버전이 생성됩니다.</p></div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>MCP 연결이 안 되어 있으면 이 실습은 건너뛰고 웹 UI(실습 B)로 진행하세요.</p></div>
 
 <div class="challenge">
-  <h4>📋 실습 D 체크리스트</h4>
+  <h4>🎯 실습 D 체크리스트 (선택)</h4>
   <ul class="cklist">
-    <li><input type="checkbox">Soul Cinematic 모델 선택 확인</li>
-    <li><input type="checkbox">드라마틱 포트레이트 생성 완료</li>
-    <li><input type="checkbox">Soul 2.0 결과와 Soul Cinematic 결과 나란히 비교</li>
-    <li><input type="checkbox">어떤 콘텐츠에 어떤 모델이 더 어울리는지 메모</li>
-  </ul>
-</div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     실습 E · MCP · 배경 + 캐릭터 결합
-     ════════════════════════════════ -->
-<div class="sec" id="prac-e">
-  <span class="badge b-prac">실습 E</span>
-  <h2>MCP · Soul Location 배경 + Soul 2.0 캐릭터 결합</h2>
-  <span class="timer">3:25 – 3:50 · 25분</span>
-</div>
-
-<div class="callout c-info">
-  <span class="ico">🤖</span>
-  <p><strong>MCP 실습</strong>: Claude Code(또는 MCP 클라이언트)에서 힉스필드 MCP 도구를 활용해 배경과 캐릭터를 <strong>프롬프트 하나로 결합</strong>하는 방법을 배웁니다. MCP 없이 웹 UI로도 동일하게 진행 가능합니다.</p>
-</div>
-
-<div class="card">
-  <h3>배경 + 캐릭터 결합 원리</h3>
-  <p>Soul Location으로 생성한 배경 이미지를 <strong>레퍼런스로 첨부</strong>하고, Soul 2.0으로 "이 배경에 캐릭터를 배치"하는 프롬프트를 씁니다.</p>
-  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>두 이미지를 동시에 첨부(배경 + 캐릭터)하면 AI가 두 이미지를 참고해서 합성된 결과를 생성합니다.</p></div>
-</div>
-
-<div class="prompt">
-  <div class="plabel">MCP / 웹 UI · 배경 + 캐릭터 결합 프롬프트</div>
-  <code id="pke1">The same person from the first reference photo, placed in the background location from the second reference photo, natural integration with matching lighting and atmosphere, confident lifestyle pose, 9:16 vertical, Soul 2.0, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pke1',this)">복사</button>
-</div>
-
-<p style="font-size:.82rem;color:var(--muted);margin:.5rem 0 .35rem"><strong>방법:</strong> 📎 아이콘 → 캐릭터 이미지(실습 C 결과) + 배경 이미지(실습 B 결과) <strong>동시 업로드</strong> → 위 프롬프트 입력 → Soul 2.0으로 생성</p>
-
-<div class="prompt">
-  <div class="plabel">더 구체적인 결합 프롬프트 (루프탑 + 패션)</div>
-  <code id="pke2">The same stylish person from the reference photo, standing on the rooftop terrace from the second reference image, golden hour sunlight, fashion editorial pose, looking out at the city skyline, 9:16 vertical, Soul 2.0, photorealistic, lifestyle brand campaign</code>
-  <button class="copy-btn" onclick="cp('pke2',this)">복사</button>
-</div>
-
-<div class="challenge">
-  <h4>📋 실습 E 체크리스트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">배경 이미지 (실습 B 결과) 준비 완료</li>
-    <li><input type="checkbox">캐릭터 이미지 (실습 C 결과) 준비 완료</li>
-    <li><input type="checkbox">두 이미지 동시 첨부 완료</li>
-    <li><input type="checkbox">결합 프롬프트 입력 → Soul 2.0 생성</li>
-    <li><input type="checkbox">결과 확인 → 마음에 들면 다운로드</li>
-    <li><input type="checkbox">(심화) 다른 배경으로 바꿔서 재시도</li>
-  </ul>
-</div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     웹 전용 Apps
-     ════════════════════════════════ -->
-<div class="sec" id="web-apps">
-  <span class="badge b-prac">실습 중 체험</span>
-  <h2>웹 전용 Apps — 실습 중 자유롭게 체험</h2>
-</div>
-
-<div class="callout c-info"><span class="ico">🖥️</span><p>아래 기능들은 힉스필드 웹 UI (<strong>Apps 메뉴</strong>)에서만 사용 가능합니다. MCP/CLI로는 호출 불가. 실습 완료 후 남은 시간에 자유롭게 체험해보세요.</p></div>
-
-<div class="card">
-  <h3>오늘 체험 권장 Apps 3가지</h3>
-  <table style="margin-top:.5rem">
-    <thead><tr><th>앱 이름</th><th>사용법</th><th>활용 예</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong style="color:var(--gold)">AI Stylist</strong></td>
-        <td>Apps → AI Stylist → 인물 이미지 + 의상 이미지 업로드</td>
-        <td>내 AI 인플루언서에 다양한 의상 입혀보기</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--gold)">Outfit Swap</strong></td>
-        <td>Apps → Outfit Swap → 인물 사진 1장 업로드 → 원하는 옷 설명 입력</td>
-        <td>기존 캐릭터 사진의 옷만 교체</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--gold)">Skin Enhancer</strong></td>
-        <td>Apps → Skin Enhancer → 인물 이미지 업로드</td>
-        <td>Soul 2.0 결과물 피부 보정</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="challenge">
-  <h4>📋 Apps 체험 체크리스트 (선택)</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">AI Stylist — 내 인플루언서에 의상 스왑 체험</li>
-    <li><input type="checkbox">Outfit Swap — 사진 1장으로 옷 교체 체험</li>
-    <li><input type="checkbox">Skin Enhancer — 피부 보정 전/후 비교</li>
+    <li><input type="checkbox">인물 레퍼런스 첨부 + MCP 프롬프트 전송</li>
+    <li><input type="checkbox">3장 배경 결합 결과 확인</li>
+    <li><input type="checkbox">웹 UI 결과와 비교 → 어느 쪽이 편한지 메모</li>
   </ul>
 </div>
 
@@ -888,40 +612,35 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
      ════════════════════════════════ -->
 <div class="sec" id="final-task">
   <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
-  <h2>나만의 AI 인플루언서 이미지 세트 완성</h2>
+  <h2>나만의 AI 인플루언서 일관 시리즈 + Adobe 마무리 1장</h2>
 </div>
 
-<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 Flux Kontext · Soul Location · Soul 2.0 · Soul Cinematic을 모두 활용해서 <strong>AI 인플루언서 콘텐츠 세트</strong>를 완성합니다.</p></div>
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 것을 모아 <strong>같은 얼굴로 이어지는 시리즈 + 마무리 1장</strong>을 완성합니다.</p></div>
 
-<div class="final-box">
+<div class="card">
   <h3>과제 조건</h3>
-  <table style="margin-top:.5rem">
+  <table>
     <thead><tr><th>항목</th><th>기준</th></tr></thead>
     <tbody>
-      <tr><td><strong>Soul 2.0 포트레이트</strong></td><td>3장 이상 (다양한 스타일·포즈·배경)</td></tr>
-      <tr><td><strong>Soul Cinematic 포트레이트</strong></td><td>1장 이상 (드라마틱 버전)</td></tr>
-      <tr><td><strong>Soul Location 배경</strong></td><td>2종 이상</td></tr>
-      <tr><td><strong>Flux Kontext 변환</strong></td><td>1회 이상 (Day 1 또는 오늘 이미지 변환)</td></tr>
-      <tr><td><strong>제출 형식</strong></td><td>이미지 파일 + 각 이미지에 사용한 모델명과 프롬프트</td></tr>
+      <tr><td><strong>일관 시리즈</strong></td><td>동일 캐릭터(Soul ID)로 일관된 이미지 <strong>3장 이상</strong> (서로 다른 배경/상황)</td></tr>
+      <tr><td><strong>Cinematic</strong></td><td>Soul Cinematic 버전 <strong>1장 포함</strong></td></tr>
+      <tr><td><strong>Adobe 마무리</strong></td><td>그중 1장을 Adobe Express 무료로 마무리(배경 제거 또는 텍스트 추가) → SNS 게시물 형태로</td></tr>
+      <tr><td><strong>제출</strong></td><td>시리즈 이미지 + Adobe 마무리본 + 사용 모델/프롬프트</td></tr>
     </tbody>
   </table>
 </div>
 
-<div class="final-box" style="margin-top:.75rem">
-  <h3>📤 제출 방법</h3>
-  <p style="font-size:.87rem;color:var(--muted);margin-bottom:.75rem">강사가 안내한 채널에 아래 내용을 함께 올려주세요.</p>
-  <ul class="cklist">
-    <li><input type="checkbox">Soul 2.0 포트레이트 3장 이상 완성 및 파일 준비</li>
-    <li><input type="checkbox">Soul Cinematic 드라마틱 버전 1장 완성</li>
-    <li><input type="checkbox">Soul Location 배경 2종 생성 완료</li>
-    <li><input type="checkbox">Flux Kontext 스타일 변형 1회 이상 완료</li>
-    <li><input type="checkbox">각 이미지별 사용 모델명 기록</li>
-    <li><input type="checkbox">각 이미지별 사용 프롬프트 전체 텍스트 기록</li>
-    <li><input type="checkbox">이미지 파일들 + 모델/프롬프트 메모 → 강사 채널 제출 완료</li>
+<div class="challenge" style="border-color:#3a3010">
+  <h4 style="color:#e8c060">📤 제출 방법</h4>
+  <p>강사가 안내한 채널에 아래 내용을 함께 올려주세요.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">동일 캐릭터 일관 시리즈 3장 이상</li>
+    <li><input type="checkbox">Soul Cinematic 버전 1장 포함</li>
+    <li><input type="checkbox">Adobe Express 마무리본 1장 (배경 제거 또는 텍스트)</li>
+    <li><input type="checkbox">사용한 모델 이름 (Soul 2.0 / Soul Cinematic 등)</li>
+    <li><input type="checkbox">사용한 프롬프트 전체 + 캐릭터 컨셉 한 줄</li>
   </ul>
 </div>
-
-<div class="callout c-tip" style="margin-top:.75rem"><span class="ico">💡</span><p><strong>심화 도전</strong>: Soul Location 배경 + Soul 2.0 캐릭터를 결합(실습 E)한 이미지도 포함하면 가장 완성도 높은 포트폴리오가 됩니다!</p></div>
 
 <hr>
 
@@ -936,46 +655,20 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <table class="trouble">
   <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
   <tbody>
-    <tr>
-      <td>Soul Location이 내가 원하는 장소가 안 나옴</td>
-      <td>더 구체적인 지명 또는 건축 스타일 추가. 예: <code style="color:var(--gold);font-size:.8rem">Gangnam Cheongdam luxury district</code>, <code style="color:var(--gold);font-size:.8rem">white concrete minimal architecture</code></td>
-    </tr>
-    <tr>
-      <td>Flux Kontext가 원본을 너무 많이 바꿈</td>
-      <td>프롬프트에 <code style="color:var(--gold);font-size:.8rem">keep [대상] exactly identical</code>을 더 강조해서 작성. 예: <code style="color:var(--gold);font-size:.8rem">Keep every detail of the subject absolutely identical.</code></td>
-    </tr>
-    <tr>
-      <td>Soul 2.0 결과가 원하는 느낌이 아님</td>
-      <td>조명 키워드 추가: <code style="color:var(--gold);font-size:.8rem">warm studio lighting</code> 또는 스타일 키워드 추가: <code style="color:var(--gold);font-size:.8rem">editorial portrait, professional photography</code></td>
-    </tr>
-    <tr>
-      <td>배경과 캐릭터 결합이 어색함</td>
-      <td>프롬프트에 <code style="color:var(--gold);font-size:.8rem">matching lighting and atmosphere, natural integration</code> 추가. 또는 배경 이미지를 더 단순한 것으로 교체</td>
-    </tr>
-    <tr>
-      <td>Soul Cinematic 결과가 너무 어두움</td>
-      <td><code style="color:var(--gold);font-size:.8rem">well-lit face</code> 또는 <code style="color:var(--gold);font-size:.8rem">balanced exposure</code> 추가</td>
-    </tr>
-    <tr>
-      <td>레퍼런스 첨부해도 얼굴이 달라짐</td>
-      <td>레퍼런스 사진을 정면·단독·선명한 것으로 교체. 여러 명이 있는 사진은 AI가 혼동할 수 있음</td>
-    </tr>
-    <tr>
-      <td>생성이 30초 이상 걸림</td>
-      <td>정상. 창 닫지 말고 기다리기. Soul Cinematic은 일반 모델보다 다소 느림</td>
-    </tr>
-    <tr>
-      <td>크레딧 없다는 메시지</td>
-      <td>강사에게 손 들고 알리기</td>
-    </tr>
+    <tr><td>장면마다 얼굴이 다름</td><td>Soul ID 학습 이미지를 더 일관되게(같은 인물·다양한 각도) 다시 학습</td></tr>
+    <tr><td>시리즈 톤이 제각각</td><td>모든 이미지에 같은 조명·색감 키워드(예: <code style="color:var(--gold);font-size:.82rem">consistent warm color grading</code>)를 공통 적용</td></tr>
+    <tr><td>Adobe Express 배경 제거가 어색</td><td>인물 외곽이 선명한 이미지로 교체 후 다시 시도</td></tr>
+    <tr><td>Generative Fill을 쓰고 싶은데 막힘</td><td>Firefly 무료 크레딧 소진 시 유료. 무료 한도 내 기능(배경 제거·텍스트·리사이즈)만 사용</td></tr>
+    <tr><td>학습이 너무 오래 걸림</td><td>5~10분은 정상. 창 닫지 말고 대기</td></tr>
+    <tr><td>MCP 연결 안 됨</td><td>웹 UI(실습 B)로 진행. 수업 후 강사와 함께 점검</td></tr>
   </tbody>
 </table>
 
 </div><!-- /page -->
 
 <footer>
-  <span>힉스필드 6일 워크숍 · Day 2 · 이미지 편집 심화 &amp; AI 인플루언서 (Soul ID)</span>
-  <span>예시 이미지: Higgsfield AI 생성 (Flux Kontext / Soul 2.0 / Soul Location / Soul Cinematic) · 2026</span>
+  <span>힉스필드 8일 워크숍 · Day 2 · AI 인플루언서 시리즈 (Soul ID &amp; Adobe 마무리)</span>
+  <span>예시 이미지: Higgsfield AI 생성 (Soul 2.0 / Soul Cinematic / Soul Location) · 2026</span>
 </footer>
 
 <script>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>힉스필드 6일 영상제작 워크숍 — 강의자료</title>
+<title>힉스필드 8일 영상제작 워크숍 — 강의자료</title>
 <style>
 :root{
   --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
@@ -19,19 +19,19 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
 .hero-chip{display:inline-block;background:var(--gold2);color:#000;font-size:.7rem;font-weight:800;letter-spacing:.12em;padding:.25rem .7rem;border-radius:3px;margin-bottom:1.25rem}
 .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:var(--cream);line-height:1.15;margin-bottom:1rem}
 .hero h1 em{color:var(--gold);font-style:normal}
-.hero p{color:var(--muted);font-size:1rem;max-width:600px;margin:0 auto}
+.hero p{color:var(--muted);font-size:1rem;max-width:640px;margin:0 auto}
 .hero-meta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
 .hero-meta span{background:var(--s2);border:1px solid var(--s3);border-radius:20px;padding:.35rem .9rem;font-size:.82rem;color:var(--muted)}
 .hero-meta strong{color:var(--text)}
 
-.wrap{max-width:1000px;margin:0 auto;padding:3rem 2rem 5rem}
+.wrap{max-width:1040px;margin:0 auto;padding:3rem 2rem 5rem}
 
-.arc{display:flex;align-items:center;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;font-size:.88rem;color:var(--muted)}
+.arc{display:flex;align-items:center;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;font-size:.86rem;color:var(--muted)}
 .arc b{color:var(--gold)}
 .arc-arrow{color:var(--gold2)}
 
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
-@media(max-width:720px){.grid{grid-template-columns:1fr}}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
 
 .day-card{background:var(--s1);border:1px solid var(--s3);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}
 .day-card:hover{transform:translateY(-4px);border-color:var(--gold2);box-shadow:0 12px 30px rgba(0,0,0,.4)}
@@ -39,20 +39,27 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
 .day-card-top::after{content:'';position:absolute;top:0;right:0;width:120px;height:120px;border-radius:50%;opacity:.08;transform:translate(40%,-40%)}
 .day-card.d1 .day-card-top::after{background:var(--gold)}
 .day-card.d2 .day-card-top::after{background:var(--purple)}
-.day-card.d3 .day-card-top::after{background:var(--blue)}
-.day-card.d4 .day-card-top::after{background:var(--green)}
-.day-card.d5 .day-card-top::after{background:#d08040}
-.day-card.d6 .day-card-top::after{background:#d06080}
+.day-card.d3 .day-card-top::after{background:#e09040}
+.day-card.d4 .day-card-top::after{background:var(--blue)}
+.day-card.d5 .day-card-top::after{background:#40c0d0}
+.day-card.d6 .day-card-top::after{background:var(--green)}
+.day-card.d7 .day-card-top::after{background:#d08040}
+.day-card.d8 .day-card-top::after{background:#d06080}
+.day-card.dbonus .day-card-top::after{background:#e8c060}
+.day-card.dbonus{border-color:#3a3010}
 .day-num{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:var(--gold);margin-bottom:.4rem}
-.day-title{font-size:1.15rem;font-weight:700;color:var(--cream);line-height:1.3;position:relative;z-index:1}
+.day-title{font-size:1.12rem;font-weight:700;color:var(--cream);line-height:1.3;position:relative;z-index:1}
 .day-card-body{padding:1.1rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column}
-.day-desc{font-size:.85rem;color:var(--muted);margin-bottom:1rem;flex:1}
+.day-desc{font-size:.84rem;color:var(--muted);margin-bottom:1rem;flex:1}
 .day-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
 .day-tag{background:var(--s2);border:1px solid var(--s3);color:var(--text);font-size:.72rem;padding:.18rem .5rem;border-radius:4px}
 .day-task{font-size:.78rem;color:var(--green);display:flex;align-items:center;gap:.4rem;padding-top:.85rem;border-top:1px solid var(--s3)}
 .day-task .ico{flex-shrink:0}
 
-.foot{max-width:1000px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.78rem;text-align:center}
+.section-label{font-size:.72rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin:2.5rem 0 1rem;display:flex;align-items:center;gap:.6rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--s3)}
+
+.foot{max-width:1040px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.78rem;text-align:center}
 
 .note{background:#161e2e;border-left:3px solid var(--blue);border-radius:6px;padding:1rem 1.25rem;margin-bottom:2.5rem;font-size:.85rem;color:#a0b8d0;display:flex;gap:.6rem;align-items:flex-start}
 .note .ico{flex-shrink:0}
@@ -61,14 +68,14 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
 <body>
 
 <div class="hero">
-  <div class="hero-chip">HIGGSFIELD 6-DAY WORKSHOP</div>
+  <div class="hero-chip">HIGGSFIELD 8-DAY WORKSHOP + BONUS</div>
   <h1>힉스필드로 만드는<br><em>AI 이미지·영상</em></h1>
-  <p>하루 4시간 × 6일 — 전체 메뉴 시연부터 개인 숏폼·롱폼 광고 완성까지</p>
+  <p>하루 4시간 × 8일 — 이미지 기초부터 AI 인플루언서·제품 광고·영상·숏폼·롱폼 광고까지. 보너스로 Claude Code 자동화.</p>
   <div class="hero-meta">
-    <span>⏱ <strong>총 24시간</strong></span>
+    <span>⏱ <strong>정규 32시간 + 보너스 4시간</strong></span>
     <span>🎯 <strong>SNS 숏폼 + 롱폼 광고</strong> 완성</span>
     <span>👥 <strong>입문~중급</strong></span>
-    <span>🎨 <strong>실습 예시 전부 실제 생성</strong></span>
+    <span>🎨 <strong>예시 전부 실제 생성</strong></span>
   </div>
 </div>
 
@@ -77,15 +84,19 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
   <div class="arc">
     <b>이미지</b> <span class="arc-arrow">→</span>
     <b>AI 인플루언서</b> <span class="arc-arrow">→</span>
+    <b>제품 광고</b> <span class="arc-arrow">→</span>
+    <b>시나리오 보드</b> <span class="arc-arrow">→</span>
     <b>영상화</b> <span class="arc-arrow">→</span>
-    <b>개인 숏폼</b> <span class="arc-arrow">→</span>
+    <b>숏폼</b> <span class="arc-arrow">→</span>
     <b>롱폼 광고</b>
   </div>
 
   <div class="note">
     <span class="ico">💡</span>
-    <p>각 카드를 클릭하면 해당 날짜의 강의자료가 열립니다. 모든 예시 이미지·영상은 힉스필드에서 실제로 생성한 결과물입니다. 강의 직전 힉스필드에서 최신 기능·가격을 한 번 더 확인하세요.</p>
+    <p>각 카드를 클릭하면 해당 강의자료가 열립니다. 모든 예시 이미지·영상은 힉스필드에서 실제로 생성한 결과물입니다. 강의 직전 힉스필드에서 최신 기능·가격을 한 번 더 확인하세요.</p>
   </div>
+
+  <div class="section-label">정규 커리큘럼 · 8일</div>
 
   <div class="grid">
 
@@ -95,8 +106,8 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
         <div class="day-title">이미지 만들기 — 스타일·조명·구도</div>
       </div>
       <div class="day-card-body">
-        <p class="day-desc">힉스필드 전체 지도 + 프롬프트 5요소 이론. 모델 비교, 캐릭터·광고 이미지, 편집 Apps, 레퍼런스 첨부까지.</p>
-        <div class="day-tags"><span class="day-tag">Nano Banana</span><span class="day-tag">프롬프트 5요소</span><span class="day-tag">Flux Kontext</span><span class="day-tag">Apps</span></div>
+        <p class="day-desc">힉스필드 전체 지도 + 프롬프트 5요소. 모델 비교, 캐릭터·광고 이미지, 편집 Apps, 레퍼런스 첨부.</p>
+        <div class="day-tags"><span class="day-tag">Nano Banana</span><span class="day-tag">프롬프트 5요소</span><span class="day-tag">Apps</span></div>
         <div class="day-task"><span class="ico">🏆</span> 과제: 내 제품 광고 이미지 만들기</div>
       </div>
     </a>
@@ -104,68 +115,109 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
     <a class="day-card d2" href="day-2.html">
       <div class="day-card-top">
         <div class="day-num">DAY 2 · SKILLS</div>
-        <div class="day-title">이미지 편집 심화 & AI 인플루언서(Soul ID)</div>
+        <div class="day-title">AI 인플루언서 시리즈 — Soul ID & Adobe</div>
       </div>
       <div class="day-card-body">
-        <p class="day-desc">Flux Kontext 스타일 변환, Soul Location 배경, Soul ID로 나만의 AI 인플루언서 학습.</p>
-        <div class="day-tags"><span class="day-tag">Flux Kontext</span><span class="day-tag">Soul 2.0</span><span class="day-tag">Soul Location</span><span class="day-tag">Soul ID</span></div>
-        <div class="day-task"><span class="ico">🏆</span> 과제: AI 인플루언서 이미지 세트 완성</div>
+        <p class="day-desc">한 캐릭터를 Soul ID로 고정해 일관 시리즈 제작. Soul Location 배경 + Adobe 무료 툴 마무리.</p>
+        <div class="day-tags"><span class="day-tag">Soul ID</span><span class="day-tag">Soul Location</span><span class="day-tag">Adobe 무료</span></div>
+        <div class="day-task"><span class="ico">🏆</span> 과제: 인플루언서 일관 시리즈 + Adobe 마무리</div>
       </div>
     </a>
 
     <a class="day-card d3" href="day-3.html">
       <div class="day-card-top">
         <div class="day-num">DAY 3 · SKILLS</div>
-        <div class="day-title">Seedance 2.0 영상화 — 프레임·멀티샷·프리셋</div>
+        <div class="day-title">Marketing Studio — 제품 광고 자동 생성</div>
       </div>
       <div class="day-card-body">
-        <p class="day-desc">영상 생성 원리, 시작/끝 프레임, 멀티샷, Seedance 최적화 프롬프트, 바이럴 프리셋, Lip Sync.</p>
-        <div class="day-tags"><span class="day-tag">Seedance 2.0</span><span class="day-tag">시작/끝 프레임</span><span class="day-tag">바이럴 프리셋</span><span class="day-tag">Lip Sync</span></div>
-        <div class="day-task"><span class="ico">🏆</span> 과제: 내 캐릭터 Seedance 2.0 클립</div>
+        <p class="day-desc">제품·브랜드킷·아바타 등록 → 광고 포맷 8종(UGC·TV Spot 등) → 원클릭 광고 세트 생성.</p>
+        <div class="day-tags"><span class="day-tag">Marketing Studio</span><span class="day-tag">DTC Ads</span><span class="day-tag">광고 포맷 8종</span></div>
+        <div class="day-task"><span class="ico">🏆</span> 과제: 내 제품 광고 세트 5컷</div>
       </div>
     </a>
 
     <a class="day-card d4" href="day-4.html">
       <div class="day-card-top">
-        <div class="day-num">DAY 4 · INTEGRATION</div>
-        <div class="day-title">Cinema Studio 3.5 + Supercomputer + 숏폼 완성</div>
+        <div class="day-num">DAY 4 · DESIGN</div>
+        <div class="day-title">영상 기초 & 시나리오 보드</div>
       </div>
       <div class="day-card-body">
-        <p class="day-desc">광학 카메라 제어, @태그 시스템, Mr. Higgs, Supercomputer 자동화, virality_predictor로 숏폼 완성.</p>
-        <div class="day-tags"><span class="day-tag">Cinema Studio</span><span class="day-tag">Supercomputer</span><span class="day-tag">virality</span></div>
-        <div class="day-task"><span class="ico">🏆</span> 과제: 개인 SNS 숏폼 (9:16) 제출</div>
+        <p class="day-desc">영상 연출 문법 + ChatGPT·Claude Code로 시나리오 보드(씬별 이미지·영상·사운드 프롬프트) 설계. 멀티 영상툴 비교.</p>
+        <div class="day-tags"><span class="day-tag">연출 문법</span><span class="day-tag">시나리오 보드</span><span class="day-tag">Kling·Veo·Hailuo</span></div>
+        <div class="day-task"><span class="ico">🏆</span> 과제: 내 30초 영상 시나리오 보드</div>
       </div>
     </a>
 
     <a class="day-card d5" href="day-5.html">
       <div class="day-card-top">
-        <div class="day-num">DAY 5 · OPTIMIZATION</div>
-        <div class="day-title">롱폼 광고 제작 — Marketing Studio (Stage 1~3)</div>
+        <div class="day-num">DAY 5 · SKILLS</div>
+        <div class="day-title">Seedance 2.0 영상화 — 프레임·멀티샷</div>
       </div>
       <div class="day-card-body">
-        <p class="day-desc">16:9 광고 문법, Marketing Studio, 강사 공통 브리프. 7단계 중 브리프 분석·스토리보드·키비주얼.</p>
-        <div class="day-tags"><span class="day-tag">Marketing Studio</span><span class="day-tag">공통 브리프</span><span class="day-tag">스토리보드</span></div>
-        <div class="day-task"><span class="ico">📋</span> Stage 1~3: 콘셉트 → 스토리보드 → 키비주얼</div>
+        <p class="day-desc">시작/끝 프레임, 멀티샷, Seedance 최적화 프롬프트, 바이럴 프리셋, Lip Sync로 영상 실전.</p>
+        <div class="day-tags"><span class="day-tag">Seedance 2.0</span><span class="day-tag">시작/끝 프레임</span><span class="day-tag">프리셋</span></div>
+        <div class="day-task"><span class="ico">🏆</span> 과제: 내 캐릭터 Seedance 클립</div>
       </div>
     </a>
 
     <a class="day-card d6" href="day-6.html">
       <div class="day-card-top">
-        <div class="day-num">DAY 6 · OPTIMIZATION</div>
-        <div class="day-title">롱폼 광고 완성 — Stage 4~7 · 발표 · 수료</div>
+        <div class="day-num">DAY 6 · INTEGRATION</div>
+        <div class="day-title">Cinema Studio + Supercomputer + 숏폼</div>
       </div>
       <div class="day-card-body">
-        <p class="day-desc">씬 생성·편집·자막·사운드·로고, 최종 렌더. 발표 + 평가 루브릭(25점) + 6일 회고.</p>
+        <p class="day-desc">광학 카메라 제어·@태그·Mr. Higgs, Supercomputer 자동화, virality_predictor로 개인 숏폼 완성.</p>
+        <div class="day-tags"><span class="day-tag">Cinema Studio</span><span class="day-tag">Supercomputer</span><span class="day-tag">virality</span></div>
+        <div class="day-task"><span class="ico">🏆</span> 과제: 개인 SNS 숏폼 (9:16) 제출</div>
+      </div>
+    </a>
+
+    <a class="day-card d7" href="day-7.html">
+      <div class="day-card-top">
+        <div class="day-num">DAY 7 · OPTIMIZATION</div>
+        <div class="day-title">롱폼 광고 제작 — 기획 (Stage 1~3)</div>
+      </div>
+      <div class="day-card-body">
+        <p class="day-desc">16:9 광고 문법, 강사 공통 브리프. 콘셉트 → 스토리보드 → 키비주얼·씬1 생성.</p>
+        <div class="day-tags"><span class="day-tag">광고 기획</span><span class="day-tag">공통 브리프</span><span class="day-tag">스토리보드</span></div>
+        <div class="day-task"><span class="ico">📋</span> Stage 1~3: 콘셉트 → 스토리보드 → 키비주얼</div>
+      </div>
+    </a>
+
+    <a class="day-card d8" href="day-8.html">
+      <div class="day-card-top">
+        <div class="day-num">DAY 8 · OPTIMIZATION</div>
+        <div class="day-title">롱폼 광고 완성 — Stage 4~7 · 발표</div>
+      </div>
+      <div class="day-card-body">
+        <p class="day-desc">씬 생성·편집·자막·사운드·로고, 최종 렌더. 발표 + 평가 루브릭(25점) + 8일 회고 + 다음 과정 안내.</p>
         <div class="day-tags"><span class="day-tag">씬 편집</span><span class="day-tag">자막·사운드</span><span class="day-tag">발표·평가</span></div>
         <div class="day-task"><span class="ico">🏆</span> 과제: 개인 롱폼 광고 (16:9) 제출</div>
       </div>
     </a>
 
   </div>
+
+  <div class="section-label">보너스 강의</div>
+
+  <div class="grid">
+    <a class="day-card dbonus" href="day-9.html">
+      <div class="day-card-top">
+        <div class="day-num">⭐ BONUS</div>
+        <div class="day-title">Claude Code × 힉스필드 MCP/CLI</div>
+      </div>
+      <div class="day-card-body">
+        <p class="day-desc">힉스필드를 웹 UI 대신 Claude Code 채팅으로 조작 — 이미지·영상 배치 생성, 워크플로 자동화. 이 교재가 그렇게 만들어졌습니다.</p>
+        <div class="day-tags"><span class="day-tag">MCP 연결</span><span class="day-tag">자연어 명령</span><span class="day-tag">배치 자동화</span></div>
+        <div class="day-task"><span class="ico">🏆</span> 과제: MCP로 콘텐츠 배치 자동 생성</div>
+      </div>
+    </a>
+  </div>
+
 </div>
 
 <div class="foot">
-  힉스필드 6일 영상제작 워크숍 · 예시 이미지·영상은 Higgsfield AI 생성 · 2026
+  힉스필드 8일 영상제작 워크숍 + 보너스 · 예시 이미지·영상은 Higgsfield AI 생성 · 2026
 </div>
 
 </body>

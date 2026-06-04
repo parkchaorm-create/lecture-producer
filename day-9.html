@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보너스 · Claude Code × 힉스필드 MCP/CLI — 8일 워크숍</title>
+<style>
+:root {
+  --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
+  --gold:#e2c793; --gold2:#b8941f; --cream:#f0e8d5;
+  --text:#e8e0cc; --muted:#7a7666;
+  --green:#4caf82; --red:#e06060; --blue:#6090d0; --purple:#9070d0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.75}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:#0a0a0a;border-bottom:1px solid var(--s3);display:flex;overflow-x:auto;gap:0}
+.nav a{color:var(--muted);text-decoration:none;font-size:.75rem;padding:.7rem .9rem;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s}
+.nav a:hover{color:var(--gold);border-color:var(--gold)}
+.nav-sep{color:var(--s3);padding:.7rem .1rem;font-size:.75rem}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1c1530 0%,#0f0f0f 70%);border-bottom:1px solid var(--s3);padding:3rem 2rem 2.5rem;max-width:960px;margin:0 auto}
+.hero-chip{display:inline-block;background:var(--gold2);color:#000;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:.2rem .6rem;border-radius:3px;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--cream);line-height:1.2;margin-bottom:.6rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:var(--muted);font-size:.95rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.pill{background:var(--s2);border:1px solid var(--s3);border-radius:20px;padding:.3rem .85rem;font-size:.8rem;color:var(--muted)}
+.pill strong{color:var(--text)}
+
+/* TIMELINE */
+.tl-wrap{max-width:960px;margin:1.75rem auto;padding:0 2rem}
+.tl-label{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.tl-bar{display:flex;border-radius:6px;overflow:hidden;height:40px}
+.tl-lec{background:#2d2050;color:#b0a0e0;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:5}
+.tl-prac{background:#1a3328;color:#70c098;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:7}
+.tl-times{display:flex;justify-content:space-between;margin-top:.35rem;font-size:.68rem;color:var(--muted)}
+
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:0 2rem 5rem}
+
+/* SECTION */
+.sec{margin:2.75rem 0 1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.75rem}
+.sec h2{font-size:1.25rem;font-weight:700;color:var(--cream)}
+.sec .timer{margin-left:auto;font-size:.75rem;color:var(--muted);background:var(--s2);padding:.2rem .6rem;border-radius:4px;white-space:nowrap}
+.badge{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border-radius:3px;white-space:nowrap}
+.b-lec{background:#2d2050;color:#b0a0e0}
+.b-prac{background:#1a3328;color:#70c098}
+.b-demo{background:#302010;color:#d09040}
+.b-quiz{background:#1a2030;color:#6090d0}
+
+/* CARD */
+.card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1rem}
+.card h3{font-size:.95rem;color:var(--gold);margin-bottom:.6rem;font-weight:700}
+.card p,.card li{font-size:.88rem}
+.card ul{padding-left:1.2rem}
+.card ul li{margin-bottom:.3rem}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:.86rem}
+th{background:var(--s2);color:var(--gold);padding:.55rem .85rem;text-align:left;border-bottom:1px solid var(--s3);font-size:.74rem;letter-spacing:.05em}
+td{padding:.55rem .85rem;border-bottom:1px solid var(--s3);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--s2)}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:.8rem 1rem;margin:.65rem 0;font-size:.86rem;display:flex;gap:.6rem;align-items:flex-start}
+.callout .ico{flex-shrink:0;margin-top:.05rem}
+.c-ok{background:#162a1e;border-left:3px solid var(--green);color:#80c898}
+.c-err{background:#2a1616;border-left:3px solid var(--red);color:#c88080}
+.c-tip{background:#221e10;border-left:3px solid var(--gold);color:var(--text)}
+.c-info{background:#161e2e;border-left:3px solid var(--blue);color:#88a8d0}
+
+/* PROMPT */
+.prompt{background:#0d1117;border:1px solid #30363d;border-left:3px solid var(--gold);border-radius:6px;padding:1rem 1.25rem;margin:.85rem 0;position:relative}
+.prompt .plabel{font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem}
+.prompt code{font-family:'JetBrains Mono','Consolas',monospace;font-size:.84rem;color:#a8c8e8;white-space:pre-wrap;line-height:1.6;display:block}
+.copy-btn{position:absolute;top:.7rem;right:.7rem;background:var(--s2);border:1px solid var(--s3);color:var(--muted);font-size:.68rem;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:.15s}
+.copy-btn:hover{background:var(--gold2);color:#000}
+.copy-btn.done{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* STEP LIST */
+.steps{list-style:none;padding:0;margin:.75rem 0}
+.steps li{display:flex;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--s3)}
+.steps li:last-child{border-bottom:none}
+.snum{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--gold2);color:#000;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800}
+.sbody{flex:1}
+.sbody strong{color:var(--cream);display:block;margin-bottom:.15rem;font-size:.92rem}
+.sbody p,.sbody span{font-size:.85rem;color:var(--text)}
+.sbody ul{padding-left:1.1rem;margin-top:.3rem;font-size:.85rem}
+.sbody ul li{margin-bottom:.2rem}
+
+/* FORMULA */
+.formula{background:var(--s1);border:1px dashed var(--gold2);border-radius:8px;padding:1rem 1.5rem;margin:.85rem 0;text-align:center;font-size:1rem;color:var(--gold);font-weight:700;letter-spacing:.02em}
+
+/* IMAGE GRIDS */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin:1.25rem 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin:1.25rem 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin:1.25rem 0}
+@media(max-width:720px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+
+.img-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
+.img-card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.img-info{padding:.65rem .8rem}
+.img-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
+.img-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+
+/* KEYWORD TAGS */
+.kw-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
+.kw{background:var(--s2);border:1px solid var(--s3);color:var(--text);font-size:.75rem;padding:.2rem .55rem;border-radius:4px;font-family:'JetBrains Mono','Consolas',monospace}
+.kw.hi{background:#2a2010;border-color:var(--gold2);color:var(--gold)}
+
+/* CHECKLIST */
+.cklist{list-style:none;padding:0;margin:.65rem 0}
+.cklist li{display:flex;align-items:flex-start;gap:.55rem;font-size:.86rem;padding:.3rem 0}
+.cklist input{width:15px;height:15px;accent-color:var(--gold2);cursor:pointer;margin-top:.15rem;flex-shrink:0}
+
+/* CHALLENGE BOX */
+.challenge{background:#1a1a2e;border:1px solid #2a2a4e;border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0}
+.challenge h4{color:#a0a0e8;font-size:.9rem;margin-bottom:.75rem;font-weight:700}
+.challenge p{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+
+/* WORD TABLE */
+.word-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:.75rem 0}
+@media(max-width:560px){.word-grid{grid-template-columns:1fr}}
+.word-box{background:var(--s2);border:1px solid var(--s3);border-radius:6px;padding:.75rem 1rem}
+.word-box .wlabel{font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.45rem}
+.word-box .wlist{font-size:.82rem;color:var(--text);line-height:1.8;font-family:'JetBrains Mono','Consolas',monospace}
+
+/* TROUBLE */
+.trouble td:first-child{color:var(--red);width:32%}
+.trouble td:last-child{color:#70c090}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--s3);margin:2rem 0}
+
+/* FOOTER */
+footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+/* === DAY BAR (cross-day nav) === */
+.daybar{position:sticky;top:0;z-index:300;background:#080808;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.3rem;padding:.5rem 1rem;overflow-x:auto}
+.daybar .db-home{color:var(--gold);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .6rem;white-space:nowrap;margin-right:.3rem}
+.daybar .db-home:hover{text-decoration:underline}
+.daybar .db-link{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .65rem;border-radius:5px;white-space:nowrap;border:1px solid transparent}
+.daybar .db-link:hover{color:var(--gold);border-color:var(--s3)}
+.daybar .db-link.active{background:var(--gold2);color:#000}
+.daybar .db-sep{color:var(--s3);font-size:.78rem;margin:0 .15rem}
+
+</style>
+</head>
+<body>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">Day 8</a><a class="db-link active">⭐ 보너스</a></div>
+
+
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#overview">전체 흐름</a>
+  <span class="nav-sep">|</span>
+  <a href="#lec1">MCP란?</a>
+  <a href="#lec2">연결 설정</a>
+  <a href="#lec3">주요 명령</a>
+  <a href="#lec4">배치·워크플로</a>
+  <a href="#demo">시연</a>
+  <span class="nav-sep">|</span>
+  <a href="#prac-a">실습 A·연결</a>
+  <a href="#prac-b">실습 B·이미지</a>
+  <a href="#prac-c">실습 C·영상</a>
+  <a href="#prac-d">실습 D·워크플로</a>
+  <a href="#final-task">🏆 과제</a>
+  <a href="#trouble">❓ 도움말</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip">HIGGSFIELD WORKSHOP · ⭐ 보너스 (DAY 8)</div>
+  <h1>Claude Code × 힉스필드 MCP/CLI —<br><em>채팅으로 콘텐츠 자동화</em></h1>
+  <p>웹 UI 클릭 대신 Claude Code에서 자연어 채팅으로 힉스필드를 조작 → 이미지·영상을 대량·자동으로 생성</p>
+  <div class="hero-pills">
+    <div class="pill">⏱ <strong>총 4시간</strong></div>
+    <div class="pill">🎯 <strong>목표</strong>: 채팅 명령만으로 이미지·영상 배치 생성</div>
+    <div class="pill">📦 <strong>준비물</strong>: Claude Code + 힉스필드 계정</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h30m · 실습 2h30m</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="tl-wrap" id="overview">
+  <div class="tl-label">오늘 4시간 흐름</div>
+  <div class="tl-bar">
+    <div class="tl-lec">📖 강의·시연 (1h 30m)</div>
+    <div class="tl-prac">🖥️ 실습 A·B·C·D (2h 30m)</div>
+  </div>
+  <div class="tl-times">
+    <span>0:00 MCP란?</span>
+    <span>0:20 연결 설정</span>
+    <span>0:40 주요 명령</span>
+    <span>1:10 워크플로</span>
+    <span>1:30 실습</span>
+    <span>4:00 끝</span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ════════════════════════════════
+     강의 PART 1 · MCP/CLI란 무엇인가
+     ════════════════════════════════ -->
+<div class="sec" id="lec1">
+  <span class="badge b-lec">강의</span>
+  <h2>Part 1 · MCP/CLI란 무엇인가</h2>
+  <span class="timer">0:00 – 0:20 · 20분</span>
+</div>
+
+<div class="card">
+  <h3>MCP를 한 문장으로</h3>
+  <p><strong style="color:var(--gold)">MCP(Model Context Protocol)</strong>는 AI 비서(Claude)에게 외부 도구(힉스필드)를 <strong>"연결"해주는 표준 방식</strong>입니다.<br>
+  연결만 해두면, 이제부터 <strong>채팅으로 "힉스필드에서 이미지 만들어줘"</strong>라고 말하면 Claude가 알아서 힉스필드를 조작합니다.</p>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">🔌</span><p>비유하면 — 힉스필드 웹사이트는 <strong>직접 운전</strong>, MCP는 <strong>"○○로 가줘"라고 말하면 알아서 운전하는 기사</strong>를 옆에 두는 것.</p></div>
+</div>
+
+<div class="formula">자연어 채팅 → Claude Code → (MCP) → 힉스필드 실행 → 결과 받기</div>
+
+<div class="card">
+  <h3>웹 UI vs Claude Code MCP</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th></th><th>웹 UI</th><th>Claude Code MCP</th></tr></thead>
+    <tbody>
+      <tr><td><strong>조작</strong></td><td>클릭·메뉴</td><td><strong style="color:var(--gold)">자연어 채팅</strong></td></tr>
+      <tr><td><strong>한 번에</strong></td><td>1개씩</td><td><strong style="color:var(--gold)">여러 개 동시(배치)</strong></td></tr>
+      <tr><td><strong>자동화</strong></td><td>수동 반복</td><td><strong style="color:var(--gold)">워크플로 자동</strong></td></tr>
+      <tr><td><strong>적합</strong></td><td>탐색·미세조정</td><td><strong style="color:var(--gold)">대량·반복 생산</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>웹 UI를 버리는 게 아닙니다. <strong>탐색은 웹, 대량 생산은 MCP</strong> — 둘을 상황에 맞게 씁니다.</p></div>
+</div>
+
+<div class="card">
+  <h3>MCP로 무엇을 할 수 있나</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>할 수 있는 것</th><th>채팅 한마디로</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold)">이미지 생성</strong></td><td>"9:16 이미지 만들어줘"</td></tr>
+      <tr><td><strong style="color:var(--gold)">영상 생성</strong></td><td>"이 이미지를 영상으로 만들어줘"</td></tr>
+      <tr><td><strong>배치 생성</strong></td><td>"모델 3종으로 비교 생성해줘"</td></tr>
+      <tr><td><strong>작업 상태 폴링</strong></td><td>"영상 다 됐는지 확인해줘"</td></tr>
+      <tr><td><strong>프리셋 조회·적용</strong></td><td>"바이럴 프리셋 목록 보여줘"</td></tr>
+      <tr><td><strong>바이럴 예측</strong></td><td>"이 영상 잘 터질지 분석해줘"</td></tr>
+      <tr><td><strong>잔액 확인</strong></td><td>"크레딧 얼마 남았어?"</td></tr>
+      <tr><td><strong>마케팅 스튜디오</strong></td><td>"제품 광고 스튜디오 열어줘"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout c-tip"><span class="ico">📌</span><p><strong>이 강의 교재의 모든 이미지·영상이 바로 이 방식으로 만들어졌습니다.</strong> 아래 갤러리는 강사가 Claude Code 채팅 명령만으로 생성한 실제 결과물입니다.</p></div>
+
+<p style="margin:1rem 0 .5rem;font-size:.88rem"><strong style="color:var(--cream)">MCP로 생성한 실제 결과물 갤러리 (증거)</strong></p>
+<div class="grid-3">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260603_235654_546155b6-0d6a-4372-b1b5-66e3a266036f.png" alt="커피 이미지" loading="lazy">
+    <div class="img-info"><span class="tag">이미지 · 커피</span><span class="desc">"카페 코너 이미지 만들어줘" 한 명령으로 생성</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="인플루언서" loading="lazy">
+    <div class="img-info"><span class="tag">이미지 · 인플루언서</span><span class="desc">Soul 모델로 인물 캐릭터 생성</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003323_248d86a4-7ca6-488b-958b-3cb9c0094a27.png" alt="치비 캐릭터" loading="lazy">
+    <div class="img-info"><span class="tag">이미지 · 치비</span><span class="desc">동일 캐릭터를 스타일 변형 배치로</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003327_4f8de3d0-bd35-492c-88b4-50317e628880.png" alt="3D 캐릭터" loading="lazy">
+    <div class="img-info"><span class="tag">이미지 · 3D</span><span class="desc">3D 스타일 캐릭터 변형</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012421_7f0e79ad-4e6b-43c6-969f-a1ac6442fb25.png" alt="이어버드 광고" loading="lazy">
+    <div class="img-info"><span class="tag">이미지 · 제품 광고</span><span class="desc">이어버드 광고 컷 — 마케팅용 배치 생성</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023638_7f123061-392c-47ea-b2c1-ffc337b8ddbc.png" alt="시나리오 키프레임" loading="lazy">
+    <div class="img-info"><span class="tag">이미지 · 키프레임</span><span class="desc">시나리오 보드 → 씬별 키프레임 자동 생성</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     강의 PART 2 · 연결 설정
+     ════════════════════════════════ -->
+<div class="sec" id="lec2">
+  <span class="badge b-lec">강의 + 실습</span>
+  <h2>Part 2 · 연결 설정</h2>
+  <span class="timer">0:20 – 0:40 · 20분</span>
+</div>
+
+<div class="card">
+  <h3>사전 준비</h3>
+  <ul>
+    <li><strong>Claude Code 설치</strong> — AI 코딩·자동화 도구 (터미널 또는 데스크톱)</li>
+    <li><strong>힉스필드 계정 + 크레딧</strong> — 생성에 크레딧이 소모됨</li>
+    <li><strong>연결용 토큰/설정값</strong> — <strong style="color:var(--gold)">강사 제공</strong> 또는 힉스필드 공식 문서 참조</li>
+  </ul>
+</div>
+
+<div class="callout c-err"><span class="ico">🔐</span><p><strong>보안 최우선 — 키·토큰은 절대 채팅이나 코드에 하드코딩하지 마세요.</strong> 환경변수 또는 설정 파일(.mcp.json)에만 넣고, 화면 공유·캡처 시 노출되지 않도록 가립니다. 실제 토큰/설정값은 강사 안내 또는 힉스필드 공식 문서를 따르세요.</p></div>
+
+<div class="card">
+  <h3>MCP 연결 방법 — 2가지 중 택1</h3>
+  <p style="font-size:.85rem;color:var(--muted)">환경에 맞는 방법을 선택합니다. 둘 중 하나만 해도 됩니다.</p>
+</div>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>방법 1 · <code style="color:var(--gold)">.mcp.json</code> 설정 파일에 등록</strong>
+      <span>프로젝트 폴더의 <code style="color:var(--gold)">.mcp.json</code>에 힉스필드 MCP 서버를 추가합니다. 구조는 아래 예시 참고 (실제 토큰·URL은 강사/공식 문서 값으로 교체).</span>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>방법 2 · 플러그인/커넥터로 추가</strong>
+      <span>Claude Code의 커넥터(플러그인) 메뉴에서 힉스필드를 추가하고 안내에 따라 인증합니다. 설정 파일을 직접 편집하지 않아도 됩니다.</span>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>Claude Code 재시작</strong>
+      <span>연결을 인식하려면 Claude Code를 한 번 껐다 켭니다.</span>
+    </div>
+  </li>
+  <li>
+    <div class="snum">4</div>
+    <div class="sbody">
+      <strong>연결 확인</strong>
+      <span>아래 명령을 채팅에 입력 → 잔액 숫자가 응답으로 오면 <strong style="color:var(--green)">연결 성공</strong>.</span>
+    </div>
+  </li>
+</ol>
+
+<div class="prompt">
+  <div class="plabel">.mcp.json 구조 예시 (값은 강사/공식 문서로 교체)</div>
+  <code id="mcpjson">{
+  "mcpServers": {
+    "higgsfield": {
+      "command": "...",
+      "args": ["..."],
+      "env": {
+        "HIGGSFIELD_TOKEN": "여기에 직접 적지 말 것 — 환경변수 참조"
+      }
+    }
+  }
+}</code>
+  <button class="copy-btn" onclick="cp('mcpjson',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">연결 확인 명령</div>
+  <code id="cmd-balance">힉스필드 잔액 확인해줘</code>
+  <button class="copy-btn" onclick="cp('cmd-balance',this)">복사</button>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p>"현재 크레딧 ○○ 남았습니다" 같은 응답이 오면 연결 성공입니다.</p></div>
+<div class="callout c-err"><span class="ico">❌</span><p>"도구를 찾을 수 없음" → MCP 서버 미연결. 재시작·재등록 후 다시 시도. 안 되면 강사 지원.</p></div>
+
+<!-- ════════════════════════════════
+     강의 PART 3 · 주요 명령
+     ════════════════════════════════ -->
+<div class="sec" id="lec3">
+  <span class="badge b-demo">강의 + 시연</span>
+  <h2>Part 3 · 주요 명령 — 자연어로 힉스필드 다루기</h2>
+  <span class="timer">0:40 – 1:10 · 30분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">💬</span><p>아래 명령들을 <strong>그대로 복사해서 Claude Code 채팅창에</strong> 붙여넣으면 됩니다. <code style="color:var(--gold)">[...]</code> 부분만 본인 내용으로 바꾸세요. 각 명령 아래 회색 글씨는 내부적으로 호출되는 MCP 도구입니다.</p></div>
+
+<!-- 이미지 생성 -->
+<div class="prompt">
+  <div class="plabel">① 이미지 생성</div>
+  <code id="cmd-img">힉스필드로 9:16 이미지 만들어줘. [장면: 따뜻한 아침 햇살의 미니멀 홈카페, 나무 테이블 위 김 나는 커피잔]. 모델은 Nano Banana 2로.</code>
+  <button class="copy-btn" onclick="cp('cmd-img',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>generate_image</code></p>
+
+<!-- 배치 생성 -->
+<div class="prompt">
+  <div class="plabel">② 배치 생성 — 모델 3종 비교</div>
+  <code id="cmd-batch">이 프롬프트로 모델 3종(Nano Banana 2, Soul 2.0, Cinema Studio)으로 각각 1장씩 비교 생성해줘: [프롬프트 내용]</code>
+  <button class="copy-btn" onclick="cp('cmd-batch',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>generate_image</code> ×3 (동시)</p>
+
+<!-- 영상 생성 -->
+<div class="prompt">
+  <div class="plabel">③ 영상 생성 — 이미지→영상</div>
+  <code id="cmd-vid">이 이미지를 Kling으로 5초 영상으로 만들어줘. [카메라 움직임: 천천히 줌인]</code>
+  <button class="copy-btn" onclick="cp('cmd-vid',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>generate_video</code></p>
+
+<!-- 멀티툴 비교 -->
+<div class="prompt">
+  <div class="plabel">④ 멀티툴 비교 — 영상 모델 여러 개</div>
+  <code id="cmd-multi">같은 이미지를 Kling, Hailuo, Veo Lite 3개 모델로 각각 영상 만들어서 비교해줘.</code>
+  <button class="copy-btn" onclick="cp('cmd-multi',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>generate_video</code> ×3 + <code>job_status</code> 폴링</p>
+
+<!-- 프리셋 -->
+<div class="prompt">
+  <div class="plabel">⑤ 프리셋 조회·적용</div>
+  <code id="cmd-preset">힉스필드 바이럴 프리셋 목록 보여주고, 이 캐릭터로 'RED CARPET' 프리셋 적용해줘.</code>
+  <button class="copy-btn" onclick="cp('cmd-preset',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>presets_show</code> → <code>generate_video</code></p>
+
+<!-- 바이럴 예측 -->
+<div class="prompt">
+  <div class="plabel">⑥ 바이럴 예측</div>
+  <code id="cmd-viral">이 영상 virality_predictor로 분석해서 잘 터질지 알려줘.</code>
+  <button class="copy-btn" onclick="cp('cmd-viral',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>virality_predictor</code></p>
+
+<!-- 잔액 -->
+<div class="prompt">
+  <div class="plabel">⑦ 잔액 확인</div>
+  <code id="cmd-bal2">힉스필드 크레딧 얼마 남았어?</code>
+  <button class="copy-btn" onclick="cp('cmd-bal2',this)">복사</button>
+</div>
+<p style="font-size:.74rem;color:var(--muted);margin:-.4rem 0 1rem"># 내부 호출: <code>balance</code></p>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.88rem"><strong style="color:var(--cream)">④ 멀티툴 비교 명령의 실제 결과 — 같은 이미지, 영상 모델 2종</strong></p>
+<div class="grid-2">
+  <div class="img-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023802_d19cde48-0915-4f44-be78-ba4ca2775e31.mp4" type="video/mp4">
+    </video>
+    <div class="img-info"><span class="tag">Kling</span><span class="desc">자연스러운 모션, 디테일 풍부</span></div>
+  </div>
+  <div class="img-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023808_4ae240c4-7584-4ca3-8f5f-9a01b80a8e1e.mp4" type="video/mp4">
+    </video>
+    <div class="img-info"><span class="tag">Veo Lite</span><span class="desc">빠르고 경제적, 시안용</span></div>
+  </div>
+</div>
+<div class="callout c-tip"><span class="ico">💡</span><p>웹 UI라면 모델별로 메뉴를 일일이 바꿔 따로 생성해야 합니다. MCP는 <strong>"3개로 만들어 비교해줘" 한 줄</strong>이면 끝.</p></div>
+
+<!-- ════════════════════════════════
+     강의 PART 4 · 배치·워크플로 자동화
+     ════════════════════════════════ -->
+<div class="sec" id="lec4">
+  <span class="badge b-lec">강의</span>
+  <h2>Part 4 · 배치·워크플로 자동화</h2>
+  <span class="timer">1:10 – 1:30 · 20분</span>
+</div>
+
+<div class="card">
+  <h3>배치 생성의 힘 — 30장을 한 번에</h3>
+  <p>이 강의 교재의 수십 장 이미지·영상은 사람이 하나씩 클릭한 게 아니라, <strong style="color:var(--gold)">"이 목록 전부 생성해줘" 한 번의 명령</strong>으로 배치 생성된 것입니다. 30장을 웹에서 만들면 30번 반복, MCP는 1번.</p>
+</div>
+
+<div class="card">
+  <h3>워크플로 예시 — 자연어 시나리오</h3>
+  <p style="font-size:.85rem;color:var(--muted)">Claude에게 "재료 + 목표"만 주면 여러 단계를 알아서 처리합니다.</p>
+</div>
+
+<div class="prompt">
+  <div class="plabel">워크플로 1 · 제품 사진 → 광고 5컷 자동</div>
+  <code id="wf1">제품 사진 1장 줄게. 이걸로 광고용 이미지 5컷(히어로 / 사용 장면 / 디테일 / 라이프스타일 / CTA 여백) 만들어줘. 톤은 일관되게.</code>
+  <button class="copy-btn" onclick="cp('wf1',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">워크플로 2 · 시나리오 보드 → 키프레임 전부</div>
+  <code id="wf2">시나리오 보드 markdown 줄게. 각 씬을 이미지 프롬프트로 바꿔서 키프레임 전부 생성하고, 다 되면 모아서 보여줘.</code>
+  <button class="copy-btn" onclick="cp('wf2',this)">복사</button>
+</div>
+
+<div class="card">
+  <h3>작업 상태 폴링 — "다 되면 알려줘"</h3>
+  <p>영상은 보통 <strong style="color:var(--gold)">60~180초</strong> 걸립니다. 기다리는 동안 멈춰있지 않고, Claude가 주기적으로 상태를 확인(폴링)하다가 완료되면 결과를 보여줍니다.</p>
+  <div class="prompt" style="margin-top:.65rem">
+    <div class="plabel">폴링 명령</div>
+    <code id="cmd-poll">영상 작업 상태 확인해줘. 다 되면 결과 보여줘.</code>
+    <button class="copy-btn" onclick="cp('cmd-poll',this)">복사</button>
+  </div>
+  <p style="font-size:.74rem;color:var(--muted);margin-top:.3rem"># 내부 호출: <code>job_status</code> → <code>job_display</code></p>
+</div>
+
+<div class="card">
+  <h3>다른 MCP와 결합 — 생성 + 정리 + 저장</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>도구</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold)">힉스필드 MCP</strong></td><td>이미지·영상 생성</td></tr>
+      <tr><td><strong>Notion MCP</strong></td><td>결과물·프롬프트를 표로 정리</td></tr>
+      <tr><td><strong>파일 저장</strong></td><td>로컬 폴더에 다운로드·보관</td></tr>
+    </tbody>
+  </table>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">📎</span><p><strong>이 워크숍 자료 자체도</strong> 힉스필드로 생성 → Notion에 업로드하는 흐름으로 만들어졌습니다.</p></div>
+</div>
+
+<!-- ════════════════════════════════
+     강사 시연
+     ════════════════════════════════ -->
+<div class="sec" id="demo">
+  <span class="badge b-demo">강사 시연</span>
+  <h2>강사 라이브 시연</h2>
+  <span class="timer">시연 · 30분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">👀</span><p>지금은 따라하지 말고 지켜보세요. 흐름을 본 뒤 실습합니다.</p></div>
+
+<ol class="steps">
+  <li><div class="snum">1</div><div class="sbody"><strong>연결 확인</strong><span>"힉스필드 잔액 확인해줘" → 응답 확인</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>배치 이미지 생성 라이브</strong><span>"이 주제로 이미지 4장 배치 생성해줘" → 한 명령으로 4장 동시 생성</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>이미지 → 영상 자동 변환</strong><span>생성된 이미지 중 1장을 "Kling으로 5초 영상 만들어줘" → 폴링하며 대기</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>결과 한 번에 정리</strong><span>"방금 만든 것들 표로 정리해줘" → 프롬프트·결과·링크 정리</span></div></li>
+</ol>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 A · MCP 연결
+     ════════════════════════════════ -->
+<div class="sec" id="prac-a">
+  <span class="badge b-prac">실습 A</span>
+  <h2>MCP 연결</h2>
+  <span class="timer">1:30 – 2:00 · 30분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 따라합니다. 막히면 손을 들거나 강사에게 알리세요.</p></div>
+
+<ol class="steps">
+  <li><div class="snum">1</div><div class="sbody"><strong>Claude Code 열기</strong><p>터미널 또는 데스크톱 앱 실행</p></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>힉스필드 MCP 연결</strong><p>Part 2의 방법 1(.mcp.json) 또는 방법 2(커넥터) 중 하나로 등록 → 재시작</p></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>연결 검증</strong><p>아래 명령 입력 → 잔액 응답 확인</p></div></li>
+</ol>
+
+<div class="prompt">
+  <div class="plabel">실습 A · 검증 명령</div>
+  <code id="pa-verify">힉스필드 잔액 확인해줘</code>
+  <button class="copy-btn" onclick="cp('pa-verify',this)">복사</button>
+</div>
+
+<div class="callout c-err"><span class="ico">🔐</span><p>토큰·키는 <strong>채팅에 직접 적지 마세요.</strong> 설정 파일/환경변수에만 넣습니다. 안 되면 강사 지원 요청.</p></div>
+
+<div class="challenge">
+  <h4>✅ 체크리스트</h4>
+  <ul class="cklist">
+    <li><input type="checkbox">Claude Code 실행됨</li>
+    <li><input type="checkbox">힉스필드 MCP 등록 + 재시작 완료</li>
+    <li><input type="checkbox">"잔액 확인해줘" → 크레딧 숫자 응답 확인</li>
+    <li><input type="checkbox">토큰을 채팅·코드에 하드코딩하지 않았다</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 B · 첫 이미지·배치
+     ════════════════════════════════ -->
+<div class="sec" id="prac-b">
+  <span class="badge b-prac">실습 B</span>
+  <h2>채팅으로 첫 이미지·배치 생성</h2>
+  <span class="timer">2:00 – 2:40 · 40분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">단일 생성으로 감을 잡은 뒤, 배치 생성으로 웹 UI와 속도를 비교합니다.</p>
+
+<div class="prompt">
+  <div class="plabel">실습 B-1 · 단일 이미지</div>
+  <code id="pb1">힉스필드로 9:16 이미지 만들어줘. [내 주제 장면]. 모델은 Nano Banana 2로.</code>
+  <button class="copy-btn" onclick="cp('pb1',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">실습 B-2 · 모델 3종 배치 비교</div>
+  <code id="pb2">방금 그 프롬프트로 Nano Banana 2, Soul 2.0, Cinema Studio 3종으로 각각 1장씩 비교 생성해줘.</code>
+  <button class="copy-btn" onclick="cp('pb2',this)">복사</button>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>같은 작업을 <strong>웹 UI로도 한 번</strong> 해보세요. 클릭 횟수·소요 시간을 직접 비교하면 MCP의 가치가 체감됩니다.</p></div>
+
+<div class="challenge">
+  <h4>✅ 체크리스트</h4>
+  <ul class="cklist">
+    <li><input type="checkbox">단일 이미지 1장 생성 성공</li>
+    <li><input type="checkbox">모델 3종 배치 생성 (3장 한 번에) 성공</li>
+    <li><input type="checkbox">웹 UI 대비 속도·편의 메모 (한 줄)</li>
+    <li><input type="checkbox">가장 마음에 드는 모델 1개 선택</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 C · 영상·멀티툴
+     ════════════════════════════════ -->
+<div class="sec" id="prac-c">
+  <span class="badge b-prac">실습 C</span>
+  <h2>채팅으로 영상 생성·멀티툴 비교</h2>
+  <span class="timer">2:40 – 3:20 · 40분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">실습 B에서 만든 이미지를 영상으로 바꾸고, 여러 영상 모델을 한 명령으로 비교합니다.</p>
+
+<div class="prompt">
+  <div class="plabel">실습 C-1 · 이미지 → 영상</div>
+  <code id="pc1">방금 만든 이미지를 Kling으로 5초 영상으로 만들어줘. 천천히 줌인하는 카메라로.</code>
+  <button class="copy-btn" onclick="cp('pc1',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">실습 C-2 · 멀티툴 비교</div>
+  <code id="pc2">같은 이미지를 Kling과 Veo Lite 2개로 각각 영상 만들어서 비교해줘. 다 되면 알려줘.</code>
+  <button class="copy-btn" onclick="cp('pc2',this)">복사</button>
+</div>
+
+<div class="callout c-info"><span class="ico">⏳</span><p>영상은 60~180초 걸립니다. "다 되면 알려줘"라고 하면 Claude가 상태를 폴링하다 완료 시 보여줍니다. 창을 닫지 말고 기다리세요.</p></div>
+
+<p style="margin:1rem 0 .5rem;font-size:.88rem"><strong style="color:var(--cream)">참고 — 멀티툴 비교 결과 예시 (실제 MCP 생성)</strong></p>
+<div class="grid-2">
+  <div class="img-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023802_d19cde48-0915-4f44-be78-ba4ca2775e31.mp4" type="video/mp4">
+    </video>
+    <div class="img-info"><span class="tag">Kling</span><span class="desc">모션 디테일 풍부</span></div>
+  </div>
+  <div class="img-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023808_4ae240c4-7584-4ca3-8f5f-9a01b80a8e1e.mp4" type="video/mp4">
+    </video>
+    <div class="img-info"><span class="tag">Veo Lite</span><span class="desc">빠르고 경제적</span></div>
+  </div>
+</div>
+
+<div class="challenge">
+  <h4>✅ 체크리스트</h4>
+  <ul class="cklist">
+    <li><input type="checkbox">내 이미지 → 영상 1편 생성 성공</li>
+    <li><input type="checkbox">멀티툴 비교 명령으로 2개 영상 생성</li>
+    <li><input type="checkbox">폴링("다 되면 알려줘") 동작 확인</li>
+    <li><input type="checkbox">두 모델 차이 한 줄 메모</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 D · 나만의 워크플로
+     ════════════════════════════════ -->
+<div class="sec" id="prac-d">
+  <span class="badge b-prac">실습 D</span>
+  <h2>나만의 워크플로 만들기</h2>
+  <span class="timer">3:20 – 4:00 · 40분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">"제품/주제 → 여러 컷 자동 생성" 워크플로를 자연어로 설계하고 실행합니다.</p>
+
+<div class="formula">[재료(제품/주제)] + [목표(몇 컷, 어떤 용도)] → 한 명령으로 자동 생성</div>
+
+<div class="prompt">
+  <div class="plabel">워크플로 설계 템플릿</div>
+  <code id="pd-wf">[내 제품/주제] 줄게. 이걸로 [용도: 인스타 광고]용 이미지 [N컷] 만들어줘. 각 컷은 [히어로 / 사용장면 / 디테일 / 라이프스타일 / CTA 여백]. 톤은 일관되게 유지하고, 다 되면 모아서 보여줘.</code>
+  <button class="copy-btn" onclick="cp('pd-wf',this)">복사</button>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>욕심내서 "그중 제일 잘 나온 1장은 영상으로도 만들어줘"까지 한 번에 시켜보세요. 이게 진짜 워크플로 자동화입니다.</p></div>
+
+<div class="challenge">
+  <h4>✅ 체크리스트</h4>
+  <ul class="cklist">
+    <li><input type="checkbox">내 주제로 워크플로 명령 작성</li>
+    <li><input type="checkbox">여러 컷(5컷 권장) 배치 생성 성공</li>
+    <li><input type="checkbox">톤 일관성 확인</li>
+    <li><input type="checkbox">(도전) 1장을 영상으로 추가 변환</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     최종 과제
+     ════════════════════════════════ -->
+<div class="sec" id="final-task">
+  <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
+  <h2>Claude Code MCP로 콘텐츠 배치 자동 생성</h2>
+</div>
+
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 것을 종합해서 <strong>채팅 명령만으로 콘텐츠를 배치 생성</strong>합니다. 웹 UI는 비교용으로만 사용하세요.</p></div>
+
+<div class="card">
+  <h3>과제 조건</h3>
+  <table>
+    <thead><tr><th>항목</th><th>기준</th></tr></thead>
+    <tbody>
+      <tr><td><strong>이미지</strong></td><td>Claude Code 자연어 명령만으로 <strong>5장 이상 배치 생성</strong></td></tr>
+      <tr><td><strong>영상</strong></td><td>그중 <strong>1장 이상을 영상으로 변환</strong></td></tr>
+      <tr><td><strong>명령 기록</strong></td><td>사용한 자연어 명령 <strong>전체</strong>를 그대로 기록</td></tr>
+      <tr><td><strong>회고</strong></td><td>웹 UI 대비 무엇이 편했는지 <strong>3줄</strong></td></tr>
+      <tr><td><strong>보안</strong></td><td>토큰·키를 노출하지 않았을 것</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="challenge" style="border-color:#3a3010">
+  <h4 style="color:#e8c060">📤 제출 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">채팅 명령만으로 이미지 5장 이상 배치 생성</li>
+    <li><input type="checkbox">그중 1장 이상 영상으로 변환</li>
+    <li><input type="checkbox">사용한 자연어 명령 전체 기록 제출</li>
+    <li><input type="checkbox">웹 UI 대비 편했던 점 3줄 회고</li>
+    <li><input type="checkbox">토큰·키 노출 없음 확인</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     문제 해결
+     ════════════════════════════════ -->
+<div class="sec" id="trouble">
+  <span class="badge" style="background:#2a1a1a;color:#d08080">🐛</span>
+  <h2>막혔을 때</h2>
+</div>
+
+<table class="trouble">
+  <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
+  <tbody>
+    <tr><td>MCP 연결 안 됨</td><td><code style="color:var(--gold);font-size:.82rem">.mcp.json</code> 설정·토큰 확인 후 Claude Code 재시작. 안 되면 강사 지원</td></tr>
+    <tr><td>"도구를 찾을 수 없음"</td><td>MCP 서버 미연결 상태. 커넥터 재등록 또는 설정 파일 재확인 후 재시작</td></tr>
+    <tr><td>배치가 일부만 생성됨</td><td>플랜별 동시 생성 제한 때문. 개수를 나눠서 재시도("나머지 2장 마저 생성해줘")</td></tr>
+    <tr><td>영상이 안 나옴</td><td>영상은 60~180초 소요. <code style="color:var(--gold);font-size:.82rem">"상태 확인해줘"</code>로 폴링하며 대기</td></tr>
+    <tr><td>크레딧 부족 메시지</td><td><code style="color:var(--gold);font-size:.82rem">"잔액 확인해줘"</code>로 점검 후 충전. 연습은 저해상도로</td></tr>
+    <tr><td>토큰을 실수로 채팅에 입력함</td><td>즉시 해당 토큰 폐기·재발급. 설정 파일/환경변수로만 관리</td></tr>
+  </tbody>
+</table>
+
+</div><!-- /page -->
+
+<footer>
+  <span>힉스필드 8일 워크숍 · ⭐ 보너스 · Claude Code × 힉스필드 MCP/CLI</span>
+  <span>교재 전체 이미지·영상: Higgsfield MCP로 Claude Code에서 생성 · 2026</span>
+</footer>
+
+<script>
+function cp(id, btn) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent.trim()).then(() => {
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('done'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

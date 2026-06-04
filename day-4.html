@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 4 · Cinema Studio 3.5 + Supercomputer + 개인 숏폼 완성 — 6일 워크숍</title>
+<title>Day 4 · 영상 기초 & 시나리오 보드 — 8일 워크숍</title>
 <style>
 :root {
   --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
@@ -97,18 +97,24 @@ tr:hover td{background:var(--s2)}
 .formula{background:var(--s1);border:1px dashed var(--gold2);border-radius:8px;padding:1rem 1.5rem;margin:.85rem 0;text-align:center;font-size:1rem;color:var(--gold);font-weight:700;letter-spacing:.02em}
 
 /* IMAGE GRIDS */
-.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin:1.25rem 0}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin:1.25rem 0}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin:1.25rem 0}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin:1.25rem 0}
-@media(max-width:720px){.grid-5{grid-template-columns:repeat(3,1fr)}.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.grid-5,.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+@media(max-width:720px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
 
 .img-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
 .img-card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
 .img-info{padding:.65rem .8rem}
 .img-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
 .img-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+
+/* VIDEO CARD */
+.vid-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
+.vid-card video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.vid-info{padding:.65rem .8rem}
+.vid-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
+.vid-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
 
 /* KEYWORD TAGS */
 .kw-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
@@ -151,39 +157,58 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 .daybar .db-link.active{background:var(--gold2);color:#000}
 .daybar .db-sep{color:var(--s3);font-size:.78rem;margin:0 .15rem}
 
+/* === SCENARIO BOARD (Day 4 전용) === */
+.board{overflow-x:auto;margin:1rem 0}
+.board table{min-width:780px;font-size:.82rem}
+.board th{font-size:.7rem}
+.board td{vertical-align:top}
+.board .scene-th{width:46px;text-align:center}
+.board .scene-num{font-size:1.3rem;font-weight:800;color:var(--gold);text-align:center}
+.board .scene-img{width:96px}
+.board .scene-img img{width:90px;border-radius:6px;display:block;aspect-ratio:9/16;object-fit:cover}
+.board .mini-prompt{font-family:'JetBrains Mono','Consolas',monospace;font-size:.72rem;color:#a8c8e8;background:#0d1117;border:1px solid #30363d;border-radius:5px;padding:.45rem .55rem;line-height:1.5;position:relative}
+.board .mini-prompt .copy-btn{position:static;display:inline-block;margin-top:.4rem}
+.board .snd-line{font-size:.78rem;line-height:1.55;margin-bottom:.3rem}
+.board .snd-tag{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.04em;padding:.05rem .35rem;border-radius:3px;margin-right:.3rem}
+.snd-voice{background:#2d2050;color:#b0a0e0}
+.snd-music{background:#162a1e;color:#80c898}
+.snd-sfx{background:#302010;color:#d09040}
+
 </style>
 </head>
 <body>
-<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link active">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a></div>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link active">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">Day 8</a><a class="db-link" href="day-9.html">⭐ 보너스</a></div>
+
+
 
 <!-- NAV -->
 <nav class="nav">
   <a href="#overview">전체 흐름</a>
   <span class="nav-sep">|</span>
-  <a href="#lec1">Cinema Studio 3.5</a>
-  <a href="#lec1-compare">비교 표</a>
-  <a href="#lec1-tag">@태그 시스템</a>
-  <a href="#lec1-mr-higgs">Mr. Higgs</a>
-  <a href="#lec1-genre">장르별 모션</a>
-  <a href="#lec2">Supercomputer</a>
-  <a href="#lec3">virality_predictor</a>
+  <a href="#lec1">연출 문법</a>
+  <a href="#lec2">시나리오 보드</a>
+  <a href="#lec3">툴 지형도</a>
+  <a href="#demo">강사 시연</a>
   <span class="nav-sep">|</span>
-  <a href="#prac-cinema">실습 · Cinema</a>
-  <a href="#prac-shortform">개인 숏폼 완성</a>
-  <a href="#final-task">🏆 최종 과제</a>
+  <a href="#prac-a">실습 A</a>
+  <a href="#prac-b">실습 B</a>
+  <a href="#prac-c">실습 C</a>
+  <a href="#prac-d">실습 D</a>
+  <a href="#prac-e">실습 E</a>
+  <a href="#final-task">🏆 과제</a>
   <a href="#trouble">❓ 도움말</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-chip">HIGGSFIELD 6-DAY WORKSHOP · DAY 4</div>
-  <h1>Cinema Studio 3.5 +<br><em>Supercomputer + 개인 숏폼 완성</em></h1>
-  <p>광학 물리 기반 카메라 제어 · @태그 시스템 · Mr. Higgs 샷 브레이크다운 · 개인 SNS 숏폼 완성일</p>
+  <div class="hero-chip">HIGGSFIELD 7-DAY WORKSHOP · DAY 3</div>
+  <h1>영상 기초 &amp; 시나리오 보드 —<br><em>AI로 영상 설계하기</em></h1>
+  <p>영상 연출 문법 + 시나리오 보드 설계 + 여러 영상 툴 맛보기. 내일 Day 5 Seedance 2.0 영상화의 "재료"를 오늘 만듭니다.</p>
   <div class="hero-pills">
     <div class="pill">⏱ <strong>총 4시간</strong></div>
-    <div class="pill">🎯 <strong>목표</strong>: 개인 SNS 숏폼 1편 완성 + 제출</div>
-    <div class="pill">📦 <strong>준비물</strong>: Day 2~3에서 만든 클립들</div>
-    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h20m · 실습 2h40m</div>
+    <div class="pill">🎯 <strong>목표</strong>: 내 30초 영상 시나리오 보드 완성</div>
+    <div class="pill">📦 <strong>준비물</strong>: Day 1~2에서 배운 이미지 기법</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h40m · 실습 2h20m</div>
   </div>
 </div>
 
@@ -191,14 +216,14 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="tl-wrap" id="overview">
   <div class="tl-label">오늘 4시간 흐름</div>
   <div class="tl-bar">
-    <div class="tl-lec" style="flex:4">📖 강의·시연 (1h 20m)</div>
-    <div class="tl-prac" style="flex:8">🎬 실습 · 개인 숏폼 완성 (2h 40m)</div>
+    <div class="tl-lec">📖 강의·시연 (1h 40m)</div>
+    <div class="tl-prac">🖥️ 실습 A·B·C·D·E (2h 20m)</div>
   </div>
   <div class="tl-times">
-    <span>0:00 Cinema Studio 3.5</span>
-    <span>0:40 Supercomputer</span>
-    <span>1:00 virality_predictor</span>
-    <span>1:20 숏폼 실습 시작</span>
+    <span>0:00 연출 문법</span>
+    <span>0:30 시나리오 보드</span>
+    <span>1:10 툴 지형도</span>
+    <span>1:40 실습 시작</span>
     <span>3:50 공유</span>
     <span>4:00 끝</span>
   </div>
@@ -207,548 +232,670 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="page">
 
 <!-- ════════════════════════════════
-     강의 PART 1 · Cinema Studio 3.5
+     강의 PART 1 · 영상 연출 문법 기초
      ════════════════════════════════ -->
 <div class="sec" id="lec1">
   <span class="badge b-lec">강의</span>
-  <h2>Part 1 · Cinema Studio 3.5</h2>
-  <span class="timer">0:00 – 0:40 · 40분</span>
+  <h2>Part 1 · 영상 연출 문법 기초</h2>
+  <span class="timer">0:00 – 0:30 · 30분</span>
 </div>
 
-<div class="card">
-  <h3>Cinema Studio 3.5란?</h3>
-  <p>힉스필드의 가장 정교한 영상 연출 도구입니다. 단순히 영상을 생성하는 것을 넘어, <strong>실제 촬영 현장처럼 카메라를 제어</strong>할 수 있습니다.</p>
-  <ul style="margin-top:.65rem">
-    <li><strong style="color:var(--gold)">광학 물리 시뮬레이션</strong> — 실제 카메라처럼 초점거리·조리개·심도 제어</li>
-    <li><strong style="color:var(--gold)">@태그 시스템</strong> — 캐릭터·로케이션·프롭을 등록해 재사용</li>
-    <li><strong style="color:var(--gold)">Mr. Higgs</strong> — AI 샷 브레이크다운 어시스턴트</li>
-    <li><strong style="color:var(--gold)">장르 기반 모션 로직</strong> — action·drama·horror·comedy·spectacle</li>
-  </ul>
-</div>
+<div class="callout c-info"><span class="ico">💡</span><p>오늘은 <strong>"AI가 어떻게 영상을 만드나"</strong>가 아니라 <strong>"사람이 영상을 어떻게 구성하나"</strong>를 배웁니다. AI 생성 기술의 원리는 내일 Day 5에서 다룹니다. 오늘은 <strong>연출 문법</strong>에 집중하세요.</p></div>
 
-<p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem" id="lec1-compare">Cinema Studio 3.5 실제 화면 (강사 캡처)</p>
-<img src="screenshots/08-cinema-clean.png" alt="Cinema Studio 3.5 실제 화면" style="width:100%;border-radius:6px;border:1px solid var(--s3);margin-bottom:1rem">
-
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">Cinema Studio vs Seedance 2.0 비교</h3>
+<!-- 샷 사이즈 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">① 샷 사이즈 — 카메라가 피사체를 얼마나 가까이 잡나</h3>
 
 <table>
-  <thead><tr><th>항목</th><th>Seedance 2.0</th><th>Cinema Studio 3.5</th></tr></thead>
+  <thead><tr><th>샷 사이즈</th><th>무엇을 보여주나</th><th>언제 쓰나</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">익스트림 와이드 (EWS)</strong></td><td>인물이 작게, 공간 전체</td><td>장소·분위기 소개 (오프닝)</td></tr>
+    <tr><td><strong style="color:var(--gold)">풀 샷 (Full)</strong></td><td>인물 전신 + 주변</td><td>동작·이동·상황 설명</td></tr>
+    <tr><td><strong style="color:var(--gold)">미디엄 샷 (Medium)</strong></td><td>상반신 (허리~머리)</td><td>대화·작업 장면, 가장 무난</td></tr>
+    <tr><td><strong style="color:var(--gold)">클로즈업 (CU)</strong></td><td>얼굴·손 등 한 부분</td><td>감정·디테일 강조</td></tr>
+    <tr><td><strong style="color:var(--gold)">익스트림 클로즈업 (ECU)</strong></td><td>눈·입술·물방울 등 극단적 확대</td><td>긴장감·임팩트 극대화</td></tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>한 영상 안에서 <strong>와이드 → 클로즈업으로 좁혀 들어가면</strong> "공간을 보여주고 → 인물 안으로 들어가는" 자연스러운 흐름이 생깁니다.</p></div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.88rem;color:var(--cream)"><strong>예시 — 같은 영상의 4장면, 샷 사이즈가 어떻게 다른가</strong></p>
+<div class="grid-4">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023638_7f123061-392c-47ea-b2c1-ffc337b8ddbc.png" alt="씬1 와이드" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬 1 · 와이드</span>
+      <span class="desc">새벽 도시 아파트 창. 공간 전체를 보여주는 establishing shot.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023643_b6673a6d-7327-41ff-b217-840ba847610e.png" alt="씬2 클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬 2 · 클로즈업</span>
+      <span class="desc">커피 드립하는 손. 한 부분을 확대해 디테일 강조.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023648_4e92d5b5-a855-476d-9cc3-4c48da5f435f.png" alt="씬3 미디엄" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬 3 · 미디엄</span>
+      <span class="desc">책상에서 작업하는 인물. 상반신 + 상황 설명.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023652_e570fbbc-6f08-47c8-a7d3-320363085d78.png" alt="씬4 클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬 4 · 클로즈업</span>
+      <span class="desc">창밖 보며 미소. 감정을 클로즈업으로 마무리.</span>
+    </div>
+  </div>
+</div>
+
+<!-- 카메라 앵글 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">② 카메라 앵글 — 어느 높이에서 보나</h3>
+
+<table>
+  <thead><tr><th>앵글</th><th>느낌</th><th>언제 쓰나</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">아이레벨 (Eye-level)</strong></td><td>중립·자연스러움</td><td>대부분의 일상 장면</td></tr>
+    <tr><td><strong style="color:var(--gold)">로우앵글 (Low)</strong></td><td>인물이 크고 강해 보임</td><td>당당함·권위·영웅적 연출</td></tr>
+    <tr><td><strong style="color:var(--gold)">하이앵글 (High)</strong></td><td>인물이 작고 약해 보임</td><td>고독·취약·관찰자 시점</td></tr>
+    <tr><td><strong style="color:var(--gold)">버즈아이 (Bird's-eye)</strong></td><td>위에서 수직으로 내려다봄</td><td>구도·패턴·전체 배치 강조</td></tr>
+  </tbody>
+</table>
+
+<!-- 카메라 무빙 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">③ 카메라 무빙 — 카메라가 어떻게 움직이나</h3>
+
+<div class="card">
+  <div class="kw-row" style="margin-top:.2rem">
+    <span class="kw hi">팬 (Pan)</span>
+    <span class="kw hi">틸트 (Tilt)</span>
+    <span class="kw hi">줌 (Zoom)</span>
+    <span class="kw hi">푸시인 (Push-in)</span>
+    <span class="kw hi">트래킹 (Tracking)</span>
+  </div>
+  <ul style="margin-top:.65rem">
+    <li><strong>팬</strong> — 카메라가 좌우로 회전 (고정 위치에서 옆을 훑음)</li>
+    <li><strong>틸트</strong> — 카메라가 위아래로 회전 (건물을 아래→위로 훑기)</li>
+    <li><strong>줌</strong> — 렌즈로 당기거나 멀어짐 (카메라는 안 움직임)</li>
+    <li><strong>푸시인</strong> — 카메라 자체가 피사체로 다가감 (몰입감)</li>
+    <li><strong>트래킹</strong> — 카메라가 인물을 따라 같이 이동</li>
+  </ul>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>영상 프롬프트에 무빙 키워드(<code style="color:var(--gold);font-size:.82rem">slow push-in</code>, <code style="color:var(--gold);font-size:.82rem">gentle pan</code>)를 넣으면 AI가 그 움직임을 만들어 줍니다.</p></div>
+</div>
+
+<!-- 컷과 시퀀스 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">④ 컷과 시퀀스 — 장면을 이어 이야기를 만든다</h3>
+
+<div class="card">
+  <h3>컷 편집의 기본</h3>
+  <p><strong>컷(Cut)</strong>은 한 장면에서 다른 장면으로 바뀌는 지점입니다. 여러 컷을 순서대로 이으면 <strong>시퀀스</strong>가 되고, 시퀀스가 모여 하나의 이야기가 됩니다.</p>
+  <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.85rem 0 .3rem;font-size:.85rem">
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">씬1 와이드</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">씬2 클로즈업</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">씬3 미디엄</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--gold2);color:#000;padding:.3rem .7rem;border-radius:4px;font-weight:700">씬4 클로즈업 = 30초 영상</span>
+  </div>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">🎬</span><p><strong>좋은 시퀀스의 비결</strong>: 같은 샷 사이즈만 반복하면 지루합니다. 와이드 → 클로즈업처럼 <strong>변화를 줘야</strong> 시선이 살아납니다.</p></div>
+</div>
+
+<!-- 사운드 3층 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">⑤ 사운드 3층 레이어 — 영상의 절반은 소리다</h3>
+
+<table>
+  <thead><tr><th>레이어</th><th>무엇</th><th>예시</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>난이도</strong></td>
-      <td>쉬움</td>
-      <td>중간~고급</td>
+      <td><span class="snd-tag snd-voice">음성</span><strong style="color:var(--cream)">내레이션 / 대사</strong></td>
+      <td>사람이 말하는 소리</td>
+      <td>보이스오버, 인물 대사, 인터뷰</td>
     </tr>
     <tr>
-      <td><strong>인물 일관성</strong></td>
-      <td><span style="color:var(--green)">✅ 강점</span></td>
-      <td><span style="color:var(--green)">✅</span></td>
+      <td><span class="snd-tag snd-music">음악</span><strong style="color:var(--cream)">BGM</strong></td>
+      <td>배경에 깔리는 음악</td>
+      <td>로파이 피아노, 시네마틱 스트링</td>
     </tr>
     <tr>
-      <td><strong>카메라 제어</strong></td>
-      <td>제한적 (기본 움직임)</td>
-      <td><span style="color:var(--green)">✅ 정밀 (초점거리·조리개·패닝)</span></td>
-    </tr>
-    <tr>
-      <td><strong>장르 프리셋</strong></td>
-      <td>기본 6종</td>
-      <td>더 다양 (action·drama·horror·comedy·spectacle 등)</td>
-    </tr>
-    <tr>
-      <td><strong>@태그 시스템</strong></td>
-      <td>없음</td>
-      <td><span style="color:var(--green)">✅ 캐릭터·로케이션·프롭 재사용</span></td>
-    </tr>
-    <tr>
-      <td><strong>Mr. Higgs 어시스턴트</strong></td>
-      <td>없음</td>
-      <td><span style="color:var(--green)">✅ AI 샷 브레이크다운</span></td>
-    </tr>
-    <tr>
-      <td><strong>적합한 용도</strong></td>
-      <td>빠른 클립 · 일상 숏폼</td>
-      <td>고품질 씬 · 시네마틱 광고</td>
+      <td><span class="snd-tag snd-sfx">효과음</span><strong style="color:var(--cream)">앰비언트 / SFX</strong></td>
+      <td>환경음·상황음</td>
+      <td>새소리, 물 끓는 소리, 키보드 타이핑</td>
     </tr>
   </tbody>
 </table>
 
-<div class="callout c-tip"><span class="ico">📌</span><p><strong>선택 기준</strong>: 빠르게 많이 만들 때는 Seedance 2.0, 한 씬에 공들여 퀄리티를 높일 때는 Cinema Studio 3.5를 씁니다.</p></div>
-
-<!-- @태그 시스템 -->
-<h3 id="lec1-tag" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">@태그 시스템 사용법</h3>
-
-<div class="card">
-  <h3>@태그란?</h3>
-  <p>한 번 등록한 캐릭터·배경·소품을 <strong>@이름</strong>으로 불러와 어느 씬에서든 재사용할 수 있는 시스템입니다.<br>
-  매번 같은 설명을 타이핑하지 않아도 되고, 일관성도 유지됩니다.</p>
-</div>
-
-<ol class="steps">
-  <li>
-    <div class="snum">1</div>
-    <div class="sbody">
-      <strong>캐릭터 등록</strong>
-      <p>AI Influencer(Day 2)에서 만든 인물을 Cinema Studio → 캐릭터 라이브러리에 <strong>@이름</strong>으로 등록</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">2</div>
-    <div class="sbody">
-      <strong>로케이션 등록</strong>
-      <p>Soul Location 또는 직접 만든 배경 이미지를 <strong>@로케이션</strong>으로 등록</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">3</div>
-    <div class="sbody">
-      <strong>프롬프트에서 호출</strong>
-      <p>Cinema Studio 프롬프트 입력창에 <code style="color:var(--gold);font-size:.83rem">@[캐릭터명]</code>, <code style="color:var(--gold);font-size:.83rem">@[로케이션명]</code>을 입력하면 해당 에셋이 자동 적용</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">4</div>
-    <div class="sbody">
-      <strong>장르 + 카메라 설정 추가</strong>
-      <p>장르를 선택하고 카메라 움직임(push in, pan, orbit 등)을 프롬프트에 명시</p>
-    </div>
-  </li>
-</ol>
-
-<div class="callout c-info"><span class="ico">💡</span><p>@태그가 인식되려면 캐릭터·로케이션이 <strong>먼저 라이브러리에 저장</strong>되어 있어야 합니다. 등록 전에 @를 쓰면 일반 텍스트로 처리됩니다.</p></div>
-
-<!-- Mr. Higgs -->
-<h3 id="lec1-mr-higgs" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">Mr. Higgs · AI 샷 브레이크다운 어시스턴트</h3>
-
-<div class="card">
-  <h3>Mr. Higgs가 하는 일</h3>
-  <p>"이 장면을 N컷으로 구성해줘"라고 요청하면 <strong>컷 순서·앵글·타이밍·카메라 움직임을 자동으로 제안</strong>합니다.<br>
-  영화 콘티처럼 각 컷의 역할을 설명해주고, 제안 받은 뒤 원하는 컷만 개별 생성하면 됩니다.</p>
-  <ul style="margin-top:.65rem">
-    <li>요청: <em>"루프탑에서 여자 캐릭터가 등장하는 장면을 5컷으로 구성해줘"</em></li>
-    <li>Mr. Higgs 제안: 1컷(와이드 드론 진입) → 2컷(미디엄 걸어오는 샷) → 3컷(클로즈업 표정) → 4컷(리버스 도시 배경) → 5컷(아웃로 패닝)</li>
-    <li>각 컷 설명 클릭 → 해당 컷 파라미터 자동 적용 → Generate</li>
-  </ul>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Mr. Higgs 요청 예시 프롬프트</div>
-  <code id="mr-higgs">@[내캐릭터]가 @[로케이션]에 등장하는 씬을 5컷으로 구성해줘.
-첫 컷은 와이드로 공간을 보여주고, 마지막 컷은 클로즈업으로 마무리.
-장르는 drama, 전체 무드는 cinematic and moody.</code>
-  <button class="copy-btn" onclick="cp('mr-higgs',this)">복사</button>
-</div>
-
-<!-- 장르별 모션 로직 -->
-<h3 id="lec1-genre" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">장르별 모션 로직</h3>
-
-<div class="card">
-  <p>Cinema Studio는 장르를 선택하면 <strong>해당 장르의 카메라 움직임·편집 리듬·조명 분위기</strong>를 자동으로 적용합니다.</p>
-</div>
-
-<table>
-  <thead><tr><th>장르</th><th>카메라 특성</th><th>활용 예시</th></tr></thead>
-  <tbody>
-    <tr><td><strong style="color:var(--gold)">action</strong></td><td>빠른 컷, 핸드헬드 흔들림, 역동적 앵글</td><td>스포츠 브랜드, 에너지 음료, 게임 트레일러</td></tr>
-    <tr><td><strong style="color:var(--gold)">drama</strong></td><td>느린 패닝, 부드러운 줌, 깊은 심도</td><td>감성 브랜드, 라이프스타일, 인물 중심 콘텐츠</td></tr>
-    <tr><td><strong style="color:var(--gold)">horror</strong></td><td>정적 카메라, 갑작스러운 움직임, 긴장감</td><td>할로윈 콘텐츠, 서스펜스 예고편</td></tr>
-    <tr><td><strong style="color:var(--gold)">comedy</strong></td><td>밝고 활기찬 카메라, 빠른 리액션 컷</td><td>유머 콘텐츠, 음식·라이프스타일 숏폼</td></tr>
-    <tr><td><strong style="color:var(--gold)">spectacle</strong></td><td>와이드 드론샷, 스케일 강조, 에픽 무드</td><td>여행·자연 다큐, 대형 이벤트 오프닝</td></tr>
-  </tbody>
-</table>
-
-<p style="margin:1.5rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">장르별 예시 — 강사 생성 이미지 (동일 캐릭터·로케이션, 장르만 변경)</p>
-
-<div class="grid-5">
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012404_4b3eff7a-eaf3-442f-ada2-92aa4ec5e024.png" alt="Action 장르" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Action</span>
-      <div class="kw-row"><span class="kw hi">cinematic_studio_3_5</span></div>
-      <span class="desc">역동적 앵글, 핸드헬드 느낌</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012408_e1ddf704-84db-46fa-98c2-001c321dd8ab.png" alt="Drama 장르" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Drama</span>
-      <div class="kw-row"><span class="kw hi">cinematic_studio_3_5</span></div>
-      <span class="desc">부드러운 줌, 감성적 분위기</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012411_926d41f0-7333-41f5-ba91-056df4737104.png" alt="Horror 장르" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Horror</span>
-      <div class="kw-row"><span class="kw hi">cinematic_studio_3_5</span></div>
-      <span class="desc">정적 카메라, 긴장감</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012415_cadcef34-a319-4340-a71a-faceda2ffaa8.png" alt="Comedy 장르" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Comedy</span>
-      <div class="kw-row"><span class="kw hi">cinematic_studio_3_5</span></div>
-      <span class="desc">밝고 활기찬 카메라</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012417_cbfeb7ca-3cc4-4de1-93ff-6d5e02dbab34.png" alt="Spectacle 장르" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Spectacle (Epic)</span>
-      <div class="kw-row"><span class="kw hi">cinematic_studio_3_5</span></div>
-      <span class="desc">와이드, 드론샷, 에픽 무드</span>
-    </div>
-  </div>
-</div>
-
-<div class="callout c-tip"><span class="ico">📌</span><p>위 5장은 동일한 캐릭터·장소에서 <strong>장르 설정만 바꿔 생성</strong>한 결과입니다. 씬 기획이 먼저이고 장르는 분위기를 결정하는 레버입니다.</p></div>
+<div class="callout c-tip"><span class="ico">📌</span><p>세 레이어를 <strong>겹쳐 쌓으면</strong> 영상이 입체적이 됩니다. 시나리오 보드에서 각 씬마다 이 세 가지를 미리 설계합니다. (실제 사운드 생성은 Day 5 힉스필드 Audio·Lip Sync에서)</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 · Cinema Studio
-     ════════════════════════════════ -->
-<div class="sec" id="prac-cinema">
-  <span class="badge b-prac">실습</span>
-  <h2>Cinema Studio 3.5 실습</h2>
-  <span class="timer">강의 직후 · 30분</span>
-</div>
-
-<div class="callout c-info"><span class="ico">🖥️</span><p>Day 2에서 만든 캐릭터와 Soul Location 배경이 있으면 @태그로 등록 후 사용합니다. 없으면 새로 간단히 생성해도 됩니다.</p></div>
-
-<ol class="steps">
-  <li>
-    <div class="snum">1</div>
-    <div class="sbody">
-      <strong>Cinema Studio 메뉴 진입</strong>
-      <span>higgsfield.ai → Cinema Studio → 새 프로젝트</span>
-    </div>
-  </li>
-  <li>
-    <div class="snum">2</div>
-    <div class="sbody">
-      <strong>@캐릭터 등록</strong>
-      <p>Day 2에서 만든 인물 이미지 → 캐릭터 라이브러리에 이름 부여해 등록<br>
-      없으면: Soul 2.0으로 인물 이미지 1장 빠르게 생성 후 등록</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">3</div>
-    <div class="sbody">
-      <strong>@로케이션 등록</strong>
-      <p>Day 2 Soul Location 배경 → 로케이션 라이브러리에 등록<br>
-      없으면: 아래 루프탑 이미지처럼 배경 이미지 1장 업로드</p>
-      <div style="margin-top:.65rem;max-width:200px">
-        <div class="img-card">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012355_0453ba48-e8cc-43fb-b5f1-3ce5bed074c6.png" alt="루프탑 로케이션 예시" loading="lazy">
-          <div class="img-info">
-            <span class="tag">로케이션 예시 (루프탑)</span>
-            <span class="desc">이런 배경 이미지를 @rooftop 으로 등록</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </li>
-  <li>
-    <div class="snum">4</div>
-    <div class="sbody">
-      <strong>장르 선택 + Mr. Higgs에게 5컷 구성 요청</strong>
-      <p>장르: <strong style="color:var(--gold)">drama</strong> 선택 → Mr. Higgs에게 "5컷 구성 추천해줘" 메시지 입력</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">5</div>
-    <div class="sbody">
-      <strong>추천 받은 컷 1~2개 생성</strong>
-      <p>Mr. Higgs 제안 중 마음에 드는 컷 선택 → Generate</p>
-    </div>
-  </li>
-</ol>
-
-<div class="prompt">
-  <div class="plabel">Cinema Studio 3.5 · 기본 씬 프롬프트</div>
-  <code id="cinema-basic">@[내캐릭터] walks confidently through @[로케이션],
-camera slowly pushes in, shallow depth of field,
-cinematic drama style, warm rim lighting,
-photorealistic, high quality</code>
-  <button class="copy-btn" onclick="cp('cinema-basic',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Cinema Studio 3.5 · 액션 스타일 프롬프트</div>
-  <code id="cinema-action">@[내캐릭터] in dynamic motion at @[로케이션],
-handheld camera tracking shot, quick energy,
-cinematic action style, dramatic side lighting,
-photorealistic, high quality</code>
-  <button class="copy-btn" onclick="cp('cinema-action',this)">복사</button>
-</div>
-
-<div class="challenge">
-  <h4>🎯 Cinema Studio 실습 도전</h4>
-  <p>@태그 등록 후 장르를 바꿔가며 같은 씬의 분위기 변화를 체험합니다.</p>
-  <ul class="cklist">
-    <li><input type="checkbox">@캐릭터, @로케이션 등록 완료</li>
-    <li><input type="checkbox">drama 장르로 첫 씬 생성</li>
-    <li><input type="checkbox">Mr. Higgs에게 5컷 구성 요청 → 제안 확인</li>
-    <li><input type="checkbox">추천 컷 중 1개 이상 실제로 생성</li>
-    <li><input type="checkbox">(도전) action 장르로도 생성 → drama와 비교</li>
-  </ul>
-</div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     강의 PART 2 · Supercomputer
+     강의 PART 2 · 시나리오 보드란?
      ════════════════════════════════ -->
 <div class="sec" id="lec2">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 2 · Supercomputer</h2>
-  <span class="timer">0:40 – 1:00 · 20분</span>
+  <span class="badge b-lec">강의 핵심</span>
+  <h2>Part 2 · 시나리오 보드란?</h2>
+  <span class="timer">0:30 – 1:10 · 40분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">🖥️</span><p>아래 화면은 Supercomputer 실제 캡처입니다.</p></div>
-<img src="screenshots/06-supercomputer-clean.png" alt="Supercomputer 실제 화면" style="width:100%;border-radius:6px;border:1px solid var(--s3);margin-bottom:1rem">
+<div class="card">
+  <h3>시나리오 보드 = 스토리보드 + 프롬프트 기획서</h3>
+  <p>영상을 만들기 <strong>전에</strong> "씬별로 무엇을·어떻게 보여주고 들려줄지"를 미리 설계하는 표입니다. 그림 콘티(스토리보드)에 <strong>AI에게 줄 프롬프트까지 함께 적은 것</strong>이 시나리오 보드입니다.</p>
+</div>
 
 <div class="card">
-  <h3>Supercomputer란?</h3>
-  <p>힉스필드의 <strong>AI 자동화 에이전트</strong>입니다. 2026년 5월 출시된 가장 최신 기능으로, 반복 작업을 스킬로 등록해 자동화할 수 있습니다.</p>
-  <div style="display:flex;gap:1.5rem;margin-top:.85rem;flex-wrap:wrap">
-    <div style="flex:1;min-width:160px;background:var(--s2);border-radius:6px;padding:.85rem 1rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:800;color:var(--gold);margin-bottom:.25rem">8×</div>
-      <div style="font-size:.78rem;color:var(--muted)">더 저렴</div>
+  <h3>왜 필요한가?</h3>
+  <ul>
+    <li>AI 영상을 <strong>즉흥으로</strong> 만들면 씬마다 톤·인물·메시지가 제각각으로 무너집니다.</li>
+    <li>보드가 있으면 <strong>어떤 툴을 쓰든</strong> 같은 설계로 일관된 결과를 얻습니다.</li>
+    <li>오늘 만든 보드는 <strong>내일 Day 5에서 실제 영상화하는 재료</strong>가 됩니다.</li>
+  </ul>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">💡</span><p>설계도 없이 집을 지을 수 없듯, 보드 없이 좋은 AI 영상은 안 나옵니다. <strong>보드가 오늘의 핵심 산출물</strong>입니다.</p></div>
+</div>
+
+<!-- 표준 구조 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">시나리오 보드 표준 구조</h3>
+
+<table>
+  <thead><tr><th>씬 #</th><th>샷·연출</th><th>🎨 이미지 프롬프트</th><th>🎬 영상 프롬프트</th><th>🔊 사운드 프롬프트</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--gold)">씬 번호</strong></td>
+      <td>샷 사이즈 + 앵글 + 무빙</td>
+      <td>키프레임 이미지를 만들 프롬프트</td>
+      <td>그 이미지를 어떻게 움직일지</td>
+      <td>음성 / 음악 / 효과음</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>각 씬마다 <strong>4가지 프롬프트</strong>(연출 + 이미지 + 영상 + 사운드)를 채우는 게 핵심입니다. 이걸 다 채우면 어떤 영상 툴에 넣어도 같은 결과가 나옵니다.</p></div>
+
+<!-- 완성 예시 보드 -->
+<h3 style="color:var(--cream);font-size:1.05rem;margin:1.75rem 0 .75rem">완성 예시 — "퍼스널 브랜드 모닝 필름" 30초 · 4씬</h3>
+
+<p style="font-size:.86rem;color:var(--muted);margin-bottom:.5rem">아래는 실제로 만든 시나리오 보드입니다. 키프레임 4장을 각 씬에 넣고, 이미지·영상·사운드 프롬프트를 모두 채웠습니다. 각 프롬프트는 복사 버튼으로 바로 가져갈 수 있습니다.</p>
+
+<div class="board">
+<table>
+  <thead><tr>
+    <th class="scene-th">씬</th>
+    <th class="scene-img">키프레임</th>
+    <th>샷·연출</th>
+    <th>🎨 이미지 프롬프트</th>
+    <th>🎬 영상 프롬프트</th>
+    <th>🔊 사운드 프롬프트</th>
+  </tr></thead>
+  <tbody>
+    <!-- 씬 1 -->
+    <tr>
+      <td class="scene-num">1</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023638_7f123061-392c-47ea-b2c1-ffc337b8ddbc.png" alt="씬1" loading="lazy"></td>
+      <td><strong>익스트림 와이드</strong><br>아이레벨<br>slow push-in<br><span style="color:var(--muted);font-size:.76rem">establishing</span></td>
+      <td><div class="mini-prompt"><span id="b-img1">Wide establishing shot of a quiet city apartment at dawn, soft blue morning light through large window, minimal cozy interior, cinematic, film grain, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img1',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid1">Slow gentle push-in toward the window, soft light slowly brightening, dust particles floating in the air, calm cinematic motion, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid1',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-sfx">효과음</span>도시 새벽의 먼 자동차 소리, 새 지저귐, 고요한 실내 공기</div>
+        <div class="snd-line"><span class="snd-tag snd-music">음악</span>잔잔한 로파이 피아노 인트로</div>
+      </td>
+    </tr>
+    <!-- 씬 2 -->
+    <tr>
+      <td class="scene-num">2</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023643_b6673a6d-7327-41ff-b217-840ba847610e.png" alt="씬2" loading="lazy"></td>
+      <td><strong>클로즈업</strong><br>하이앵글<br>고정 + 미세 흔들림<br><span style="color:var(--muted);font-size:.76rem">detail</span></td>
+      <td><div class="mini-prompt"><span id="b-img2">Close-up of hands slowly pouring water over a coffee dripper, warm morning light, steam rising, shallow depth of field, photorealistic, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img2',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid2">Water dripping steadily through the filter, steam gently rising and swirling, hands moving slowly and carefully, intimate close-up motion, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid2',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-sfx">효과음</span>물 끓는 소리, 드립 커피 떨어지는 물방울 소리, 종이 필터 바스락</div>
+      </td>
+    </tr>
+    <!-- 씬 3 -->
+    <tr>
+      <td class="scene-num">3</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023648_4e92d5b5-a855-476d-9cc3-4c48da5f435f.png" alt="씬3" loading="lazy"></td>
+      <td><strong>미디엄</strong><br>아이레벨<br>slow tracking<br><span style="color:var(--muted);font-size:.76rem">action</span></td>
+      <td><div class="mini-prompt"><span id="b-img3">Medium shot of a person working focused at a desk by the window, soft natural light, laptop and notebook on desk, calm morning atmosphere, cinematic, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img3',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid3">The person typing and glancing at notes, subtle natural movements, slow tracking camera drifting sideways, warm focused mood, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid3',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-voice">내레이션</span>"매일 아침, 나는 가장 먼저 나만의 리듬을 찾는다"</div>
+        <div class="snd-line"><span class="snd-tag snd-sfx">효과음</span>키보드 타이핑 소리</div>
+      </td>
+    </tr>
+    <!-- 씬 4 -->
+    <tr>
+      <td class="scene-num">4</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023652_e570fbbc-6f08-47c8-a7d3-320363085d78.png" alt="씬4" loading="lazy"></td>
+      <td><strong>클로즈업</strong><br>아이레벨<br>slow zoom-out<br><span style="color:var(--muted);font-size:.76rem">emotional</span></td>
+      <td><div class="mini-prompt"><span id="b-img4">Emotional close-up of a person looking out the window with a soft warm smile, golden morning light on the face, serene and hopeful, cinematic film grain, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img4',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid4">The person smiles softly while gazing outside, gentle hair movement, slow zoom-out revealing the peaceful room, warm hopeful ending, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid4',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-music">음악</span>피아노에 현악기 레이어 추가, 따뜻하게 고조되며 마무리</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p>이 보드 하나면 키프레임 4장 → 영상 4컷 → 사운드 3층까지 전부 설계 완료. <strong>내일 Day 5에서 이 보드로 실제 영상을 만듭니다.</strong></p></div>
+
+<!-- AI로 보드 기획 -->
+<h3 style="color:var(--cream);font-size:1.05rem;margin:1.75rem 0 .75rem">AI로 시나리오 보드 기획하기 (ChatGPT · Claude 활용)</h3>
+
+<p style="font-size:.86rem;color:var(--muted);margin-bottom:.5rem">보드를 직접 다 짜기 어렵다면? <strong>ChatGPT나 Claude에게 보드 초안을 통째로 받아서</strong> 다듬는 방식이 훨씬 빠릅니다. 아래 메타 프롬프트를 내 주제로 바꿔 넣으세요.</p>
+
+<div class="prompt">
+  <div class="plabel">메타 프롬프트 · ChatGPT/Claude에게 보드 초안 요청</div>
+  <code id="p-meta">너는 숏폼 영상 기획자야. 아래 주제로 30초 영상의 시나리오 보드를 4씬으로 만들어줘.
+주제: [내 주제]
+각 씬마다 다음을 표로 작성해줘:
+① 샷 사이즈와 카메라 연출 (앵글·무빙 포함)
+② 이미지 생성 프롬프트 (영어, 힉스필드용)
+③ 영상 모션 프롬프트 (영어)
+④ 사운드 설계 (음성/내레이션 · 음악 · 효과음 각각)
+톤: [감성적 / 역동적 / 미니멀 등 택1]
+모든 씬의 조명·색감 키워드는 통일해서 일관성을 유지해줘.</code>
+  <button class="copy-btn" onclick="cp('p-meta',this)">복사</button>
+</div>
+
+<div class="card">
+  <h3>Claude Code로 보드를 구조화·관리하기</h3>
+  <ul>
+    <li>ChatGPT/Claude가 만든 보드를 <strong>markdown 표</strong>로 받아 <code style="color:var(--gold);font-size:.82rem">scenario-board.md</code> 파일로 저장</li>
+    <li>씬별 이미지 프롬프트를 <strong>힉스필드 MCP로 바로 실행</strong>해 키프레임 생성 (Day 1~2에서 연결한 MCP 활용)</li>
+    <li>보드를 파일로 관리하면 씬을 추가·수정·재정렬하기 쉽고, Day 5 영상화 때 그대로 재사용</li>
+  </ul>
+</div>
+
+<div class="prompt">
+  <div class="plabel">사운드 프롬프트를 AI로 뽑기 · ChatGPT에게 묻기</div>
+  <code id="p-sound">아래 영상 씬에 어울리는 사운드를 설계해줘. 음성/내레이션 · 음악(BGM) · 효과음(앰비언트/SFX)을 각각 구체적으로 적어줘. 영어 사운드 프롬프트도 함께 제시해줘.
+씬 설명: [예: 새벽 도시 아파트 창가, 커피 드립, 잔잔하고 따뜻한 톤]</code>
+  <button class="copy-btn" onclick="cp('p-sound',this)">복사</button>
+</div>
+
+<div class="callout c-info"><span class="ico">💡</span><p>"어떤 사운드가 필요할지 모르겠다"면 위 프롬프트처럼 <strong>씬 설명만 주고 AI에게 사운드 설계를 맡기세요.</strong> 그 결과를 보드의 🔊 칸에 채우면 됩니다.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     강의 PART 3 · 영상 툴 지형도 + 맛보기
+     ════════════════════════════════ -->
+<div class="sec" id="lec3">
+  <span class="badge b-lec">강의 + 시연</span>
+  <h2>Part 3 · 영상 생성 툴 지형도 + 맛보기</h2>
+  <span class="timer">1:10 – 1:40 · 30분</span>
+</div>
+
+<div class="card">
+  <h3>영상 생성 툴 한눈에 보기</h3>
+  <p>지금 AI 영상 툴은 종류가 많습니다. 각각 강점이 달라서 <strong>목적에 따라 골라 쓰는 것</strong>이 핵심입니다. 힉스필드 안에서는 여러 모델을 <strong>바꿔가며</strong> 쓸 수 있습니다.</p>
+</div>
+
+<table>
+  <thead><tr><th>툴</th><th>강점 한 줄</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">Seedance 2.0</strong></td><td>인물 일관성, 시작/끝 프레임 정밀 제어</td><td style="color:var(--gold)">→ Day 5에서 깊게 다룸</td></tr>
+    <tr><td><strong>Kling</strong></td><td>부드러운 모션, 사운드 동기화</td><td>시네마틱 컷</td></tr>
+    <tr><td><strong>Veo</strong></td><td>빠르고 가벼움, 저렴한 시안</td><td>빠른 테스트용</td></tr>
+    <tr><td><strong>Hailuo (Minimax)</strong></td><td>자연스러운 물리·표정</td><td>인물 감정 표현</td></tr>
+    <tr><td><strong>Wan</strong></td><td>실험적·예술적 스타일</td><td>독특한 비주얼</td></tr>
+    <tr><td><strong>Sora</strong></td><td>고품질 장면 생성</td><td>완성도 높은 컷</td></tr>
+  </tbody>
+</table>
+
+<!-- 멀티툴 비교 -->
+<h3 style="color:var(--cream);font-size:1.05rem;margin:1.75rem 0 .75rem">같은 키프레임 1장 → 3개 툴로 영상화한 실제 결과</h3>
+
+<p style="font-size:.86rem;color:var(--muted);margin-bottom:.5rem">완성 예시 보드의 <strong>씬4 키프레임 1장</strong>을 세 개의 영상 툴에 똑같이 넣어 봤습니다. 같은 설계라도 툴마다 결과가 다릅니다. (재생 버튼을 눌러보세요)</p>
+
+<div class="grid-3">
+  <div class="vid-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px 8px 0 0">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023802_d19cde48-0915-4f44-be78-ba4ca2775e31.mp4" type="video/mp4">
+    </video>
+    <div class="vid-info">
+      <span class="tag">Kling 2.6 · 5초 · 사운드</span>
+      <span class="desc">부드러운 모션 + 사운드 포함. 완성도 높은 최종 컷에 적합.</span>
     </div>
-    <div style="flex:1;min-width:160px;background:var(--s2);border-radius:6px;padding:.85rem 1rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:800;color:var(--gold);margin-bottom:.25rem">3×</div>
-      <div style="font-size:.78rem;color:var(--muted)">더 빠름</div>
+  </div>
+  <div class="vid-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px 8px 0 0">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023805_65a3a3f7-98dc-417d-b584-080e3e265efb.mp4" type="video/mp4">
+    </video>
+    <div class="vid-info">
+      <span class="tag">Minimax Hailuo · 10초</span>
+      <span class="desc">자연스러운 물리·표정 + 길게(10초). 인물 감정 표현에 강함.</span>
     </div>
-    <div style="flex:1;min-width:160px;background:var(--s2);border-radius:6px;padding:.85rem 1rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:800;color:var(--gold);margin-bottom:.25rem">∞</div>
-      <div style="font-size:.78rem;color:var(--muted)">영속 메모리</div>
+  </div>
+  <div class="vid-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px 8px 0 0">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023808_4ae240c4-7584-4ca3-8f5f-9a01b80a8e1e.mp4" type="video/mp4">
+    </video>
+    <div class="vid-info">
+      <span class="tag">Veo 3.1 Lite · 6초</span>
+      <span class="desc">빠르고 저렴. 여러 시안을 가볍게 테스트할 때 먼저 써보기 좋음.</span>
     </div>
   </div>
 </div>
 
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">주요 활용 3가지</h3>
+<div class="formula">시나리오 보드가 있으면 → 어떤 툴이든 같은 설계로 만든다 → 툴은 목적에 따라 선택</div>
 
-<table>
-  <thead><tr><th>활용</th><th>설명</th><th>실제 예시</th></tr></thead>
-  <tbody>
-    <tr>
-      <td><strong>① 유튜브 자동 클리핑</strong></td>
-      <td>유튜브 영상에서 숏폼으로 쓸 구간을 AI가 자동 추출</td>
-      <td>"이 영상에서 임팩트 있는 구간 6개 숏폼으로 만들어줘"</td>
-    </tr>
-    <tr>
-      <td><strong>② 브랜드 콘텐츠 시리즈 자동화</strong></td>
-      <td>주 1회 → 7일치 콘텐츠를 한 번에 자동 생성</td>
-      <td>스킬 등록 → 매주 자동 실행</td>
-    </tr>
-    <tr>
-      <td><strong>③ 반복 작업 스킬 등록</strong></td>
-      <td>자주 하는 작업을 스킬로 저장 → 명령 하나로 실행</td>
-      <td>"내 브랜드 스타일로 제품 숏폼 만들기" 스킬</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">Claude Code MCP + Supercomputer 연결</h3>
-
-<div class="card">
-  <h3>자연어로 Supercomputer 지시</h3>
-  <p>Claude Code에서 자연어로 Supercomputer 워크플로를 지시할 수 있습니다.<br>
-  복잡한 UI를 직접 클릭하지 않아도 <strong>채팅창에서 명령만 하면</strong> Supercomputer가 대신 실행합니다.</p>
-</div>
-
-<div class="prompt">
-  <div class="plabel">MCP로 Supercomputer 자동 클리핑 요청</div>
-  <code id="supercomp-mcp">이 유튜브 영상에서 가장 임팩트 있는 구간 6개를
-숏폼 9:16 형식으로 만들어줘.
-각 클립은 15~30초로 잘라주고,
-가장 바이럴할 것 같은 순서로 정렬해줘.
-[유튜브 URL 입력]</code>
-  <button class="copy-btn" onclick="cp('supercomp-mcp',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">⚠️</span><p><strong>체험 안내</strong>: Supercomputer는 <strong>higgsfield.ai → Supercomputer 메뉴</strong>에서 직접 체험할 수 있습니다. Claude Code MCP로도 간접 호출 가능합니다. 오늘 실습 중 탐색 후 원하는 분은 직접 사용해보세요.</p></div>
-
-<div class="challenge">
-  <h4>📋 Supercomputer 탐색 실습</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">higgsfield.ai → Supercomputer 메뉴 진입</li>
-    <li><input type="checkbox">사전 등록된 스킬 목록 확인</li>
-    <li><input type="checkbox">"이 영상의 가장 바이럴할 구간은?" 질의 체험</li>
-    <li><input type="checkbox">(선택) 나만의 스킬 1개 등록 시도</li>
-  </ul>
-</div>
+<div class="callout c-tip"><span class="ico">📌</span><p><strong>오늘의 핵심 교훈</strong>: 툴은 바뀌어도 보드는 그대로입니다. 빠른 시안은 Veo Lite, 자연스러운 표정은 Hailuo, 인물 일관성·정밀 제어는 Seedance(Day 5). 보드 한 장으로 전부 시도할 수 있습니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 3 · virality_predictor
+     강사 시연
      ════════════════════════════════ -->
-<div class="sec" id="lec3">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 3 · virality_predictor</h2>
-  <span class="timer">1:00 – 1:20 · 20분</span>
+<div class="sec" id="demo">
+  <span class="badge b-demo">강사 시연</span>
+  <h2>강사 시연 — 보드 초안부터 영상 비교까지</h2>
+  <span class="timer">실습 직전 · 약 30분 (강의 시간에 분산)</span>
 </div>
-
-<div class="card">
-  <h3>virality_predictor란?</h3>
-  <p>AI가 영상의 <strong>바이럴 가능성을 분석</strong>해주는 도구입니다. 숏폼을 완성하기 전에 돌려보고, 약한 구간을 고친 뒤 최종 생성하는 방식으로 씁니다.</p>
-  <ul style="margin-top:.65rem">
-    <li><strong style="color:var(--gold)">훅 강도</strong> — 첫 3초가 얼마나 사람을 붙잡는가</li>
-    <li><strong style="color:var(--gold)">리텐션 위험 구간</strong> — 시청자가 이탈할 가능성이 높은 구간</li>
-    <li><strong style="color:var(--gold)">오디언스 반응 예측</strong> — 댓글·공유·저장 예상 패턴</li>
-  </ul>
-</div>
-
-<div class="formula">숏폼 초안 완성 → virality_predictor 분석 → 약한 구간 개선 → 재생성 → 최종 제출</div>
-
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">언제 씁니까?</h3>
-
-<table>
-  <thead><tr><th>단계</th><th>행동</th></tr></thead>
-  <tbody>
-    <tr><td><strong>1. 숏폼 초안 완성</strong></td><td>클립 배치, 자막, BGM까지 모두 붙인 상태</td></tr>
-    <tr><td><strong>2. virality_predictor 실행</strong></td><td>영상 파일 또는 URL 입력 → 분석 요청</td></tr>
-    <tr><td><strong>3. 점수 확인</strong></td><td>훅 점수 · 리텐션 위험 구간 · 전체 바이럴 점수</td></tr>
-    <tr><td><strong>4. 개선</strong></td><td>점수 낮은 구간 → 더 강한 컷으로 교체 또는 자막 수정</td></tr>
-    <tr><td><strong>5. 재제출</strong></td><td>개선된 버전으로 다시 분석 → 점수 향상 확인</td></tr>
-  </tbody>
-</table>
-
-<div class="prompt">
-  <div class="plabel">MCP · virality_predictor 사용 예시</div>
-  <code id="virality-mcp">이 숏폼 영상 virality_predictor로 분석해줘.
-훅 강도·리텐션 위험 구간을 알려주고,
-점수를 올리기 위한 개선안을 구체적으로 제안해줘.
-[영상 파일 또는 URL]</code>
-  <button class="copy-btn" onclick="cp('virality-mcp',this)">복사</button>
-</div>
-
-<div class="callout c-info"><span class="ico">💡</span><p>virality_predictor는 <strong>Apps → Professional → Virality Predictor</strong> 에서도 사용할 수 있습니다. 오늘 실습에서 개인 숏폼 완성 후 반드시 1회 실행해보세요.</p></div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     개인 SNS 숏폼 완성 실습
-     ════════════════════════════════ -->
-<div class="sec" id="prac-shortform">
-  <span class="badge b-prac">핵심 실습</span>
-  <h2>개인 SNS 숏폼 완성 — Day 4의 핵심</h2>
-  <span class="timer">1:20 – 3:50 · 2h 30m</span>
-</div>
-
-<div class="callout c-tip"><span class="ico">🎯</span><p>오늘의 핵심 목표: <strong>15~30초 9:16 숏폼 1편을 처음부터 끝까지 완성하고 제출</strong>하는 것입니다. Day 2~3에서 만든 클립을 재료로 씁니다.</p></div>
-
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">진행 흐름 (5단계)</h3>
 
 <ol class="steps">
   <li>
     <div class="snum">1</div>
     <div class="sbody">
-      <strong>보유 클립 확인</strong>
-      <p>Day 2~3에서 만든 클립 목록 파악. 쓸 수 있는 클립 3~5개 선별.</p>
+      <strong>ChatGPT로 시나리오 보드 초안 뽑기</strong>
+      <p>위 메타 프롬프트에 주제 하나를 넣어 ChatGPT가 4씬 보드를 표로 만드는 과정을 실시간으로 보여줍니다.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>보드의 이미지 프롬프트로 키프레임 생성</strong>
+      <p>보드의 🎨 이미지 프롬프트를 그대로 힉스필드에 넣어 씬별 키프레임을 만듭니다. (Day 1~2 이미지 기법 활용)</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>같은 키프레임을 Kling / Hailuo로 영상화 비교</strong>
+      <p>한 키프레임을 두 툴에 동시에 넣어 결과 차이를 나란히 비교합니다. "이 씬은 어떤 툴이 맞나"를 함께 판단합니다.</p>
+    </div>
+  </li>
+</ol>
+
+<div class="callout c-info"><span class="ico">🎬</span><p>시연을 보며 <strong>"나라면 어떤 주제로 보드를 짤까"</strong>를 머릿속에 그려두세요. 바로 이어지는 실습에서 직접 만듭니다.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 A · 영상 연출 문법 익히기
+     ════════════════════════════════ -->
+<div class="sec" id="prac-a">
+  <span class="badge b-prac">실습 A</span>
+  <h2>영상 연출 문법 익히기 — 내 주제 + 4씬 샷 배분</h2>
+  <span class="timer">1:40 – 2:00 · 20분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🖥️</span><p>먼저 <strong>내가 만들 30초 영상의 주제</strong>를 정하고, 4씬으로 샷 사이즈를 배분합니다. 아직 프롬프트는 안 씁니다 — 설계만.</p></div>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>주제 정하기</strong>
+      <p>내 퍼스널 브랜드·취미·제품 등 30초로 보여줄 주제 하나. (예: "나의 운동 루틴", "수제 디저트 만들기")</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>4씬 샷 사이즈 배분</strong>
+      <p>와이드 → 클로즈업 흐름을 의식하며 4씬에 샷을 배치. 예시 보드처럼 <strong>establishing → detail → action → emotional</strong> 구조 추천.</p>
       <ul>
-        <li>9:16 비율인지 확인</li>
-        <li>가장 강한 컷 → 첫 3초(훅)에 배치 예정</li>
+        <li>씬1: <strong>익스트림 와이드</strong> (공간·분위기 소개)</li>
+        <li>씬2: <strong>클로즈업</strong> (핵심 디테일)</li>
+        <li>씬3: <strong>미디엄</strong> (인물 동작)</li>
+        <li>씬4: <strong>클로즈업</strong> (감정 마무리)</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>앵글·무빙 메모</strong>
+      <p>각 씬에 카메라 앵글(아이레벨/로우/하이)과 무빙(push-in/pan/tracking)을 한 단어씩 메모.</p>
+    </div>
+  </li>
+</ol>
+
+<div class="challenge">
+  <h4>🎯 실습 A 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">30초 영상 주제 한 줄로 확정</li>
+    <li><input type="checkbox">4씬 샷 사이즈 배분 완료 (와이드→클로즈업 흐름)</li>
+    <li><input type="checkbox">각 씬에 카메라 앵글 메모</li>
+    <li><input type="checkbox">각 씬에 카메라 무빙 메모</li>
+    <li><input type="checkbox">씬 순서가 이야기로 이어지는지 확인</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 B · ChatGPT로 보드 초안
+     ════════════════════════════════ -->
+<div class="sec" id="prac-b">
+  <span class="badge b-prac">실습 B</span>
+  <h2>ChatGPT로 시나리오 보드 초안 만들기</h2>
+  <span class="timer">2:00 – 2:40 · 40분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">실습 A에서 정한 주제로 <strong>ChatGPT 또는 Claude에게 4씬 보드를 통째로 받습니다.</strong></p>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>메타 프롬프트 가져오기</strong>
+      <p>Part 2의 메타 프롬프트를 복사 → <code style="color:var(--gold);font-size:.82rem">[내 주제]</code>와 <code style="color:var(--gold);font-size:.82rem">[톤]</code>을 내 것으로 교체.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>ChatGPT/Claude에 입력 → 표 받기</strong>
+      <p>4씬 표(샷·연출 / 이미지 프롬프트 / 영상 프롬프트 / 사운드)를 받습니다.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>검토·수정</strong>
+      <p>내 주제와 안 맞는 부분을 고치고, 4씬의 조명·색감 키워드가 통일됐는지 확인. 추상적이면 "더 구체적인 장면으로" 추가 요청.</p>
+    </div>
+  </li>
+</ol>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>받은 표를 Claude Code에서 <code style="color:var(--gold);font-size:.82rem">scenario-board.md</code>로 저장하면 Day 5까지 그대로 재사용할 수 있습니다.</p></div>
+
+<div class="challenge">
+  <h4>🎯 실습 B 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">메타 프롬프트를 내 주제·톤으로 수정</li>
+    <li><input type="checkbox">ChatGPT/Claude에서 4씬 표 받기 완료</li>
+    <li><input type="checkbox">씬별 이미지·영상 프롬프트 검토·수정</li>
+    <li><input type="checkbox">4씬 조명·색감 키워드 통일 확인</li>
+    <li><input type="checkbox">보드를 표(또는 markdown)로 저장</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 C · 키프레임 이미지 생성
+     ════════════════════════════════ -->
+<div class="sec" id="prac-c">
+  <span class="badge b-prac">실습 C</span>
+  <h2>키프레임 이미지 생성</h2>
+  <span class="timer">2:40 – 3:10 · 30분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">보드의 🎨 이미지 프롬프트로 힉스필드에서 <strong>씬별 키프레임 4장</strong>을 생성합니다. (Day 1~2에서 배운 이미지 기법 활용)</p>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>Image 메뉴 진입 + 9:16 설정</strong>
+      <p>힉스필드 → Image → Aspect Ratio <strong style="color:var(--gold)">9:16</strong> 확인.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>씬별 이미지 프롬프트 입력 → 생성</strong>
+      <p>보드의 씬1~4 이미지 프롬프트를 순서대로 넣어 키프레임 생성. 톤이 흔들리면 공통 스타일 키워드를 모든 씬에 붙이세요.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>4장 톤 통일 확인</strong>
+      <p>4장을 나란히 놓고 조명·색감이 한 영상처럼 보이는지 확인. 안 맞는 씬만 재생성.</p>
+    </div>
+  </li>
+</ol>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>모든 씬 프롬프트 끝에 <code style="color:var(--gold);font-size:.82rem">soft warm morning light, film grain, consistent color grading</code>처럼 <strong>공통 스타일 키워드</strong>를 붙이면 4장의 톤이 맞습니다.</p></div>
+
+<div class="challenge">
+  <h4>🎯 실습 C 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">9:16 비율 설정 확인</li>
+    <li><input type="checkbox">씬별 키프레임 생성 (최소 2장, 권장 4장)</li>
+    <li><input type="checkbox">4장 톤·조명 통일 확인</li>
+    <li><input type="checkbox">안 맞는 씬 재생성</li>
+    <li><input type="checkbox">키프레임을 보드 각 행에 매칭</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 D · 멀티툴로 한 씬 영상화 비교
+     ════════════════════════════════ -->
+<div class="sec" id="prac-d">
+  <span class="badge b-prac">실습 D</span>
+  <h2>멀티툴로 한 씬 영상화 비교</h2>
+  <span class="timer">3:10 – 3:40 · 30분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">키프레임 1장을 골라 <strong>2개 이상의 툴로 영상화</strong>해 비교합니다. (깊은 파라미터는 다루지 않고 가볍게 체험)</p>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>키프레임 1장 선택</strong>
+      <p>실습 C에서 만든 키프레임 중 움직임이 잘 살 것 같은 한 장 선택.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>2개 이상 툴로 영상화</strong>
+      <ul>
+        <li><strong style="color:var(--gold)">Veo Lite</strong> — 빠르고 저렴, 먼저 시안 확인</li>
+        <li><strong style="color:var(--gold)">Hailuo</strong> — 자연스러운 표정·물리</li>
+        <li><strong style="color:var(--gold)">Kling</strong> — 부드러운 모션·사운드</li>
+      </ul>
+      <p>같은 키프레임 + 같은 영상 프롬프트로 넣고 결과 비교.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>비교 → 보드에 메모</strong>
+      <p>각 결과의 차이를 보고 "내 씬에는 어떤 툴이 맞는지"를 보드에 한 줄 메모.</p>
+    </div>
+  </li>
+</ol>
+
+<div class="callout c-info"><span class="ico">💡</span><p>인물 일관성이 가장 중요하다면 → Day 5의 <strong>Seedance 2.0</strong>이 답입니다. 오늘은 "툴마다 다르다"를 체감하는 게 목표입니다.</p></div>
+
+<div class="challenge">
+  <h4>🎯 실습 D 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">영상화할 키프레임 1장 선택</li>
+    <li><input type="checkbox">툴 1로 영상화 완료</li>
+    <li><input type="checkbox">툴 2로 영상화 완료</li>
+    <li><input type="checkbox">두 결과 비교</li>
+    <li><input type="checkbox">"내 씬에 맞는 툴" 보드에 메모</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 E · 사운드 프롬프트 작성
+     ════════════════════════════════ -->
+<div class="sec" id="prac-e">
+  <span class="badge b-prac">실습 E</span>
+  <h2>사운드 프롬프트 작성</h2>
+  <span class="timer">3:40 – 4:00 · 20분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🔊</span><p>보드의 각 씬에 <strong>음성 / 음악 / 효과음</strong> 프롬프트를 채웁니다. 실제 사운드 생성은 Day 5 힉스필드 Audio·Lip Sync에서 하므로, 오늘은 <strong>"설계"까지</strong>입니다.</p></div>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>씬마다 3층 사운드 채우기</strong>
+      <ul>
+        <li><span class="snd-tag snd-voice">음성</span> 내레이션·대사가 필요한 씬에 한 줄 작성</li>
+        <li><span class="snd-tag snd-music">음악</span> 전체 BGM 톤 + 고조 지점 메모</li>
+        <li><span class="snd-tag snd-sfx">효과음</span> 각 씬의 환경음·상황음 메모</li>
       </ul>
     </div>
   </li>
   <li>
     <div class="snum">2</div>
     <div class="sbody">
-      <strong>숏폼 기획 — 훅·전개·마무리 구조</strong>
-      <p>3막 구조로 기획합니다. 아래 박스 참고.</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">3</div>
-    <div class="sbody">
-      <strong>부족한 컷 추가 생성</strong>
-      <p>훅 컷이 약하면 Cinema Studio 또는 Seedance로 강한 첫 컷 추가 생성</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">4</div>
-    <div class="sbody">
-      <strong>클립 배치 + reframe(9:16) + upscale</strong>
-      <p>순서: 훅 컷 → 전개 클립들 → 마무리 CTA<br>
-      모든 클립이 9:16인지 확인. 아니면 reframe 적용 후 사용.</p>
-    </div>
-  </li>
-  <li>
-    <div class="snum">5</div>
-    <div class="sbody">
-      <strong>자막·BGM 추가 → virality_predictor → 개선 → 제출</strong>
-      <p>자막 최소 1개, BGM 또는 음악 첨부 권장<br>
-      virality_predictor로 1회 분석 → 훅이 약하면 첫 컷 교체 → 최종 제출</p>
+      <strong>막히면 AI에게 사운드 설계 맡기기</strong>
+      <p>Part 2의 "사운드 프롬프트를 AI로 뽑기" 프롬프트에 씬 설명을 넣어 결과를 받아 채우세요.</p>
     </div>
   </li>
 </ol>
 
-<!-- 훅 공식 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">숏폼 훅(첫 3초) 공식</h3>
+<div class="callout c-tip"><span class="ico">📌</span><p>예시 보드처럼 <strong>음악은 처음 잔잔 → 마지막 고조</strong>로 설계하면 30초 영상에 기승전결이 생깁니다.</p></div>
 
-<div class="formula">강한 오프닝 이미지 + [충격 / 궁금증 / 공감] 유발 자막</div>
+<div class="challenge">
+  <h4>🎯 실습 E 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">각 씬에 효과음 한 줄 이상 작성</li>
+    <li><input type="checkbox">전체 BGM 톤·고조 지점 설계</li>
+    <li><input type="checkbox">내레이션이 필요한 씬에 대사 작성</li>
+    <li><input type="checkbox">막힌 부분은 AI로 사운드 뽑아 채우기</li>
+    <li><input type="checkbox">보드 🔊 칸이 모두 채워졌는지 확인</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     오늘의 공유
+     ════════════════════════════════ -->
+<div class="sec">
+  <span class="badge" style="background:#302010;color:#d09040">📤</span>
+  <h2>오늘의 공유</h2>
+  <span class="timer">3:50 – 4:00 · 10분</span>
+</div>
 
 <div class="card">
-  <h3>검증된 훅 자막 패턴</h3>
-  <table>
-    <thead><tr><th>패턴</th><th>예시</th><th>효과</th></tr></thead>
-    <tbody>
-      <tr><td><strong>충격</strong></td><td>"이걸 AI로 30초 만에 만들었다고?"</td><td>불신 → 궁금증</td></tr>
-      <tr><td><strong>반전</strong></td><td>"이 배경, 진짜 아님"</td><td>뭔가 숨겨진 것이 있다는 느낌</td></tr>
-      <tr><td><strong>공감</strong></td><td>"소름... AI가 내 얼굴 기억했다"</td><td>감정 이입 → 공유 욕구</td></tr>
-      <tr><td><strong>의문</strong></td><td>"이게 광고인지 영화인지 모르겠다고요?"</td><td>클릭 유도</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="prompt">
-  <div class="plabel">강한 훅 클립 생성 프롬프트 (Cinema Studio 3.5)</div>
-  <code id="hook-clip">@[내캐릭터] appears dramatically at @[로케이션],
-sudden camera reveal from black,
-extreme close-up on eyes first, then pull back to reveal full scene,
-cinematic drama style, high contrast moody lighting,
-photorealistic, ultra high quality</code>
-  <button class="copy-btn" onclick="cp('hook-clip',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">마무리 CTA 클립 생성 프롬프트</div>
-  <code id="cta-clip">@[내캐릭터] looking directly at camera with a confident smile,
-slight camera push in, shallow depth of field,
-warm soft lighting, clean background,
-cinematic lifestyle style, photorealistic</code>
-  <button class="copy-btn" onclick="cp('cta-clip',this)">복사</button>
-</div>
-
-<div class="card" style="background:#1a1a2e;border-color:#2a2a4e">
-  <h3 style="color:#9090d8">숏폼 3막 구조 기획 가이드</h3>
-  <table>
-    <thead><tr><th>구간</th><th>역할</th><th>시간</th><th>체크포인트</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong style="color:var(--gold)">훅 (ACT 1)</strong></td>
-        <td>시청자 멈추게 만들기</td>
-        <td>0~3초</td>
-        <td>가장 강한 비주얼 + 자막</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--gold)">전개 (ACT 2)</strong></td>
-        <td>핵심 메시지 전달</td>
-        <td>3~20초</td>
-        <td>2~3개 클립 배치, 자막으로 설명</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--gold)">마무리 (ACT 3)</strong></td>
-        <td>행동 유도 (CTA)</td>
-        <td>20~30초</td>
-        <td>"팔로우" "링크" "저장" 등 CTA 자막</td>
-      </tr>
-    </tbody>
-  </table>
+  <p>오늘 만든 <strong>시나리오 보드</strong>를 강사가 안내한 채널에 올려주세요.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">시나리오 보드 표 (4~5씬)</li>
+    <li><input type="checkbox">생성한 키프레임 이미지 (최소 2장)</li>
+    <li><input type="checkbox">멀티툴 비교에서 고른 "내 씬에 맞는 툴"</li>
+    <li><input type="checkbox">가장 어려웠던 부분 한 줄 메모</li>
+  </ul>
 </div>
 
 <hr>
@@ -758,38 +905,34 @@ cinematic lifestyle style, photorealistic</code>
      ════════════════════════════════ -->
 <div class="sec" id="final-task">
   <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
-  <h2>개인 SNS 숏폼 제출 (Day 4)</h2>
+  <h2>내 30초 영상 시나리오 보드 완성</h2>
 </div>
 
-<div class="callout c-info"><span class="ico">🎯</span><p>오늘 만든 숏폼 1편을 강사가 안내한 채널에 제출합니다. 이것이 Day 4의 최종 과제입니다.</p></div>
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 연출 문법·보드 구조·사운드 설계를 모두 모아 <strong>완성된 시나리오 보드</strong>를 만듭니다. 이 보드는 <strong>내일 Day 5에서 Seedance 2.0으로 실제 영상화하는 재료</strong>가 됩니다.</p></div>
 
 <div class="card">
-  <h3>제출 조건</h3>
-  <table>
+  <h3>과제 조건</h3>
+  <table style="margin-top:.5rem">
     <thead><tr><th>항목</th><th>기준</th></tr></thead>
     <tbody>
-      <tr><td><strong>형식</strong></td><td>9:16 세로 / 15~30초</td></tr>
-      <tr><td><strong>필수 구조</strong></td><td>훅(3초) · 전개 · 마무리 구조 포함</td></tr>
-      <tr><td><strong>자막</strong></td><td>최소 1개 자막 포함</td></tr>
-      <tr><td><strong>음악</strong></td><td>BGM 또는 음악 첨부 권장</td></tr>
-      <tr><td><strong>캐릭터</strong></td><td>Day 2에서 만든 AI 인플루언서 등장 권장 (필수 아님)</td></tr>
-      <tr><td><strong>virality 점수</strong></td><td>virality_predictor 점수 캡처 첨부</td></tr>
-      <tr><td><strong>제출처</strong></td><td>강사 안내 채널</td></tr>
+      <tr><td><strong>씬 수</strong></td><td>4~5씬</td></tr>
+      <tr><td><strong>각 씬 필수 4종</strong></td><td>① 샷·연출 ② 이미지 프롬프트 ③ 영상 프롬프트 ④ 사운드 프롬프트 모두 작성</td></tr>
+      <tr><td><strong>키프레임</strong></td><td>이미지 최소 2장 실제 생성</td></tr>
+      <tr><td><strong>영상 테스트</strong></td><td>한 씬 이상 영상툴로 테스트</td></tr>
+      <tr><td><strong>제출</strong></td><td>시나리오 보드 표(markdown 또는 표) + 키프레임 이미지</td></tr>
+      <tr><td><strong>연결</strong></td><td style="color:var(--gold)">이 보드가 Day 5 영상화의 재료가 됩니다</td></tr>
     </tbody>
   </table>
 </div>
 
 <div class="challenge" style="border-color:#3a3010">
-  <h4 style="color:#e8c060">📤 제출 체크리스트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">15~30초 9:16 숏폼 영상 완성</li>
-    <li><input type="checkbox">첫 3초에 강한 훅 클립 배치</li>
-    <li><input type="checkbox">자막 최소 1개 포함</li>
-    <li><input type="checkbox">BGM 또는 음악 첨부 (권장)</li>
-    <li><input type="checkbox">virality_predictor로 1회 분석 완료</li>
-    <li><input type="checkbox">분석 결과 기반으로 최소 1개 구간 개선</li>
-    <li><input type="checkbox">virality_predictor 점수 화면 캡처 저장</li>
-    <li><input type="checkbox">강사 안내 채널에 영상 + 점수 캡처 제출 완료</li>
+  <h4 style="color:#e8c060">📋 최종 과제 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">4~5씬 시나리오 보드 표 완성 (각 씬 4종 프롬프트 모두)</li>
+    <li><input type="checkbox">키프레임 이미지 최소 2장 실제 생성</li>
+    <li><input type="checkbox">한 씬 이상 영상툴로 테스트 완료</li>
+    <li><input type="checkbox">4~5씬 조명·색감 키워드 통일 확인</li>
+    <li><input type="checkbox">보드를 Day 5용으로 저장 (markdown/파일 보관)</li>
   </ul>
 </div>
 
@@ -806,46 +949,22 @@ cinematic lifestyle style, photorealistic</code>
 <table class="trouble">
   <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
   <tbody>
-    <tr>
-      <td>Cinema Studio 설정이 너무 복잡함</td>
-      <td>기본 프리셋 카메라 사용. 장르만 선택하고 나머지는 기본값으로 생성</td>
-    </tr>
-    <tr>
-      <td>@태그가 인식 안 됨</td>
-      <td>캐릭터·로케이션이 먼저 라이브러리에 <strong>저장</strong>되어 있어야 함. 등록 여부 재확인</td>
-    </tr>
-    <tr>
-      <td>클립 연결이 뚝뚝 끊김</td>
-      <td>같은 색보정·조명으로 통일. 전환 효과(디졸브) 추가. 또는 Cinema Studio로 이어지는 컷 추가 생성</td>
-    </tr>
-    <tr>
-      <td>virality_predictor 점수가 낮음</td>
-      <td>첫 컷을 가장 강한 컷으로 교체. 훅 자막을 충격·반전 패턴으로 변경</td>
-    </tr>
-    <tr>
-      <td>Day 2~3 클립이 없거나 부족함</td>
-      <td>Seedance 2.0 또는 Cinema Studio로 오늘 빠르게 새 클립 2~3개 생성 후 조합</td>
-    </tr>
-    <tr>
-      <td>9:16이 아닌 클립이 섞여 있음</td>
-      <td>Apps → Reframe → 9:16 변환 후 사용</td>
-    </tr>
-    <tr>
-      <td>Mr. Higgs가 응답 안 함</td>
-      <td>페이지 새로고침 후 재시도. 또는 아래 프롬프트 템플릿을 직접 복사해 씀</td>
-    </tr>
-    <tr>
-      <td>Supercomputer 메뉴가 보이지 않음</td>
-      <td>계정 플랜에 따라 접근 제한이 있을 수 있음. 강사에게 문의</td>
-    </tr>
+    <tr><td>ChatGPT 보드가 너무 추상적</td><td>톤·레퍼런스·구체적 장면(장소·시간·색감)을 프롬프트에 추가해서 다시 요청</td></tr>
+    <tr><td>키프레임 4장의 톤이 제각각</td><td>같은 스타일·조명 키워드(<code style="color:var(--gold);font-size:.82rem">soft warm light, film grain</code>)를 모든 씬 프롬프트에 공통 적용</td></tr>
+    <tr><td>어떤 영상툴을 써야 할지 모름</td><td>인물 일관성 = Seedance(Day 5) · 빠른 시안 = Veo Lite · 자연스러운 표정 = Hailuo</td></tr>
+    <tr><td>사운드를 어떻게 만들지 막막</td><td>지금은 설계만 하면 됩니다. 실제 생성은 Day 5 힉스필드 Audio로. 막히면 AI에게 사운드 설계 요청</td></tr>
+    <tr><td>씬 순서가 이야기로 안 이어짐</td><td>establishing(와이드) → detail → action → emotional 구조로 재배치</td></tr>
+    <tr><td>영상이 가로로 나옴</td><td>Aspect Ratio → 9:16 확인 후 재생성</td></tr>
+    <tr><td>크레딧 없다는 메시지</td><td>강사에게 손 들고 알리기. 영상은 이미지보다 크레딧을 많이 씁니다</td></tr>
+    <tr><td>MCP 연결 안 됨</td><td>웹 UI로 진행. 오늘 수업 후 강사와 함께 점검</td></tr>
   </tbody>
 </table>
 
 </div><!-- /page -->
 
 <footer>
-  <span>힉스필드 6일 워크숍 · Day 4 · Cinema Studio 3.5 + Supercomputer + 개인 숏폼 완성</span>
-  <span>예시 이미지: Higgsfield AI 생성 (Cinema Studio 3.5) · 2026</span>
+  <span>힉스필드 8일 워크숍 · Day 4 · 영상 기초 &amp; 시나리오 보드 — AI로 영상 설계하기</span>
+  <span>예시 이미지·영상: Higgsfield AI 생성 (Kling / Hailuo / Veo) · 2026</span>
 </footer>
 
 <script>

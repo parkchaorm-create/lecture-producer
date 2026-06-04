@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 7 · 롱폼 광고 제작 — 광고 기획 & 스토리보드 (Stage 1~3)</title>
+<style>
+:root {
+  --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
+  --gold:#e2c793; --gold2:#b8941f; --cream:#f0e8d5;
+  --text:#e8e0cc; --muted:#7a7666;
+  --green:#4caf82; --red:#e06060; --blue:#6090d0; --purple:#9070d0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.75}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:#0a0a0a;border-bottom:1px solid var(--s3);display:flex;overflow-x:auto;gap:0}
+.nav a{color:var(--muted);text-decoration:none;font-size:.75rem;padding:.7rem .9rem;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s}
+.nav a:hover{color:var(--gold);border-color:var(--gold)}
+.nav-sep{color:var(--s3);padding:.7rem .1rem;font-size:.75rem}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1c1530 0%,#0f0f0f 70%);border-bottom:1px solid var(--s3);padding:3rem 2rem 2.5rem;max-width:960px;margin:0 auto}
+.hero-chip{display:inline-block;background:var(--gold2);color:#000;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:.2rem .6rem;border-radius:3px;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--cream);line-height:1.2;margin-bottom:.6rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:var(--muted);font-size:.95rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.pill{background:var(--s2);border:1px solid var(--s3);border-radius:20px;padding:.3rem .85rem;font-size:.8rem;color:var(--muted)}
+.pill strong{color:var(--text)}
+
+/* TIMELINE */
+.tl-wrap{max-width:960px;margin:1.75rem auto;padding:0 2rem}
+.tl-label{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.tl-bar{display:flex;border-radius:6px;overflow:hidden;height:40px}
+.tl-lec{background:#2d2050;color:#b0a0e0;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:5}
+.tl-prac{background:#1a3328;color:#70c098;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:7}
+.tl-times{display:flex;justify-content:space-between;margin-top:.35rem;font-size:.68rem;color:var(--muted)}
+
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:0 2rem 5rem}
+
+/* SECTION */
+.sec{margin:2.75rem 0 1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.75rem}
+.sec h2{font-size:1.25rem;font-weight:700;color:var(--cream)}
+.sec .timer{margin-left:auto;font-size:.75rem;color:var(--muted);background:var(--s2);padding:.2rem .6rem;border-radius:4px;white-space:nowrap}
+.badge{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border-radius:3px;white-space:nowrap}
+.b-lec{background:#2d2050;color:#b0a0e0}
+.b-prac{background:#1a3328;color:#70c098}
+.b-demo{background:#302010;color:#d09040}
+.b-quiz{background:#1a2030;color:#6090d0}
+
+/* CARD */
+.card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1rem}
+.card h3{font-size:.95rem;color:var(--gold);margin-bottom:.6rem;font-weight:700}
+.card p,.card li{font-size:.88rem}
+.card ul{padding-left:1.2rem}
+.card ul li{margin-bottom:.3rem}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:.86rem}
+th{background:var(--s2);color:var(--gold);padding:.55rem .85rem;text-align:left;border-bottom:1px solid var(--s3);font-size:.74rem;letter-spacing:.05em}
+td{padding:.55rem .85rem;border-bottom:1px solid var(--s3);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--s2)}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:.8rem 1rem;margin:.65rem 0;font-size:.86rem;display:flex;gap:.6rem;align-items:flex-start}
+.callout .ico{flex-shrink:0;margin-top:.05rem}
+.c-ok{background:#162a1e;border-left:3px solid var(--green);color:#80c898}
+.c-err{background:#2a1616;border-left:3px solid var(--red);color:#c88080}
+.c-tip{background:#221e10;border-left:3px solid var(--gold);color:var(--text)}
+.c-info{background:#161e2e;border-left:3px solid var(--blue);color:#88a8d0}
+
+/* PROMPT */
+.prompt{background:#0d1117;border:1px solid #30363d;border-left:3px solid var(--gold);border-radius:6px;padding:1rem 1.25rem;margin:.85rem 0;position:relative}
+.prompt .plabel{font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem}
+.prompt code{font-family:'JetBrains Mono','Consolas',monospace;font-size:.84rem;color:#a8c8e8;white-space:pre-wrap;line-height:1.6;display:block}
+.copy-btn{position:absolute;top:.7rem;right:.7rem;background:var(--s2);border:1px solid var(--s3);color:var(--muted);font-size:.68rem;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:.15s}
+.copy-btn:hover{background:var(--gold2);color:#000}
+.copy-btn.done{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* STEP LIST */
+.steps{list-style:none;padding:0;margin:.75rem 0}
+.steps li{display:flex;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--s3)}
+.steps li:last-child{border-bottom:none}
+.snum{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--gold2);color:#000;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800}
+.sbody{flex:1}
+.sbody strong{color:var(--cream);display:block;margin-bottom:.15rem;font-size:.92rem}
+.sbody p,.sbody span{font-size:.85rem;color:var(--text)}
+.sbody ul{padding-left:1.1rem;margin-top:.3rem;font-size:.85rem}
+.sbody ul li{margin-bottom:.2rem}
+
+/* FORMULA */
+.formula{background:var(--s1);border:1px dashed var(--gold2);border-radius:8px;padding:1rem 1.5rem;margin:.85rem 0;text-align:center;font-size:1rem;color:var(--gold);font-weight:700;letter-spacing:.02em}
+
+/* IMAGE GRIDS */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin:1.25rem 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin:1.25rem 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin:1.25rem 0}
+@media(max-width:720px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+
+.img-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
+.img-card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.img-card img.wide{aspect-ratio:16/9}
+.img-info{padding:.65rem .8rem}
+.img-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
+.img-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+
+/* KEYWORD TAGS */
+.kw-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
+.kw{background:var(--s2);border:1px solid var(--s3);color:var(--text);font-size:.75rem;padding:.2rem .55rem;border-radius:4px;font-family:'JetBrains Mono','Consolas',monospace}
+.kw.hi{background:#2a2010;border-color:var(--gold2);color:var(--gold)}
+
+/* CHECKLIST */
+.cklist{list-style:none;padding:0;margin:.65rem 0}
+.cklist li{display:flex;align-items:flex-start;gap:.55rem;font-size:.86rem;padding:.3rem 0}
+.cklist input{width:15px;height:15px;accent-color:var(--gold2);cursor:pointer;margin-top:.15rem;flex-shrink:0}
+
+/* CHALLENGE BOX */
+.challenge{background:#1a1a2e;border:1px solid #2a2a4e;border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0}
+.challenge h4{color:#a0a0e8;font-size:.9rem;margin-bottom:.75rem;font-weight:700}
+.challenge p{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+
+/* WORD TABLE */
+.word-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:.75rem 0}
+@media(max-width:560px){.word-grid{grid-template-columns:1fr}}
+.word-box{background:var(--s2);border:1px solid var(--s3);border-radius:6px;padding:.75rem 1rem}
+.word-box .wlabel{font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.45rem}
+.word-box .wlist{font-size:.82rem;color:var(--text);line-height:1.8;font-family:'JetBrains Mono','Consolas',monospace}
+
+/* TROUBLE */
+.trouble td:first-child{color:var(--red);width:32%}
+.trouble td:last-child{color:#70c090}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--s3);margin:2rem 0}
+
+/* FOOTER */
+footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+/* STAGE PROGRESS (Day 7 특화) */
+.stage-progress{background:var(--s1);border:1px solid var(--s3);border-radius:10px;padding:1.5rem 1.75rem;margin:1.5rem 0}
+.stage-progress h3{font-size:.8rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.1rem;font-weight:700}
+.stage-row{display:flex;align-items:flex-start;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--s3)}
+.stage-row:last-child{border-bottom:none}
+.stage-num{width:72px;min-width:72px;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .55rem;border-radius:4px;text-align:center;margin-top:.1rem}
+.s-today{background:#2a3a1a;color:#80c060;border:1px solid #3a5a2a}
+.s-next{background:var(--s2);color:var(--muted);border:1px solid var(--s3)}
+.stage-body{flex:1}
+.stage-body strong{color:var(--cream);display:block;font-size:.9rem;margin-bottom:.15rem}
+.stage-body span{font-size:.78rem;color:var(--muted)}
+.stage-divider{border-top:2px dashed #3a3a3a;margin:.5rem 0;position:relative}
+.stage-divider::after{content:'Day 7 여기까지';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--s1);color:var(--muted);font-size:.68rem;padding:0 .6rem;white-space:nowrap}
+
+/* STORYBOARD TABLE */
+.sb-table td:nth-child(1){width:5%;color:var(--gold);font-weight:800;text-align:center}
+.sb-table td:nth-child(2){width:12%;color:var(--cream);font-weight:700}
+.sb-table td:nth-child(3){width:12%;color:#88c0d0}
+
+/* === DAY BAR (cross-day nav) === */
+.daybar{position:sticky;top:0;z-index:300;background:#080808;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.3rem;padding:.5rem 1rem;overflow-x:auto}
+.daybar .db-home{color:var(--gold);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .6rem;white-space:nowrap;margin-right:.3rem}
+.daybar .db-home:hover{text-decoration:underline}
+.daybar .db-link{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:700;padding:.3rem .65rem;border-radius:5px;white-space:nowrap;border:1px solid transparent}
+.daybar .db-link:hover{color:var(--gold);border-color:var(--s3)}
+.daybar .db-link.active{background:var(--gold2);color:#000}
+.daybar .db-sep{color:var(--s3);font-size:.78rem;margin:0 .15rem}
+
+</style>
+</head>
+<body>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link active">Day 7</a><a class="db-link" href="day-8.html">Day 8</a><a class="db-link" href="day-9.html">⭐ 보너스</a></div>
+
+
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#overview">7단계 진도</a>
+  <span class="nav-sep">|</span>
+  <a href="#lec1">롱폼 이론</a>
+  <a href="#lec2">MS 적용</a>
+  <a href="#lec3">공통 브리프</a>
+  <span class="nav-sep">|</span>
+  <a href="#stage1">Stage 1 · 브리프</a>
+  <a href="#stage2">Stage 2 · 스토리보드</a>
+  <a href="#stage3">Stage 3 · 키비주얼</a>
+  <a href="#next">Day 8 예고</a>
+  <a href="#trouble">❓ 도움말</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip">HIGGSFIELD 6-DAY WORKSHOP · DAY 5</div>
+  <h1>롱폼 광고 제작 —<br><em>광고 기획 & 스토리보드 (Stage 1~3)</em></h1>
+  <p>브리프 분석 + 스토리보드 설계 + 키비주얼 생성 — 오늘 3단계를 완성합니다</p>
+  <div class="hero-pills">
+    <div class="pill">⏱ <strong>총 4시간</strong></div>
+    <div class="pill">🎯 <strong>목표</strong>: 이어버드 광고 Stage 1~3 완성</div>
+    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + 크레딧</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h30m · 실습 2h30m</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="tl-wrap" id="overview">
+  <div class="tl-label">오늘 4시간 흐름</div>
+  <div class="tl-bar">
+    <div class="tl-lec">📖 강의·시연 (1h 30m)</div>
+    <div class="tl-prac">🖥️ 실습 Stage 1·2·3 (2h 30m)</div>
+  </div>
+  <div class="tl-times">
+    <span>0:00 롱폼 이론</span>
+    <span>0:30 MS 적용</span>
+    <span>0:50 브리프 공개</span>
+    <span>1:10 Stage 1 실습</span>
+    <span>1:40 Stage 2</span>
+    <span>2:10 Stage 3</span>
+    <span>4:00 끝</span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ════════════════════════════════
+     Day 7~8 광고 제작 7단계 진도표
+     ════════════════════════════════ -->
+
+<div class="stage-progress">
+  <h3>광고 제작 7단계 전체 로드맵 · Day 7~8</h3>
+
+  <div class="stage-row">
+    <span class="stage-num s-today">오늘 ✓</span>
+    <div class="stage-body">
+      <strong>Stage 1 · 브리프 분석 + 콘셉트 결정</strong>
+      <span>Day 7 · 30분 — 타깃·감정·핵심 메시지 1가지 확정</span>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="stage-num s-today">오늘 ✓</span>
+    <div class="stage-body">
+      <strong>Stage 2 · 스토리보드 4씬 작성</strong>
+      <span>Day 7 · 30분 — 씬별 내용·시간·텍스트 오버레이 설계</span>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="stage-num s-today">오늘 ✓</span>
+    <div class="stage-body">
+      <strong>Stage 3 · 키비주얼 + 씬1 생성</strong>
+      <span>Day 7 · 60분 — 16:9 Hero 이미지 + 첫 씬 이미지 생성</span>
+    </div>
+  </div>
+
+  <div class="stage-divider"></div>
+
+  <div class="stage-row">
+    <span class="stage-num s-next">Day 8</span>
+    <div class="stage-body">
+      <strong>Stage 4 · 씬2~4 생성</strong>
+      <span>Day 8 · 60분 — 스토리보드 기반 나머지 씬 이미지 생성</span>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="stage-num s-next">Day 8</span>
+    <div class="stage-body">
+      <strong>Stage 5 · 씬 연결·편집</strong>
+      <span>Day 8 · 45분 — 씬을 이어붙여 영상 흐름 완성</span>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="stage-num s-next">Day 8</span>
+    <div class="stage-body">
+      <strong>Stage 6 · 자막·사운드·로고 추가</strong>
+      <span>Day 8 · 30분 — 텍스트 오버레이, 브랜드 로고, 배경음악</span>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="stage-num s-next">Day 8</span>
+    <div class="stage-body">
+      <strong>Stage 7 · 최종 렌더·발표</strong>
+      <span>Day 8 · 55분 — 최종 출력 + 수강생 광고 발표</span>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-tip"><span class="ico">🎯</span><p>오늘 Day 7는 <strong>Stage 1~3을 완성</strong>합니다. 내일 Day 8에서 씬 연결·편집·자막·발표까지 마무리합니다.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     강의 PART 1 · 롱폼 광고 이론
+     ════════════════════════════════ -->
+<div class="sec" id="lec1">
+  <span class="badge b-lec">강의</span>
+  <h2>Part 1 · 롱폼 16:9 광고 이론</h2>
+  <span class="timer">0:00 – 0:30 · 30분</span>
+</div>
+
+<div class="card">
+  <h3>숏폼 vs 롱폼 광고 — 무엇이 다른가</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>항목</th><th>SNS 숏폼 (9:16)</th><th>롱폼 광고 (16:9)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>길이</strong></td><td>15~30초</td><td>15~60초</td></tr>
+      <tr><td><strong>목적</strong></td><td>인지·바이럴</td><td>설득·전환</td></tr>
+      <tr><td><strong>구조</strong></td><td>훅 → 임팩트</td><td>문제 → 해결 → CTA</td></tr>
+      <tr><td><strong>여백</strong></td><td>최소</td><td>헤드라인 공간 필요</td></tr>
+      <tr><td><strong>플랫폼</strong></td><td>TikTok / Reels</td><td>YouTube / 광고 게재</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3>광고 이미지·영상의 필수 구성 요소</h3>
+  <ol style="padding-left:1.2rem;font-size:.87rem;line-height:2.1">
+    <li>제품이나 서비스가 <strong>명확히 보임</strong></li>
+    <li>텍스트 삽입 가능한 <strong>여백</strong> (헤드라인·CTA 공간)</li>
+    <li>브랜드 <strong>톤&매너 일관성</strong></li>
+    <li>타깃 고객의 <strong>감정 자극</strong> 포인트</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>좋은 광고 씬 구성 공식</h3>
+  <div style="background:var(--s2);border-radius:6px;padding:.85rem 1.1rem;margin-top:.5rem;font-size:.88rem;line-height:2.2">
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem">
+      <span style="background:#2d2050;color:#b0a0e0;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:800;min-width:40px;text-align:center">씬1</span>
+      <span><strong style="color:var(--gold)">문제 제기 또는 훅</strong> — 시청자의 문제·욕망을 자극 <span style="color:var(--muted)">(Why)</span></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem">
+      <span style="background:#2d2050;color:#b0a0e0;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:800;min-width:40px;text-align:center">씬2</span>
+      <span><strong style="color:var(--gold)">제품·서비스 등장</strong> — 해결책으로 제품 등장 <span style="color:var(--muted)">(What)</span></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem">
+      <span style="background:#2d2050;color:#b0a0e0;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:800;min-width:40px;text-align:center">씬3</span>
+      <span><strong style="color:var(--gold)">사용·혜택 장면</strong> — 사용 후 변화·혜택 표현 <span style="color:var(--muted)">(How)</span></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <span style="background:#2d2050;color:#b0a0e0;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;font-weight:800;min-width:40px;text-align:center">씬4</span>
+      <span><strong style="color:var(--gold)">CTA + 브랜드</strong> — 행동 유도 + 브랜드 마무리 <span style="color:var(--muted)">(Next Action)</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>롱폼 광고에서 16:9 비율은 <strong>헤드라인·CTA 텍스트가 들어갈 가로 공간</strong>이 충분합니다. 이미지 생성 시 반드시 여백을 프롬프트에 명시하세요.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     강의 PART 2 · Marketing Studio를 롱폼 광고에 적용 (Day 3 복습)
+     ════════════════════════════════ -->
+<div class="sec" id="lec2">
+  <span class="badge b-lec">강의</span>
+  <h2>Part 2 · Marketing Studio를 롱폼 광고에 적용</h2>
+  <span class="timer">0:30 – 0:50 · 20분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🔁</span><p><strong>Marketing Studio는 Day 3에서 이미 배웠습니다.</strong> 제품 등록·아바타·광고 포맷 8종(UGC·TV Spot·Hyper Motion 등)이 기억나지 않으면 <a href="day-3.html" style="color:var(--gold)">Day 3 · Marketing Studio</a>를 다시 보세요. 여기서는 그 도구를 <strong>롱폼 16:9 광고</strong>에 어떻게 쓰는지에만 집중합니다.</p></div>
+
+<div class="card">
+  <h3>Day 3(제품 광고) vs 오늘(롱폼 광고)에서의 Marketing Studio</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th></th><th>Day 3 · 제품 광고</th><th>Day 7~8 · 롱폼 광고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>산출물</strong></td><td>제품 1컷·짧은 광고</td><td>4씬 이상 16:9 브랜드 스토리</td></tr>
+      <tr><td><strong>목적</strong></td><td>빠른 시안·SNS 노출</td><td>설득·전환·브랜딩</td></tr>
+      <tr><td><strong>추천 포맷</strong></td><td>UGC · Hyper Motion</td><td>TV Spot (감성 스토리)</td></tr>
+      <tr><td><strong>흐름</strong></td><td>제품 → 1컷 자동 생성</td><td>스토리보드 → 씬별 소재 → 연결</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>오늘(Stage 1~3)은 광고 <strong>기획과 키비주얼·씬 이미지</strong>를 먼저 만들고, Day 8에서 Marketing Studio·Seedance로 <strong>영상화</strong>합니다.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     강의 PART 3 · 공통 브리프 공개
+     ════════════════════════════════ -->
+<div class="sec" id="lec3">
+  <span class="badge b-demo">강사 시연</span>
+  <h2>Part 3 · 강사 공통 브리프 공개</h2>
+  <span class="timer">0:50 – 1:10 · 20분</span>
+</div>
+
+<div style="background:#1a2a1a;border:2px solid #3a5a2a;border-radius:10px;padding:1.5rem 1.75rem;margin:1rem 0">
+  <div style="font-size:.72rem;color:#70c060;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem">오늘의 공통 브리프 — 무선 이어버드 광고</div>
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:22%;color:var(--gold);font-weight:700;border-bottom:1px solid var(--s3)">제품</td><td style="border-bottom:1px solid var(--s3)">[브랜드명] 무선 이어버드</td></tr>
+      <tr><td style="color:var(--gold);font-weight:700;border-bottom:1px solid var(--s3)">핵심 메시지</td><td style="border-bottom:1px solid var(--s3)">"일상의 소음을 끄고 나만의 세계로"</td></tr>
+      <tr><td style="color:var(--gold);font-weight:700;border-bottom:1px solid var(--s3)">타깃</td><td style="border-bottom:1px solid var(--s3)">20~35세 직장인·학생 / 음악과 집중력을 중요시하는 사람</td></tr>
+      <tr><td style="color:var(--gold);font-weight:700;border-bottom:1px solid var(--s3)">형식</td><td style="border-bottom:1px solid var(--s3)">16:9 / 15~30초</td></tr>
+      <tr><td style="color:var(--gold);font-weight:700;border-bottom:1px solid var(--s3)">필수 포함</td><td style="border-bottom:1px solid var(--s3)">제품 클로즈업 + 사용 장면 + CTA ("지금 경험하기")</td></tr>
+      <tr><td style="color:var(--red);font-weight:700">금지</td><td>가격 언급, 경쟁사 비교</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">강사 예시 이미지 — 이어버드 씬 4종</p>
+
+<div class="grid-2" style="margin-bottom:.5rem">
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012421_7f0e79ad-4e6b-43c6-969f-a1ac6442fb25.png" alt="이어버드 Hero 16:9" loading="lazy">
+    <div class="img-info">
+      <span class="tag">제품 Hero 16:9</span>
+      <span class="desc">메인 키비주얼. 16:9 비율, 상단 헤드라인 여백 확보.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012425_780e3036-9dd5-4c00-ab1e-5b2aa0b6b929.png" alt="이어버드 라이프스타일" loading="lazy">
+    <div class="img-info">
+      <span class="tag">라이프스타일</span>
+      <span class="desc">도시 거리에서 착용한 자연스러운 장면.</span>
+    </div>
+  </div>
+</div>
+<div class="grid-2">
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012428_af23b8b0-7dd5-4000-8c6b-6f2b55ad9e91.png" alt="이어버드 착용 클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">착용 클로즈업</span>
+      <span class="desc">귀에 착용한 클로즈업. 제품 디테일·디자인 강조.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012431_de76aab1-8637-4d1e-b896-00848bfc056b.png" alt="이어버드 데스크 작업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">데스크 작업</span>
+      <span class="desc">집중하며 작업하는 장면. 집중·생산성 키워드 연결.</span>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     Stage 1 · 브리프 분석 + 콘셉트
+     ════════════════════════════════ -->
+<div class="sec" id="stage1">
+  <span class="badge b-prac">Stage 1 실습</span>
+  <h2>브리프 분석 + 콘셉트 결정</h2>
+  <span class="timer">1:10 – 1:40 · 30분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 진행합니다. 화면을 닫고 아래 워크시트를 따라 작성하세요.</p></div>
+
+<div class="card">
+  <h3>브리프 분석 워크시트 — 4가지 질문에 답하기</h3>
+  <table style="margin-top:.5rem">
+    <tbody>
+      <tr>
+        <td style="width:40%;color:var(--gold);font-weight:700">타깃은 어떤 상황에서 이 제품을 쓰는가?</td>
+        <td style="color:var(--muted)">출퇴근길, 집중이 필요한 업무 중, 운동할 때, 카페에서...</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700">어떤 감정을 느끼게 하고 싶은가?</td>
+        <td style="color:var(--muted)">평온함·집중·자유·세련됨·나만의 시간...</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700">15초 안에 전달할 핵심 메시지 1가지는?</td>
+        <td style="color:var(--muted)">소음에서 벗어나 나만의 세계로 들어간다</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700">내 광고의 차별점은?</td>
+        <td style="color:var(--muted)">기능 강조 vs 감성 강조 vs 라이프스타일 강조...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3>콘셉트 방향 3가지 예시</h3>
+  <div class="word-grid">
+    <div class="word-box">
+      <div class="wlabel">① 감성형</div>
+      <div class="wlist">"퇴근 후 혼자만의 시간" 무드<br>따뜻한 조명·골든아워<br>감정적·내러티브 중심</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">② 기능형</div>
+      <div class="wlist">노이즈 캔슬링 능력 강조<br>소음 전·후 대비<br>기술·수치·비교 중심</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">③ 라이프스타일형</div>
+      <div class="wlist">세련된 도시인의 일상<br>에디토리얼·잡지 감성<br>브랜드 아이덴티티 중심</div>
+    </div>
+    <div class="word-box" style="border-color:var(--gold2);background:#1e1a0a">
+      <div class="wlabel" style="color:var(--gold)">내 콘셉트 메모</div>
+      <div class="wlist" style="color:var(--muted)">나의 콘셉트: ___<br>핵심 감정: ___<br>차별점: ___</div>
+    </div>
+  </div>
+</div>
+
+<div class="challenge">
+  <h4>🎯 Stage 1 개인 실습</h4>
+  <p>브리프를 읽고 내 콘셉트 1가지를 결정한 뒤 아래 3줄을 직접 작성합니다.</p>
+  <div class="prompt" style="margin-bottom:.75rem">
+    <div class="plabel">Stage 1 · 내 콘셉트 메모 템플릿</div>
+    <code id="s1-template">나의 콘셉트: _______________________________________________
+핵심 감정:  _______________________________________________
+차별점:     _______________________________________________</code>
+    <button class="copy-btn" onclick="cp('s1-template',this)">복사</button>
+  </div>
+  <ul class="cklist">
+    <li><input type="checkbox">브리프 전체 읽기 (공통 브리프 카드 참조)</li>
+    <li><input type="checkbox">타깃이 이 제품을 쓰는 구체적인 장면 1개 떠올리기</li>
+    <li><input type="checkbox">콘셉트 방향 3가지 중 1개 선택</li>
+    <li><input type="checkbox">위 템플릿 복사 → 노트/메모앱에 3줄 작성 완료</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     Stage 2 · 스토리보드 작성
+     ════════════════════════════════ -->
+<div class="sec" id="stage2">
+  <span class="badge b-prac">Stage 2 실습</span>
+  <h2>스토리보드 4씬 작성</h2>
+  <span class="timer">1:40 – 2:10 · 30분</span>
+</div>
+
+<div class="card">
+  <h3>강사 예시 스토리보드 — 이어버드 광고</h3>
+  <table class="sb-table" style="margin-top:.5rem">
+    <thead><tr><th>#</th><th>내용</th><th>시간</th><th>이미지 컨셉</th><th>텍스트 오버레이</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>씬1</td>
+        <td><strong>훅·문제 제기</strong></td>
+        <td>0~4초</td>
+        <td>바쁜 도시, 소음과 혼잡</td>
+        <td>"소음이 집중을 방해하고 있다면"</td>
+      </tr>
+      <tr>
+        <td>씬2</td>
+        <td><strong>제품 등장</strong></td>
+        <td>4~8초</td>
+        <td>이어버드 Hero 히어로샷</td>
+        <td>[브랜드명]</td>
+      </tr>
+      <tr>
+        <td>씬3</td>
+        <td><strong>사용 장면</strong></td>
+        <td>8~14초</td>
+        <td>착용 후 평온한 표정·집중</td>
+        <td>"나만의 세계로"</td>
+      </tr>
+      <tr>
+        <td>씬4</td>
+        <td><strong>CTA 마무리</strong></td>
+        <td>14~18초</td>
+        <td>제품 + 로고 + 버튼</td>
+        <td>"지금 경험하기 →"</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">강사 예시 — 씬별 이미지 레퍼런스</p>
+
+<div class="grid-4">
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012452_e39a5ac8-2f6c-43ab-8bc7-4ee1aded5696.png" alt="씬1 멀티샷 컨셉" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬1 · 훅</span>
+      <span class="desc">도시 소음·혼잡 표현. 바쁜 일상의 문제 제기.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012421_7f0e79ad-4e6b-43c6-969f-a1ac6442fb25.png" alt="씬2 Hero" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬2 · 제품 등장</span>
+      <span class="desc">이어버드 Hero 16:9. 제품이 화면 중심에.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012428_af23b8b0-7dd5-4000-8c6b-6f2b55ad9e91.png" alt="씬3 착용 클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬3 · 사용 장면</span>
+      <span class="desc">착용 후 평온·집중한 표정. 감성 자극.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012434_3468c842-38da-4304-a3b4-8094f6c5af09.png" alt="씬4 CTA" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬4 · CTA</span>
+      <span class="desc">제품·로고·CTA 공간. 행동 유도 마무리.</span>
+    </div>
+  </div>
+</div>
+
+<div class="challenge">
+  <h4>🎯 Stage 2 개인 실습 — 내 스토리보드 4씬 작성</h4>
+  <p>Stage 1에서 정한 내 콘셉트를 기반으로 스토리보드 4씬을 작성합니다.</p>
+  <div class="prompt" style="margin-bottom:.75rem">
+    <div class="plabel">Stage 2 · 스토리보드 4씬 템플릿</div>
+    <code id="s2-template">씬1 (0~4초)  · 훅:    내용: _______________ / 텍스트: _______________
+씬2 (4~8초)  · 제품:  내용: _______________ / 텍스트: _______________
+씬3 (8~14초) · 사용:  내용: _______________ / 텍스트: _______________
+씬4 (14~18초)· CTA:   내용: _______________ / 텍스트: _______________</code>
+    <button class="copy-btn" onclick="cp('s2-template',this)">복사</button>
+  </div>
+  <ul class="cklist">
+    <li><input type="checkbox">씬1 작성 — 타깃이 공감할 문제 또는 욕망을 훅으로</li>
+    <li><input type="checkbox">씬2 작성 — 제품이 등장하는 방식 결정 (히어로샷? 손에 들고 있는 장면?)</li>
+    <li><input type="checkbox">씬3 작성 — 착용 후 변화가 느껴지는 장면</li>
+    <li><input type="checkbox">씬4 작성 — CTA 문구 결정 (기본: "지금 경험하기")</li>
+    <li><input type="checkbox">4씬 스토리보드 작성 완료 → 강사에게 확인 요청</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     Stage 3 · 키비주얼 + 씬1 생성
+     ════════════════════════════════ -->
+<div class="sec" id="stage3">
+  <span class="badge b-prac">Stage 3 실습</span>
+  <h2>키비주얼 + 씬1 생성</h2>
+  <span class="timer">2:10 – 3:30 · 60분 (이후 자유 진행)</span>
+</div>
+
+<div class="card">
+  <h3>키비주얼이란?</h3>
+  <p>광고 전체를 대표하는 <strong>핵심 이미지 1장</strong>입니다.<br>
+  광고 소재의 기준이 되며, 다른 씬들의 톤&매너를 맞추는 기준이 됩니다.</p>
+  <ul style="margin-top:.65rem">
+    <li>제품을 가장 매력적으로 보여주는 1장</li>
+    <li><strong>16:9 비율 필수</strong></li>
+    <li>헤드라인 공간 확보 (상단 또는 좌측)</li>
+    <li>Marketing Studio image 모델 또는 <strong>nano_banana_2</strong> 권장</li>
+  </ul>
+</div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">강사 예시 — 키비주얼 + 씬1</p>
+
+<div class="grid-2">
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012421_7f0e79ad-4e6b-43c6-969f-a1ac6442fb25.png" alt="키비주얼 Hero" loading="lazy">
+    <div class="img-info">
+      <span class="tag" style="color:var(--gold)">키비주얼 · Hero 16:9</span>
+      <div class="kw-row"><span class="kw hi">16:9</span><span class="kw">copy space top</span><span class="kw">product hero</span></div>
+      <span class="desc">상단 여백 확보. 헤드라인 텍스트 삽입 공간.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img class="wide" src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012452_e39a5ac8-2f6c-43ab-8bc7-4ee1aded5696.png" alt="씬1 도시 소음" loading="lazy">
+    <div class="img-info">
+      <span class="tag" style="color:#88c0d0">씬1 · 훅 장면</span>
+      <div class="kw-row"><span class="kw hi">urban noise</span><span class="kw">blurred motion</span><span class="kw">hook shot</span></div>
+      <span class="desc">바쁘고 혼잡한 도시 장면. 소음·집중 방해 표현.</span>
+    </div>
+  </div>
+</div>
+
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">키비주얼 생성 프롬프트 공식</h3>
+
+<div class="prompt">
+  <div class="plabel">키비주얼 프롬프트 공식 (복사 후 [ ] 부분 교체)</div>
+  <code id="s3-kv-formula">A premium [제품 묘사] product hero shot, [스타일/배경 묘사],
+dramatic [조명 종류] lighting, 16:9 composition,
+generous copy space at [위치: top / left] for headline text,
+commercial photography style, photorealistic</code>
+  <button class="copy-btn" onclick="cp('s3-kv-formula',this)">복사</button>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>교체 예시: <code style="color:var(--gold);font-size:.83rem">[제품 묘사]</code> → <em>wireless earbuds in sleek charging case</em> / <code style="color:var(--gold);font-size:.83rem">[조명 종류]</code> → <em>soft studio</em> / <code style="color:var(--gold);font-size:.83rem">[위치]</code> → <em>top</em></p></div>
+
+<div class="prompt">
+  <div class="plabel">강사 예시 · 이어버드 키비주얼 실제 프롬프트</div>
+  <code id="s3-kv-ex">Wireless earbuds in a sleek matte black charging case on a dark marble surface,
+premium minimal product photography, dramatic soft studio side lighting,
+subtle depth reflections, 16:9 composition,
+generous copy space at the top left for headline text,
+commercial photography style, photorealistic</code>
+  <button class="copy-btn" onclick="cp('s3-kv-ex',this)">복사</button>
+</div>
+
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">씬1 생성 프롬프트</h3>
+
+<div class="prompt">
+  <div class="plabel">씬1 프롬프트 공식 (훅·문제 제기 장면)</div>
+  <code id="s3-sc1-formula">A busy [장소] environment, people rushing with noise and distraction,
+slightly blurred motion, documentary style candid shot,
+subtle visual chaos, 16:9,
+photorealistic — perfect for an ad opening hook</code>
+  <button class="copy-btn" onclick="cp('s3-sc1-formula',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">강사 예시 · 이어버드 씬1 실제 프롬프트</div>
+  <code id="s3-sc1-ex">A busy urban environment, crowds of commuters rushing through a subway station,
+slight motion blur conveying noise and chaos,
+overexposed harsh fluorescent lighting, slightly disorienting composition,
+16:9, photorealistic — opening hook for a noise-cancelling earbuds ad</code>
+  <button class="copy-btn" onclick="cp('s3-sc1-ex',this)">복사</button>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p>씬1은 <strong>문제가 느껴지는 불편한 장면</strong>일수록 씬3의 해방감과 대비가 커집니다.</p></div>
+<div class="callout c-err"><span class="ico">❌</span><p>씬1에 제품이 등장하면 안 됩니다. 제품은 씬2에서 처음 나옵니다.</p></div>
+
+<div class="challenge">
+  <h4>🎯 Stage 3 개인 실습 체크리스트</h4>
+  <p>Stage 2에서 정한 스토리보드를 기반으로 아래 순서대로 진행합니다.</p>
+  <ul class="cklist">
+    <li><input type="checkbox"><strong>키비주얼 생성</strong> — 공식 복사 → [ ] 내 이어버드 정보로 교체 → 16:9 설정 → 생성</li>
+    <li><input type="checkbox"><strong>키비주얼 확인</strong> — 헤드라인 여백이 충분한가? 부족하면 <code style="color:var(--gold);font-size:.8rem">generous copy space at top</code> 추가 후 재생성</li>
+    <li><input type="checkbox"><strong>씬1 생성</strong> — 공식 복사 → 내 장소/상황으로 교체 → 16:9 설정 → 생성</li>
+    <li><input type="checkbox"><strong>두 이미지 저장</strong> — 키비주얼 1장 + 씬1 1장 다운로드 완료</li>
+    <li><input type="checkbox">(여유) <strong>키비주얼 변형 1~2장</strong> 더 생성 → 가장 마음에 드는 1장 최종 선택</li>
+  </ul>
+
+  <div style="margin-top:1rem;background:#1a2010;border:1px solid #3a5020;border-radius:6px;padding:.85rem 1rem">
+    <div style="font-size:.72rem;color:#70c060;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem">Day 8 준비 메모</div>
+    <ul class="cklist">
+      <li><input type="checkbox">씬2 아이디어 메모 — 제품이 어떤 방식으로 등장할지</li>
+      <li><input type="checkbox">씬3 아이디어 메모 — 착용 후 어떤 장면을 보여줄지</li>
+      <li><input type="checkbox">씬4 CTA 문구 최종 확정</li>
+      <li><input type="checkbox">오늘 생성한 이미지 저장 폴더 정리</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     다음 시간 예고
+     ════════════════════════════════ -->
+<div class="sec" id="next">
+  <span class="badge" style="background:#302010;color:#d09040">📅</span>
+  <h2>Day 8 예고 — Stage 4~7 완성</h2>
+</div>
+
+<div class="card">
+  <h3>내일 Day 8에서 완성하는 것들</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>Stage</th><th>내용</th><th>시간</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold)">Stage 4</strong></td><td>씬2~4 이미지 생성 (스토리보드 기반)</td><td>60분</td></tr>
+      <tr><td><strong style="color:var(--gold)">Stage 5</strong></td><td>씬 연결·편집 (힉스필드 Canvas 또는 외부 편집 툴)</td><td>45분</td></tr>
+      <tr><td><strong style="color:var(--gold)">Stage 6</strong></td><td>자막·사운드·로고 추가</td><td>30분</td></tr>
+      <tr><td><strong style="color:var(--gold)">Stage 7</strong></td><td>최종 렌더 + 수강생 광고 발표</td><td>55분</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout c-tip"><span class="ico">🎯</span><p>오늘 만든 <strong>키비주얼 + 씬1</strong>을 저장해 두세요. 내일 Day 8 시작 시 바로 씬2~4 생성으로 이어갑니다.</p></div>
+
+<div class="callout c-info"><span class="ico">📌</span><p>Day 8 준비: 오늘 결정한 <strong>콘셉트 메모 + 스토리보드 4씬 + 생성 이미지 2장</strong>을 한 폴더에 정리해 오세요.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     문제 해결
+     ════════════════════════════════ -->
+<div class="sec" id="trouble">
+  <span class="badge" style="background:#2a1a1a;color:#d08080">🐛</span>
+  <h2>막혔을 때</h2>
+</div>
+
+<table class="trouble">
+  <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
+  <tbody>
+    <tr><td>Marketing Studio가 제품을 잘못 인식</td><td>더 단순하고 선명한 제품 사진으로 교체. 배경 없는 누끼 이미지 권장.</td></tr>
+    <tr><td>키비주얼에 여백이 없음</td><td><code style="color:var(--gold);font-size:.82rem">generous copy space at top</code> 프롬프트에 명시 후 재생성</td></tr>
+    <tr><td>씬 톤이 브리프와 다름</td><td>브리프의 감정 키워드(<em>peaceful, focused, serene</em>)를 프롬프트에 직접 추가</td></tr>
+    <tr><td>16:9 비율이 아닌 이미지가 나옴</td><td>Aspect Ratio → <strong>16:9</strong> 설정 확인 후 재생성</td></tr>
+    <tr><td>씬1에 제품이 보임</td><td>프롬프트에서 제품 언급 제거. 장소·상황·감정만 묘사.</td></tr>
+    <tr><td>스토리보드 어떻게 써야 할지 모르겠음</td><td>강사 예시 스토리보드를 그대로 따라 작성 후 단어만 교체</td></tr>
+    <tr><td>생성이 30초 이상 걸림</td><td>정상. 창 닫지 말고 기다리기</td></tr>
+    <tr><td>크레딧 없다는 메시지</td><td>강사에게 손 들고 알리기</td></tr>
+  </tbody>
+</table>
+
+</div><!-- /page -->
+
+<footer>
+  <span>힉스필드 8일 워크숍 · Day 7 · 롱폼 광고 제작 — Stage 1~3</span>
+  <span>예시 이미지: Higgsfield AI 생성 (Marketing Studio / Nano Banana 2) · 2026</span>
+</footer>
+
+<script>
+function cp(id, btn) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent.trim()).then(() => {
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('done'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
