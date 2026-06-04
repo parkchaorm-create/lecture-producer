@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 · 힉스필드 이미지 만들기 — 6일 워크숍</title>
+<style>
+:root {
+  --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
+  --gold:#e2c793; --gold2:#b8941f; --cream:#f0e8d5;
+  --text:#e8e0cc; --muted:#7a7666;
+  --green:#4caf82; --red:#e06060; --blue:#6090d0; --purple:#9070d0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.75}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:#0a0a0a;border-bottom:1px solid var(--s3);display:flex;overflow-x:auto;gap:0}
+.nav a{color:var(--muted);text-decoration:none;font-size:.75rem;padding:.7rem .9rem;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s}
+.nav a:hover{color:var(--gold);border-color:var(--gold)}
+.nav-sep{color:var(--s3);padding:.7rem .1rem;font-size:.75rem}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1c1530 0%,#0f0f0f 70%);border-bottom:1px solid var(--s3);padding:3rem 2rem 2.5rem;max-width:960px;margin:0 auto}
+.hero-chip{display:inline-block;background:var(--gold2);color:#000;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:.2rem .6rem;border-radius:3px;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--cream);line-height:1.2;margin-bottom:.6rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:var(--muted);font-size:.95rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.pill{background:var(--s2);border:1px solid var(--s3);border-radius:20px;padding:.3rem .85rem;font-size:.8rem;color:var(--muted)}
+.pill strong{color:var(--text)}
+
+/* TIMELINE */
+.tl-wrap{max-width:960px;margin:1.75rem auto;padding:0 2rem}
+.tl-label{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.tl-bar{display:flex;border-radius:6px;overflow:hidden;height:40px}
+.tl-lec{background:#2d2050;color:#b0a0e0;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:5}
+.tl-prac{background:#1a3328;color:#70c098;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex:7}
+.tl-times{display:flex;justify-content:space-between;margin-top:.35rem;font-size:.68rem;color:var(--muted)}
+
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:0 2rem 5rem}
+
+/* SECTION */
+.sec{margin:2.75rem 0 1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:.75rem}
+.sec h2{font-size:1.25rem;font-weight:700;color:var(--cream)}
+.sec .timer{margin-left:auto;font-size:.75rem;color:var(--muted);background:var(--s2);padding:.2rem .6rem;border-radius:4px;white-space:nowrap}
+.badge{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border-radius:3px;white-space:nowrap}
+.b-lec{background:#2d2050;color:#b0a0e0}
+.b-prac{background:#1a3328;color:#70c098}
+.b-demo{background:#302010;color:#d09040}
+.b-quiz{background:#1a2030;color:#6090d0}
+
+/* CARD */
+.card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1rem}
+.card h3{font-size:.95rem;color:var(--gold);margin-bottom:.6rem;font-weight:700}
+.card p,.card li{font-size:.88rem}
+.card ul{padding-left:1.2rem}
+.card ul li{margin-bottom:.3rem}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:.86rem}
+th{background:var(--s2);color:var(--gold);padding:.55rem .85rem;text-align:left;border-bottom:1px solid var(--s3);font-size:.74rem;letter-spacing:.05em}
+td{padding:.55rem .85rem;border-bottom:1px solid var(--s3);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--s2)}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:.8rem 1rem;margin:.65rem 0;font-size:.86rem;display:flex;gap:.6rem;align-items:flex-start}
+.callout .ico{flex-shrink:0;margin-top:.05rem}
+.c-ok{background:#162a1e;border-left:3px solid var(--green);color:#80c898}
+.c-err{background:#2a1616;border-left:3px solid var(--red);color:#c88080}
+.c-tip{background:#221e10;border-left:3px solid var(--gold);color:var(--text)}
+.c-info{background:#161e2e;border-left:3px solid var(--blue);color:#88a8d0}
+
+/* PROMPT */
+.prompt{background:#0d1117;border:1px solid #30363d;border-left:3px solid var(--gold);border-radius:6px;padding:1rem 1.25rem;margin:.85rem 0;position:relative}
+.prompt .plabel{font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem}
+.prompt code{font-family:'JetBrains Mono','Consolas',monospace;font-size:.84rem;color:#a8c8e8;white-space:pre-wrap;line-height:1.6;display:block}
+.copy-btn{position:absolute;top:.7rem;right:.7rem;background:var(--s2);border:1px solid var(--s3);color:var(--muted);font-size:.68rem;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:.15s}
+.copy-btn:hover{background:var(--gold2);color:#000}
+.copy-btn.done{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* STEP LIST */
+.steps{list-style:none;padding:0;margin:.75rem 0}
+.steps li{display:flex;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--s3)}
+.steps li:last-child{border-bottom:none}
+.snum{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--gold2);color:#000;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800}
+.sbody{flex:1}
+.sbody strong{color:var(--cream);display:block;margin-bottom:.15rem;font-size:.92rem}
+.sbody p,.sbody span{font-size:.85rem;color:var(--text)}
+.sbody ul{padding-left:1.1rem;margin-top:.3rem;font-size:.85rem}
+.sbody ul li{margin-bottom:.2rem}
+
+/* FORMULA */
+.formula{background:var(--s1);border:1px dashed var(--gold2);border-radius:8px;padding:1rem 1.5rem;margin:.85rem 0;text-align:center;font-size:1rem;color:var(--gold);font-weight:700;letter-spacing:.02em}
+
+/* IMAGE GRIDS */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin:1.25rem 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin:1.25rem 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin:1.25rem 0}
+@media(max-width:720px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+
+.img-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
+.img-card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.img-info{padding:.65rem .8rem}
+.img-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
+.img-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+
+/* KEYWORD TAGS */
+.kw-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
+.kw{background:var(--s2);border:1px solid var(--s3);color:var(--text);font-size:.75rem;padding:.2rem .55rem;border-radius:4px;font-family:'JetBrains Mono','Consolas',monospace}
+.kw.hi{background:#2a2010;border-color:var(--gold2);color:var(--gold)}
+
+/* CHECKLIST */
+.cklist{list-style:none;padding:0;margin:.65rem 0}
+.cklist li{display:flex;align-items:flex-start;gap:.55rem;font-size:.86rem;padding:.3rem 0}
+.cklist input{width:15px;height:15px;accent-color:var(--gold2);cursor:pointer;margin-top:.15rem;flex-shrink:0}
+
+/* CHALLENGE BOX */
+.challenge{background:#1a1a2e;border:1px solid #2a2a4e;border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0}
+.challenge h4{color:#a0a0e8;font-size:.9rem;margin-bottom:.75rem;font-weight:700}
+.challenge p{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+
+/* WORD TABLE */
+.word-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:.75rem 0}
+@media(max-width:560px){.word-grid{grid-template-columns:1fr}}
+.word-box{background:var(--s2);border:1px solid var(--s3);border-radius:6px;padding:.75rem 1rem}
+.word-box .wlabel{font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.45rem}
+.word-box .wlist{font-size:.82rem;color:var(--text);line-height:1.8;font-family:'JetBrains Mono','Consolas',monospace}
+
+/* TROUBLE */
+.trouble td:first-child{color:var(--red);width:32%}
+.trouble td:last-child{color:#70c090}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--s3);margin:2rem 0}
+
+/* FOOTER */
+footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3);color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#overview">전체 흐름</a>
+  <span class="nav-sep">|</span>
+  <a href="#lec1">힉스필드 지도</a>
+  <a href="#lec2-style">스타일</a>
+  <a href="#lec2-light">조명</a>
+  <a href="#lec2-comp">구도</a>
+  <a href="#lec3">시연</a>
+  <span class="nav-sep">|</span>
+  <a href="#prac-a">실습 A</a>
+  <a href="#prac-b">실습 B</a>
+  <a href="#prac-c1">C1·스타일</a>
+  <a href="#prac-c2">C2·조명</a>
+  <a href="#prac-c3">C3·구도</a>
+  <a href="#prac-d">D·완성</a>
+  <a href="#prac-e">E·편집Apps</a>
+  <a href="#prac-f">F·레퍼런스</a>
+  <a href="#prac-g">G·캐릭터</a>
+  <a href="#prac-h">H·광고</a>
+  <a href="#final-task">🏆 과제</a>
+  <a href="#trouble">❓ 도움말</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip">HIGGSFIELD 6-DAY WORKSHOP · DAY 1</div>
+  <h1>이미지 만들기 —<br><em>스타일·조명·구도</em>로 완성하는 첫 이미지</h1>
+  <p>힉스필드 전체 지도 + 프롬프트 5요소 이론 + 스타일·조명·구도 실전 탐험</p>
+  <div class="hero-pills">
+    <div class="pill">⏱ <strong>총 4시간</strong></div>
+    <div class="pill">🎯 <strong>목표</strong>: 9:16 이미지를 내 스타일로 만들기</div>
+    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + 크레딧</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의 1h40m · 실습 2h20m</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="tl-wrap" id="overview">
+  <div class="tl-label">오늘 4시간 흐름</div>
+  <div class="tl-bar">
+    <div class="tl-lec">📖 강의·시연 (1h 40m)</div>
+    <div class="tl-prac">🖥️ 실습 A·B·C1·C2·C3·D (2h 20m)</div>
+  </div>
+  <div class="tl-times">
+    <span>0:00 힉스필드 지도</span>
+    <span>0:30 이미지 이론</span>
+    <span>1:20 강사 시연</span>
+    <span>1:40 실습 시작</span>
+    <span>3:50 공유</span>
+    <span>4:00 끝</span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ════════════════════════════════
+     강의 PART 1 · 힉스필드 전체 지도
+     ════════════════════════════════ -->
+<div class="sec" id="lec1">
+  <span class="badge b-lec">강의</span>
+  <h2>Part 1 · 힉스필드 전체 지도</h2>
+  <span class="timer">0:00 – 0:30 · 30분</span>
+</div>
+
+<div class="card">
+  <h3>힉스필드란?</h3>
+  <p>텍스트(프롬프트)나 이미지를 입력하면 <strong>이미지와 영상</strong>을 만들어주는 AI 생성 플랫폼입니다.<br>
+  촬영·외주 없이 혼자서 숏폼·광고를 제작할 수 있습니다.</p>
+</div>
+
+<p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">실제 힉스필드 상단 메뉴 — 직접 캡처</p>
+<img src="screenshots/nav-bar.png" alt="힉스필드 실제 메뉴" style="width:100%;border-radius:6px;border:1px solid var(--s3);margin-bottom:1rem">
+
+<table>
+  <thead><tr><th>메뉴</th><th>하는 일</th><th>배우는 날</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">Image</strong></td><td>이미지 생성 · text-to-image · image-to-image</td><td>✅ Day 1~2</td></tr>
+    <tr><td><strong style="color:var(--gold)">Video</strong></td><td>이미지→영상 · Seedance 2.0 · Kling · Veo 등</td><td>Day 3</td></tr>
+    <tr><td><strong>Audio</strong> <span style="font-size:.68rem;background:#2a3a10;color:#90c040;padding:.1rem .35rem;border-radius:3px">NEW</span></td><td>AI 음악·효과음 생성</td><td>Day 3</td></tr>
+    <tr><td><strong>Supercomputer</strong> <span style="font-size:.68rem;background:#2a3a10;color:#90c040;padding:.1rem .35rem;border-radius:3px">NEW</span></td><td>워크플로 자동화 · AI 에이전트 · 스킬</td><td>Day 4</td></tr>
+    <tr><td><strong>MCP &amp; CLI</strong> <span style="font-size:.68rem;background:#2a3a10;color:#90c040;padding:.1rem .35rem;border-radius:3px">NEW</span></td><td>Claude Code 연결 · 채팅으로 생성 자동화</td><td>Day 1 (오늘 맛보기)</td></tr>
+    <tr><td><strong>Plugins</strong> <span style="font-size:.68rem;background:#2a3a10;color:#90c040;padding:.1rem .35rem;border-radius:3px">NEW</span></td><td>Adobe Premiere Pro / After Effects 연동</td><td>참고</td></tr>
+    <tr><td><strong>Collab</strong></td><td>팀 협업 · 프로젝트 공유</td><td>참고</td></tr>
+    <tr><td><strong>Marketing Studio</strong></td><td>제품 광고 영상 자동화 · UGC · TV Spot</td><td>Day 5~6</td></tr>
+    <tr><td><strong>Cinema Studio</strong></td><td>시네마틱 영상 · 카메라 제어 · 멀티샷 (v3.5)</td><td>Day 4</td></tr>
+    <tr><td><strong>AI Influencer</strong></td><td>AI 인플루언서 생성 · Soul ID 학습</td><td>Day 2</td></tr>
+    <tr><td><strong>Canvas</strong></td><td>AI 캔버스 · 미디어 편집 통합 작업</td><td>Day 4</td></tr>
+    <tr><td><strong style="color:var(--gold)">Apps</strong></td><td>이미지 편집 툴 모음 (Angles · Relight · Expand 등)</td><td>✅ Day 1 (오늘 실습 E)</td></tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>오늘은 <strong>Image</strong>와 <strong>Apps</strong>를 중심으로 실습합니다. 나머지는 Day 2~6에서 직접 씁니다.</p></div>
+
+<div class="card">
+  <h3>크레딧 = 택시 미터기</h3>
+  <ul>
+    <li>이미지 1장 ≈ 수 크레딧 / 영상 1편 ≈ 이미지의 10~30배</li>
+    <li>4K·고해상도는 1k보다 훨씬 비쌈</li>
+  </ul>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p><strong>연습은 항상 1k</strong>. 마음에 드는 것만 고품질로 재생성.</p></div>
+</div>
+
+<!-- ════════════════════════════════
+     강의 PART 2 · 이미지 생성 이론
+     ════════════════════════════════ -->
+<div class="sec">
+  <span class="badge b-lec">강의</span>
+  <h2>Part 2 · 이미지 생성 이론 — 프롬프트 5요소</h2>
+  <span class="timer">0:30 – 1:20 · 50분</span>
+</div>
+
+<div class="card">
+  <h3>AI는 어떻게 이미지를 만드나요?</h3>
+  <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.65rem 0;font-size:.85rem">
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">프롬프트</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">AI가 의미 파악</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">노이즈 제거</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--gold2);color:#000;padding:.3rem .7rem;border-radius:4px;font-weight:700">완성!</span>
+  </div>
+  <div class="callout c-info"><span class="ico">💡</span><p>"그리는" 게 아니라 <strong>노이즈를 걷어내는</strong> 과정. 같은 프롬프트도 매번 결과가 달라집니다.</p></div>
+</div>
+
+<div class="formula">① 피사체 + ② 스타일·무드 + ③ 조명 + ④ 구도·카메라 + ⑤ 레시피 키워드</div>
+
+<!-- ─── ① 피사체 ─── -->
+<h3 id="lec2-subject" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">① 피사체 — 뭐가 있나</h3>
+<div class="card">
+  <p>이미지의 <strong>주인공</strong>입니다. 사람, 사물, 장소, 동물 모두 가능.</p>
+  <div class="word-grid" style="margin-top:.75rem">
+    <div class="word-box">
+      <div class="wlabel">사물·오브젝트</div>
+      <div class="wlist">a coffee cup<br>a candle on marble<br>fresh flowers in a vase<br>a stack of books</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">인물·캐릭터</div>
+      <div class="wlist">a young woman<br>a man in a white shirt<br>a child laughing<br>a silhouette</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">장소·배경</div>
+      <div class="wlist">a cafe interior<br>a rooftop at sunset<br>a forest path<br>a minimalist bedroom</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">음식·라이프스타일</div>
+      <div class="wlist">a bowl of ramen<br>avocado toast<br>a cocktail glass<br>a breakfast table</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ② 스타일·무드 ─── -->
+<h3 id="lec2-style" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">② 스타일·무드 — 어떤 느낌</h3>
+<div class="card">
+  <p>같은 피사체도 <strong>스타일 키워드</strong> 하나로 완전히 달라집니다. 아래 4장은 동일한 피사체(커피잔)에 스타일만 바꾼 결과입니다.</p>
+</div>
+
+<div class="grid-4">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002015_c1adbe4d-81c4-409e-9edc-859b2ae91b10.png" alt="미니멀" loading="lazy">
+    <div class="img-info">
+      <span class="tag">미니멀</span>
+      <div class="kw-row"><span class="kw hi">clean minimal</span><span class="kw">white marble</span><span class="kw">airy and bright</span></div>
+      <span class="desc">군더더기 없이 깔끔. 여백이 많고 색이 단순.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002019_74043acb-5e6f-47d7-a7ab-0f7709f3fe7f.png" alt="에디토리얼" loading="lazy">
+    <div class="img-info">
+      <span class="tag">에디토리얼</span>
+      <div class="kw-row"><span class="kw hi">editorial</span><span class="kw">high contrast</span><span class="kw">magazine aesthetic</span></div>
+      <span class="desc">잡지 화보 느낌. 구도가 대담하고 연출이 강함.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002022_648ca447-6081-46b6-b214-2732c8e0898b.png" alt="따뜻한" loading="lazy">
+    <div class="img-info">
+      <span class="tag">따뜻한·코지</span>
+      <div class="kw-row"><span class="kw hi">cozy warm</span><span class="kw">warm amber tones</span><span class="kw">soft bokeh</span></div>
+      <span class="desc">포근하고 따뜻한 색감. 가을·겨울 감성.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002024_027431be-b35b-415e-8a6a-d0ce47cf5c8e.png" alt="럭셔리" loading="lazy">
+    <div class="img-info">
+      <span class="tag">럭셔리</span>
+      <div class="kw-row"><span class="kw hi">luxury</span><span class="kw">black marble</span><span class="kw">gold accents</span><span class="kw">deep shadows</span></div>
+      <span class="desc">고급스럽고 무게감 있는 분위기. 어두운 배경.</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>자주 쓰는 스타일 키워드 모음</h3>
+  <div class="word-grid">
+    <div class="word-box">
+      <div class="wlabel">밝고 가벼운</div>
+      <div class="wlist">clean minimal<br>airy and bright<br>light and fresh<br>Scandinavian style<br>pastel tones</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">어둡고 무게감</div>
+      <div class="wlist">moody and dark<br>luxury dark<br>cinematic noir<br>dramatic shadows<br>deep and rich</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">따뜻하고 포근</div>
+      <div class="wlist">cozy warm<br>warm amber tones<br>rustic and homey<br>vintage film feel<br>cottagecore</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">세련되고 편집적</div>
+      <div class="wlist">editorial<br>fashion magazine<br>high contrast<br>graphic bold<br>art direction</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ③ 조명 ─── -->
+<h3 id="lec2-light" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">③ 조명 — 빛의 성격</h3>
+<div class="card">
+  <p>조명은 이미지의 <strong>감정을 결정</strong>합니다. 같은 장면도 조명 키워드 하나로 완전히 달라집니다.</p>
+</div>
+
+<div class="grid-3">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002027_d60a05d6-b542-466d-9273-59ca9eb42b50.png" alt="자연광" loading="lazy">
+    <div class="img-info">
+      <span class="tag">자연광 (창가)</span>
+      <div class="kw-row"><span class="kw hi">soft natural window light</span><span class="kw">diffused light</span><span class="kw">airy</span></div>
+      <span class="desc">부드럽고 고르게 퍼지는 빛. 일상적이고 청명한 느낌.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002030_ec8bbb9d-ab62-4ff9-8557-271d3f4bdaf7.png" alt="골든아워" loading="lazy">
+    <div class="img-info">
+      <span class="tag">골든아워</span>
+      <div class="kw-row"><span class="kw hi">golden hour light</span><span class="kw">warm orange glow</span><span class="kw">long soft shadows</span></div>
+      <span class="desc">일몰 직전 따뜻한 주황빛. 드라마틱하고 감성적.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002034_aa822560-f3c1-4304-8ba6-511034da73f1.png" alt="드라마틱 측광" loading="lazy">
+    <div class="img-info">
+      <span class="tag">드라마틱 측광</span>
+      <div class="kw-row"><span class="kw hi">chiaroscuro side lighting</span><span class="kw">deep moody shadows</span><span class="kw">film noir</span></div>
+      <span class="desc">한쪽에서만 강하게 비치는 빛. 긴장감, 영화적.</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>조명 키워드 사전</h3>
+  <div class="word-grid">
+    <div class="word-box">
+      <div class="wlabel">자연광 계열</div>
+      <div class="wlist">soft natural light<br>window light<br>overcast light<br>morning sunlight<br>blue hour</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">골든·웜 계열</div>
+      <div class="wlist">golden hour<br>warm ambient light<br>candlelight glow<br>sunset backlighting<br>warm rim light</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">스튜디오·인공광</div>
+      <div class="wlist">studio lighting<br>soft box light<br>side lighting<br>backlit with halo<br>neon accent light</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">무디·드라마틱</div>
+      <div class="wlist">chiaroscuro<br>low key lighting<br>dramatic shadows<br>film noir lighting<br>high contrast light</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ④ 구도·카메라 ─── -->
+<h3 id="lec2-comp" style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem;padding-top:.5rem">④ 구도·카메라 — 어떤 앵글, 얼마나 가까이</h3>
+<div class="card">
+  <p>같은 피사체를 어디서, 얼마나 가까이 찍느냐에 따라 이미지의 <strong>목적이 달라집니다</strong>.</p>
+</div>
+
+<div class="grid-3">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002037_ebd3cfe1-4b2c-4b53-9c4f-6fe3ad84b636.png" alt="클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">클로즈업</span>
+      <div class="kw-row"><span class="kw hi">extreme close-up</span><span class="kw">90mm macro lens</span><span class="kw">shallow depth of field</span></div>
+      <span class="desc">피사체를 크게 당겨서. 디테일과 질감 강조.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002041_1a40cbca-35b3-4470-913a-d38dd1690022.png" alt="플랫레이" loading="lazy">
+    <div class="img-info">
+      <span class="tag">플랫레이 (탑뷰)</span>
+      <div class="kw-row"><span class="kw hi">top-down flat lay</span><span class="kw">overhead shot</span><span class="kw">symmetrical</span></div>
+      <span class="desc">정위에서 내려다보는 앵글. 라이프스타일·푸드 콘텐츠.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_002044_d00e3e8b-56ed-4032-af2b-5b7f31a98513.png" alt="얕은심도 와이드" loading="lazy">
+    <div class="img-info">
+      <span class="tag">얕은 심도 (전경 포커스)</span>
+      <div class="kw-row"><span class="kw hi">shallow depth of field</span><span class="kw">35mm lens</span><span class="kw">warm bokeh</span></div>
+      <span class="desc">앞은 선명, 뒤는 흐릿. 피사체와 공간감을 동시에.</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>구도·카메라 키워드 사전</h3>
+  <div class="word-grid">
+    <div class="word-box">
+      <div class="wlabel">앵글</div>
+      <div class="wlist">eye level shot<br>low angle<br>high angle<br>top-down / flat lay<br>bird's eye view</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">거리·크기</div>
+      <div class="wlist">extreme close-up<br>close-up<br>medium shot<br>wide shot<br>environmental shot</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">심도·렌즈</div>
+      <div class="wlist">shallow depth of field<br>deep depth of field<br>35mm lens<br>50mm lens<br>85mm portrait lens</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">구도 법칙</div>
+      <div class="wlist">rule of thirds<br>centered composition<br>diagonal composition<br>negative space<br>vertical composition</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>⑤ 레시피 키워드 — 항상 붙이면 좋은 것들</h3>
+  <div class="kw-row">
+    <span class="kw hi">photorealistic</span>
+    <span class="kw hi">film grain</span>
+    <span class="kw hi">cinematic</span>
+    <span class="kw">highly detailed</span>
+    <span class="kw">sharp focus</span>
+    <span class="kw">8K quality</span>
+    <span class="kw">professional photography</span>
+    <span class="kw">award-winning photo</span>
+  </div>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>프롬프트 끝에 <strong>photorealistic</strong>만 붙여도 품질이 확 올라갑니다. 먼저 이것만 넣어보세요.</p></div>
+</div>
+
+<!-- 모델 선택 -->
+<div class="card" style="margin-top:1.25rem">
+  <h3>모델 선택 기준</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>모델</th><th>언제 쓰나</th><th>속도</th><th>크레딧</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold)">Nano Banana 2</strong></td><td>일반 장면 고품질, 오늘 기본</td><td>보통</td><td>보통</td></tr>
+      <tr><td><strong>Nano Banana</strong></td><td>빠른 시안·아이디어 확인</td><td>⚡ 빠름</td><td>💚 저렴</td></tr>
+      <tr><td><strong>Cinema Studio 2.5</strong></td><td>영화·광고 시네마틱 톤</td><td>보통</td><td>보통</td></tr>
+      <tr><td><strong>Soul 2.0</strong></td><td>인물·패션·UGC 얼굴 표현</td><td>보통</td><td>보통</td></tr>
+      <tr><td><strong>Flux Kontext</strong></td><td>기존 이미지를 편집할 때</td><td>보통</td><td>보통</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3>종횡비 선택</h3>
+  <table style="margin-top:.5rem">
+    <thead><tr><th>비율</th><th>용도</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold)">9:16 ← 오늘</strong></td><td>인스타 릴스·틱톡·유튜브 쇼츠</td></tr>
+      <tr><td><strong>16:9</strong></td><td>유튜브·광고 (Day 5~6)</td></tr>
+      <tr><td><strong>1:1</strong></td><td>인스타 피드 정사각</td></tr>
+      <tr><td><strong>4:5</strong></td><td>인스타 세로 피드</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════
+     강사 시연
+     ════════════════════════════════ -->
+<div class="sec" id="lec3">
+  <span class="badge b-demo">강사 시연</span>
+  <h2>Part 3 · 강사 라이브 시연</h2>
+  <span class="timer">1:20 – 1:40 · 20분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">👀</span><p>지금은 따라하지 말고 지켜보세요. 방법을 보고 나서 실습합니다.</p></div>
+<img src="screenshots/01-home-clean.png" alt="힉스필드 홈 — 실제 화면" style="width:100%;border-radius:8px;border:1px solid var(--s3);margin:.75rem 0 1rem">
+
+<ol class="steps">
+  <li><div class="snum">1</div><div class="sbody"><strong>접속 및 메뉴 확인</strong><span>higgsfield.ai → Image 메뉴, 화면 구조 설명</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>설정 3가지 먼저</strong><span>Model = Nano Banana 2 / Aspect Ratio = 9:16 / Resolution = 1k</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>기본 프롬프트로 첫 생성</strong><span>카페 프롬프트 그대로 입력 → 결과 확인</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>스타일 키워드 1개 교체 → 비교</strong><span><span class="kw">minimal</span> → <span class="kw hi">luxury</span> 로 바꿔서 재생성, 차이 설명</span></div></li>
+  <li><div class="snum">5</div><div class="sbody"><strong>조명 키워드 1개 교체 → 비교</strong><span><span class="kw">warm morning light</span> → <span class="kw hi">chiaroscuro side lighting</span></span></div></li>
+</ol>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 A · 첫 이미지
+     ════════════════════════════════ -->
+<div class="sec" id="prac-a">
+  <span class="badge b-prac">실습 A</span>
+  <h2>첫 이미지 만들기</h2>
+  <span class="timer">1:40 – 2:10 · 30분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 따라합니다. 막히면 손을 들거나 옆 사람에게 물어보세요.</p></div>
+
+<ol class="steps">
+  <li><div class="snum">1</div><div class="sbody"><strong>사이트 열기</strong><p>브라우저 주소창: <strong style="color:var(--gold)">higgsfield.ai</strong> → 로그인</p></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>Image 메뉴 클릭</strong><p>왼쪽 사이드바 → Image → 프롬프트 입력창 확인</p></div></li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>⚠️ 설정 3가지 먼저 확인</strong>
+      <ul>
+        <li>Model → <strong style="color:var(--gold)">Nano Banana 2</strong></li>
+        <li>Aspect Ratio → <strong style="color:var(--gold)">9:16</strong></li>
+        <li>Resolution → <strong style="color:var(--gold)">1k</strong></li>
+      </ul>
+    </div>
+  </li>
+  <li><div class="snum">4</div><div class="sbody"><strong>프롬프트 복사 → 붙여넣기 → Generate</strong><p>아래 박스를 복사해서 입력창에 붙여넣고 Generate 클릭.</p></div></li>
+</ol>
+
+<div class="prompt">
+  <div class="plabel">실습 A · 기본 프롬프트</div>
+  <code id="pa">A cozy minimal home cafe corner, warm morning light through a window, a steaming cup of coffee on a wooden table, soft film grain, shallow depth of field, vertical composition, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pa',this)">복사</button>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p>세로형(9:16) 이미지가 나오면 성공!</p></div>
+<div class="callout c-err"><span class="ico">❌</span><p>가로로 나왔다면 → Aspect Ratio 9:16 확인 후 재생성</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 B · 모델 비교
+     ════════════════════════════════ -->
+<div class="sec" id="prac-b">
+  <span class="badge b-prac">실습 B</span>
+  <h2>모델 3종 비교</h2>
+  <span class="timer">2:10 – 2:30 · 20분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">같은 프롬프트로 모델만 바꿔서 결과 차이를 직접 눈으로 확인합니다.</p>
+
+<table>
+  <thead><tr><th>순서</th><th>모델 이름</th><th>특징</th><th>할 일</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Nano Banana 2</strong></td><td>고품질, 디테일</td><td>실습 A에서 이미 완료 ✅</td></tr>
+    <tr><td>2</td><td><strong>Nano Banana</strong></td><td>빠름, 저렴</td><td>모델만 바꿔 재생성</td></tr>
+    <tr><td>3</td><td><strong>Cinema Studio 2.5</strong></td><td>시네마틱, 필름 톤</td><td>모델만 바꿔 재생성</td></tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>프롬프트는 실습 A와 <strong>동일</strong>하게. 모델만 바꿉니다.</p></div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.88rem"><strong style="color:var(--cream)">강사 예시 — 동일 프롬프트, 모델 3종 결과</strong></p>
+<div class="grid-3">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260603_235654_546155b6-0d6a-4372-b1b5-66e3a266036f.png" alt="Nano Banana 2" loading="lazy">
+    <div class="img-info"><span class="tag">Nano Banana 2</span><span class="desc">자연광 디테일 풍부, 포토리얼</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260603_235657_7388a42e-35fe-46bb-9fb1-f230ed987f03.png" alt="Nano Banana" loading="lazy">
+    <div class="img-info"><span class="tag">Nano Banana</span><span class="desc">빠르고 저렴, 시안용</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260603_235701_4b62d7ec-b4dc-41b8-9fcc-5af41a635fb6.png" alt="Cinema Studio 2.5" loading="lazy">
+    <div class="img-info"><span class="tag">Cinema Studio 2.5</span><span class="desc">필름 그레인, 시네마틱 무드</span></div>
+  </div>
+</div>
+
+<div class="challenge">
+  <h4>📋 비교 메모 — 옆 사람과 같이</h4>
+  <ul class="cklist">
+    <li><input type="checkbox">가장 마음에 드는 모델은?</li>
+    <li><input type="checkbox">가장 빨리 나온 모델은?</li>
+    <li><input type="checkbox">조명 표현이 가장 자연스러운 모델은?</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 C1 · 스타일 탐험
+     ════════════════════════════════ -->
+<div class="sec" id="prac-c1">
+  <span class="badge b-prac">실습 C1</span>
+  <h2>스타일·무드 바꾸기 도전</h2>
+  <span class="timer">2:30 – 2:50 · 20분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">기본 프롬프트에서 <strong>스타일 키워드만 1개 교체</strong>해서 분위기가 어떻게 달라지는지 확인합니다.</p>
+
+<div class="prompt">
+  <div class="plabel">기준 프롬프트 (스타일 부분만 바꾸세요)</div>
+  <code id="pc1-base">A coffee cup on a wooden table, [스타일 키워드], warm light, shallow depth of field, vertical composition, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pc1-base',this)">복사</button>
+</div>
+
+<p style="margin:.85rem 0 .5rem;font-size:.88rem;color:var(--cream)"><strong>[스타일 키워드] 자리에 아래 중 하나를 넣어보세요:</strong></p>
+<div class="kw-row">
+  <span class="kw hi">clean minimal</span>
+  <span class="kw hi">editorial magazine style</span>
+  <span class="kw hi">cozy and warm</span>
+  <span class="kw hi">luxury dark aesthetic</span>
+  <span class="kw">Scandinavian style</span>
+  <span class="kw">rustic vintage</span>
+  <span class="kw">Japanese wabi-sabi</span>
+  <span class="kw">neon cyberpunk</span>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p>교체 예시: <code style="color:var(--gold);font-size:.83rem">clean minimal</code> → <code style="color:var(--gold);font-size:.83rem">luxury dark aesthetic</code> 로만 바꾸고 나머지는 동일하게.</p></div>
+
+<div class="challenge">
+  <h4>🎯 도전 과제</h4>
+  <p>스타일 키워드 3가지를 바꿔보고 가장 마음에 드는 1장을 선택합니다.</p>
+  <ul class="cklist">
+    <li><input type="checkbox">1번째 스타일로 생성</li>
+    <li><input type="checkbox">2번째 스타일로 생성</li>
+    <li><input type="checkbox">3번째 스타일로 생성</li>
+    <li><input type="checkbox">3장 중 1장 선택 → 메모: 어떤 키워드가 가장 잘 맞았나?</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 C2 · 조명 탐험
+     ════════════════════════════════ -->
+<div class="sec" id="prac-c2">
+  <span class="badge b-prac">실습 C2</span>
+  <h2>조명 바꾸기 도전</h2>
+  <span class="timer">2:50 – 3:10 · 20분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">이번엔 <strong>조명 키워드만 교체</strong>합니다. 분위기가 얼마나 달라지는지 느껴보세요.</p>
+
+<div class="prompt">
+  <div class="plabel">기준 프롬프트 (조명 부분만 바꾸세요)</div>
+  <code id="pc2-base">A coffee cup on a wooden table, clean minimal style, [조명 키워드], shallow depth of field, vertical composition, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pc2-base',this)">복사</button>
+</div>
+
+<p style="margin:.85rem 0 .5rem;font-size:.88rem;color:var(--cream)"><strong>[조명 키워드] 자리에 아래 중 하나를 넣어보세요:</strong></p>
+<div class="kw-row">
+  <span class="kw hi">soft natural window light</span>
+  <span class="kw hi">golden hour light</span>
+  <span class="kw hi">chiaroscuro side lighting</span>
+  <span class="kw">blue hour light</span>
+  <span class="kw">candlelight glow</span>
+  <span class="kw">studio soft box light</span>
+  <span class="kw">neon accent light</span>
+  <span class="kw">harsh midday sun</span>
+</div>
+
+<div class="challenge">
+  <h4>🎯 도전 과제</h4>
+  <p>조명 키워드 3가지를 바꿔보고 분위기 차이를 말로 표현해봅니다.</p>
+  <ul class="cklist">
+    <li><input type="checkbox">밝고 자연스러운 조명으로 생성</li>
+    <li><input type="checkbox">따뜻하고 드라마틱한 조명으로 생성</li>
+    <li><input type="checkbox">어둡고 무거운 조명으로 생성</li>
+    <li><input type="checkbox">3장 차이를 한 줄로 메모</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 C3 · 구도 탐험
+     ════════════════════════════════ -->
+<div class="sec" id="prac-c3">
+  <span class="badge b-prac">실습 C3</span>
+  <h2>구도·카메라 바꾸기 도전</h2>
+  <span class="timer">3:10 – 3:30 · 20분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">마지막으로 <strong>구도·카메라 키워드</strong>를 바꿔봅니다. 거리와 앵글이 이미지 목적을 어떻게 바꾸는지 확인합니다.</p>
+
+<div class="prompt">
+  <div class="plabel">기준 프롬프트 (구도 부분만 바꾸세요)</div>
+  <code id="pc3-base">A coffee cup scene, clean minimal style, soft natural window light, [구도·카메라 키워드], photorealistic</code>
+  <button class="copy-btn" onclick="cp('pc3-base',this)">복사</button>
+</div>
+
+<p style="margin:.85rem 0 .5rem;font-size:.88rem;color:var(--cream)"><strong>[구도·카메라 키워드] 자리에 아래 중 하나를 넣어보세요:</strong></p>
+<div class="kw-row">
+  <span class="kw hi">extreme close-up, 90mm macro lens</span>
+  <span class="kw hi">top-down flat lay, overhead shot</span>
+  <span class="kw hi">shallow depth of field, 35mm lens, 9:16 vertical</span>
+  <span class="kw">wide environmental shot, cafe interior visible</span>
+  <span class="kw">low angle, dramatic perspective, 9:16</span>
+  <span class="kw">centered composition, symmetrical, 9:16</span>
+</div>
+
+<div class="challenge">
+  <h4>🎯 도전 과제</h4>
+  <p>구도 3가지로 생성하고 어떤 구도가 어떤 용도에 어울리는지 생각해봅니다.</p>
+  <ul class="cklist">
+    <li><input type="checkbox">클로즈업으로 생성 — 언제 쓰면 좋을까?</li>
+    <li><input type="checkbox">플랫레이로 생성 — 언제 쓰면 좋을까?</li>
+    <li><input type="checkbox">얕은 심도 와이드로 생성 — 언제 쓰면 좋을까?</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 D · 나만의 프롬프트
+     ════════════════════════════════ -->
+<div class="sec" id="prac-d">
+  <span class="badge b-prac">실습 D</span>
+  <h2>나만의 완성 프롬프트 만들기</h2>
+  <span class="timer">3:30 – 3:50 · 20분</span>
+</div>
+
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">C1~C3에서 배운 것을 조합해서 <strong>내 콘텐츠 주제로</strong> 프롬프트를 만들어봅니다.</p>
+
+<div class="formula">내 피사체 + 내가 원하는 스타일 + 내가 원하는 조명 + 내가 원하는 구도 + photorealistic</div>
+
+<div class="card">
+  <h3>프롬프트 조립 예시</h3>
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:.5rem">아래는 5요소를 조합한 완성 프롬프트입니다. 이 방식으로 내 것을 만들어보세요.</p>
+</div>
+
+<div class="prompt">
+  <div class="plabel">예시 1 · 홈 오피스 / 미니멀</div>
+  <code id="pd1">A minimalist desk setup with a laptop, a small succulent plant and a ceramic mug, clean Scandinavian style, soft natural window light from the left, medium shot 9:16 vertical, shallow depth of field, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pd1',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">예시 2 · 뷰티 / 럭셔리</div>
+  <code id="pd2">A luxury skincare product on a black marble surface, gold and white packaging, dramatic chiaroscuro side lighting, close-up shot highlighting the texture, 9:16 vertical, film grain, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pd2',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">예시 3 · 야외 / 감성적</div>
+  <code id="pd3">A person holding a wildflower bouquet in a sunlit meadow, warm golden hour backlight creating a halo effect, medium close-up, soft bokeh background, cozy warm tones, 9:16 vertical, cinematic film grain, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pd3',this)">복사</button>
+</div>
+
+<div class="challenge">
+  <h4>🎯 내 프롬프트 만들기</h4>
+  <p>아래 빈칸을 채워서 나만의 프롬프트를 완성하세요.</p>
+  <div class="prompt" style="margin-top:.75rem">
+    <div class="plabel">나만의 프롬프트 템플릿</div>
+    <code>[내 피사체 / 장면],
+[내 스타일: minimal / editorial / cozy / luxury / ...],
+[내 조명: natural light / golden hour / dramatic side / ...],
+[내 구도: close-up / flat lay / medium shot / wide shot / ...],
+9:16 vertical, photorealistic</code>
+  </div>
+  <ul class="cklist" style="margin-top:.75rem">
+    <li><input type="checkbox">프롬프트 첫 버전 생성</li>
+    <li><input type="checkbox">마음에 안 들면 단어 1~2개만 교체 후 재생성</li>
+    <li><input type="checkbox">최소 3번 반복 → 가장 마음에 드는 1장 선택</li>
+    <li><input type="checkbox">다운로드 완료</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     오늘의 공유
+     ════════════════════════════════ -->
+<div class="sec">
+  <span class="badge" style="background:#302010;color:#d09040">📤</span>
+  <h2>오늘의 공유</h2>
+  <span class="timer">3:50 – 4:00 · 10분</span>
+</div>
+
+<div class="card">
+  <p>실습 D에서 만든 이미지 중 <strong>가장 마음에 드는 1장</strong>을 강사가 안내한 채널에 올려주세요.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">사용한 모델 이름</li>
+    <li><input type="checkbox">사용한 프롬프트 전체</li>
+    <li><input type="checkbox">C1~C3 실습 중 가장 인상적이었던 변화 한 줄 메모</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 E · 이미지 편집 Apps
+     ════════════════════════════════ -->
+<div class="sec" id="prac-e">
+  <span class="badge b-prac">실습 E</span>
+  <h2>이미지 편집 Apps — 멀티샷·앵글·리라이트·리라이트·배경 제거</h2>
+</div>
+
+<div class="card">
+  <h3>생성 후 편집 — Apps가 뭔가요?</h3>
+  <p>이미지를 <strong>새로 만들지 않고</strong> 기존 이미지를 수정·변형하는 기능입니다.<br>
+  상단 메뉴 <strong>Apps</strong>에 전체 목록이 있으며 카테고리별로 분류되어 있습니다.</p>
+</div>
+
+<img src="screenshots/05-apps-clean.png" alt="힉스필드 Apps 페이지" style="width:100%;border-radius:8px;border:1px solid var(--s3);margin:.5rem 0">
+<table>
+  <thead><tr><th>카테고리</th><th>기능 이름</th><th>하는 일</th><th>오늘 실습</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="4"><strong>Professional</strong></td><td><strong style="color:var(--gold)">Virality Predictor</strong></td><td>영상 바이럴 가능성 점수 예측</td><td>Day 4</td></tr>
+    <tr><td><strong style="color:var(--gold)">Similarity Score</strong></td><td>콘텐츠 유사도 측정</td><td>참고</td></tr>
+    <tr><td><strong style="color:var(--gold)">Expand Image</strong></td><td>이미지 테두리를 AI로 확장 (Generative Expand)</td><td>✅ 오늘</td></tr>
+    <tr><td><strong style="color:var(--gold)">Angles 2.0</strong></td><td>어떤 앵글로든 시점 변환 (정면→측면→탑뷰)</td><td>✅ 오늘</td></tr>
+    <tr><td rowspan="4"><strong>Enhance &amp; Style</strong></td><td><strong style="color:var(--gold)">Relight</strong></td><td>기존 이미지 조명 방향·색온도 교체</td><td>✅ 오늘</td></tr>
+    <tr><td><strong style="color:var(--gold)">AI Stylist</strong></td><td>의상 조합 스왑</td><td>Day 2</td></tr>
+    <tr><td><strong style="color:var(--gold)">Outfit Swap</strong></td><td>사진 한 장으로 옷 교체</td><td>Day 2</td></tr>
+    <tr><td><strong style="color:var(--gold)">Skin Enhancer</strong></td><td>피부 텍스처 자연스럽게 보정</td><td>Day 2</td></tr>
+  </tbody>
+</table>
+
+<!-- ── 웹 전용 앱 안내 ── -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">① 웹에서만 사용 가능한 Apps</h3>
+
+<div class="callout c-info"><span class="ico">🖥️</span><p>아래 기능들은 <strong>힉스필드 웹 UI에서만</strong> 사용할 수 있습니다. MCP/CLI로는 호출 불가합니다.<br>강사가 실시간으로 시연하는 화면을 참고하거나, 실습 중 직접 <strong>higgsfield.ai → Apps</strong>에서 체험하세요.</p></div>
+
+<table>
+  <thead><tr><th>앱 이름</th><th>사용법</th><th>결과</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--gold)">Angles 2.0</strong></td>
+      <td>기존 이미지 업로드 → 각도 선택 (정면·측면·탑뷰 등)</td>
+      <td>동일 이미지를 다른 시점으로 변환</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--gold)">Relight</strong></td>
+      <td>기존 이미지 업로드 → 조명 방향·색온도 선택</td>
+      <td>동일 이미지에 조명만 교체</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--gold)">Expand Image</strong></td>
+      <td>기존 이미지 업로드 → 방향 선택 → 캔버스 확장</td>
+      <td>이미지 테두리를 AI로 자연스럽게 확장</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--gold)">AI Stylist / Outfit Swap</strong></td>
+      <td>인물 이미지 + 의상 이미지 업로드</td>
+      <td>인물에게 원하는 의상 입히기</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--gold)">Skin Enhancer</strong></td>
+      <td>인물 이미지 업로드</td>
+      <td>피부 텍스처 자연스럽게 보정</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--gold)">Remove Background</strong></td>
+      <td>이미지 업로드 1클릭</td>
+      <td>배경 투명 PNG 다운로드</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>오늘 실습 시간에 Apps 페이지(<strong>higgsfield.ai → Apps 메뉴</strong>)를 열고 본인이 만든 이미지 1장으로 위 기능 중 1개 이상을 직접 체험해보세요.</p></div>
+
+<!-- ── 배경 교체 Before/After (Flux Kontext — 실제 사용) ── -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">② 배경 교체 — Flux Kontext (실제 생성)</h3>
+<div class="card">
+  <p>기존 이미지에서 <strong>피사체(제품·인물)는 그대로</strong> 두고, 배경만 바꾸는 기능입니다.<br>
+  Flux Kontext 모델이 컨텍스트를 이해해서 자연스럽게 합성합니다.</p>
+</div>
+
+<div class="grid-2">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260603_235654_546155b6-0d6a-4372-b1b5-66e3a266036f.png" alt="원본" loading="lazy">
+    <div class="img-info">
+      <span class="tag">Before · 원본</span>
+      <span class="desc">따뜻한 홈카페 배경</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003723_9f4a1443-7c70-41f1-ad7e-4cad9f6930b4.png" alt="배경 교체" loading="lazy">
+    <div class="img-info">
+      <span class="tag">After · 배경 교체</span>
+      <span class="desc">커피잔 동일 · 배경 → 미니멀 블랙 인테리어</span>
+    </div>
+  </div>
+</div>
+
+<div class="prompt">
+  <div class="plabel">Flux Kontext 배경 교체 프롬프트</div>
+  <code id="pe-rewrite">Keep the [피사체] exactly the same. Change the background to [원하는 배경]. Maintain natural lighting and photorealistic quality.</code>
+  <button class="copy-btn" onclick="cp('pe-rewrite',this)">복사</button>
+</div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>모델을 반드시 <strong>Flux Kontext</strong>로 선택 + 원본 이미지를 레퍼런스로 업로드해야 합니다.</p></div>
+
+
+<!-- ── 편집 실습 ── -->
+<div class="challenge">
+  <h4>🎯 편집 Apps 실습</h4>
+  <p>아래를 직접 해봅니다.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox"><strong>Flux Kontext 배경 교체</strong> (MCP/모델 직접 사용): 실습 A 이미지를 업로드 → 모델 <strong>Flux Kontext</strong> 선택 → "change the background to …" 프롬프트로 배경만 교체</li>
+    <li><input type="checkbox"><strong>웹 Apps 체험 1</strong>: <strong>higgsfield.ai → Apps → Angles 2.0</strong> — 내가 만든 이미지 업로드 → 다른 각도로 변환</li>
+    <li><input type="checkbox"><strong>웹 Apps 체험 2</strong>: <strong>Apps → Relight</strong> — 내가 만든 이미지 업로드 → 조명 교체</li>
+    <li><input type="checkbox">(선택) <strong>Apps → Remove Background</strong> — 제품 이미지 배경 제거</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 F · 레퍼런스 이미지 첨부 생성
+     ════════════════════════════════ -->
+<div class="sec" id="prac-f">
+  <span class="badge b-prac">실습 F</span>
+  <h2>레퍼런스 이미지 첨부해서 생성하기</h2>
+</div>
+
+<div class="card">
+  <h3>레퍼런스 첨부가 뭔가요?</h3>
+  <p>프롬프트 외에 <strong>이미지를 1~여러 장 직접 업로드</strong>하면 AI가 그 이미지를 참고해서 생성합니다.<br>
+  캐릭터 사진, 제품 사진, 스타일 레퍼런스를 넣으면 결과가 훨씬 정확해집니다.</p>
+</div>
+
+<table>
+  <thead><tr><th>레퍼런스 유형</th><th>효과</th><th>어울리는 모델</th></tr></thead>
+  <tbody>
+    <tr><td><strong>📸 인물 사진 1장</strong></td><td>같은 얼굴·분위기를 유지하면서 새 장면 생성</td><td>Seedream 4.5, Nano Banana 2</td></tr>
+    <tr><td><strong>📦 제품 사진 1장</strong></td><td>같은 제품을 다른 배경·상황에 배치</td><td>Seedream 4.5, Flux Kontext</td></tr>
+    <tr><td><strong>📸 + 📦 인물 + 제품 동시</strong></td><td>특정 인물이 특정 제품을 사용하는 장면 생성</td><td>Seedream 4.5</td></tr>
+    <tr><td><strong>🎨 스타일 이미지</strong></td><td>그 이미지의 색감·분위기를 참고해 새 이미지</td><td>Flux Kontext, Nano Banana 2</td></tr>
+  </tbody>
+</table>
+
+<div class="card" style="background:#1a1a2e;border-color:#2a2a4e">
+  <h3 style="color:#9090d8">웹 UI에서 첨부하는 방법</h3>
+  <ol style="padding-left:1.2rem;font-size:.87rem;line-height:2">
+    <li>Image 메뉴 → 프롬프트 입력창 옆 <strong>📎 이미지 첨부 버튼</strong> 클릭</li>
+    <li>첨부할 이미지 선택 (여러 장 가능)</li>
+    <li>모델을 <strong>Seedream 4.5</strong> 또는 <strong>Flux Kontext</strong> 로 변경</li>
+    <li>프롬프트에 <code style="color:var(--gold);font-size:.82rem">same person from the reference</code> 또는 <code style="color:var(--gold);font-size:.82rem">exact same product</code> 명시</li>
+    <li>Generate</li>
+  </ol>
+</div>
+
+<!-- 예시 1: 제품 레퍼런스 -->
+<p style="margin:1.25rem 0 .6rem;font-size:.95rem;font-weight:700;color:var(--cream)">예시 1 — 제품 사진 1장 첨부 → 다른 장면에 배치</p>
+<div class="grid-2">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003333_fa2c5dc3-c281-4db2-b43a-12f027db9783.png" alt="원본 제품" loading="lazy">
+    <div class="img-info">
+      <span class="tag">📎 첨부 이미지 (레퍼런스)</span>
+      <span class="desc">이 제품 이미지를 업로드</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_005053_95fe968c-26ca-477f-999e-40c636c9e70e.png" alt="제품 다른 장면" loading="lazy">
+    <div class="img-info">
+      <span class="tag" style="color:var(--green)">✅ Seedream 4.5 결과</span>
+      <span class="desc">같은 제품 → 손에 들고 있는 장면으로</span>
+    </div>
+  </div>
+</div>
+
+<div class="prompt">
+  <div class="plabel">제품 레퍼런스 첨부 프롬프트 (Seedream 4.5)</div>
+  <code id="pref1">The exact same [제품 설명] from the reference photo, held by elegant hands, soft natural light, minimal clean background, 9:16, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pref1',this)">복사</button>
+</div>
+
+<!-- 예시 2: 인물 레퍼런스 -->
+<p style="margin:1.25rem 0 .6rem;font-size:.95rem;font-weight:700;color:var(--cream)">예시 2 — 인물 사진 1장 첨부 → 다른 장소·상황으로</p>
+<div class="grid-2">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="원본 인물" loading="lazy">
+    <div class="img-info">
+      <span class="tag">📎 첨부 이미지 (레퍼런스)</span>
+      <span class="desc">이 인물 사진을 업로드</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_005140_b7f805d4-6e40-46fb-a4f3-72dfd6695ae2.png" alt="인물 카페 장면" loading="lazy">
+    <div class="img-info">
+      <span class="tag" style="color:var(--green)">✅ Nano Banana 2 결과</span>
+      <span class="desc">같은 인물 → 카페 라이프스타일 장면으로</span>
+    </div>
+  </div>
+</div>
+
+<div class="prompt">
+  <div class="plabel">인물 레퍼런스 첨부 프롬프트 (Nano Banana 2 / Seedream 4.5)</div>
+  <code id="pref2">The same person from the reference photo, in [새로운 장소/상황: a cozy cafe / outdoor park / modern office], [스타일: lifestyle brand shoot], warm natural light, 9:16, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pref2',this)">복사</button>
+</div>
+
+<!-- 예시 3: 인물 + 제품 동시 -->
+<p style="margin:1.25rem 0 .6rem;font-size:.95rem;font-weight:700;color:var(--cream)">예시 3 — 인물 + 제품 두 장 동시 첨부 → 광고 이미지</p>
+<div class="grid-3">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="레퍼런스 인물" loading="lazy">
+    <div class="img-info"><span class="tag">📎 레퍼런스 1 · 인물</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003333_fa2c5dc3-c281-4db2-b43a-12f027db9783.png" alt="레퍼런스 제품" loading="lazy">
+    <div class="img-info"><span class="tag">📎 레퍼런스 2 · 제품</span></div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_005137_cca4ad3e-da96-40c0-bf6e-939a95751752.png" alt="합성 결과" loading="lazy">
+    <div class="img-info">
+      <span class="tag" style="color:var(--green)">✅ Seedream 4.5 결과 (두 장 동시 첨부)</span>
+      <span class="desc">인물이 제품을 들고 있는 광고 이미지 생성</span>
+    </div>
+  </div>
+</div>
+
+<div class="prompt">
+  <div class="plabel">인물 + 제품 동시 첨부 프롬프트 (Seedream 4.5 권장)</div>
+  <code id="pref3">The same person from the first reference photo, holding the exact same product from the second reference photo, in a bright minimal studio, beauty brand advertisement, 9:16, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pref3',this)">복사</button>
+</div>
+
+<div class="callout c-tip"><span class="ico">💡</span><p><strong>레퍼런스 첨부 팁</strong>: 인물 레퍼런스는 <strong>정면·선명·단독 촬영</strong>일수록 일관성이 높아집니다. 흐리거나 여러 명이 있는 사진은 AI가 혼동할 수 있습니다.</p></div>
+
+<div class="challenge">
+  <h4>🎯 레퍼런스 첨부 실습</h4>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox"><strong>내 제품 사진</strong> 1장 첨부 → Seedream 4.5 → 다른 배경에 배치</li>
+    <li><input type="checkbox"><strong>내 인물 사진</strong> (또는 Day 2 Soul ID용 사진) 1장 첨부 → 다른 장소로</li>
+    <li><input type="checkbox">(심화) 인물 + 제품 <strong>2장 동시 첨부</strong> → 광고 이미지 생성</li>
+    <li><input type="checkbox">레퍼런스 없이 생성한 결과와 비교 → 어떤 차이가 있나 메모</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 G · 캐릭터 만들기 (기존 F → G로)
+     ════════════════════════════════ -->
+<div class="sec" id="prac-g">
+  <span class="badge b-prac">실습 G</span>
+  <h2>캐릭터 만들기 — Soul부터 치비·3D·애니까지</h2>
+</div>
+
+<div class="card">
+  <h3>왜 캐릭터를 만드나요?</h3>
+  <p>나를 대신하는 <strong>AI 인플루언서</strong>, 브랜드 마스코트, 캐릭터 IP까지 — 한 장의 프롬프트로 시작합니다.<br>
+  Day 2에서는 이 캐릭터를 <strong>Soul ID로 학습</strong>시켜 어떤 장면에도 동일 얼굴로 등장시킬 수 있습니다.</p>
+</div>
+
+<div class="callout c-info"><span class="ico">💡</span><p><strong>모델 선택 팁</strong>: 실사 인물은 <strong>Soul 2.0</strong>, 일러스트·치비·3D 스타일은 <strong>Nano Banana 2</strong>를 씁니다.</p></div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.88rem;color:var(--cream)"><strong>캐릭터 스타일 4종 — 강사 예시</strong></p>
+<div class="grid-4">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="실사 인플루언서" loading="lazy">
+    <div class="img-info">
+      <span class="tag">실사 인플루언서</span>
+      <div class="kw-row"><span class="kw hi">Soul 2.0</span><span class="kw">editorial portrait</span><span class="kw">warm studio light</span></div>
+      <span class="desc">실제 사람처럼 자연스러운 인물. SNS·UGC·패션 콘텐츠에 최적.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003323_248d86a4-7ca6-488b-958b-3cb9c0094a27.png" alt="치비 캐릭터" loading="lazy">
+    <div class="img-info">
+      <span class="tag">치비 캐릭터</span>
+      <div class="kw-row"><span class="kw hi">kawaii chibi style</span><span class="kw">huge sparkly eyes</span><span class="kw">pastel colors</span></div>
+      <span class="desc">귀여운 SD(Super Deformed) 스타일. 브랜드 마스코트, 이모티콘에 활용.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003327_4f8de3d0-bd35-492c-88b4-50317e628880.png" alt="3D 캐릭터" loading="lazy">
+    <div class="img-info">
+      <span class="tag">3D 캐릭터</span>
+      <div class="kw-row"><span class="kw hi">3D CGI render</span><span class="kw">Pixar style</span><span class="kw">smooth texture</span></div>
+      <span class="desc">픽사·디즈니 스타일의 3D 렌더. 광고·영상 인트로 등에 활용.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003330_f0ff543e-b849-48f7-bcc6-0c8a4bfdadd9.png" alt="애니 스타일" loading="lazy">
+    <div class="img-info">
+      <span class="tag">애니메이션 스타일</span>
+      <div class="kw-row"><span class="kw hi">anime illustration</span><span class="kw">cel-shading</span><span class="kw">big luminous eyes</span></div>
+      <span class="desc">일본 애니 화풍. 웹툰·웹소설·굿즈 캐릭터 콘셉트에 활용.</span>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:.5rem">
+  <h3>캐릭터 스타일별 모델 & 프롬프트 공식</h3>
+  <table>
+    <thead><tr><th>스타일</th><th>모델</th><th>핵심 키워드</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>실사 인플루언서</strong></td>
+        <td><span class="kw hi" style="font-size:.75rem">Soul 2.0</span></td>
+        <td><code style="font-size:.78rem;color:var(--gold)">editorial portrait, natural makeup, warm studio lighting, photorealistic</code></td>
+      </tr>
+      <tr>
+        <td><strong>패션 모델</strong></td>
+        <td><span class="kw hi" style="font-size:.75rem">Soul 2.0</span></td>
+        <td><code style="font-size:.78rem;color:var(--gold)">fashion model, high fashion editorial, magazine cover, professional studio</code></td>
+      </tr>
+      <tr>
+        <td><strong>치비·캐릭터</strong></td>
+        <td><span class="kw" style="font-size:.75rem">Nano Banana 2</span></td>
+        <td><code style="font-size:.78rem;color:var(--gold)">kawaii chibi, huge sparkly eyes, cute proportions, clean white background, flat illustration</code></td>
+      </tr>
+      <tr>
+        <td><strong>3D 캐릭터</strong></td>
+        <td><span class="kw" style="font-size:.75rem">Nano Banana 2</span></td>
+        <td><code style="font-size:.78rem;color:var(--gold)">3D CGI render, Pixar style, smooth texture, gradient background, professional render</code></td>
+      </tr>
+      <tr>
+        <td><strong>애니메이션</strong></td>
+        <td><span class="kw" style="font-size:.75rem">Nano Banana 2</span></td>
+        <td><code style="font-size:.78rem;color:var(--gold)">anime illustration, cel-shading, big luminous eyes, Japanese anime art style</code></td>
+      </tr>
+      <tr>
+        <td><strong>웹툰 / 만화</strong></td>
+        <td><span class="kw" style="font-size:.75rem">Nano Banana 2</span></td>
+        <td><code style="font-size:.78rem;color:var(--gold)">Korean webtoon style, clean line art, soft coloring, manhwa art</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">직접 해보기</p>
+
+<div class="prompt">
+  <div class="plabel">① 실사 인플루언서 — Soul 2.0으로 생성</div>
+  <code id="pe1">A stylish Korean female content creator, natural glowy makeup, fashion editorial portrait, soft warm studio lighting, confident gaze, 9:16 vertical, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pe1',this)">복사</button>
+</div>
+<div class="callout c-tip" style="margin-top:-.3rem"><span class="ico">📌</span><p>모델을 반드시 <strong>Soul 2.0</strong>으로 변경 후 생성하세요.</p></div>
+
+<div class="prompt">
+  <div class="plabel">② 치비 캐릭터 — Nano Banana 2로 생성</div>
+  <code id="pe2">An adorable kawaii chibi character, huge sparkly eyes, tiny cute proportions, pastel outfit with bow details, fluffy hair, clean white background, flat cute illustration style, 9:16</code>
+  <button class="copy-btn" onclick="cp('pe2',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">③ 3D 캐릭터 — Nano Banana 2로 생성</div>
+  <code id="pe3">A stylized 3D rendered character, modern Pixar animation style, cute young person with expressive big eyes, smooth plastic-like skin texture, vibrant pastel gradient background, professional 3D CGI render quality, 9:16</code>
+  <button class="copy-btn" onclick="cp('pe3',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">④ 애니 스타일 — Nano Banana 2로 생성</div>
+  <code id="pe4">A beautiful anime illustration character, soft cel-shading style, big luminous expressive eyes, clean minimalist gradient background, high-quality Japanese anime art style, 9:16</code>
+  <button class="copy-btn" onclick="cp('pe4',this)">복사</button>
+</div>
+
+<div class="challenge">
+  <h4>🎯 캐릭터 실습 도전</h4>
+  <p>4가지 중 <strong>내 콘텐츠에 어울리는 스타일 2가지</strong>를 선택해서 만들어봅니다.<br>
+  그 다음, 선택한 캐릭터의 <strong>직업·성격·이름</strong>을 정해보세요. Day 2에서 이 캐릭터를 AI 인플루언서로 학습시킵니다.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">스타일 1 선택 → 프롬프트 복사 → 생성</li>
+    <li><input type="checkbox">스타일 2 선택 → 프롬프트 복사 → 생성</li>
+    <li><input type="checkbox">더 마음에 드는 1장 선택 → 이름·직업·성격 메모</li>
+    <li><input type="checkbox">다운로드 (Day 2 Soul ID 학습 재료로 사용)</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 H · 광고 이미지 만들기
+     ════════════════════════════════ -->
+<div class="sec" id="prac-h">
+  <span class="badge b-prac">실습 F</span>
+  <h2>광고 이미지 만들기</h2>
+</div>
+
+<div class="card">
+  <h3>광고 이미지 vs 일반 이미지 차이</h3>
+  <table>
+    <thead><tr><th>일반 이미지</th><th>광고 이미지</th></tr></thead>
+    <tbody>
+      <tr><td>장면 자체가 목적</td><td><strong>제품·메시지 전달</strong>이 목적</td></tr>
+      <tr><td>구도가 자유로움</td><td>헤드라인·로고 들어갈 <strong>여백</strong> 필요</td></tr>
+      <tr><td>분위기 중심</td><td>타깃 고객의 <strong>욕망·문제</strong> 자극</td></tr>
+      <tr><td>스타일 자유</td><td>브랜드 톤&매너 일관성 중요</td></tr>
+    </tbody>
+  </table>
+  <div class="callout c-tip" style="margin-top:.65rem">
+    <span class="ico">💡</span>
+    <p>광고 프롬프트의 핵심 두 가지: <strong>① copy space (텍스트 여백)</strong> + <strong>② 제품/모델을 명확히 묘사</strong></p>
+  </div>
+</div>
+
+<p style="margin:1.25rem 0 .65rem;font-size:.88rem;color:var(--cream)"><strong>광고 이미지 3종 — 강사 예시</strong></p>
+<div class="grid-3">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003333_fa2c5dc3-c281-4db2-b43a-12f027db9783.png" alt="뷰티 광고" loading="lazy">
+    <div class="img-info">
+      <span class="tag">뷰티·스킨케어 광고</span>
+      <div class="kw-row"><span class="kw hi">product ad</span><span class="kw">white marble</span><span class="kw">copy space on top</span></div>
+      <span class="desc">제품 + 고급 소재 + 여백. 상단에 브랜드명·카피 삽입 가능.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003336_8679e2de-ae7f-4712-9104-58d9ac8488af.png" alt="패션 라이프스타일 광고" loading="lazy">
+    <div class="img-info">
+      <span class="tag">패션·라이프스타일 광고</span>
+      <div class="kw-row"><span class="kw hi">lifestyle ad</span><span class="kw">copy space above</span><span class="kw">clean studio</span></div>
+      <span class="desc">모델 + 여백. 브랜드 헤드라인 공간 확보.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003339_2d2dfc40-b9b0-474e-ad77-498e7d79df52.png" alt="음식·음료 광고" loading="lazy">
+    <div class="img-info">
+      <span class="tag">음식·음료 광고</span>
+      <div class="kw-row"><span class="kw hi">product commercial</span><span class="kw">moody lighting</span><span class="kw">logo space</span></div>
+      <span class="desc">무드 있는 배경 + 제품. 프리미엄 브랜드 광고 톤.</span>
+    </div>
+  </div>
+</div>
+
+<p style="margin:1.5rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">광고 이미지 프롬프트 3가지 — 직접 해보기</p>
+
+<div class="prompt">
+  <div class="plabel">예시 1 · 뷰티 / 스킨케어 제품 광고</div>
+  <code id="pf1">A [제품 이름] skincare product on white marble surface, elegant minimal product photography, soft natural side lighting, scattered flower petals as props, generous copy space at the top for brand headline, 9:16 vertical, photorealistic, commercial beauty ad</code>
+  <button class="copy-btn" onclick="cp('pf1',this)">복사</button>
+</div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p><code style="color:var(--gold);font-size:.83rem">[제품 이름]</code> 자리에 본인 제품을 넣으세요. 예: <em>vitamin C serum</em>, <em>moisturizing cream</em></p></div>
+
+<div class="prompt">
+  <div class="plabel">예시 2 · 패션 / 라이프스타일 브랜드 광고</div>
+  <code id="pf2">A stylish [타깃 고객 묘사] wearing [제품/의류], bright airy white studio background, confident relaxed pose, generous copy space above for headline text, 9:16 vertical, commercial lifestyle photography, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pf2',this)">복사</button>
+</div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>예: <em>young professional woman wearing a minimalist white linen blazer</em></p></div>
+
+<div class="prompt">
+  <div class="plabel">예시 3 · 음식 / 음료 / F&B 브랜드 광고</div>
+  <code id="pf3">A premium [제품] in elegant packaging on a dark wooden surface, moody atmospheric side lighting, soft bokeh background with subtle lifestyle elements, space at the top for logo and tagline, 9:16, cinematic commercial photography, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pf3',this)">복사</button>
+</div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>예: <em>artisan cold brew coffee bottle</em>, <em>craft chocolate bar</em>, <em>herbal tea set</em></p></div>
+
+<div class="challenge">
+  <h4>🎯 광고 이미지 실습</h4>
+  <p>3가지 예시 중 1~2개를 선택해서 <strong>내 제품 또는 상상 속 제품</strong>으로 바꿔 만들어봅니다.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">프롬프트 복사 → 제품명/타깃 부분만 교체</li>
+    <li><input type="checkbox">생성 → 결과 확인</li>
+    <li><input type="checkbox">"텍스트 여백이 충분한가?" 확인. 부족하면 <code style="color:var(--gold);font-size:.8rem">generous copy space at top</code> 추가</li>
+    <li><input type="checkbox">2가지 이상 버전 생성 후 더 마음에 드는 1장 선택</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     최종 과제
+     ════════════════════════════════ -->
+<div class="sec" id="final-task">
+  <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
+  <h2>내 제품 광고 이미지 만들기</h2>
+</div>
+
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 모든 것을 활용해서 <strong>실제로 쓸 수 있는 광고 이미지 1장</strong>을 완성합니다.</p></div>
+
+<div class="card">
+  <h3>과제 조건</h3>
+  <table>
+    <thead><tr><th>항목</th><th>기준</th></tr></thead>
+    <tbody>
+      <tr><td><strong>형식</strong></td><td>9:16 세로 이미지 1장</td></tr>
+      <tr><td><strong>내용</strong></td><td>내가 운영하는 또는 가상의 브랜드/제품 광고</td></tr>
+      <tr><td><strong>필수 요소</strong></td><td>① 제품이나 브랜드 느낌이 명확할 것 ② 텍스트 삽입 가능한 여백 존재 ③ 일관된 스타일·조명·구도</td></tr>
+      <tr><td><strong>모델</strong></td><td>자유 (Nano Banana 2 / Soul 2.0 / Cinema Studio 2.5 중 선택)</td></tr>
+      <tr><td><strong>제출</strong></td><td>이미지 + 사용한 프롬프트 전체</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3>완성 프롬프트 조립 가이드</h3>
+  <div class="formula">[제품/브랜드 묘사] + [스타일·무드] + [조명] + [구도] + [copy space] + photorealistic</div>
+  <div class="word-grid" style="margin-top:.85rem">
+    <div class="word-box">
+      <div class="wlabel">제품 묘사 예시</div>
+      <div class="wlist">luxury candle set<br>protein powder packaging<br>handmade ceramic mug<br>organic face oil<br>leather wallet on marble</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">여백 키워드</div>
+      <div class="wlist">copy space at the top<br>generous headline space<br>space for logo above<br>text overlay area on top<br>minimal negative space</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">광고 레시피 키워드</div>
+      <div class="wlist">commercial photography<br>product advertisement<br>brand campaign<br>lifestyle brand imagery<br>professional ad layout</div>
+    </div>
+    <div class="word-box">
+      <div class="wlabel">고급감 키워드</div>
+      <div class="wlist">luxury aesthetic<br>premium quality feel<br>elegant minimal<br>high-end brand<br>aspirational lifestyle</div>
+    </div>
+  </div>
+</div>
+
+<div class="challenge" style="border-color:#3a3010">
+  <h4 style="color:#e8c060">📤 제출 방법</h4>
+  <p>강사가 안내한 채널에 아래 내용을 함께 올려주세요.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">완성 이미지 1장 (9:16)</li>
+    <li><input type="checkbox">사용한 모델 이름</li>
+    <li><input type="checkbox">최종 프롬프트 전체 텍스트</li>
+    <li><input type="checkbox">브랜드/제품 이름 또는 컨셉 한 줄 설명</li>
+    <li><input type="checkbox">(선택) 처음 시도한 프롬프트와 최종 프롬프트의 차이</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     문제 해결
+     ════════════════════════════════ -->
+<div class="sec" id="trouble">
+  <span class="badge" style="background:#2a1a1a;color:#d08080">🐛</span>
+  <h2>막혔을 때</h2>
+</div>
+
+<table class="trouble">
+  <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
+  <tbody>
+    <tr><td>이미지가 가로로 나옴</td><td>Aspect Ratio → 9:16 확인 후 재생성</td></tr>
+    <tr><td>크레딧 없다는 메시지</td><td>강사에게 손 들고 알리기</td></tr>
+    <tr><td>결과가 흐리거나 이상함</td><td><code style="color:var(--gold);font-size:.82rem">photorealistic</code> 추가, 모델을 Nano Banana 2로 변경</td></tr>
+    <tr><td>생성이 30초 이상 걸림</td><td>정상. 창 닫지 말고 기다리기</td></tr>
+    <tr><td>원하는 스타일이 안 나옴</td><td>키워드를 한 번에 1개씩만 바꿔보기. 여러 개 동시 교체 시 원인 파악 어려움</td></tr>
+    <tr><td>조명이 너무 어두움</td><td><code style="color:var(--gold);font-size:.82rem">bright</code>, <code style="color:var(--gold);font-size:.82rem">well-lit</code> 추가</td></tr>
+    <tr><td>배경이 너무 복잡함</td><td><code style="color:var(--gold);font-size:.82rem">simple background</code>, <code style="color:var(--gold);font-size:.82rem">clean background</code> 추가</td></tr>
+    <tr><td>MCP 연결 안 됨</td><td>웹 UI로 진행. 오늘 수업 후 강사와 함께 점검</td></tr>
+  </tbody>
+</table>
+
+</div><!-- /page -->
+
+<footer>
+  <span>힉스필드 6일 워크숍 · Day 1 · 이미지 만들기</span>
+  <span>예시 이미지: Higgsfield AI 생성 (Nano Banana Flash / Cinema Studio 2.5) · 2026</span>
+</footer>
+
+<script>
+function cp(id, btn) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent.trim()).then(() => {
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('done'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
