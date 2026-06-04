@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 5 · Supercomputer — 브랜드 런칭 전과정 자동화 — 7일 워크숍</title>
+<title>Day 5 · Supercomputer — 3가지 워크플로 마스터 — 7일 워크숍</title>
 <style>
 :root {
   --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
@@ -58,6 +58,11 @@ body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','N
 .card p,.card li{font-size:.88rem}
 .card ul{padding-left:1.2rem}
 .card ul li{margin-bottom:.3rem}
+
+/* WORKFLOW HEADER */
+.wf-head{display:flex;align-items:center;gap:.7rem;margin:2rem 0 .5rem}
+.wf-num{width:34px;height:34px;min-width:34px;border-radius:9px;background:linear-gradient(135deg,#b8941f,#e2c793);color:#000;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900}
+.wf-head h3{font-size:1.1rem;color:var(--cream);font-weight:800}
 
 /* TABLE */
 table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:.86rem}
@@ -161,16 +166,15 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
   <a href="#overview">전체 흐름</a>
   <span class="nav-sep">|</span>
   <a href="#lec1">Supercomputer란?</a>
-  <a href="#lec2">런칭 5단계</a>
-  <a href="#lec3">전과정 한 번에</a>
+  <a href="#lec2">3가지 워크플로</a>
+  <a href="#wf1">① Clipper</a>
+  <a href="#wf2">② 1분 영상</a>
+  <a href="#wf3">③ 브랜드 캠페인</a>
   <span class="nav-sep">|</span>
-  <a href="#project">🚀 통합 실습</a>
-  <a href="#p0">0 브랜드 정하기</a>
-  <a href="#p1">1 생성</a>
-  <a href="#p2">2 학습·조사</a>
-  <a href="#p3">3 전략</a>
-  <a href="#p4">4 광고 소재</a>
-  <a href="#p5">5 영상</a>
+  <a href="#practice">🚀 실습</a>
+  <a href="#pa">A Clipper</a>
+  <a href="#pb">B 스토리 영상</a>
+  <a href="#pc">C 캠페인</a>
   <a href="#final-task">🏆 최종 과제</a>
   <a href="#trouble">❓ 도움말</a>
 </nav>
@@ -178,12 +182,12 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <!-- HERO -->
 <div class="hero">
   <div class="hero-chip">HIGGSFIELD 7-DAY WORKSHOP · DAY 5</div>
-  <h1>Supercomputer —<br><em>브랜드 런칭 전과정 자동화</em></h1>
-  <p>브랜드 기획 → 시장조사 → 런칭 전략 → 광고 소재 → 영상까지, 하나의 AI 에이전트로 끝내는 4시간</p>
+  <h1>Supercomputer —<br><em>3가지 워크플로 마스터</em></h1>
+  <p>긴 영상 → 숏폼, 한 문장 → 1분 스토리 영상, 한 문장 → 브랜드 캠페인. 채팅창 하나로 끝내는 4시간</p>
   <div class="hero-pills">
     <div class="pill">⏱ <strong>총 4시간</strong></div>
-    <div class="pill">🎯 <strong>목표</strong>: 내 브랜드 런칭 패키지 완성</div>
-    <div class="pill">📦 <strong>방식</strong>: 자동·전과정 오케스트레이션</div>
+    <div class="pill">🎯 <strong>목표</strong>: 3가지 워크플로 결과물 각 1개</div>
+    <div class="pill">📦 <strong>방식</strong>: 채팅창에 직접 입력</div>
     <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h30m · 실습 2h30m</div>
   </div>
 </div>
@@ -192,22 +196,21 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="tl-wrap" id="overview">
   <div class="tl-label">오늘 4시간 흐름</div>
   <div class="tl-bar">
-    <div class="tl-lec" style="flex:6">📖 강의 (1h 30m)</div>
-    <div class="tl-prac" style="flex:10">🚀 통합 실습 · 내 브랜드 0→런칭 (2h 30m)</div>
+    <div class="tl-lec" style="flex:6">📖 강의·시연 (1h 30m)</div>
+    <div class="tl-prac" style="flex:10">🚀 3가지 워크플로 직접 실습 (2h 30m)</div>
   </div>
   <div class="tl-times">
     <span>0:00 Supercomputer란?</span>
-    <span>0:25 런칭 5단계</span>
-    <span>1:05 전과정 묶기</span>
+    <span>0:25 3가지 워크플로</span>
     <span>1:30 실습 시작</span>
     <span>4:00 끝</span>
   </div>
 </div>
 
 <div class="page">
-<div style="background:linear-gradient(135deg,#1a2230,#141414);border:1px solid #2a3a4a;border-radius:10px;padding:1rem 1.25rem;margin:1.5rem 0;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem"><span style="font-weight:700;color:#f0e8d5">📦 이 강의 실습용 샘플 에셋</span><a href="assets/packs/day-5-pack.zip" download style="background:#b8941f;color:#000;font-weight:800;text-decoration:none;padding:.5rem 1rem;border-radius:7px;font-size:.85rem;white-space:nowrap">⬇ ZIP 다운로드</a><span style="font-size:.78rem;color:#7a7666;flex-basis:100%;margin-top:.2rem">포함: 런칭 데모용 제품·캐릭터·키프레임 샘플 · 전체 팩은 <a href="index.html" style="color:#b8941f">목록 페이지</a>에서</span></div>
+<div style="background:linear-gradient(135deg,#1a2230,#141414);border:1px solid #2a3a4a;border-radius:10px;padding:1rem 1.25rem;margin:1.5rem 0;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem"><span style="font-weight:700;color:#f0e8d5">📦 이 강의 실습용 샘플 에셋</span><a href="assets/packs/day-5-pack.zip" download style="background:#b8941f;color:#000;font-weight:800;text-decoration:none;padding:.5rem 1rem;border-radius:7px;font-size:.85rem;white-space:nowrap">⬇ ZIP 다운로드</a><span style="font-size:.78rem;color:#7a7666;flex-basis:100%;margin-top:.2rem">포함: 실습용 제품·캐릭터·키프레임 샘플 · 전체 팩은 <a href="index.html" style="color:#b8941f">목록 페이지</a>에서</span></div>
 
-<div class="callout c-tip"><span class="ico">🚀</span><p>오늘은 <strong>"AI 에이전트 하나로 브랜드를 통째로 런칭"</strong>하는 전과정을 자동 오케스트레이션으로 경험합니다. <strong>Day 6~7에서는 오늘 배운 흐름을 바탕으로 본인의 실제 사업에 직접 적용·정교화</strong>하게 됩니다.</p></div>
+<div class="callout c-tip"><span class="ico">🚀</span><p>오늘은 <strong>힉스필드 Supercomputer 채팅창 하나</strong>에서 가장 자주 쓰는 <strong>3가지 대표 워크플로</strong>를 직접 돌려봅니다. ① 긴 영상을 숏폼으로, ② 한 문장으로 1분 스토리 영상, ③ 한 문장으로 브랜드 캠페인. <strong>③ 브랜드 캠페인은 Day 6~7 프로젝트의 토대</strong>가 됩니다.</p></div>
 
 <!-- ════════════════════════════════
      강의 PART 1 · Supercomputer란?
@@ -220,59 +223,37 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 
 <div class="card">
   <h3>Supercomputer = 두뇌를 장착한 힉스필드</h3>
-  <p>Supercomputer는 단순한 이미지·영상 생성기가 아닙니다. <strong>클라우드 네이티브 자가학습(self-learning) 에이전트</strong>입니다. 시장의 모든 모델을 오케스트레이션해 기획부터 완성물까지 <strong>end-to-end</strong>로 실행합니다.</p>
+  <p>Supercomputer는 단순한 이미지·영상 생성기가 아닙니다. <strong>클라우드 네이티브 자가학습(self-learning) 에이전트</strong>입니다. 여러 모델을 오케스트레이션해 기획부터 완성물까지 <strong>end-to-end</strong>로 실행합니다.</p>
   <p style="margin-top:.65rem"><strong style="color:var(--gold)">공식 정의</strong> (힉스필드 공식 Supercomputer 튜토리얼):</p>
   <ul style="margin-top:.45rem">
     <li><strong style="color:var(--gold)">클라우드 네이티브 자가학습 에이전트</strong> — 내 작업 패턴을 스스로 학습해 다음 작업에 반영</li>
     <li><strong style="color:var(--gold)">40개+ 내장 도구</strong> — 이미지·영상·리서치·문서 등 작업 도구를 에이전트가 직접 호출</li>
     <li><strong style="color:var(--gold)">3계층 메모리</strong> — 단기·작업·영속 메모리로 브랜드 톤·캐릭터·제품을 일관되게 유지</li>
-    <li><strong style="color:var(--gold)">모든 모델 오케스트레이션</strong> — 시장의 여러 모델을 작업마다 자동 선택해 한 번에 묶어 실행</li>
+    <li><strong style="color:var(--gold)">모든 모델 오케스트레이션</strong> — 작업마다 최적 모델을 자동 선택해 한 번에 묶어 실행</li>
+    <li><strong style="color:var(--gold)">실제 프레임 분석</strong> — 영상을 텍스트 요약이 아니라 실제 프레임으로 직접 보며 훅·페이싱 파악</li>
     <li><strong style="color:var(--gold)">end-to-end 실행</strong> — 자연어 한 문장으로 계획·모델 선택·완성물까지 한 흐름으로</li>
   </ul>
-  <p style="margin-top:.65rem"><strong style="color:var(--gold)">핵심 컨셉</strong>: 원하는 걸 자연어로 말하면 — Supercomputer가 스스로 <strong>계획을 세우고, 모델·프리셋을 고르고, 완성물까지</strong> 만들어냅니다. 제품 하나로 UGC·광고 <strong>100가지 변형</strong>을 몇 분 안에 뽑아낼 수 있습니다.</p>
+  <p style="margin-top:.65rem"><strong style="color:var(--gold)">핵심 컨셉</strong>: 원하는 걸 자연어로 말하면 — Supercomputer가 스스로 <strong>계획을 세우고, 모델·프리셋을 고르고, 완성물까지</strong> 만들어냅니다.</p>
 </div>
 
-<div class="card">
-  <h3>브랜드 빌딩 = 한 챗이 대체하는 것</h3>
-  <p>공식 튜토리얼에 따르면, 브랜드를 0부터 만드는 일은 원래 <strong>5명 이상의 전문가 · 수천 달러 · 수 주</strong>가 걸렸습니다. Supercomputer는 이 전체를 <strong>한 챗(one chat)</strong>으로 대체합니다.</p>
-  <table>
-    <thead><tr><th>원래 (사람·시간·비용)</th><th>Supercomputer 한 챗</th></tr></thead>
-    <tbody>
-      <tr><td>니치 리서치 (애널리스트)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
-      <tr><td>브랜드 아이덴티티 (브랜드 디자이너)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
-      <tr><td>제품 사진 (제품 포토그래퍼)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
-      <tr><td>리스팅·카피 (카피라이터)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
-      <tr><td>영상 광고 (영상 편집자)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
-      <tr><td>유통 전략 (마케팅 전략가)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
-    </tbody>
-  </table>
-  <p style="margin-top:.5rem;font-size:.85rem;color:var(--muted)">→ <strong style="color:var(--gold)">5명+ 전문가, 수천 달러, 수 주 → 한 챗</strong></p>
-</div>
-
-<div class="callout c-tip"><span class="ico">📋</span><p>이 강의의 프롬프트는 <strong>힉스필드 공식 채널의 Supercomputer 시연(브랜드 런칭·마케팅 워크플로)</strong>에서 실제로 사용된 명령을 정리한 것입니다. 영상 시청 대신 <strong>아래 프롬프트를 직접 따라 입력하며 실습</strong>합니다.</p></div>
+<div class="callout c-tip"><span class="ico">📋</span><p>이 강의의 프롬프트는 <strong>힉스필드 공식 Supercomputer 시연</strong>에서 실제로 사용된 명령을 정리한 것입니다. 모든 것은 <strong>힉스필드 웹의 Supercomputer 채팅창에 직접 입력</strong>합니다 — 별도 도구 설치가 필요 없습니다.</p></div>
 
 <div class="card">
   <h3>접속 + 화면 구성</h3>
   <p><strong style="color:var(--gold)">접속</strong>: <code style="color:var(--gold);font-size:.83rem">higgsfield.ai</code>에서 <strong>Supercomputer</strong>로 진입합니다.</p>
-  <p style="margin-top:.65rem"><strong style="color:var(--gold)">좌측 사이드바</strong> — 작업을 떠받치는 5개 영역:</p>
+  <p style="margin-top:.65rem"><strong style="color:var(--gold)">좌측 사이드바</strong> — 작업을 떠받치는 3개 영역:</p>
   <div class="kw-row" style="margin-top:.45rem">
-    <span class="kw hi">skills</span><span class="kw hi">connectors</span><span class="kw hi">files</span><span class="kw hi">memory</span><span class="kw hi">tasks</span>
+    <span class="kw hi">skills</span><span class="kw hi">memory</span><span class="kw hi">tasks</span>
   </div>
+  <ul style="margin-top:.6rem">
+    <li><strong style="color:var(--gold)">skills</strong> — 힉스필드 팀이 만든 프로덕션 워크플로 + 내 작업 패턴을 자동 학습해 개인 스킬로 저장</li>
+    <li><strong style="color:var(--gold)">memory</strong> — 내 브랜드·캐릭터·톤을 기억해 이후 모든 작업에 자동 반영</li>
+    <li><strong style="color:var(--gold)">tasks</strong> — 영상처럼 오래 걸리는 작업을 큐로 관리하며 완료까지 진행</li>
+  </ul>
   <p style="margin-top:.75rem"><strong style="color:var(--gold)">퀵스타트 버튼</strong> — 자주 쓰는 워크플로를 한 클릭으로 시작:</p>
   <div class="kw-row" style="margin-top:.45rem">
     <span class="kw">Personal clipper</span><span class="kw">build with skills</span><span class="kw">create UGC</span><span class="kw">run marketing</span><span class="kw">shoot cinema</span><span class="kw">animate</span>
   </div>
-</div>
-
-<div class="callout c-info"><span class="ico">🧠</span><p><strong>오케스트레이터 = Google Gemini</strong>입니다. 사용자가 모델·프롬프트를 신경 쓸 필요 없이, Gemini가 작업마다 <strong>GPT-5.5 · Claude Opus 4.7 · Gemini 3.1 Pro · Grok</strong> 등 여러 모델을 <strong>자동 선택(라우팅)</strong>합니다.</p></div>
-
-<div class="card">
-  <h3>왜 Supercomputer인가 — 핵심 특징</h3>
-  <ul>
-    <li><strong style="color:var(--gold)">모델 자동 선택</strong> — 작업마다 최적 모델을 라우팅하고, 파라미터 튜닝·재시도까지 자동으로 처리</li>
-    <li><strong style="color:var(--gold)">실제 프레임 분석</strong> — 이미지·영상을 텍스트 요약이 아니라 <strong>실제 프레임으로 직접 분석</strong>해 훅·페이싱을 파악</li>
-    <li><strong style="color:var(--gold)">skills</strong> — 힉스필드 팀이 만든 프로덕션 워크플로 + 내 작업 패턴을 자동 학습해 <strong>개인 스킬로 저장</strong></li>
-  </ul>
 </div>
 
 <div class="callout c-info"><span class="ico">🖥️</span><p>아래는 Supercomputer 실제 화면(강사 캡처)입니다. 위에서 설명한 사이드바·퀵스타트 버튼을 직접 찾아보세요.</p></div>
@@ -286,7 +267,7 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
     <tr>
       <td><strong>작업 단위</strong></td>
       <td>이미지 1장 · 영상 1편씩 직접 클릭</td>
-      <td><span style="color:var(--green)">✅ "런칭 전과정"을 한 명령으로</span></td>
+      <td><span style="color:var(--green)">✅ "워크플로 전체"를 한 명령으로</span></td>
     </tr>
     <tr>
       <td><strong>모델·프리셋 선택</strong></td>
@@ -294,279 +275,245 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
       <td><span style="color:var(--green)">✅ 에이전트가 목표에 맞게 자동 선택</span></td>
     </tr>
     <tr>
-      <td><strong>변형 100개 생성</strong></td>
-      <td>100번 반복 클릭 (수 시간)</td>
+      <td><strong>변형 다량 생성</strong></td>
+      <td>여러 번 반복 클릭 (수 시간)</td>
       <td><span style="color:var(--green)">✅ 배치로 몇 분</span></td>
     </tr>
     <tr>
-      <td><strong>브랜드 일관성</strong></td>
+      <td><strong>브랜드·캐릭터 일관성</strong></td>
       <td>매번 같은 설명 타이핑</td>
-      <td><span style="color:var(--green)">✅ 영속 메모리가 자동 유지</span></td>
-    </tr>
-    <tr>
-      <td><strong>기획·전략 문서</strong></td>
-      <td>별도 도구·수기 작성</td>
-      <td><span style="color:var(--green)">✅ 같은 에이전트가 기획서·전략까지</span></td>
+      <td><span style="color:var(--green)">✅ 메모리가 자동 유지</span></td>
     </tr>
     <tr>
       <td><strong>적합한 상황</strong></td>
       <td>한 컷에 공들이는 정밀 작업</td>
-      <td>브랜드 런칭처럼 다단계·대량 작업</td>
+      <td>다단계·대량·연속 워크플로</td>
     </tr>
   </tbody>
 </table>
 
-<div class="callout c-tip"><span class="ico">📌</span><p><strong>오늘의 위치</strong>: 이 강의는 <strong>자동·전과정 오케스트레이션</strong>을 한 바퀴 도는 날입니다. <strong>Day 6~7은 이를 바탕으로 직접 자기 사업에 적용·정교화</strong>합니다. 오늘은 "어떻게 흘러가는지"를 끝까지 체험하는 게 목표입니다.</p></div>
+<div class="callout c-tip"><span class="ico">📌</span><p><strong>오늘의 위치</strong>: 이 강의는 <strong>채팅창 하나로 워크플로를 한 번에</strong> 돌리는 날입니다. Day 1~4의 수작업 감각 위에, 이제 자동 오케스트레이션을 얹습니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 2 · 런칭 전과정 5단계
+     강의 PART 2 · 3가지 워크플로
      ════════════════════════════════ -->
 <div class="sec" id="lec2">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 2 · 브랜드 런칭 전과정 5단계 (개념)</h2>
+  <span class="badge b-lec">강의·시연</span>
+  <h2>Part 2 · 3가지 대표 워크플로</h2>
   <span class="timer">0:25 – 1:05 · 40분</span>
 </div>
 
-<div class="formula">① 브랜드 생성 → ② 브랜드 학습·시장조사 → ③ 바이럴 리서치·전략 → ④ 광고 소재 → ⑤ 영상</div>
+<div class="formula">① Personal Clipper · 긴 영상 → 숏폼 &nbsp;→&nbsp; ② 1분 스토리 영상 · 아이디어 → 완성 영상 &nbsp;→&nbsp; ③ 브랜드 캠페인 · 한 문장 → Content Factory</div>
 
-<div class="callout c-info"><span class="ico">🧭</span><p>여기서는 5단계가 <strong>무엇을·왜 하는지</strong>만 개념으로 짚습니다. 실제 프롬프트(복사 버튼)와 따라 하기는 아래 <strong>🚀 통합 실습 "내 브랜드 0→런칭"</strong>에서 단계별로 직접 진행합니다. 모든 프롬프트는 힉스필드 공식 Supercomputer 튜토리얼에서 쓰인 명령입니다.</p></div>
+<div class="callout c-info"><span class="ico">🧭</span><p>아래 3가지는 공식 Supercomputer 시연에서 확인된 <strong>실제 프롬프트</strong>입니다. 각 워크플로마다 <strong>무엇을·왜 / 실제 프롬프트(영문 원본 + 한국어 병기) / 동작 방식 / 예상 결과</strong>를 봅니다. 모든 프롬프트는 <strong>채팅창에 그대로 붙여넣으면</strong> 됩니다.</p></div>
 
-<table>
-  <thead><tr><th>단계</th><th>무엇을 / 왜</th><th>출력</th></tr></thead>
-  <tbody>
-    <tr>
-      <td><strong>① 브랜드 생성</strong></td>
-      <td>단 한 문장으로 브랜드 전체를 만든다. 이후 모든 단계의 영속 메모리 기준이 됨</td>
-      <td>이름·로고·제품 사진·소셜 포스트·영상 광고</td>
-    </tr>
-    <tr>
-      <td><strong>② 학습 + 시장조사</strong></td>
-      <td>URL로 브랜드를 학습시키고, TikTok·Instagram에서 뜨는 것을 리서치. 실제 프레임으로 분석해 훅·페이싱까지 파악</td>
-      <td>브랜드 톤 메모리 + 니치 바이럴 패턴</td>
-    </tr>
-    <tr>
-      <td><strong>③ 바이럴 리서치·전략</strong></td>
-      <td>찾은 바이럴 포맷을 그대로 베끼지 않고 <strong>내 브랜드용으로 리빌드</strong></td>
-      <td>재구성된 콘텐츠 방향 + 필요 소재 목록</td>
-    </tr>
-    <tr>
-      <td><strong>④ 광고 소재</strong></td>
-      <td>리빌드 방향대로 제품 광고 이미지 세트를 한 번에 대량 생성. 브랜드 톤 자동 유지</td>
-      <td>제품컷·UGC·키비주얼 (비율별)</td>
-    </tr>
-    <tr>
-      <td><strong>⑤ 영상</strong></td>
-      <td>소재를 움직이는 영상으로. 9:16 숏폼·16:9 광고 + 1분 스토리 영상. 긴 영상은 Personal Clipper로 절단</td>
-      <td>숏폼·광고·스토리 영상</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="callout c-tip"><span class="ico">🔗</span><p>각 단계의 출력이 다음 단계의 입력으로 끊김 없이 이어집니다. ④의 가장 강한 컷이 ⑤ 영상의 첫 프레임이 되는 식 — 이 연결이 오케스트레이션의 핵심입니다.</p></div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     강의 PART 3 · 전과정 한 번에
-     ════════════════════════════════ -->
-<div class="sec" id="lec3">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 3 · Supercomputer로 전 과정 한 번에</h2>
-  <span class="timer">1:05 – 1:25 · 20분</span>
-</div>
+<!-- 워크플로 ① -->
+<div class="wf-head" id="wf1"><div class="wf-num">①</div><h3>Personal Clipper — 긴 영상 → 숏폼</h3></div>
 
 <div class="card">
-  <h3>5단계를 하나의 요청으로 묶기</h3>
-  <p>지금까지의 5단계를 <strong>매번 따로 명령하지 않고</strong>, Supercomputer 채팅에 <strong>전 과정을 한 번에</strong> 요청할 수도 있습니다. "브랜드 런칭 전과정을 진행해줘"라고 말하면 Supercomputer가 ①~⑤를 스스로 순서대로 진행합니다 — 단계마다 도구를 바꿀 필요가 없습니다.</p>
-  <ul style="margin-top:.65rem">
-    <li><strong style="color:var(--gold)">skills</strong> — 자주 쓰는 워크플로를 스킬로 저장해 다음에 한 번에 재실행</li>
-    <li><strong style="color:var(--gold)">memory</strong> — 내 브랜드 정보를 기억해 이후 모든 작업에 자동 반영</li>
-    <li><strong style="color:var(--gold)">tasks</strong> — 영상처럼 오래 걸리는 작업을 큐로 관리하며 완료까지 진행</li>
-  </ul>
+  <h3>무엇을·왜 하나요?</h3>
+  <p>팟캐스트·인터뷰·라이브 같은 <strong>긴 영상에서 베스트 순간만 잘라 9:16 릴스</strong>로 만듭니다. 직접 타임라인을 훑으며 컷을 찾는 수고를 없애줍니다. 숏폼 채널을 빠르게 채워야 할 때 가장 자주 쓰는 워크플로입니다.</p>
 </div>
 
 <div class="prompt">
-  <div class="plabel">Supercomputer 채팅 · 런칭 전과정 한 요청</div>
-  <code id="cmd-all">내 [카테고리] 브랜드 런칭 전과정을 진행해줘.
-순서대로:
-1) 브랜드 기획서 작성
-2) 시장조사 요약
-3) 4주 런칭 전략
-4) 광고 소재 5종 이상 생성
-5) 9:16 숏폼 1편 이상 생성
-각 단계 결과를 보여줘.</code>
-  <button class="copy-btn" onclick="cp('cmd-all',this)">복사</button>
+  <div class="plabel">Supercomputer 채팅 · Personal Clipper (한국어)</div>
+  <code id="cmd-clip-ko">이 [영상 링크]에서 베스트 순간들을 찾아 9:16 릴스로 만들어줘. 자동 자막 + 첫 1초 훅 포함.</code>
+  <button class="copy-btn" onclick="cp('cmd-clip-ko',this)">복사</button>
 </div>
 
-<div class="callout c-tip"><span class="ico">💡</span><p>오늘 실습은 전부 <strong>힉스필드 웹의 Supercomputer 채팅</strong>에서만 진행합니다. 한 채팅 안에서 기획부터 영상까지 스스로 오케스트레이션하므로 다른 도구가 필요 없습니다.</p></div>
+<div class="prompt">
+  <div class="plabel">English (원본) · 영상 링크 붙여넣기</div>
+  <code id="cmd-clip-en">Find the best moments in this podcast and turn them into 9:16 reels with auto captions and a hook in the first second.</code>
+  <button class="copy-btn" onclick="cp('cmd-clip-en',this)">복사</button>
+</div>
+
+<div class="card">
+  <h3>동작 방식</h3>
+  <p>키워드 매칭이나 무음 구간 컷이 아니라 <strong>프레임 단위로 영상을 직접 시청</strong>합니다. 장면별 <strong>에너지와 훅을 감지</strong>해 가장 강한 순간을 골라내고, 9:16 비율로 리프레임 + 자동 자막을 입힌 <strong>클립 세트</strong>를 만들어냅니다.</p>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 첫 1초 훅 + 자동 자막이 들어간 9:16 릴스 여러 개가 한 번에 나옵니다. 가장 강한 순서로 정렬해 바로 업로드할 수 있습니다.</p></div>
+
+<!-- 워크플로 ② -->
+<div class="wf-head" id="wf2"><div class="wf-num">②</div><h3>1분 스토리 영상 — 아이디어 → 완성 영상</h3></div>
+
+<div class="card">
+  <h3>무엇을·왜 하나요?</h3>
+  <p><strong>한 문장 컨셉만 주면</strong> Supercomputer가 키프레임 → 스토리 컨셉 제안 → 캐릭터·프롭·로케이션 확정 → 15초 클립 생성 → <strong>자동으로 하나로 이어붙이기(stitch)</strong>까지 진행해 <strong>1분짜리 애니메이션 영상</strong>을 완성합니다. 스토리텔링 숏폼을 빠르게 뽑아야 할 때 씁니다.</p>
+</div>
+
+<div class="prompt">
+  <div class="plabel">Supercomputer 채팅 · 1분 스토리 영상 (한국어)</div>
+  <code id="cmd-story-ko">1분짜리 애니메이션 영상 만들어줘 — [컨셉: 예: 행성을 넘나들며 몬스터와 싸우는 히어로].</code>
+  <button class="copy-btn" onclick="cp('cmd-story-ko',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">English (원본)</div>
+  <code id="cmd-story-en">I want a 1-minute animated video, [a hero fighting monsters from different planets].</code>
+  <button class="copy-btn" onclick="cp('cmd-story-en',this)">복사</button>
+</div>
+
+<div class="card">
+  <h3>동작 방식 — Supercomputer가 진행하는 5단계</h3>
+  <ol class="steps">
+    <li><div class="snum">1</div><div class="sbody"><strong>키프레임 먼저 생성</strong><p>영상의 핵심 장면을 이미지로 먼저 뽑아 방향을 잡음</p></div></li>
+    <li><div class="snum">2</div><div class="sbody"><strong>스토리 컨셉 3개 제안</strong><p>같은 컨셉을 풀어낼 서로 다른 스토리 방향 3가지를 제시</p></div></li>
+    <li><div class="snum">3</div><div class="sbody"><strong>사용자가 '컨셉 1' 선택</strong><p>마음에 드는 컨셉 하나를 고르면 그 방향으로 확정</p></div></li>
+    <li><div class="snum">4</div><div class="sbody"><strong>캐릭터 시트·프롭 시트·로케이션 확정</strong><p>일관성을 위해 등장 캐릭터·소품·배경을 시트로 고정 (이미지 드래그로 추가 가능)</p></div></li>
+    <li><div class="snum">5</div><div class="sbody"><strong>15초 클립 생성 → 자동 stitch</strong><p>15초 단위 클립들을 만든 뒤 <strong>하나의 1분 영상으로 자동으로 이어붙임</strong></p></div></li>
+  </ol>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 컨셉·캐릭터·배경이 일관되게 유지된 1분짜리 애니메이션 영상 한 편이 자동으로 완성됩니다.</p></div>
+
+<!-- 워크플로 ③ -->
+<div class="wf-head" id="wf3"><div class="wf-num">③</div><h3>브랜드 캠페인 — Content Factory</h3></div>
+
+<div class="card">
+  <h3>무엇을·왜 하나요?</h3>
+  <p>한 문장으로 <strong>브랜드 전체</strong>(이름·로고·제품 사진·소셜 포스트·영상 광고)를 만들고, 이어서 <strong>내 브랜드를 학습 → 잘 되는 콘텐츠 리서치 → 내 브랜드용으로 리빌드</strong>까지 한 챗에서 끝냅니다. 원래 <strong>전문가 5명+, 수천 달러, 수 주</strong>가 걸리던 일을 <strong>한 챗</strong>으로 대체합니다.</p>
+</div>
+
+<table>
+  <thead><tr><th>원래 (사람·시간·비용)</th><th>Supercomputer 한 챗</th></tr></thead>
+  <tbody>
+    <tr><td>니치 리서치 (애널리스트)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
+    <tr><td>브랜드 아이덴티티 (브랜드 디자이너)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
+    <tr><td>제품 사진 (제품 포토그래퍼)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
+    <tr><td>리스팅·카피 (카피라이터)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
+    <tr><td>영상 광고 (영상 편집자)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
+    <tr><td>유통 전략 (마케팅 전략가)</td><td><span style="color:var(--green)">✅ 한 챗 안에서</span></td></tr>
+  </tbody>
+</table>
+<p style="margin-top:.5rem;font-size:.85rem;color:var(--muted)">→ <strong style="color:var(--gold)">5명+ 전문가, 수천 달러, 수 주 → 한 챗</strong></p>
+
+<p style="margin:1.25rem 0 .4rem;font-size:.92rem;font-weight:700;color:var(--cream)">프롬프트 1 · 한 문장으로 브랜드 전체 생성</p>
+<div class="prompt">
+  <div class="plabel">Supercomputer 채팅 · 브랜드 전체 생성 (한국어)</div>
+  <code id="cmd-brand-ko">[운동화] 브랜드 전체를 만들어줘 — 이름, 로고, 제품 사진, 소셜 포스트, 영상 광고 3종.</code>
+  <button class="copy-btn" onclick="cp('cmd-brand-ko',this)">복사</button>
+</div>
+<div class="prompt">
+  <div class="plabel">English (원본)</div>
+  <code id="cmd-brand-en">Create a full [sneaker] brand — name, logo, product photos, social posts, and three styles of video ads.</code>
+  <button class="copy-btn" onclick="cp('cmd-brand-en',this)">복사</button>
+</div>
+
+<p style="margin:1.25rem 0 .4rem;font-size:.92rem;font-weight:700;color:var(--cream)">프롬프트 2 · 학습 + 리서치 + 리빌드 (URL 붙여넣기)</p>
+<div class="prompt">
+  <div class="plabel">Supercomputer 채팅 · 학습·리서치·리빌드 (한국어)</div>
+  <code id="cmd-rebuild-ko">이 [URL]로 내 브랜드를 학습하고, TikTok·Instagram에서 잘 되는 [카테고리] 콘텐츠를 리서치해서 지금 뜨는 포맷을 내 브랜드용으로 다시 만들어줘.</code>
+  <button class="copy-btn" onclick="cp('cmd-rebuild-ko',this)">복사</button>
+</div>
+<div class="prompt">
+  <div class="plabel">English (원본) · URL 붙여넣기</div>
+  <code id="cmd-rebuild-en">Learn my brand from this URL, research top performing content on TikTok and Instagram, find what's viral in my niche, and rebuild it for my brand.</code>
+  <button class="copy-btn" onclick="cp('cmd-rebuild-en',this)">복사</button>
+</div>
+
+<div class="card">
+  <h3>동작 방식</h3>
+  <p>한 챗 안에서 <strong>니치 리서치 → 브랜드 아이덴티티 → 제품 사진 → 리스팅 → 영상 광고 → 유통 전략</strong>까지 순서대로 진행됩니다. 영상·콘텐츠를 실제 프레임으로 분석해 훅·페이싱을 파악하고, 메모리에 저장된 브랜드 톤을 모든 산출물에 자동으로 유지합니다.</p>
+</div>
+
+<div class="callout c-tip"><span class="ico">🏆</span><p><strong>이 ③번 브랜드 캠페인이 마지막 이틀(Day 6~7) 프로젝트의 토대</strong>입니다. 오늘은 가상/내 브랜드로 한 바퀴 돌려 흐름을 익히고, Day 6~7에서 본인의 실제 사업으로 깊게 이어갑니다.</p></div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 브랜드명·로고·제품 사진·소셜 포스트·영상 광고가 한 세트로 나오고, 리서치 기반으로 리빌드된 콘텐츠 방향까지 한 챗에 정리됩니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     통합 실습 프로젝트 · 내 브랜드 0→런칭
+     실습 · 3가지 워크플로 직접
      ════════════════════════════════ -->
-<div class="sec" id="project">
-  <span class="badge b-prac">실습 프로젝트</span>
-  <h2>내 브랜드 0→런칭 (통합)</h2>
+<div class="sec" id="practice">
+  <span class="badge b-prac">실습</span>
+  <h2>3가지 워크플로 직접 해보기</h2>
   <span class="timer">1:30 – 4:00 · 2h 30m</span>
 </div>
 
-<div class="callout c-tip"><span class="ico">🚀</span><p>오늘 실습은 <strong>하나의 연속 프로젝트</strong>입니다. 본인 브랜드 <strong>1개</strong>를 정해 <strong>0단계부터 런칭 패키지까지</strong> 쭉 끌고 갑니다. 각 단계의 결과가 다음 단계 입력이 되므로 <strong>순서대로</strong> 진행하세요. 모든 프롬프트는 힉스필드 공식 Supercomputer 튜토리얼 기준 — 그대로 복사해 채팅창에 붙여넣으면 됩니다.</p></div>
+<div class="callout c-tip"><span class="ico">🚀</span><p>강의에서 본 3가지를 <strong>각자 직접</strong> 돌려봅니다. 모두 <strong>힉스필드 웹의 Supercomputer 채팅창</strong>에서 진행하고, 프롬프트는 위 강의의 복사 버튼을 그대로 쓰면 됩니다.</p></div>
 
-<div class="formula">0 브랜드 정하기 → 1 생성 → 2 학습·조사 → 3 전략 → 4 광고 소재 → 5 영상</div>
+<div class="formula">실습 A · Personal Clipper (40분) &nbsp;→&nbsp; 실습 B · 1분 스토리 영상 (50분) &nbsp;→&nbsp; 실습 C · 브랜드 캠페인 (50분)</div>
 
-<!-- 0단계 -->
-<div class="sec" id="p0" style="margin-top:2rem">
-  <span class="badge b-demo">0단계</span>
-  <h2>브랜드 정하기</h2>
-  <span class="timer">10분</span>
+<!-- 실습 A -->
+<div class="sec" id="pa" style="margin-top:2rem">
+  <span class="badge b-demo">실습 A</span>
+  <h2>Personal Clipper — 긴 영상 → 숏폼</h2>
+  <span class="timer">40분</span>
 </div>
 
 <div class="card">
-  <h3>무엇을·왜 하나요?</h3>
-  <p>나머지 5단계를 끌고 갈 <strong>브랜드 1개</strong>를 확정합니다. 카테고리·타깃·한 줄 컨셉만 메모하면 충분합니다. 이 메모가 1단계 생성 프롬프트의 입력이 됩니다.</p>
+  <h3>할 일</h3>
+  <p>본인 관심 분야의 <strong>긴 영상 링크</strong>(팟캐스트·인터뷰·라이브·강연 등) 하나를 골라, Supercomputer 채팅창에 워크플로 ① 프롬프트와 함께 붙여넣고 <strong>9:16 숏폼 클립</strong>을 뽑아냅니다.</p>
   <ul style="margin-top:.5rem">
-    <li><strong style="color:var(--gold)">카테고리</strong> — 예: 친환경 텀블러, 비건 스킨케어, 홈카페 도구, 반려동물 간식</li>
-    <li><strong style="color:var(--gold)">타깃</strong> — 예: 20대 직장인, 30대 1인 가구</li>
-    <li><strong style="color:var(--gold)">한 줄 컨셉</strong> — 예: "출근길에 들고 다니는 친환경 텀블러"</li>
+    <li><strong style="color:var(--gold)">링크 준비</strong> — 길이가 충분한(5분 이상) 영상 링크 1개</li>
+    <li><strong style="color:var(--gold)">실행</strong> — 워크플로 ① 한국어 프롬프트 + 링크 붙여넣기</li>
+    <li><strong style="color:var(--gold)">확인</strong> — 자동 자막 · 첫 1초 훅 · 9:16 비율</li>
   </ul>
 </div>
+
+<div class="callout c-info"><span class="ico">✂️</span><p>위 <a href="#wf1" style="color:var(--gold)">워크플로 ① 프롬프트</a>를 복사해 사용하세요. 링크가 인식 안 되면 다른 영상으로 교체해보세요.</p></div>
 
 <div class="challenge">
-  <h4>🎯 0단계 체크포인트</h4>
+  <h4>🎯 실습 A 체크포인트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">카테고리·타깃·한 줄 컨셉 메모 완료</li>
-    <li><input type="checkbox">이 브랜드 1개를 오늘 끝까지 끌고 가기로 확정</li>
+    <li><input type="checkbox">긴 영상 링크 1개 준비 + 채팅창에 워크플로 ① 실행</li>
+    <li><input type="checkbox">9:16 숏폼 클립 1개 이상 생성됨</li>
+    <li><input type="checkbox">자동 자막 + 첫 1초 훅 확인</li>
   </ul>
 </div>
 
-<!-- 1단계 -->
-<div class="sec" id="p1" style="margin-top:2rem">
-  <span class="badge b-demo">1단계</span>
-  <h2>브랜드 생성</h2>
-  <span class="timer">30분 · 한 문장으로 브랜드 전체</span>
+<!-- 실습 B -->
+<div class="sec" id="pb" style="margin-top:2rem">
+  <span class="badge b-demo">실습 B</span>
+  <h2>1분 스토리 영상 — 아이디어 → 완성</h2>
+  <span class="timer">50분</span>
 </div>
 
 <div class="card">
-  <h3>무엇을·왜 하나요?</h3>
-  <p>런칭의 토대입니다. 공식 튜토리얼에서는 <strong>단 한 문장</strong>으로 브랜드 이름·로고·제품 사진·소셜 포스트·영상 광고까지 통째로 만들어냈습니다. 0단계에서 정한 카테고리만 넣으면 됩니다. 이 결과가 이후 모든 단계의 영속 메모리 기준이 됩니다.</p>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · 브랜드 전체 생성 (한국어 실습)</div>
-  <code id="cmd-1">[운동화] 브랜드 전체를 만들어줘 — 이름, 로고, 제품 사진, 소셜 포스트, 영상 광고 3종.</code>
-  <button class="copy-btn" onclick="cp('cmd-1',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">English (원본)</div>
-  <code id="cmd-1-en">Create a full [sneaker] brand — name, logo, product photos, social posts, and three styles of video ads.</code>
-  <button class="copy-btn" onclick="cp('cmd-1-en',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">📌</span><p><code style="color:var(--gold);font-size:.83rem">[운동화]</code>를 0단계에서 정한 본인 카테고리로 교체하세요.</p></div>
-
-<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 브랜드명·로고 시안·제품 사진 세트·소셜 포스트 초안·영상 광고 3종이 한 번에 생성됩니다. 마음에 드는 조합을 골라 <strong>"이 설정을 기억하고 이후 작업에 반영해줘"</strong>로 영속 메모리에 고정합니다.</p></div>
-
-<div class="challenge">
-  <h4>🎯 1단계 체크포인트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">① 브랜드 생성 프롬프트 실행 → 브랜드 한 세트 받음 (이름·로고·제품 사진·소셜 포스트)</li>
-    <li><input type="checkbox">마음에 드는 조합 선택 + "이 설정을 기억해줘"로 메모리 고정</li>
+  <h3>할 일</h3>
+  <p>내 <strong>아이디어 한 줄</strong>을 컨셉으로 넣고, Supercomputer가 제안하는 스토리 컨셉 3개 중 하나를 <strong>골라</strong> 1분짜리 완성 영상까지 끌고 갑니다.</p>
+  <ul style="margin-top:.5rem">
+    <li><strong style="color:var(--gold)">아이디어 한 줄</strong> — 예: "사막에서 보물을 찾는 고양이", "도시를 누비는 배달 로봇"</li>
+    <li><strong style="color:var(--gold)">실행</strong> — 워크플로 ② 한국어 프롬프트에 내 컨셉 넣기</li>
+    <li><strong style="color:var(--gold)">선택</strong> — 제안된 컨셉 3개 중 "컨셉 1"처럼 하나 고르기</li>
+    <li><strong style="color:var(--gold)">완료</strong> — 캐릭터·배경 시트 확정 → 15초 클립 → 자동 stitch</li>
   </ul>
 </div>
 
-<!-- 2단계 -->
-<div class="sec" id="p2" style="margin-top:2rem">
-  <span class="badge b-demo">2단계</span>
-  <h2>학습 + 시장조사</h2>
-  <span class="timer">30분 · URL 학습 · 트렌드 리서치</span>
-</div>
-
-<div class="card">
-  <h3>무엇을·왜 하나요?</h3>
-  <p>이미 사이트가 있다면 <strong>URL로 브랜드를 학습</strong>시키고, 동시에 <strong>TikTok·Instagram에서 잘 되는 콘텐츠를 리서치</strong>해 "지금 내 니치에서 뜨는 것"을 찾습니다. Supercomputer는 텍스트 요약이 아니라 <strong>실제 프레임으로</strong> 콘텐츠를 분석하므로 훅·페이싱까지 짚어줍니다.</p>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · 브랜드 학습 + 리서치 (한국어 실습)</div>
-  <code id="cmd-2">이 [URL]로 내 브랜드를 학습하고, TikTok·Instagram에서 잘 되는 [카테고리] 콘텐츠를 리서치해서 지금 내 니치에서 뜨는 걸 찾아줘.</code>
-  <button class="copy-btn" onclick="cp('cmd-2',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">English (원본)</div>
-  <code id="cmd-2-en">Learn my brand from this URL, research top performing fashion content on TikTok and Instagram, and find what's viral in my niche right now.</code>
-  <button class="copy-btn" onclick="cp('cmd-2-en',this)">복사</button>
-</div>
-
-<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 내 브랜드 톤이 메모리에 학습되고, 니치에서 바이럴 중인 포맷·훅·페이싱 패턴이 정리됩니다. 다음 단계 "바이럴 리빌드"의 입력이 됩니다.</p></div>
+<div class="callout c-info"><span class="ico">🎬</span><p>위 <a href="#wf2" style="color:var(--gold)">워크플로 ② 프롬프트</a>를 사용하세요. 컨셉 선택 단계에서 "컨셉 1"처럼 명확히 골라야 다음으로 넘어갑니다.</p></div>
 
 <div class="challenge">
-  <h4>🎯 2단계 체크포인트</h4>
+  <h4>🎯 실습 B 체크포인트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">② 학습·시장조사 실행 → 니치에서 뜨는 포맷 리서치 확보</li>
-    <li><input type="checkbox">"지금 내 니치에서 뜨는 포맷"을 1문장으로 메모</li>
+    <li><input type="checkbox">내 아이디어 한 줄로 워크플로 ② 실행</li>
+    <li><input type="checkbox">제안된 컨셉 3개 중 하나 선택</li>
+    <li><input type="checkbox">캐릭터·배경 시트 확정 → 자동 stitch까지 완료 (1분 영상 1편)</li>
   </ul>
 </div>
 
-<!-- 3단계 -->
-<div class="sec" id="p3" style="margin-top:2rem">
-  <span class="badge b-demo">3단계</span>
-  <h2>바이럴 리서치·전략 (리빌드)</h2>
-  <span class="timer">20분 · 바이럴 포맷 재구성</span>
+<!-- 실습 C -->
+<div class="sec" id="pc" style="margin-top:2rem">
+  <span class="badge b-demo">실습 C</span>
+  <h2>브랜드 캠페인 맛보기</h2>
+  <span class="timer">50분</span>
 </div>
 
 <div class="card">
-  <h3>무엇을·왜 하나요?</h3>
-  <p>2단계에서 찾은 <strong>바이럴 포맷을 그대로 베끼지 않고, 내 브랜드용으로 다시 만듭니다(리빌드)</strong>. Supercomputer가 잘 된 콘텐츠의 훅·구조·페이싱을 분석해 우리 브랜드 톤으로 재구성한 전략·소재 방향을 제안합니다.</p>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · 바이럴 리빌드 (한국어 실습)</div>
-  <code id="cmd-3">내 니치에서 바이럴 중인 포맷을 내 브랜드용으로 다시 만들어줘.</code>
-  <button class="copy-btn" onclick="cp('cmd-3',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">English (원본)</div>
-  <code id="cmd-3-en">Rebuild what's going viral in my niche for my brand.</code>
-  <button class="copy-btn" onclick="cp('cmd-3-en',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">💡</span><p>여기서 나온 "재구성된 콘텐츠 방향·필요 소재"가 곧바로 4단계 광고 소재의 입력이 됩니다.</p></div>
-
-<div class="challenge">
-  <h4>🎯 3단계 체크포인트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">③ 바이럴 리빌드 실행 → 브랜드용 재구성 방향 확보</li>
-    <li><input type="checkbox">4단계에서 만들 "필요 광고 소재 목록" 추출</li>
+  <h3>할 일</h3>
+  <p><strong>가상 브랜드</strong> 또는 <strong>내 브랜드</strong>로 워크플로 ③을 한 바퀴 돌립니다. 한 문장으로 브랜드 전체를 만들고, URL이 있으면 학습·리서치·리빌드까지 이어갑니다. <strong>Day 6~7에서 본인 사업으로 깊게 이어가는</strong> 출발점입니다.</p>
+  <ul style="margin-top:.5rem">
+    <li><strong style="color:var(--gold)">카테고리 정하기</strong> — 예: 친환경 텀블러, 비건 스킨케어, 반려동물 간식</li>
+    <li><strong style="color:var(--gold)">실행 1</strong> — 워크플로 ③ 프롬프트 1로 브랜드 한 세트 생성</li>
+    <li><strong style="color:var(--gold)">실행 2</strong> — (URL 있으면) 프롬프트 2로 학습·리서치·리빌드</li>
+    <li><strong style="color:var(--gold)">고정</strong> — "이 설정을 기억해줘"로 브랜드 톤을 메모리에 저장</li>
   </ul>
 </div>
 
-<!-- 4단계 -->
-<div class="sec" id="p4" style="margin-top:2rem">
-  <span class="badge b-demo">4단계</span>
-  <h2>광고 소재</h2>
-  <span class="timer">30분 · 제품 광고 이미지 세트 일괄</span>
-</div>
-
-<div class="card">
-  <h3>무엇을·왜 하나요?</h3>
-  <p>리빌드한 방향대로 <strong>제품 광고 이미지 세트를 한 번에</strong> 생성합니다. 기억한 브랜드 톤을 그대로 유지하므로 제품 하나로 수십 개 변형이 가능합니다. 공식 튜토리얼에서는 런칭 소재를 <strong>이미지·숏폼·광고로 일괄 생성</strong>했습니다 — 이 단계는 그중 이미지 부분입니다.</p>
-</div>
-
-<div class="callout c-info"><span class="ico">📦</span><p>제품 이미지가 없으면 샘플 에셋 팩의 제품 컷을 사용하거나, Supercomputer에게 "이 카테고리에 어울리는 제품 컷을 먼저 만들어줘"로 시작하세요.</p></div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · 광고 이미지 세트 (한국어 실습)</div>
-  <code id="cmd-4">위 결과로 제품 광고 이미지 세트를 만들어줘. 기억한 브랜드 색감·톤을 유지하고, 제품컷·UGC·키비주얼을 섞어서 9:16과 1:1 둘 다 5종 이상 뽑아줘.</code>
-  <button class="copy-btn" onclick="cp('cmd-4',this)">복사</button>
-</div>
-
-<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 브랜드 톤이 통일된 제품컷·UGC·키비주얼이 비율별로 한 번에 생성됩니다. 그중 가장 강한 컷이 다음 단계(5단계 영상)의 첫 프레임이 됩니다.</p></div>
+<div class="callout c-info"><span class="ico">🏷️</span><p>위 <a href="#wf3" style="color:var(--gold)">워크플로 ③ 프롬프트 1·2</a>를 사용하세요. <code style="color:var(--gold);font-size:.83rem">[운동화]</code>·<code style="color:var(--gold);font-size:.83rem">[카테고리]</code>·<code style="color:var(--gold);font-size:.83rem">[URL]</code>을 본인 값으로 교체합니다.</p></div>
 
 <p style="margin:1.25rem 0 .65rem;font-size:.95rem;font-weight:700;color:var(--cream)">결과 예시 — 강사 생성 이미지 (제품·인물 소재)</p>
 
@@ -592,107 +539,17 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
     <div class="img-info">
       <span class="tag">영상 키프레임</span>
       <div class="kw-row"><span class="kw hi">keyframe</span><span class="kw">spot</span></div>
-      <span class="desc">5단계 영상의 시작 프레임</span>
+      <span class="desc">영상 광고의 시작 프레임</span>
     </div>
   </div>
 </div>
 
-<div class="callout c-tip"><span class="ico">📌</span><p>위 키프레임 이미지는 다음 단계(5단계 영상)의 <strong>첫 프레임</strong>으로 그대로 넘어갑니다. 소재와 영상이 끊기지 않고 이어지는 게 오케스트레이션의 핵심입니다.</p></div>
-
 <div class="challenge">
-  <h4>🎯 4단계 체크포인트</h4>
+  <h4>🎯 실습 C 체크포인트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">④ 광고 이미지 세트 실행 → 광고 소재 5종 이상 생성 (제품컷·UGC·키비주얼)</li>
-    <li><input type="checkbox">브랜드 톤(색감·무드) 일관성 확인 + 영상용 키프레임 1장 선정</li>
-  </ul>
-</div>
-
-<!-- 5단계 -->
-<div class="sec" id="p5" style="margin-top:2rem">
-  <span class="badge b-demo">5단계</span>
-  <h2>런칭 영상</h2>
-  <span class="timer">30분 · 숏폼·광고 (+ 1분 스토리 영상)</span>
-</div>
-
-<div class="card">
-  <h3>무엇을·왜 하나요?</h3>
-  <p>마지막으로 4단계의 소재를 움직이는 영상으로 바꿉니다. <strong>9:16 숏폼 + 16:9 광고 영상</strong>을 한 명령으로 생성하고, 가진 긴 영상이 있다면 <strong>Personal Clipper</strong>로 베스트 순간만 잘라 숏폼으로 만듭니다. Personal Clipper는 키워드·무음 컷이 아니라 <strong>프레임 단위로 시청해 에너지·훅을 감지</strong>합니다.</p>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · 런칭 영상 생성 (한국어 실습)</div>
-  <code id="cmd-5">위에서 만든 소재로 9:16 숏폼 3편과 16:9 광고 1편을 만들어줘. 키프레임 이미지를 첫 프레임으로 쓰고, 브랜드 톤·색감을 모든 영상에 통일해줘. 완성되면 가장 바이럴할 순서로 정렬해줘.</code>
-  <button class="copy-btn" onclick="cp('cmd-5',this)">복사</button>
-</div>
-
-<p style="margin:1.5rem 0 .5rem;font-size:.95rem;font-weight:700;color:var(--cream)">Personal Clipper — 긴 영상을 숏폼으로</p>
-<div class="callout c-info"><span class="ico">✂️</span><p>이미 가진 긴 영상(팟캐스트·인터뷰·라이브)이 있다면, 명령 끝에 <strong>유튜브 링크를 붙여넣어</strong> 베스트 순간만 9:16 릴스로 잘라낼 수 있습니다.</p></div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · Personal Clipper (한국어 실습)</div>
-  <code id="cmd-clip">이 [유튜브 링크]에서 베스트 순간들을 찾아 9:16 릴스로 만들어줘. 자동 자막과 첫 1초 훅 포함.</code>
-  <button class="copy-btn" onclick="cp('cmd-clip',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">English (원본)</div>
-  <code id="cmd-clip-en">Find the best moments in this podcast and turn them into 9:16 reels with auto captions and a hook in the first second.</code>
-  <button class="copy-btn" onclick="cp('cmd-clip-en',this)">복사</button>
-</div>
-
-<!-- 1분 스토리 영상 워크플로 -->
-<p style="margin:1.5rem 0 .5rem;font-size:.95rem;font-weight:700;color:var(--cream)">⭐ 1분 스토리 영상 워크플로 (선택)</p>
-
-<div class="card">
-  <h3>한 문장 → 1분짜리 이어 붙인 애니메이션</h3>
-  <p>공식 튜토리얼의 1분 스토리 영상 기능입니다. <strong>한 문장으로 컨셉만 주면</strong> Supercomputer가 키프레임 → 스토리 컨셉 제안 → 캐릭터·프롭·로케이션 확정 → 15초 클립 생성 → <strong>자동으로 하나로 이어붙이기(stitch)</strong>까지 진행합니다.</p>
-</div>
-
-<div class="prompt">
-  <div class="plabel">Supercomputer · 1분 스토리 영상 (한국어 실습)</div>
-  <code id="cmd-story">1분짜리 애니메이션 영상 만들어줘 — [컨셉: 예: 행성을 넘나들며 몬스터와 싸우는 히어로]</code>
-  <button class="copy-btn" onclick="cp('cmd-story',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">English (원본)</div>
-  <code id="cmd-story-en">I want a 1-minute animated video, [concept].</code>
-  <button class="copy-btn" onclick="cp('cmd-story-en',this)">복사</button>
-</div>
-
-<div class="card">
-  <h3>Supercomputer가 진행하는 5단계 (자동)</h3>
-  <ol class="steps">
-    <li><div class="snum">1</div><div class="sbody"><strong>키프레임 먼저 생성</strong><p>영상의 핵심 장면을 이미지로 먼저 뽑아 방향을 잡음</p></div></li>
-    <li><div class="snum">2</div><div class="sbody"><strong>스토리 컨셉 3개 제안</strong><p>같은 컨셉을 풀어낼 서로 다른 스토리 방향 3가지를 제시</p></div></li>
-    <li><div class="snum">3</div><div class="sbody"><strong>사용자가 'concept 1' 선택</strong><p>마음에 드는 컨셉 하나를 고르면 그 방향으로 확정</p></div></li>
-    <li><div class="snum">4</div><div class="sbody"><strong>캐릭터 시트·프롭 시트·로케이션 확정</strong><p>일관성을 위해 등장 캐릭터·소품·배경을 시트로 고정</p></div></li>
-    <li><div class="snum">5</div><div class="sbody"><strong>15초 클립 생성 → 자동 stitch</strong><p>15초 단위 클립들을 만든 뒤 <strong>하나의 1분 영상으로 자동으로 이어붙임</strong></p></div></li>
-  </ol>
-</div>
-
-<div class="callout c-ok"><span class="ico">✅</span><p><strong>예상 결과</strong>: 첫 1초 훅 + 자동 자막이 들어간 9:16 숏폼·16:9 광고와, 선택 시 캐릭터·배경이 일관된 1분 스토리 영상이 완성됩니다. 5단계를 모두 거치면 — 브랜드부터 완성 영상까지 <strong>런칭 패키지 한 세트</strong>가 만들어집니다. 이게 오늘의 최종 산출물입니다.</p></div>
-
-<div class="challenge">
-  <h4>🎯 5단계 체크포인트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">⑤ 영상 생성 실행 → 9:16 숏폼 1편 이상 완성 (키프레임을 첫 프레임으로)</li>
-    <li><input type="checkbox">첫 3초 훅 + 마무리 CTA 확인</li>
-    <li><input type="checkbox">(선택) 1분 스토리 영상 워크플로 실행 → concept 선택 → 자동 stitch까지 완료</li>
-  </ul>
-</div>
-
-<!-- 통합 체크리스트 -->
-<div class="challenge" style="border-color:#2a4e3a;background:#16261e;margin-top:2rem">
-  <h4 style="color:#80c898">✅ 통합 체크리스트 — 런칭 패키지 완성도</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">0단계 · 브랜드 카테고리·타깃·컨셉 확정</li>
-    <li><input type="checkbox">1단계 · 브랜드 한 세트(이름·로고·제품 사진·소셜 포스트) 생성</li>
-    <li><input type="checkbox">2단계 · URL 학습 + 니치 트렌드 리서치 확보</li>
-    <li><input type="checkbox">3단계 · 바이럴 포맷을 내 브랜드용으로 리빌드</li>
-    <li><input type="checkbox">4단계 · 광고 소재 5종 이상 생성 + 키프레임 선정</li>
-    <li><input type="checkbox">5단계 · 런칭 영상 1편 이상 (+ 선택: 1분 스토리 영상)</li>
-    <li><input type="checkbox">전체 산출물 한 폴더로 정리 → 최종 과제 제출 준비</li>
+    <li><input type="checkbox">카테고리 1개 정하고 워크플로 ③ 프롬프트 1 실행 → 브랜드 한 세트 받음</li>
+    <li><input type="checkbox">(URL 있으면) 프롬프트 2로 학습·리서치·리빌드 실행</li>
+    <li><input type="checkbox">"이 설정을 기억해줘"로 브랜드 톤 메모리에 고정</li>
   </ul>
 </div>
 
@@ -703,22 +560,20 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
      ════════════════════════════════ -->
 <div class="sec" id="final-task">
   <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
-  <h2>내 브랜드 런칭 패키지 (Day 5)</h2>
+  <h2>3가지 워크플로 결과물 (Day 5)</h2>
 </div>
 
-<div class="callout c-info"><span class="ico">🎯</span><p>위 통합 프로젝트의 <strong>0~5단계 결과물</strong>을 하나의 <strong>런칭 패키지</strong>로 묶어 제출합니다. 이것이 Day 5의 최종 과제 — "내 브랜드 런칭 패키지"입니다.</p></div>
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 실습한 <strong>3가지 워크플로의 결과물을 각 1개씩</strong> 제출합니다 — <strong>숏폼 클립 1개 · 1분 영상 1편 · 브랜드 1세트</strong>.</p></div>
 
 <div class="card">
-  <h3>제출 구성 (0~5단계 결과물)</h3>
+  <h3>제출 구성</h3>
   <table>
-    <thead><tr><th>항목</th><th>나온 단계</th><th>기준</th></tr></thead>
+    <thead><tr><th>결과물</th><th>나온 워크플로</th><th>기준</th></tr></thead>
     <tbody>
-      <tr><td><strong>브랜드 기획</strong></td><td>0·1단계</td><td>카테고리·타깃·한 줄 컨셉 + 이름·로고·톤·슬로건</td></tr>
-      <tr><td><strong>시장조사</strong></td><td>2단계</td><td>경쟁사·트렌드 + 니치에서 뜨는 포맷 1문장</td></tr>
-      <tr><td><strong>런칭 전략</strong></td><td>3단계</td><td>바이럴 리빌드 방향 + 채널별 적용 포인트</td></tr>
-      <tr><td><strong>광고 소재</strong></td><td>4단계</td><td>5종 이상 (제품컷·UGC·키비주얼)</td></tr>
-      <tr><td><strong>런칭 영상</strong></td><td>5단계</td><td>1편 이상 (9:16 숏폼 권장) + 선택: 1분 스토리 영상</td></tr>
-      <tr><td><strong>명령 기록</strong></td><td>전 단계</td><td>사용한 Supercomputer/자연어 명령 캡처 또는 텍스트</td></tr>
+      <tr><td><strong>숏폼 클립</strong></td><td>① Personal Clipper</td><td>긴 영상에서 잘라낸 9:16 릴스 1개 (자막 + 첫 1초 훅)</td></tr>
+      <tr><td><strong>1분 영상</strong></td><td>② 1분 스토리 영상</td><td>아이디어 한 줄 → 컨셉 선택 → 자동 stitch된 1분 영상 1편</td></tr>
+      <tr><td><strong>브랜드 1세트</strong></td><td>③ 브랜드 캠페인</td><td>이름·로고·제품 사진·소셜 포스트 (+ 가능하면 리빌드 방향)</td></tr>
+      <tr><td><strong>명령 기록</strong></td><td>전 워크플로</td><td>채팅창에 입력한 명령 캡처 또는 텍스트</td></tr>
       <tr><td><strong>제출처</strong></td><td>—</td><td>강사 안내 채널</td></tr>
     </tbody>
   </table>
@@ -727,15 +582,15 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="challenge" style="border-color:#3a3010">
   <h4 style="color:#e8c060">📤 제출 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">브랜드 기획(0·1단계) + 시장조사(2단계) 정리 완료</li>
-    <li><input type="checkbox">런칭 전략(3단계 리빌드 방향 + 채널별 포인트) 작성 완료</li>
-    <li><input type="checkbox">광고 소재 5종 이상(4단계) 생성 완료</li>
-    <li><input type="checkbox">런칭 영상 1편 이상(5단계, 9:16) 완성 — 선택: 1분 스토리 영상 1편</li>
-    <li><input type="checkbox">사용한 자연어 명령 기록 + 강사 채널 제출 완료</li>
+    <li><input type="checkbox">① 숏폼 클립 1개 (9:16, 자막 + 첫 1초 훅) 완성</li>
+    <li><input type="checkbox">② 1분 스토리 영상 1편 (컨셉 선택 → 자동 stitch) 완성</li>
+    <li><input type="checkbox">③ 브랜드 1세트 (이름·로고·제품 사진·소셜 포스트) 생성</li>
+    <li><input type="checkbox">사용한 채팅 명령 기록</li>
+    <li><input type="checkbox">3가지 결과물 + 명령 기록을 강사 채널에 제출</li>
   </ul>
 </div>
 
-<div class="callout c-tip"><span class="ico">🚀</span><p><strong>다음 단계 예고</strong>: 오늘은 전과정을 "체험"했습니다. <strong>Day 6~7에서는 오늘의 흐름을 본인의 실제 사업에 직접 적용하고, 결과물을 정교화</strong>합니다. 오늘 만든 패키지가 그 출발점이 됩니다.</p></div>
+<div class="callout c-tip"><span class="ico">🚀</span><p><strong>다음 단계 예고</strong>: 오늘은 3가지 워크플로를 "체험"했습니다. <strong>Day 6~7에서는 ③ 브랜드 캠페인을 본인의 실제 사업에 직접 적용하고, 결과물을 정교화</strong>합니다. 오늘 만든 브랜드 세트가 그 출발점이 됩니다.</p></div>
 
 <hr>
 
@@ -752,43 +607,43 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
   <tbody>
     <tr>
       <td>Supercomputer 메뉴가 보이지 않음</td>
-      <td>계정 플랜에 따라 접근 제한이 있을 수 있음. 강사에게 문의하거나, 아래 "수동 대체" 흐름으로 진행</td>
+      <td>계정 플랜에 따라 접근 제한이 있을 수 있음. 강사에게 문의하거나, 퀵스타트 버튼(Personal clipper 등)으로 시작</td>
     </tr>
     <tr>
-      <td>① 브랜드 생성이 한 번에 안 됨</td>
-      <td>① 프롬프트를 이름·로고·제품 사진 등 항목별로 쪼개 순서대로 요청. 결과를 힉스필드 작업의 톤 기준으로 사용</td>
+      <td>① 영상 링크가 인식되지 않음</td>
+      <td>공개(public) 영상인지 확인하고, 다른 링크로 교체. 너무 긴 영상은 일부 구간만 지정해 다시 요청</td>
     </tr>
     <tr>
-      <td>② 학습할 URL이 없음 / 리서치가 부실함</td>
-      <td>URL 부분을 빼고 카테고리만 남겨 리서치만 실행. 경쟁사 이름 2~3개를 직접 적어 추가하면 품질이 올라감</td>
+      <td>① 클립이 원하는 순간을 못 잡음</td>
+      <td>"이 영상에서 가장 임팩트 있는 3순간만"처럼 개수·기준을 명시해 재요청</td>
     </tr>
     <tr>
-      <td>③ 바이럴 리빌드가 너무 일반적임</td>
-      <td>1단계의 브랜드 톤과 2단계의 "뜨는 포맷 1문장"을 명령에 다시 붙여넣어 재요청</td>
+      <td>② 스토리 컨셉이 마음에 안 듦</td>
+      <td>"컨셉을 다시 3개 제안해줘"로 재생성 요청. 컨셉 선택 단계에서 "컨셉 1"처럼 골라야 다음 단계로 넘어감</td>
     </tr>
     <tr>
-      <td>④ 광고 소재 배치가 안 됨</td>
-      <td>한 번에 안 되면 종류별로 나눠 요청 (제품컷 → UGC → 키비주얼). Soul/Cinema Studio로 1장씩 수동 생성도 가능</td>
+      <td>② 1분 영상이 한 번에 안 나옴</td>
+      <td>정상입니다. 키프레임 → 컨셉 제안 → 컨셉 선택 → 시트 확정 → 클립 stitch 순으로 단계가 진행됨</td>
     </tr>
     <tr>
-      <td>광고 소재 톤이 제각각임</td>
-      <td>"1단계에서 정한 브랜드 색감·톤을 유지해줘"를 명령에 명시해 재생성</td>
+      <td>② 캐릭터·배경이 클립마다 달라짐</td>
+      <td>캐릭터 시트·로케이션 시트를 먼저 확정한 뒤 클립 생성. 필요하면 참고 이미지를 드래그해 고정</td>
     </tr>
     <tr>
-      <td>⑤ 영상 생성이 오래 걸림 / 멈춤</td>
-      <td>정상입니다. 폴링으로 기다림. 너무 길면 숏폼 1편으로 범위를 줄여 재요청</td>
+      <td>③ 브랜드가 한 번에 안 만들어짐</td>
+      <td>이름·로고·제품 사진 등 항목별로 쪼개 순서대로 요청. 결과를 이후 작업의 톤 기준으로 사용</td>
     </tr>
     <tr>
-      <td>1분 스토리 영상이 한 번에 안 나옴</td>
-      <td>정상입니다. 키프레임 → 컨셉 제안 → concept 선택 → 시트 확정 → 클립 stitch 순으로 진행됨. 컨셉 선택 단계에서 'concept 1'처럼 골라줘야 다음으로 넘어감</td>
+      <td>③ 학습할 URL이 없음 / 리서치가 부실함</td>
+      <td>URL 부분을 빼고 카테고리만 남겨 리서치만 실행. 경쟁사 이름 2~3개를 직접 적으면 품질이 올라감</td>
     </tr>
     <tr>
-      <td>영상에 쓸 키프레임이 없음</td>
-      <td>4단계에서 만든 제품컷·UGC 중 가장 강한 1장을 첫 프레임으로 지정</td>
+      <td>③ 산출물 톤이 제각각임</td>
+      <td>"앞서 정한 브랜드 색감·톤을 유지해줘"를 명령에 명시하고, "이 설정을 기억해줘"로 메모리에 고정</td>
     </tr>
     <tr>
-      <td>전과정 한 요청이 중간에 끊김</td>
-      <td>5단계를 한 번에 묶지 말고, 단계별 프롬프트(①~⑤)를 순서대로 따로 실행</td>
+      <td>영상 생성이 오래 걸림 / 큐에서 대기 중</td>
+      <td>정상입니다. tasks 큐에서 완료까지 기다림. 너무 길면 클립 수를 줄여 재요청</td>
     </tr>
   </tbody>
 </table>
@@ -796,7 +651,7 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 </div><!-- /page -->
 
 <footer>
-  <span>힉스필드 7일 워크숍 · Day 5 · Supercomputer — 브랜드 런칭 전과정 자동화</span>
+  <span>힉스필드 7일 워크숍 · Day 5 · Supercomputer — 3가지 워크플로 마스터</span>
   <span>예시 이미지: Higgsfield AI 생성 · 2026</span>
 </footer>
 
