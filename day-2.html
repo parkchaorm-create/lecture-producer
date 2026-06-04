@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 2 · AI 인플루언서 시리즈 — Soul ID 고정 &amp; Adobe 마무리 — 8일 워크숍</title>
+<title>Day 2 · Marketing Studio — 제품 광고 자동 생성 — 7일 워크숍</title>
 <style>
 :root {
   --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
@@ -105,9 +105,16 @@ tr:hover td{background:var(--s2)}
 
 .img-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
 .img-card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.img-card.wide img{aspect-ratio:16/9}
 .img-info{padding:.65rem .8rem}
 .img-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
 .img-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+
+/* SCREENSHOT */
+.shot{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden;margin:1.25rem 0}
+.shot img{width:100%;display:block}
+.shot .cap{padding:.6rem .9rem;font-size:.76rem;color:var(--muted);border-top:1px solid var(--s3)}
+.shot .cap strong{color:var(--gold)}
 
 /* KEYWORD TAGS */
 .kw-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
@@ -153,7 +160,8 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 </style>
 </head>
 <body>
-<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link active">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">Day 8</a><a class="db-link" href="day-9.html">⭐ 보너스</a></div>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link active">Day 2</a><a class="db-link" href="day-3.html">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">⭐ 인플루언서</a><a class="db-link" href="day-9.html">⭐ MCP</a></div>
+
 
 
 
@@ -161,14 +169,15 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <nav class="nav">
   <a href="#overview">전체 흐름</a>
   <span class="nav-sep">|</span>
-  <a href="#lec1">Soul ID 고정</a>
-  <a href="#lec2">일관 시리즈</a>
-  <a href="#lec3">Adobe 마무리</a>
+  <a href="#lec1">Marketing Studio란?</a>
+  <a href="#lec2">제품·브랜드킷 등록</a>
+  <a href="#lec3">광고 포맷 8종</a>
+  <a href="#lec4">원클릭 워크플로</a>
   <a href="#demo">시연</a>
   <span class="nav-sep">|</span>
-  <a href="#prac-a">실습 A·학습</a>
-  <a href="#prac-b">실습 B·시리즈</a>
-  <a href="#prac-c">실습 C·Adobe</a>
+  <a href="#prac-a">실습 A·제품 등록</a>
+  <a href="#prac-b">실습 B·포맷 비교</a>
+  <a href="#prac-c">실습 C·광고 5컷</a>
   <a href="#prac-d">실습 D·MCP</a>
   <a href="#final-task">🏆 과제</a>
   <a href="#trouble">❓ 도움말</a>
@@ -176,14 +185,14 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-chip">HIGGSFIELD 7-DAY WORKSHOP · DAY 2</div>
-  <h1>AI 인플루언서 시리즈 —<br><em>Soul ID 고정</em> &amp; Adobe 마무리</h1>
-  <p>Day 1이 "다양하게 만들기(폭)"였다면, 오늘은 캐릭터 하나를 골라 Soul ID로 고정하고 일관된 시리즈로 깊이 있게 + Adobe 무료 툴로 마무리합니다.</p>
+  <div class="hero-chip">HIGGSFIELD 8-DAY WORKSHOP · DAY 3</div>
+  <h1>Marketing Studio —<br><em>제품 광고 자동 생성</em></h1>
+  <p>Day 2가 "내 얼굴(인플루언서) 고정"이었다면, 오늘은 <strong>제품·브랜드를 광고로</strong> 바꿉니다. 제품 이미지/URL만 넣으면 힉스필드 Marketing Studio가 DTC 광고 이미지를 자동 생성합니다. (이 광고 감각은 Day 6~7 롱폼 광고 실전의 기반이 됩니다)</p>
   <div class="hero-pills">
     <div class="pill">⏱ <strong>총 4시간</strong></div>
-    <div class="pill">🎯 <strong>목표</strong>: 같은 얼굴로 일관 시리즈 만들기</div>
-    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + Day 1 캐릭터 + Adobe 무료 계정</div>
-    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h20m · 실습 2h40m</div>
+    <div class="pill">🎯 <strong>목표</strong>: 제품 1개로 광고 세트 만들기</div>
+    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + 제품 이미지/URL + (선택) 샘플 캐릭터</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h30m · 실습 2h30m</div>
   </div>
 </div>
 
@@ -191,15 +200,15 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="tl-wrap" id="overview">
   <div class="tl-label">오늘 4시간 흐름</div>
   <div class="tl-bar">
-    <div class="tl-lec">📖 강의·시연 (1h 20m)</div>
-    <div class="tl-prac">🖥️ 실습 A·B·C·D (2h 40m)</div>
+    <div class="tl-lec">📖 강의·시연 (1h 30m)</div>
+    <div class="tl-prac">🖥️ 실습 A·B·C·D (2h 30m)</div>
   </div>
   <div class="tl-times">
-    <span>0:00 Soul ID 고정</span>
-    <span>0:40 일관 시리즈</span>
-    <span>1:10 Adobe 마무리</span>
-    <span>1:40 실습 시작</span>
-    <span>3:50 공유</span>
+    <span>0:00 Studio란?</span>
+    <span>0:25 제품 등록</span>
+    <span>0:50 광고 포맷</span>
+    <span>1:20 워크플로</span>
+    <span>1:30 실습 시작</span>
     <span>4:00 끝</span>
   </div>
 </div>
@@ -207,233 +216,261 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="page">
 
 <!-- 복습 한 줄 -->
-<div class="callout c-info" style="margin-top:1.5rem"><span class="ico">🔁</span><p><strong>Day 1 복습</strong>: 어제 여러 캐릭터를 만들어봤다면, <strong>오늘은 그중 하나를 골라 고정합니다.</strong> Day 1에서 배운 Flux Kontext 배경 교체·레퍼런스 첨부 기법은 오늘 "일관 시리즈"에 그대로 응용합니다.</p></div>
+<div class="callout c-info" style="margin-top:1.5rem"><span class="ico">🔁</span><p><strong>Day 2 복습</strong>: 어제 만든 <strong>Soul ID(AI 인플루언서)</strong>는 오늘 광고의 "모델"로 그대로 씁니다. 내 캐릭터가 내 제품을 들고 광고에 등장 = <strong>내 브랜드 전속 모델</strong>. Day 2의 일관성 기법을 제품 광고에 응용합니다.</p></div>
 
 <!-- ════════════════════════════════
-     강의 PART 1 · Soul ID로 캐릭터 고정
+     강의 PART 1 · Marketing Studio란?
      ════════════════════════════════ -->
 <div class="sec" id="lec1">
   <span class="badge b-lec">강의 핵심</span>
-  <h2>Part 1 · Soul ID로 캐릭터 고정하기</h2>
-  <span class="timer">0:00 – 0:40 · 40분</span>
+  <h2>Part 1 · Marketing Studio란?</h2>
+  <span class="timer">0:00 – 0:25 · 25분</span>
 </div>
 
 <div class="card">
-  <h3>Soul ID란?</h3>
-  <p>사진 <strong>3~5장을 학습</strong>시켜, 어떤 장면·배경·의상에도 <strong>항상 같은 얼굴</strong>로 등장하는 나만의 AI 캐릭터입니다.<br>
-  Day 1의 1회성 생성과의 <strong>결정적 차이 = 일관성</strong>. 어제는 "비슷한 인물"이 매번 조금씩 달랐다면, Soul ID는 "바로 이 사람"으로 고정됩니다.</p>
+  <h3>Marketing Studio란?</h3>
+  <p><strong>제품 이미지 또는 제품 페이지 URL만 넣으면</strong>, 광고용 이미지·영상을 자동으로 생성하는 힉스필드 도구입니다.<br>
+  프롬프트를 한 줄씩 쓰는 게 아니라 <strong>"제품 넣고 → 포맷 고르고 → 생성"</strong>. TikTok/Reels 등 SNS 광고에 최적화된 비율·연출이 내장돼 있습니다.</p>
 </div>
 
-<!-- 1회성 vs Soul ID 비교표 -->
+<div class="shot">
+  <img src="screenshots/07-marketing.png" alt="힉스필드 Marketing Studio 실제 화면 — TURN ANY PRODUCT INTO A VIDEO AD" loading="lazy">
+  <div class="cap"><strong>실제 화면</strong> · Higgsfield Marketing Studio — "<strong>TURN ANY PRODUCT INTO A VIDEO AD</strong>". 제품 하나로 광고를 만드는 전용 워크스페이스.</div>
+</div>
+
+<!-- 일반 생성 vs Marketing Studio -->
 <div class="card">
-  <h3>1회성 캐릭터 vs Soul ID 학습</h3>
+  <h3>일반 생성 vs Marketing Studio</h3>
   <table>
-    <thead><tr><th>구분</th><th>1회성 캐릭터 (Day 1)</th><th>Soul ID 학습 (Day 2)</th></tr></thead>
+    <thead><tr><th>구분</th><th>일반 이미지 생성 (Day 1~2)</th><th>Marketing Studio (Day 2)</th></tr></thead>
     <tbody>
-      <tr><td><strong>얼굴 일관성</strong></td><td>매번 조금씩 다름</td><td><strong style="color:var(--green)">항상 동일</strong></td></tr>
-      <tr><td><strong>준비물</strong></td><td>프롬프트 한 줄</td><td>같은 인물 사진 3~5장</td></tr>
-      <tr><td><strong>소요</strong></td><td>즉시 생성</td><td>학습 5~10분 (1회) → 이후 즉시</td></tr>
-      <tr><td><strong>적합 용도</strong></td><td>아이디어 탐색·다양한 시안</td><td><strong>연재 시리즈·팔로워가 기억하는 인플루언서</strong></td></tr>
-      <tr><td><strong>다른 툴 연동</strong></td><td>그때그때 새로 생성</td><td>학습 후 전 툴(Image·Video·Marketing)에서 호출</td></tr>
+      <tr><td><strong>입력</strong></td><td>프롬프트를 일일이 작성</td><td><strong style="color:var(--green)">제품 이미지/URL 넣고 포맷 선택</strong></td></tr>
+      <tr><td><strong>광고 최적화</strong></td><td>직접 비율·연출 지정</td><td>TikTok/Reels 광고 포맷 내장</td></tr>
+      <tr><td><strong>일관성</strong></td><td>매번 따로 챙김</td><td>브랜드킷으로 톤·컬러 자동 유지</td></tr>
+      <tr><td><strong>적합</strong></td><td>탐색·아이디어·시안</td><td><strong>실제 판매용 제품 광고 양산</strong></td></tr>
+      <tr><td><strong>결과</strong></td><td>이미지 1장</td><td>광고 이미지/영상 세트 + A/B 시안</td></tr>
     </tbody>
   </table>
 </div>
 
-<!-- 학습 절차 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">Soul ID 학습 절차</h3>
-<ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>AI Influencer 메뉴 열기</strong><span>힉스필드 좌측 메뉴 → <strong>AI Influencer</strong> → Soul ID 만들기 / Create Character</span></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>학습용 사진 3~5장 업로드</strong><span>같은 인물, <strong>다양한 각도</strong>(정면·측면·반측면)·표정. 단독·선명·고해상도일수록 정확.</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>학습 시작 (5~10분 대기)</strong><span>AI가 얼굴 특징을 학습합니다. 창을 닫지 말고 기다리세요.</span></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>전 툴에서 호출해서 사용</strong><span>학습이 끝나면 Image·Soul Location·Video 등에서 <strong>내 캐릭터를 선택</strong>해 어떤 장면이든 같은 얼굴로 생성.</span></div></li>
-</ol>
-
-<div class="callout c-err"><span class="ico">⚠️</span><p><strong>초상권 주의</strong>: 학습에 쓰는 사진은 <strong>① 본인 사진 ② 동의받은 사람 ③ AI로 만든 가상 인물</strong>만 사용하세요. 타인의 사진을 무단으로 학습시키면 초상권·법적 문제가 됩니다. (오늘은 Day 1에서 만든 AI 가상 캐릭터 사용을 권장)</p></div>
-
-<!-- Soul 2.0 vs Soul Cinematic -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">Soul 2.0 vs Soul Cinematic</h3>
+<!-- DTC Ads 개념 -->
 <div class="card">
-  <p>같은 캐릭터라도 <strong>어떤 Soul 모델</strong>로 뽑느냐에 따라 톤이 달라집니다.</p>
-  <table style="margin-top:.5rem">
-    <thead><tr><th>모델</th><th>느낌</th><th>용도</th></tr></thead>
-    <tbody>
-      <tr><td><strong style="color:var(--gold)">Soul 2.0</strong></td><td>자연스럽고 일상적인 실사</td><td>UGC·SNS 일상 콘텐츠·라이프스타일</td></tr>
-      <tr><td><strong style="color:var(--gold)">Soul Cinematic</strong></td><td>영화 같은 드라마틱한 톤·조명</td><td>화보·브랜드 캠페인·임팩트 컷</td></tr>
-    </tbody>
-  </table>
+  <h3>DTC Ads란? — Direct-to-Consumer 광고</h3>
+  <p><strong>DTC = Direct-to-Consumer</strong>. 중간 유통 없이 <strong>브랜드가 소비자에게 직접</strong> 파는 광고입니다. (요즘 인스타·틱톡에서 보는 "그 제품 광고")<br>
+  Marketing Studio는 DTC 광고에 필요한 4가지를 결합합니다:</p>
+  <div class="formula" style="margin-top:.75rem">아바타(모델) + 브랜드킷(톤) + 제품 + 광고 포맷 = DTC 광고</div>
 </div>
 
-<p style="margin:1.25rem 0 .6rem;font-size:.88rem;color:var(--cream)"><strong>같은 인물 — Soul 2.0(일상 UGC) vs Soul Cinematic(영화적)</strong></p>
-<div class="grid-2">
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="Soul 2.0 원본" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Soul 2.0 · 일상 UGC</span>
-      <span class="desc">자연스러운 실사 톤. SNS 일상 콘텐츠에 어울림.</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012325_4d87e1ac-2aa5-4f50-b6e9-5058cfe5c5f7.png" alt="Soul Cinematic" loading="lazy">
-    <div class="img-info">
-      <span class="tag">Soul Cinematic · 영화적</span>
-      <span class="desc">같은 인물, 드라마틱한 조명·톤. 화보·캠페인용.</span>
-    </div>
-  </div>
+<!-- 어디에 쓰나 -->
+<div class="card">
+  <h3>어디에 쓰나요?</h3>
+  <ul>
+    <li><strong>쇼핑몰 제품컷</strong> — 깔끔한 제품 히어로 이미지, 상세페이지 컷</li>
+    <li><strong>SNS 제품 광고</strong> — 인스타/틱톡/릴스용 세로 광고</li>
+    <li><strong>빠른 A/B 시안</strong> — 같은 제품을 여러 포맷으로 뽑아 반응 비교</li>
+  </ul>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">🎬</span><p><strong>영상 광고</strong>도 만들 수 있지만, 오늘은 <strong>광고 이미지 중심</strong>으로 배웁니다. 실제 광고 <strong>영상 제작</strong>은 Day 4(Seedance 영상)·<strong>Day 6~7(롱폼 광고 실전)</strong>에서 본격적으로 다룹니다.</p></div>
 </div>
-
-<div class="callout c-tip"><span class="ico">💡</span><p><strong>일관성의 가치</strong>: 같은 얼굴로 시리즈를 쌓으면 팔로워가 "이 사람"으로 기억합니다. 매번 얼굴이 다른 채널보다 신뢰·친근감이 훨씬 빨리 쌓입니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 2 · 일관된 시리즈 (Soul Location)
+     강의 PART 2 · 제품·브랜드킷·아바타 등록
      ════════════════════════════════ -->
 <div class="sec" id="lec2">
-  <span class="badge b-lec">강의</span>
-  <h2>Part 2 · 일관된 시리즈 만들기 — Soul Location 배경</h2>
-  <span class="timer">0:40 – 1:10 · 30분</span>
+  <span class="badge b-lec">강의 + 실습 안내</span>
+  <h2>Part 2 · 제품·브랜드킷·아바타 등록</h2>
+  <span class="timer">0:25 – 0:50 · 25분</span>
 </div>
 
 <div class="card">
-  <h3>Soul Location이란?</h3>
-  <p><strong>배경 전용 생성</strong> 도구입니다. (Day 1엔 없던 새 도구)<br>
-  학습된 캐릭터를 <strong>그대로 두고 배경만 바꿔</strong> 시리즈를 찍습니다.</p>
-  <div class="formula" style="margin-top:.75rem">같은 캐릭터 (Soul ID) + 다른 배경 (Soul Location) = 시리즈</div>
+  <h3>광고에 필요한 3가지 재료</h3>
+  <p>좋은 DTC 광고는 <strong>① 제품 ② 브랜드 톤 ③ 모델</strong>이 맞물려야 합니다. Marketing Studio는 이 셋을 각각 등록해두고 조합합니다.</p>
 </div>
 
-<p style="margin:1.25rem 0 .6rem;font-size:.88rem;color:var(--cream)"><strong>같은 캐릭터 · 배경 3종 — 강사 예시</strong></p>
-<div class="grid-3">
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012317_d29cc11d-5e98-41fe-8b24-814789e4b55a.png" alt="강남 루프탑" loading="lazy">
-    <div class="img-info">
-      <span class="tag">배경 1 · 강남 루프탑</span>
-      <div class="kw-row"><span class="kw hi">Gangnam rooftop</span><span class="kw">city skyline</span></div>
-      <span class="desc">도심 야외. 트렌디·라이프스타일 톤.</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012319_a2083a8a-69e3-466a-b350-7c3654fb7b6e.png" alt="화이트 스튜디오" loading="lazy">
-    <div class="img-info">
-      <span class="tag">배경 2 · 화이트 스튜디오</span>
-      <div class="kw-row"><span class="kw hi">white studio</span><span class="kw">clean minimal</span></div>
-      <span class="desc">깔끔한 실내. 제품·브랜딩 컷에 적합.</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012323_2e5a19b1-3532-47b8-bfd4-6588bd858574.png" alt="숲길" loading="lazy">
-    <div class="img-info">
-      <span class="tag">배경 3 · 숲길</span>
-      <div class="kw-row"><span class="kw hi">forest path</span><span class="kw">natural light</span></div>
-      <span class="desc">자연 야외. 감성·웰니스 콘텐츠 톤.</span>
-    </div>
-  </div>
-</div>
-
-<!-- 레퍼런스 첨부 응용 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">같은 인물을 여러 배경·상황에 배치하는 법</h3>
+<!-- 제품 등록 2가지 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">① 제품 등록 — 두 가지 방법</h3>
 <div class="card">
-  <p>Day 1 실습F에서 배운 <strong>레퍼런스 첨부 기법</strong>을 "일관 시리즈"에 응용합니다.<br>
-  학습된 Soul 캐릭터(또는 인물 레퍼런스 사진)를 첨부하고, 배경·상황만 바꿔 프롬프트를 작성하세요.</p>
-</div>
-
-<div class="grid-2">
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_003321_319d7fa7-5511-455b-9522-741509c1b13b.png" alt="원본 캐릭터" loading="lazy">
-    <div class="img-info">
-      <span class="tag">기준 · 학습된 캐릭터</span>
-      <span class="desc">이 얼굴을 고정한 채 장면만 바꿉니다.</span>
-    </div>
-  </div>
-  <div class="img-card">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012341_5536a797-5fb1-4d15-a533-8adaa31e69d7.png" alt="스트리트 장면" loading="lazy">
-    <div class="img-info">
-      <span class="tag" style="color:var(--green)">✅ 같은 인물 · 스트리트 장면</span>
-      <span class="desc">얼굴은 동일, 배경·상황만 도심 스트리트로.</span>
-    </div>
-  </div>
-</div>
-
-<div class="prompt">
-  <div class="plabel">일관 시리즈 프롬프트 (Soul 캐릭터 호출 / 인물 레퍼런스 첨부)</div>
-  <code id="ploc">My Soul character (same face, same identity), in [배경/상황: a Gangnam rooftop / white studio / forest path], consistent lighting and color grading, lifestyle content series, 9:16 vertical, photorealistic</code>
-  <button class="copy-btn" onclick="cp('ploc',this)">복사</button>
-</div>
-<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>핵심은 <strong>얼굴은 고정, 배경/상황만 교체</strong>. 시리즈 전체에 같은 조명·색감 키워드를 공통으로 넣어야 톤이 통일됩니다.</p></div>
-
-<!-- 시리즈 기획 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">콘텐츠 시리즈 기획 — "월~금 다른 컨셉"</h3>
-<div class="card">
-  <p>같은 캐릭터로 <strong>요일별·테마별 연재</strong>를 설계하면 채널이 됩니다.</p>
-  <table style="margin-top:.5rem">
-    <thead><tr><th>요일</th><th>컨셉</th><th>배경 예시</th></tr></thead>
+  <table>
+    <thead><tr><th>방법</th><th>설명</th><th>이럴 때</th></tr></thead>
     <tbody>
-      <tr><td><strong>월</strong></td><td>출근룩·오피스</td><td>화이트 스튜디오 / 모던 오피스</td></tr>
-      <tr><td><strong>화</strong></td><td>카페 데일리</td><td>아늑한 카페 인테리어</td></tr>
-      <tr><td><strong>수</strong></td><td>시티 스트리트</td><td>도심 스트리트 / 강남 루프탑</td></tr>
-      <tr><td><strong>목</strong></td><td>웰니스·자연</td><td>숲길 / 공원</td></tr>
-      <tr><td><strong>금</strong></td><td>나이트·드라마틱</td><td>네온 도시 (Soul Cinematic)</td></tr>
+      <tr><td><strong style="color:var(--gold)">이미지 업로드</strong></td><td>제품 사진을 직접 올림</td><td>아직 판매 페이지가 없을 때 / 시안 단계</td></tr>
+      <tr><td><strong style="color:var(--gold)">제품 페이지 URL</strong></td><td>쇼핑몰 링크 입력 → 이미지·정보 자동 fetch</td><td>이미 판매 중인 제품 (가장 빠름)</td></tr>
     </tbody>
   </table>
-  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>5장 모두 <strong>같은 얼굴</strong>이면 팔로워가 "이 사람의 일주일"로 인식 → 스토리가 생깁니다.</p></div>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>제품 사진은 <strong>단순·선명·배경 깔끔</strong>할수록 인식이 정확합니다. 어수선한 배경은 제품을 잘못 잡아낼 수 있어요.</p></div>
 </div>
+
+<!-- 등록 절차 steps -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">등록 절차</h3>
+<ol class="steps">
+  <li><div class="snum">1</div><div class="sbody"><strong>Marketing Studio 열기</strong><span>힉스필드 좌측 메뉴 → <strong>Marketing Studio</strong> ("Turn any product into a video ad")</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>제품 등록</strong><span>제품 이미지 업로드 <strong>또는</strong> 제품 페이지 URL 붙여넣기 → 자동 인식</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>브랜드킷 설정</strong><span>로고·브랜드 컬러·톤을 등록 → 광고마다 톤이 자동으로 일관되게 유지</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>아바타(모델) 선택</strong><span>제품을 쓰는 인물 — <strong>샘플 캐릭터</strong> 또는 기본 제공 아바타 중 선택</span></div></li>
+</ol>
+
+<!-- 브랜드킷 -->
+<div class="card">
+  <h3>② 브랜드킷 — 일관된 광고의 비결</h3>
+  <p><strong>로고 · 브랜드 컬러 · 톤(무드)</strong>을 한 번 등록해두면, 어떤 포맷의 광고를 뽑아도 <strong>같은 브랜드 느낌</strong>이 유지됩니다. (Day 2의 "색감 키워드 통일"을 브랜드 단위로 자동화한 것)</p>
+</div>
+
+<!-- 아바타 + Day 2 연계 -->
+<div class="card">
+  <h3>③ 아바타 — 제품을 사용하는 인물</h3>
+  <p>광고에 등장해 제품을 들고/입고/쓰는 모델입니다. <strong>기본 아바타</strong>를 골라도 되고, <strong>샘플로 제공된 Soul ID</strong>를 그대로 쓸 수도 있습니다.</p>
+</div>
+
+<div class="callout c-tip"><span class="ico">⭐</span><p><strong>Day 2 연계</strong>: 샘플로 제공된 <strong>AI 인플루언서(Soul ID)를 아바타로 쓰면, 내 브랜드 전속 모델</strong>이 됩니다. 매 광고마다 같은 얼굴이 내 제품을 소개 → 팔로워가 "이 브랜드의 그 사람"으로 기억합니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 3 · Adobe 무료 툴 마무리
+     강의 PART 3 · 광고 포맷·프리셋
      ════════════════════════════════ -->
 <div class="sec" id="lec3">
-  <span class="badge b-lec">강의 + 실습 안내</span>
-  <h2>Part 3 · Adobe 무료 툴로 마무리 보정</h2>
-  <span class="timer">1:10 – 1:40 · 30분</span>
+  <span class="badge b-lec">강의</span>
+  <h2>Part 3 · 광고 포맷·프리셋 8종</h2>
+  <span class="timer">0:50 – 1:20 · 30분</span>
 </div>
-
-<div class="callout c-info"><span class="ico">🖥️</span><p>이 파트는 강사 예시 이미지가 아니라 <strong>수강생이 직접 브라우저에서 Adobe Express(무료)로 체험</strong>하는 가이드입니다. (Day 1의 "웹에서 직접 체험" 패턴과 동일)</p></div>
 
 <div class="card">
-  <h3>왜 Adobe로 마무리하나요?</h3>
-  <p><strong>힉스필드는 "생성"에 강하고, Adobe는 "후보정·텍스트·배포 포맷"에 강합니다.</strong><br>
-  힉스필드로 만든 AI 이미지를 그대로 올리기보다, 배경을 깔끔하게 정리하고 텍스트·로고를 얹어 플랫폼별 비율로 내보내면 완성도가 확 올라갑니다.</p>
-  <div class="formula" style="margin-top:.75rem">힉스필드 (생성) → Adobe Express (배경 제거 · 텍스트 · 리사이즈) → SNS 게시물</div>
+  <h3>포맷이 곧 광고 스타일</h3>
+  <p>같은 제품이라도 <strong>어떤 포맷</strong>을 고르느냐에 따라 완전히 다른 광고가 나옵니다. Marketing Studio는 검증된 광고 포맷을 프리셋으로 제공합니다 — 고르기만 하면 됩니다.</p>
 </div>
 
-<!-- 무료 기능 표 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">Adobe 무료 가입자가 쓸 수 있는 기능 (오늘 실습 대상)</h3>
+<!-- 포맷 8종 표 -->
 <table>
-  <thead><tr><th>기능</th><th>도구</th><th>용도</th></tr></thead>
+  <thead><tr><th>포맷</th><th>특징</th><th>적합 제품</th></tr></thead>
   <tbody>
-    <tr><td><strong style="color:var(--gold)">배경 제거</strong></td><td>Adobe Express (무료)</td><td>인물/제품 컷아웃, 합성</td></tr>
-    <tr><td><strong style="color:var(--gold)">텍스트·로고 추가</strong></td><td>Adobe Express (무료)</td><td>SNS 카드, 자막, 브랜딩</td></tr>
-    <tr><td><strong style="color:var(--gold)">리사이즈·자르기</strong></td><td>Adobe Express (무료)</td><td>9:16 ↔ 1:1 ↔ 16:9 플랫폼별</td></tr>
-    <tr><td><strong style="color:var(--gold)">기본 필터·밝기·색보정</strong></td><td>Adobe Express (무료)</td><td>톤 통일</td></tr>
-    <tr><td><strong style="color:var(--gold)">템플릿 적용</strong></td><td>Adobe Express (무료)</td><td>빠른 SNS 게시물</td></tr>
+    <tr><td><strong style="color:var(--gold)">UGC</strong></td><td>진짜 사람 리뷰 느낌 (내돈내산 톤)</td><td>모든 소비재</td></tr>
+    <tr><td><strong style="color:var(--gold)">Tutorial</strong></td><td>사용법 단계별 설명</td><td>기능성 제품</td></tr>
+    <tr><td><strong style="color:var(--gold)">Unboxing</strong></td><td>개봉 경험·언박싱</td><td>패키지 좋은 제품</td></tr>
+    <tr><td><strong style="color:var(--gold)">Hyper Motion</strong></td><td>역동적 제품 강조 (스피드감)</td><td>스포츠·테크</td></tr>
+    <tr><td><strong style="color:var(--gold)">Product Review</strong></td><td>디테일·스펙 설명</td><td>복잡한 제품</td></tr>
+    <tr><td><strong style="color:var(--gold)">TV Spot</strong></td><td>브랜드 감성 스토리</td><td>프리미엄</td></tr>
+    <tr><td><strong style="color:var(--gold)">Wild Card</strong></td><td>창의적 자유 연출</td><td>실험·바이럴</td></tr>
+    <tr><td><strong style="color:var(--gold)">Virtual Try-On</strong></td><td>착용·사용 가상 체험</td><td>패션·뷰티</td></tr>
   </tbody>
 </table>
 
-<!-- 유료/크레딧 표 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">유료·크레딧 필요 (참고만 — "이런 것도 있다")</h3>
-<table>
-  <thead><tr><th>기능</th><th>비고</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Generative Fill (생성형 채우기)</strong></td><td>Firefly 크레딧 / 유료</td></tr>
-    <tr><td><strong>Generative Expand (캔버스 확장)</strong></td><td>Firefly 크레딧</td></tr>
-    <tr><td><strong>Photoshop 고급 합성·리터칭</strong></td><td>유료 구독</td></tr>
-    <tr><td><strong>Premiere / After Effects 플러그인</strong></td><td>유료 (영상 편집, Day 5~7 연계)</td></tr>
-  </tbody>
-</table>
+<div class="callout c-tip"><span class="ico">📌</span><p>헷갈릴 땐 이 셋만 기억하세요 — <strong>UGC = 리뷰 감성</strong>, <strong>TV Spot = 브랜드 스토리</strong>, <strong>Hyper Motion = 역동적 강조</strong>.</p></div>
 
-<!-- 실습 가이드 steps -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">실습 가이드 — Adobe Express 무료 마무리</h3>
-<ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>무료 가입</strong><span>브라우저에서 <strong style="color:var(--gold)">express.adobe.com</strong> → 무료 계정으로 로그인/가입</span></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>힉스필드 이미지 업로드</strong><span>오늘 만든 시리즈 이미지 1장을 업로드</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>배경 제거</strong><span>Remove Background (무료) → 인물만 깔끔하게 컷아웃</span></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>텍스트/로고 추가</strong><span>제목·캡션·브랜드 로고 얹기</span></div></li>
-  <li><div class="snum">5</div><div class="sbody"><strong>9:16로 리사이즈</strong><span>Resize → 인스타 릴스/틱톡/쇼츠 비율로 맞추기</span></div></li>
-  <li><div class="snum">6</div><div class="sbody"><strong>다운로드</strong><span>완성본 내보내기 (PNG/JPG)</span></div></li>
-</ol>
+<!-- 제품 광고 세트 예시 (이어버드) -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">제품 광고 세트 예시 — 무선 이어버드 (강사 생성)</h3>
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.5rem">한 제품으로 포맷·컷을 달리해 만든 실제 광고 세트입니다. 각 이미지가 어떤 광고 컷·포맷에 해당하는지 라벨로 표시했습니다.</p>
 
-<div class="callout c-tip"><span class="ico">📌</span><p>힉스필드 메뉴의 <strong>"Plugins"</strong>는 Adobe <strong>Premiere / After Effects(영상)</strong>용이며 <strong>유료</strong>입니다. <strong>이미지 보정에는 Adobe Express 무료가 적합</strong>합니다.</p></div>
+<div class="grid-3">
+  <div class="img-card wide">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012421_7f0e79ad-4e6b-43c6-969f-a1ac6442fb25.png" alt="제품 히어로 16:9" loading="lazy">
+    <div class="img-info">
+      <span class="tag">제품 히어로 · 16:9</span>
+      <div class="kw-row"><span class="kw hi">TV Spot</span><span class="kw">hero shot</span></div>
+      <span class="desc">제품 단독 메인컷. 헤드라인 여백 확보. 쇼핑몰 대표 이미지·브랜드 감성.</span>
+    </div>
+  </div>
+  <div class="img-card wide">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012425_780e3036-9dd5-4c00-ab1e-5b2aa0b6b929.png" alt="라이프스타일 도시 착용" loading="lazy">
+    <div class="img-info">
+      <span class="tag">라이프스타일 · 도시 착용</span>
+      <div class="kw-row"><span class="kw hi">UGC</span><span class="kw">lifestyle</span></div>
+      <span class="desc">실제 사용 장면. 도시에서 착용. 리뷰·일상 감성 광고.</span>
+    </div>
+  </div>
+  <div class="img-card wide">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012428_af23b8b0-7dd5-4000-8c6b-6f2b55ad9e91.png" alt="착용 클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">착용 클로즈업 · 디테일</span>
+      <div class="kw-row"><span class="kw hi">Product Review</span><span class="kw">close-up</span></div>
+      <span class="desc">제품 디테일·핏을 강조. 디테일 설명 광고에 사용.</span>
+    </div>
+  </div>
+</div>
+
+<div class="grid-3">
+  <div class="img-card wide">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012431_de76aab1-8637-4d1e-b896-00848bfc056b.png" alt="데스크 작업 장면" loading="lazy">
+    <div class="img-info">
+      <span class="tag">데스크 작업 · 사용 맥락</span>
+      <div class="kw-row"><span class="kw hi">Tutorial</span><span class="kw">in-use</span></div>
+      <span class="desc">작업 환경에서 사용. "이럴 때 쓴다" 맥락을 보여주는 컷.</span>
+    </div>
+  </div>
+  <div class="img-card wide">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012434_3468c842-38da-4304-a3b4-8094f6c5af09.png" alt="CTA 샷" loading="lazy">
+    <div class="img-info">
+      <span class="tag">CTA 샷 · 행동 유도</span>
+      <div class="kw-row"><span class="kw hi">CTA</span><span class="kw">copy space</span></div>
+      <span class="desc">"지금 구매" 같은 카피를 얹을 여백이 있는 마무리 컷.</span>
+    </div>
+  </div>
+  <div class="img-card wide">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012449_424cf2f4-6309-4a16-ba6a-d9d9975b290a.png" alt="최종 광고 16:9" loading="lazy">
+    <div class="img-info">
+      <span class="tag">최종 광고 · 16:9 완성</span>
+      <div class="kw-row"><span class="kw hi">TV Spot</span><span class="kw">final ad</span></div>
+      <span class="desc">완성된 광고 비주얼. 그대로 게시 가능한 메인 광고컷.</span>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-info"><span class="ico">🎬</span><p>위 세트는 모두 <strong>광고 이미지</strong>입니다. 이런 컷들을 이어 붙여 <strong>광고 영상</strong>으로 만드는 작업은 Day 4·Day 6~7에서 배웁니다.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     강의 PART 4 · 원클릭 광고 생성 워크플로
+     ════════════════════════════════ -->
+<div class="sec" id="lec4">
+  <span class="badge b-lec">강의 + 시연</span>
+  <h2>Part 4 · 원클릭 광고 생성 워크플로</h2>
+  <span class="timer">1:20 – 1:30 · 10분 + 시연</span>
+</div>
+
+<div class="card">
+  <h3>전체 흐름 — 5단계</h3>
+  <ol class="steps" style="margin-top:.3rem">
+    <li><div class="snum">1</div><div class="sbody"><strong>제품 등록</strong><span>이미지 업로드 또는 URL 입력</span></div></li>
+    <li><div class="snum">2</div><div class="sbody"><strong>아바타 선택</strong><span>샘플 캐릭터 또는 기본 아바타</span></div></li>
+    <li><div class="snum">3</div><div class="sbody"><strong>포맷 선택</strong><span>UGC / TV Spot / Hyper Motion 등 8종 중 하나</span></div></li>
+    <li><div class="snum">4</div><div class="sbody"><strong>생성</strong><span>광고 이미지(또는 영상) 자동 생성</span></div></li>
+    <li><div class="snum">5</div><div class="sbody"><strong>변형 / A·B</strong><span>다른 포맷·비율로 변형해 시안 비교</span></div></li>
+  </ol>
+</div>
+
+<!-- 광고 이미지 생성 프롬프트 공식 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">광고 이미지 생성 프롬프트 공식</h3>
+<div class="prompt">
+  <div class="plabel">제품 광고 이미지 프롬프트 (대괄호만 내 제품에 맞게 교체)</div>
+  <code id="pf1">A premium [제품] product ad, [포맷 스타일: UGC review / cinematic TV spot / hyper motion],
+[배경/조명: clean studio softbox / urban golden hour / dark moody set],
+16:9 (또는 9:16),
+copy space for headline, commercial photography, photorealistic</code>
+  <button class="copy-btn" onclick="cp('pf1',this)">복사</button>
+</div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p><strong><code style="color:var(--gold);font-size:.82rem">copy space for headline</code></strong>를 꼭 넣으세요. 광고 카피·헤드라인을 얹을 <strong>여백</strong>이 생깁니다. 16:9는 유튜브·웹 배너, 9:16은 릴스·틱톡·쇼츠용입니다.</p></div>
+
+<!-- 영상 개념 -->
+<div class="card">
+  <h3>Marketing Studio 영상도 가능 (개념만)</h3>
+  <p>같은 제품으로 <strong>TikTok/Reels 광고 영상</strong>도 생성할 수 있습니다. 다만 오늘은 <strong>광고 이미지에 집중</strong>하고, 실제 영상화는:</p>
+  <ul>
+    <li><strong>Day 4</strong> — Seedance로 이미지를 움직이게 만들기</li>
+    <li><strong>Day 6~7</strong> — 롱폼 광고 실전 (오늘의 광고 감각이 그대로 이어짐)</li>
+  </ul>
+</div>
+
+<!-- MCP 프롬프트 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">MCP로도 가능 (Claude Code 채팅)</h3>
+<div class="prompt">
+  <div class="plabel">MCP 프롬프트 — 광고 이미지 배치 생성</div>
+  <code id="pf-mcp">힉스필드 Marketing Studio로 [제품] 광고 이미지 5컷 만들어줘.
+히어로 / 사용장면 / 디테일 / 라이프스타일 / CTA 컷으로,
+TV Spot과 UGC 포맷 섞어서, copy space for headline 포함,
+16:9 3컷 + 9:16 2컷, photorealistic.</code>
+  <button class="copy-btn" onclick="cp('pf-mcp',this)">복사</button>
+</div>
 
 <hr>
 
@@ -443,131 +480,146 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="sec" id="demo">
   <span class="badge b-demo">강사 시연</span>
   <h2>강사 라이브 시연</h2>
-  <span class="timer">시연 · 20분</span>
+  <span class="timer">시연 · 30분</span>
 </div>
 
 <div class="callout c-info"><span class="ico">👀</span><p>지금은 따라하지 말고 지켜보세요. 방법을 보고 나서 실습합니다.</p></div>
 
 <ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>Soul ID 학습 시연</strong><span>AI Influencer → 가상 인물 사진 3~5장 업로드 → 학습 (또는 미리 학습해둔 캐릭터로 데모)</span></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>같은 캐릭터 → 배경 3곳에 배치</strong><span>Soul Location으로 강남 루프탑·화이트 스튜디오·숲길 — 얼굴 동일, 배경만 교체</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>Soul Cinematic 버전 1장</strong><span>같은 인물을 영화적 톤으로 한 컷</span></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>Adobe Express 무료로 마무리</strong><span>배경 제거 + 텍스트 얹어 SNS 카드 완성까지 시연</span></div></li>
+  <li><div class="snum">1</div><div class="sbody"><strong>제품 1개 등록</strong><span>Marketing Studio에서 제품 이미지 업로드(또는 URL) → 인식 확인</span></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>UGC 포맷으로 광고 이미지 생성</strong><span>리뷰 감성 톤 — "내돈내산" 느낌의 사용 장면 컷</span></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>같은 제품 → TV Spot 포맷으로 한 컷</strong><span>브랜드 감성 스토리 톤. 같은 제품, 완전히 다른 분위기 비교</span></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>이어버드 광고 세트 설명</strong><span>위 6장(히어로·라이프스타일·클로즈업·데스크·CTA·최종)이 이렇게 포맷을 달리해 만들어졌음을 설명</span></div></li>
 </ol>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 A · Soul ID 학습
+     실습 A · 내 제품 등록
      ════════════════════════════════ -->
 <div class="sec" id="prac-a">
   <span class="badge b-prac">실습 A</span>
-  <h2>내 캐릭터 1명 선정 &amp; Soul ID 학습</h2>
-  <span class="timer">1:40 – 2:20 · 40분</span>
+  <h2>내 제품 등록 &amp; 브랜드킷 기본 설정</h2>
+  <span class="timer">1:30 – 2:00 · 30분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 따라합니다. 막히면 손을 들거나 옆 사람에게 물어보세요.</p></div>
+<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 따라합니다. 막히면 손을 들거나 옆 사람에게 물어보세요. 실제 제품이 없으면 <strong>가상 제품(아무 제품 사진)</strong>으로 진행해도 됩니다.</p></div>
 
 <ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>Day 1 캐릭터 중 1명 선정</strong><p>어제 실습 G에서 만든 캐릭터 중 <strong>가장 마음에 드는 1명</strong>을 고릅니다. (실사 인플루언서 권장)</p></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>학습용 사진 3~5장 준비</strong><p>같은 인물의 <strong>정면·측면·반측면</strong>·다른 표정 컷을 모읍니다. 부족하면 Day 1 레퍼런스 첨부 기법으로 각도를 더 생성.</p></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>AI Influencer → Soul ID 학습</strong><p>메뉴에서 캐릭터 생성 → 사진 업로드 → 학습 시작 → 5~10분 대기.</p></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>테스트 1장 생성</strong><p>학습 완료 후 아무 배경으로 1장 뽑아 <strong>같은 얼굴인지</strong> 확인.</p></div></li>
+  <li><div class="snum">1</div><div class="sbody"><strong>제품 1개 정하기</strong><p>내가 팔(또는 만들고 싶은) 제품 1개. 없으면 마음에 드는 제품 사진 하나를 가상 제품으로.</p></div></li>
+  <li><div class="snum">2</div><div class="sbody"><strong>Marketing Studio에 등록</strong><p>제품 이미지 업로드 <strong>또는</strong> 제품 페이지 URL 입력 → 제품이 제대로 인식됐는지 확인.</p></div></li>
+  <li><div class="snum">3</div><div class="sbody"><strong>브랜드킷 기본 설정</strong><p>로고가 있으면 업로드, 없으면 <strong>브랜드 컬러 1~2개</strong>만이라도 지정. 톤(밝은/고급/캐주얼) 선택.</p></div></li>
+  <li><div class="snum">4</div><div class="sbody"><strong>아바타 정하기</strong><p>샘플 캐릭터를 쓸지, 기본 아바타를 쓸지 결정해 선택.</p></div></li>
 </ol>
 
 <div class="challenge">
   <h4>🎯 실습 A 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">캐릭터 1명 선정 완료</li>
-    <li><input type="checkbox">학습용 사진 3~5장 준비 (다양한 각도)</li>
-    <li><input type="checkbox">Soul ID 학습 시작 → 완료</li>
-    <li><input type="checkbox">테스트 1장 → 얼굴 일관성 확인</li>
-    <li><input type="checkbox">캐릭터 이름·컨셉 메모</li>
+    <li><input type="checkbox">제품 1개 선정 (실제 또는 가상)</li>
+    <li><input type="checkbox">제품 이미지/URL 등록 → 인식 확인</li>
+    <li><input type="checkbox">브랜드킷 기본 설정 (컬러 또는 로고)</li>
+    <li><input type="checkbox">아바타 선택 (샘플 캐릭터 또는 기본)</li>
+    <li><input type="checkbox">제품명·브랜드 컨셉 한 줄 메모</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 B · 일관 시리즈 3종
+     실습 B · 광고 포맷 3종 비교
      ════════════════════════════════ -->
 <div class="sec" id="prac-b">
   <span class="badge b-prac">실습 B</span>
-  <h2>일관 시리즈 이미지 3종</h2>
-  <span class="timer">2:20 – 3:00 · 40분</span>
+  <h2>광고 포맷 3종 비교</h2>
+  <span class="timer">2:00 – 2:40 · 40분</span>
 </div>
 
-<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">학습된 캐릭터 + Soul Location 배경으로 <strong>같은 인물 3장면</strong>을 만듭니다. 얼굴은 고정, 배경/상황만 바꿉니다.</p>
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">같은 제품으로 <strong>서로 다른 3가지 포맷</strong> 광고 이미지를 만들어, 어떤 포맷이 내 제품에 맞는지 직접 비교합니다.</p>
 
 <div class="prompt">
-  <div class="plabel">시리즈 ① 실내</div>
-  <code id="pb1">My Soul character (same face, same identity), in a clean white studio interior, soft even lighting, lifestyle brand shoot, consistent warm color grading, 9:16 vertical, photorealistic</code>
+  <div class="plabel">포맷 ① UGC (리뷰 감성)</div>
+  <code id="pb1">A premium [내 제품] product ad, authentic UGC review style, real person using it in a casual everyday setting, natural soft light, copy space for headline, commercial photography, photorealistic, 9:16 vertical</code>
   <button class="copy-btn" onclick="cp('pb1',this)">복사</button>
 </div>
 
 <div class="prompt">
-  <div class="plabel">시리즈 ② 야외</div>
-  <code id="pb2">My Soul character (same face, same identity), walking on a Gangnam rooftop with city skyline, golden hour light, street style content, consistent warm color grading, 9:16 vertical, photorealistic</code>
+  <div class="plabel">포맷 ② TV Spot (브랜드 스토리)</div>
+  <code id="pb2">A premium [내 제품] product ad, cinematic TV spot style, brand storytelling mood, dramatic studio lighting, elegant minimal background, copy space for headline, commercial photography, photorealistic, 16:9</code>
   <button class="copy-btn" onclick="cp('pb2',this)">복사</button>
 </div>
 
 <div class="prompt">
-  <div class="plabel">시리즈 ③ 클로즈업</div>
-  <code id="pb3">My Soul character (same face, same identity), close-up portrait, natural glowy makeup, soft window light, consistent warm color grading, 9:16 vertical, photorealistic</code>
+  <div class="plabel">포맷 ③ Hyper Motion (역동적 강조)</div>
+  <code id="pb3">A premium [내 제품] product ad, hyper motion dynamic style, energetic angle, motion blur accents, bold high-contrast lighting, copy space for headline, commercial photography, photorealistic, 9:16 vertical</code>
   <button class="copy-btn" onclick="cp('pb3',this)">복사</button>
 </div>
 
-<div class="prompt">
-  <div class="plabel">+ Soul Cinematic 버전 1장</div>
-  <code id="pb4">My Soul character (same face, same identity), dramatic cinematic portrait, moody film lighting, deep shadows, magazine cover aesthetic, 9:16 vertical, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pb4',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">💡</span><p>3장 모두 <strong>같은 색감 키워드</strong>(예: <code style="color:var(--gold);font-size:.82rem">consistent warm color grading</code>)를 넣어야 시리즈 톤이 통일됩니다.</p></div>
+<div class="callout c-tip"><span class="ico">💡</span><p>3장을 나란히 두고 보세요 — <strong>내 제품에 어떤 톤이 가장 어울리는지</strong> 한눈에 보입니다. (프리미엄 제품 → TV Spot, 일상 소비재 → UGC, 테크·스포츠 → Hyper Motion)</p></div>
 
 <div class="challenge">
   <h4>🎯 실습 B 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">시리즈 ① 실내 생성</li>
-    <li><input type="checkbox">시리즈 ② 야외 생성</li>
-    <li><input type="checkbox">시리즈 ③ 클로즈업 생성</li>
-    <li><input type="checkbox">Soul Cinematic 버전 1장 생성</li>
-    <li><input type="checkbox">4장 나란히 보고 얼굴 일관성 확인 → 안 맞으면 재생성</li>
+    <li><input type="checkbox">포맷 ① UGC 광고 이미지 생성</li>
+    <li><input type="checkbox">포맷 ② TV Spot 광고 이미지 생성</li>
+    <li><input type="checkbox">포맷 ③ Hyper Motion 광고 이미지 생성</li>
+    <li><input type="checkbox">3장 나란히 비교</li>
+    <li><input type="checkbox">내 제품에 맞는 포맷 1개 메모 (이유 한 줄)</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 C · Adobe Express 마무리
+     실습 C · 제품 광고 세트 5컷
      ════════════════════════════════ -->
 <div class="sec" id="prac-c">
   <span class="badge b-prac">실습 C</span>
-  <h2>Adobe Express 무료로 마무리</h2>
-  <span class="timer">3:00 – 3:40 · 40분</span>
+  <h2>제품 광고 세트 5컷</h2>
+  <span class="timer">2:40 – 3:20 · 40분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">🖥️</span><p>브라우저에서 <strong>express.adobe.com</strong>으로 직접 체험합니다. 실습 B에서 만든 이미지 1장을 가져오세요.</p></div>
+<div class="callout c-info"><span class="ico">🖥️</span><p>앞의 이어버드 예시처럼, <strong>같은 제품으로 5가지 컷</strong>을 만들어 하나의 광고 세트를 완성합니다.</p></div>
 
-<ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>무료 가입/로그인</strong><p><strong style="color:var(--gold)">express.adobe.com</strong> 접속 → 무료 계정</p></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>이미지 업로드</strong><p>실습 B 이미지 1장 업로드</p></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>배경 제거</strong><p>Remove Background (무료) → 인물 컷아웃</p></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>텍스트/로고 추가</strong><p>제목·캡션·로고 얹기</p></div></li>
-  <li><div class="snum">5</div><div class="sbody"><strong>9:16 리사이즈</strong><p>릴스/쇼츠 비율로 맞추기</p></div></li>
-  <li><div class="snum">6</div><div class="sbody"><strong>다운로드</strong><p>완성본 내보내기</p></div></li>
-</ol>
+<div class="prompt">
+  <div class="plabel">컷 ① 히어로 (제품 단독 메인)</div>
+  <code id="pc1">A premium [내 제품] product ad, hero shot, product centered on clean gradient background, soft studio lighting, copy space for headline, commercial photography, photorealistic, 16:9</code>
+  <button class="copy-btn" onclick="cp('pc1',this)">복사</button>
+</div>
 
-<div class="callout c-tip"><span class="ico">📌</span><p>Generative Fill 같은 기능은 막히면 <strong>Firefly 무료 크레딧 소진</strong> 때문입니다. 오늘은 <strong>무료 한도 기능</strong>(배경 제거·텍스트·리사이즈)만으로 충분합니다.</p></div>
+<div class="prompt">
+  <div class="plabel">컷 ② 사용 장면 (in-use)</div>
+  <code id="pc2">A premium [내 제품] product ad, person actively using the product in a real context, natural lifestyle scene, warm light, copy space, commercial photography, photorealistic, 9:16 vertical</code>
+  <button class="copy-btn" onclick="cp('pc2',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">컷 ③ 디테일 (클로즈업)</div>
+  <code id="pc3">A premium [내 제품] product ad, macro close-up highlighting texture and detail, shallow depth of field, premium feel, commercial photography, photorealistic, 16:9</code>
+  <button class="copy-btn" onclick="cp('pc3',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">컷 ④ 라이프스타일 (맥락)</div>
+  <code id="pc4">A premium [내 제품] product ad, lifestyle scene in a stylish everyday environment, aspirational mood, consistent brand color grading, copy space, photorealistic, 9:16 vertical</code>
+  <button class="copy-btn" onclick="cp('pc4',this)">복사</button>
+</div>
+
+<div class="prompt">
+  <div class="plabel">컷 ⑤ CTA (행동 유도)</div>
+  <code id="pc5">A premium [내 제품] product ad, bold CTA layout, product with large empty copy space for "Shop Now" headline, high-contrast commercial look, photorealistic, 16:9</code>
+  <button class="copy-btn" onclick="cp('pc5',this)">복사</button>
+</div>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>5컷 전체에 <strong>같은 브랜드 컬러/조명 키워드</strong>를 공통으로 넣으면 세트가 하나의 캠페인처럼 통일됩니다. (Day 2의 "색감 통일" 그대로)</p></div>
 
 <div class="challenge">
   <h4>🎯 실습 C 체크리스트</h4>
   <ul class="cklist">
-    <li><input type="checkbox">express.adobe.com 무료 가입/로그인</li>
-    <li><input type="checkbox">힉스필드 이미지 업로드</li>
-    <li><input type="checkbox">배경 제거 완료</li>
-    <li><input type="checkbox">텍스트 또는 로고 추가</li>
-    <li><input type="checkbox">9:16 리사이즈 + 다운로드</li>
+    <li><input type="checkbox">① 히어로 컷 생성</li>
+    <li><input type="checkbox">② 사용 장면 컷 생성</li>
+    <li><input type="checkbox">③ 디테일 컷 생성</li>
+    <li><input type="checkbox">④ 라이프스타일 컷 생성</li>
+    <li><input type="checkbox">⑤ CTA 컷 생성 → 5컷 세트 확인</li>
   </ul>
 </div>
 
@@ -578,29 +630,31 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
      ════════════════════════════════ -->
 <div class="sec" id="prac-d">
   <span class="badge b-prac">실습 D · 선택</span>
-  <h2>MCP — 캐릭터+배경 결합 자동화</h2>
+  <h2>MCP — 광고 배치 자동 생성</h2>
   <span class="timer">선택 · 20분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">⚙️</span><p>Claude Code MCP가 연결되어 있다면, 채팅 한 번으로 <strong>같은 캐릭터를 여러 배경에 배치한 이미지</strong>를 한꺼번에 생성할 수 있습니다. (Day 1 MCP 맛보기 연장)</p></div>
+<div class="callout c-info"><span class="ico">⚙️</span><p>Claude Code MCP가 연결돼 있다면, 채팅 한 번으로 <strong>광고 5컷을 한꺼번에</strong> 생성할 수 있습니다. (Day 2 MCP 자동화 연장)</p></div>
 
 <div class="prompt">
-  <div class="plabel">MCP 프롬프트 — 캐릭터+배경 결합 자동화</div>
-  <code id="pd-mcp">내 Soul 캐릭터(첨부한 인물 레퍼런스와 같은 얼굴)를 아래 3개 배경에 각각 배치한 9:16 이미지를 한 번에 만들어줘. 얼굴은 완전히 동일하게, 색감은 warm color grading으로 통일.
-1) 강남 루프탑, 골든아워
-2) 화이트 스튜디오, 부드러운 조명
-3) 숲길, 자연광
-photorealistic, lifestyle content series</code>
+  <div class="plabel">MCP 프롬프트 — 광고 5컷 배치 생성</div>
+  <code id="pd-mcp">힉스필드 Marketing Studio로 [내 제품] 광고 이미지를 한 번에 5컷 만들어줘.
+1) 히어로 (제품 단독, 깔끔한 배경) — 16:9
+2) 사용 장면 (사람이 실제로 쓰는 모습) — 9:16
+3) 디테일 클로즈업 — 16:9
+4) 라이프스타일 (감성 환경) — 9:16
+5) CTA (헤드라인 여백 크게) — 16:9
+전부 같은 브랜드 컬러로 통일, copy space for headline 포함, photorealistic.</code>
   <button class="copy-btn" onclick="cp('pd-mcp',this)">복사</button>
 </div>
 
-<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>MCP 연결이 안 되어 있으면 이 실습은 건너뛰고 웹 UI(실습 B)로 진행하세요.</p></div>
+<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>MCP 연결이 안 되어 있으면 이 실습은 건너뛰고 웹 UI(실습 C)로 진행하세요.</p></div>
 
 <div class="challenge">
   <h4>🎯 실습 D 체크리스트 (선택)</h4>
   <ul class="cklist">
-    <li><input type="checkbox">인물 레퍼런스 첨부 + MCP 프롬프트 전송</li>
-    <li><input type="checkbox">3장 배경 결합 결과 확인</li>
+    <li><input type="checkbox">제품 정보 + MCP 프롬프트 전송</li>
+    <li><input type="checkbox">5컷 배치 생성 결과 확인</li>
     <li><input type="checkbox">웹 UI 결과와 비교 → 어느 쪽이 편한지 메모</li>
   </ul>
 </div>
@@ -612,20 +666,20 @@ photorealistic, lifestyle content series</code>
      ════════════════════════════════ -->
 <div class="sec" id="final-task">
   <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
-  <h2>나만의 AI 인플루언서 일관 시리즈 + Adobe 마무리 1장</h2>
+  <h2>내 제품 광고 세트 완성</h2>
 </div>
 
-<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 것을 모아 <strong>같은 얼굴로 이어지는 시리즈 + 마무리 1장</strong>을 완성합니다.</p></div>
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 것을 모아 <strong>제품 1개로 광고 세트</strong>를 완성합니다. 이 광고 감각은 <strong>Day 6~7 롱폼 광고 실전</strong>으로 이어집니다.</p></div>
 
 <div class="card">
   <h3>과제 조건</h3>
   <table>
     <thead><tr><th>항목</th><th>기준</th></tr></thead>
     <tbody>
-      <tr><td><strong>일관 시리즈</strong></td><td>동일 캐릭터(Soul ID)로 일관된 이미지 <strong>3장 이상</strong> (서로 다른 배경/상황)</td></tr>
-      <tr><td><strong>Cinematic</strong></td><td>Soul Cinematic 버전 <strong>1장 포함</strong></td></tr>
-      <tr><td><strong>Adobe 마무리</strong></td><td>그중 1장을 Adobe Express 무료로 마무리(배경 제거 또는 텍스트 추가) → SNS 게시물 형태로</td></tr>
-      <tr><td><strong>제출</strong></td><td>시리즈 이미지 + Adobe 마무리본 + 사용 모델/프롬프트</td></tr>
+      <tr><td><strong>광고 세트</strong></td><td>제품 1개로 광고 이미지 <strong>5컷</strong> (히어로 / 사용 / 디테일 / 라이프스타일 / CTA)</td></tr>
+      <tr><td><strong>포맷</strong></td><td>광고 포맷 <strong>2종 이상</strong> 시도 (예: UGC + TV Spot)</td></tr>
+      <tr><td><strong>비율</strong></td><td><strong>16:9와 9:16</strong> 각각 최소 1컷씩 포함</td></tr>
+      <tr><td><strong>제출</strong></td><td>광고 세트 + 사용한 포맷/프롬프트</td></tr>
     </tbody>
   </table>
 </div>
@@ -634,11 +688,11 @@ photorealistic, lifestyle content series</code>
   <h4 style="color:#e8c060">📤 제출 방법</h4>
   <p>강사가 안내한 채널에 아래 내용을 함께 올려주세요.</p>
   <ul class="cklist" style="margin-top:.65rem">
-    <li><input type="checkbox">동일 캐릭터 일관 시리즈 3장 이상</li>
-    <li><input type="checkbox">Soul Cinematic 버전 1장 포함</li>
-    <li><input type="checkbox">Adobe Express 마무리본 1장 (배경 제거 또는 텍스트)</li>
-    <li><input type="checkbox">사용한 모델 이름 (Soul 2.0 / Soul Cinematic 등)</li>
-    <li><input type="checkbox">사용한 프롬프트 전체 + 캐릭터 컨셉 한 줄</li>
+    <li><input type="checkbox">제품 1개 광고 이미지 5컷 (히어로/사용/디테일/라이프스타일/CTA)</li>
+    <li><input type="checkbox">광고 포맷 2종 이상 시도</li>
+    <li><input type="checkbox">16:9 1컷 + 9:16 1컷 이상 포함</li>
+    <li><input type="checkbox">사용한 포맷 이름 (UGC / TV Spot / Hyper Motion 등)</li>
+    <li><input type="checkbox">사용한 프롬프트 전체 + 제품 컨셉 한 줄</li>
   </ul>
 </div>
 
@@ -655,20 +709,21 @@ photorealistic, lifestyle content series</code>
 <table class="trouble">
   <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
   <tbody>
-    <tr><td>장면마다 얼굴이 다름</td><td>Soul ID 학습 이미지를 더 일관되게(같은 인물·다양한 각도) 다시 학습</td></tr>
-    <tr><td>시리즈 톤이 제각각</td><td>모든 이미지에 같은 조명·색감 키워드(예: <code style="color:var(--gold);font-size:.82rem">consistent warm color grading</code>)를 공통 적용</td></tr>
-    <tr><td>Adobe Express 배경 제거가 어색</td><td>인물 외곽이 선명한 이미지로 교체 후 다시 시도</td></tr>
-    <tr><td>Generative Fill을 쓰고 싶은데 막힘</td><td>Firefly 무료 크레딧 소진 시 유료. 무료 한도 내 기능(배경 제거·텍스트·리사이즈)만 사용</td></tr>
-    <tr><td>학습이 너무 오래 걸림</td><td>5~10분은 정상. 창 닫지 말고 대기</td></tr>
-    <tr><td>MCP 연결 안 됨</td><td>웹 UI(실습 B)로 진행. 수업 후 강사와 함께 점검</td></tr>
+    <tr><td>제품이 잘못 인식됨</td><td>더 <strong>단순·선명한 제품 사진</strong>(배경 깔끔)으로 교체 후 다시 등록</td></tr>
+    <tr><td>광고에 카피 넣을 여백이 없음</td><td>프롬프트에 <code style="color:var(--gold);font-size:.82rem">copy space for headline</code>을 명시</td></tr>
+    <tr><td>포맷별 차이를 모르겠음</td><td><strong>UGC = 리뷰 감성</strong>, <strong>TV Spot = 브랜드 스토리</strong>, <strong>Hyper Motion = 역동적 강조</strong>로 구분</td></tr>
+    <tr><td>아바타(모델)가 어색</td><td><strong>샘플로 제공된 Soul ID 캐릭터</strong>를 아바타로 사용</td></tr>
+    <tr><td>세트 톤이 제각각</td><td>5컷 모두 <strong>같은 브랜드 컬러/조명 키워드</strong> 공통 적용</td></tr>
+    <tr><td>영상으로 만들고 싶음</td><td>오늘은 이미지 중심. 영상화는 <strong>Day 4·Day 6~7</strong>에서 진행</td></tr>
+    <tr><td>MCP 연결 안 됨</td><td>웹 UI(실습 C)로 진행. 수업 후 강사와 함께 점검</td></tr>
   </tbody>
 </table>
 
 </div><!-- /page -->
 
 <footer>
-  <span>힉스필드 8일 워크숍 · Day 2 · AI 인플루언서 시리즈 (Soul ID &amp; Adobe 마무리)</span>
-  <span>예시 이미지: Higgsfield AI 생성 (Soul 2.0 / Soul Cinematic / Soul Location) · 2026</span>
+  <span>힉스필드 7일 워크숍 · Day 2 · Marketing Studio — 제품 광고 자동 생성 (DTC Ads)</span>
+  <span>예시 이미지: Higgsfield AI 생성 (Marketing Studio · 무선 이어버드 광고 세트) · 2026</span>
 </footer>
 
 <script>

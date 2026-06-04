@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 3 · Marketing Studio — 제품 광고 자동 생성 — 8일 워크숍</title>
+<title>Day 3 · 영상 기초 & 시나리오 보드 — 7일 워크숍</title>
 <style>
 :root {
   --bg:#0f0f0f; --s1:#1a1a1a; --s2:#242424; --s3:#2e2e2e;
@@ -105,16 +105,16 @@ tr:hover td{background:var(--s2)}
 
 .img-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
 .img-card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
-.img-card.wide img{aspect-ratio:16/9}
 .img-info{padding:.65rem .8rem}
 .img-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
 .img-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
 
-/* SCREENSHOT */
-.shot{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden;margin:1.25rem 0}
-.shot img{width:100%;display:block}
-.shot .cap{padding:.6rem .9rem;font-size:.76rem;color:var(--muted);border-top:1px solid var(--s3)}
-.shot .cap strong{color:var(--gold)}
+/* VIDEO CARD */
+.vid-card{background:var(--s1);border:1px solid var(--s3);border-radius:8px;overflow:hidden}
+.vid-card video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.vid-info{padding:.65rem .8rem}
+.vid-info .tag{font-size:.72rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
+.vid-info .desc{font-size:.75rem;color:var(--muted);line-height:1.4}
 
 /* KEYWORD TAGS */
 .kw-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
@@ -157,10 +157,28 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 .daybar .db-link.active{background:var(--gold2);color:#000}
 .daybar .db-sep{color:var(--s3);font-size:.78rem;margin:0 .15rem}
 
+/* === SCENARIO BOARD (Day 3 전용) === */
+.board{overflow-x:auto;margin:1rem 0}
+.board table{min-width:780px;font-size:.82rem}
+.board th{font-size:.7rem}
+.board td{vertical-align:top}
+.board .scene-th{width:46px;text-align:center}
+.board .scene-num{font-size:1.3rem;font-weight:800;color:var(--gold);text-align:center}
+.board .scene-img{width:96px}
+.board .scene-img img{width:90px;border-radius:6px;display:block;aspect-ratio:9/16;object-fit:cover}
+.board .mini-prompt{font-family:'JetBrains Mono','Consolas',monospace;font-size:.72rem;color:#a8c8e8;background:#0d1117;border:1px solid #30363d;border-radius:5px;padding:.45rem .55rem;line-height:1.5;position:relative}
+.board .mini-prompt .copy-btn{position:static;display:inline-block;margin-top:.4rem}
+.board .snd-line{font-size:.78rem;line-height:1.55;margin-bottom:.3rem}
+.board .snd-tag{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.04em;padding:.05rem .35rem;border-radius:3px;margin-right:.3rem}
+.snd-voice{background:#2d2050;color:#b0a0e0}
+.snd-music{background:#162a1e;color:#80c898}
+.snd-sfx{background:#302010;color:#d09040}
+
 </style>
 </head>
 <body>
-<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link active">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">Day 8</a><a class="db-link" href="day-9.html">⭐ 보너스</a></div>
+<div class="daybar"><a class="db-home" href="index.html">◀ 전체 목록</a><span class="db-sep">|</span><a class="db-link" href="day-1.html">Day 1</a><a class="db-link" href="day-2.html">Day 2</a><a class="db-link active">Day 3</a><a class="db-link" href="day-4.html">Day 4</a><a class="db-link" href="day-5.html">Day 5</a><a class="db-link" href="day-6.html">Day 6</a><a class="db-link" href="day-7.html">Day 7</a><a class="db-link" href="day-8.html">⭐ 인플루언서</a><a class="db-link" href="day-9.html">⭐ MCP</a></div>
+
 
 
 
@@ -168,30 +186,30 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <nav class="nav">
   <a href="#overview">전체 흐름</a>
   <span class="nav-sep">|</span>
-  <a href="#lec1">Marketing Studio란?</a>
-  <a href="#lec2">제품·브랜드킷 등록</a>
-  <a href="#lec3">광고 포맷 8종</a>
-  <a href="#lec4">원클릭 워크플로</a>
-  <a href="#demo">시연</a>
+  <a href="#lec1">연출 문법</a>
+  <a href="#lec2">시나리오 보드</a>
+  <a href="#lec3">툴 지형도</a>
+  <a href="#demo">강사 시연</a>
   <span class="nav-sep">|</span>
-  <a href="#prac-a">실습 A·제품 등록</a>
-  <a href="#prac-b">실습 B·포맷 비교</a>
-  <a href="#prac-c">실습 C·광고 5컷</a>
-  <a href="#prac-d">실습 D·MCP</a>
+  <a href="#prac-a">실습 A</a>
+  <a href="#prac-b">실습 B</a>
+  <a href="#prac-c">실습 C</a>
+  <a href="#prac-d">실습 D</a>
+  <a href="#prac-e">실습 E</a>
   <a href="#final-task">🏆 과제</a>
   <a href="#trouble">❓ 도움말</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-chip">HIGGSFIELD 8-DAY WORKSHOP · DAY 3</div>
-  <h1>Marketing Studio —<br><em>제품 광고 자동 생성</em></h1>
-  <p>Day 2가 "내 얼굴(인플루언서) 고정"이었다면, 오늘은 <strong>제품·브랜드를 광고로</strong> 바꿉니다. 제품 이미지/URL만 넣으면 힉스필드 Marketing Studio가 DTC 광고 이미지를 자동 생성합니다. (이 광고 감각은 Day 7~8 롱폼 광고 실전의 기반이 됩니다)</p>
+  <div class="hero-chip">HIGGSFIELD 7-DAY WORKSHOP · DAY 3</div>
+  <h1>영상 기초 &amp; 시나리오 보드 —<br><em>AI로 영상 설계하기</em></h1>
+  <p>영상 연출 문법 + 시나리오 보드 설계 + 여러 영상 툴 맛보기. 내일 Day 4 Seedance 2.0 영상화의 "재료"를 오늘 만듭니다.</p>
   <div class="hero-pills">
     <div class="pill">⏱ <strong>총 4시간</strong></div>
-    <div class="pill">🎯 <strong>목표</strong>: 제품 1개로 광고 세트 만들기</div>
-    <div class="pill">📦 <strong>준비물</strong>: 힉스필드 계정 + 제품 이미지/URL + (선택) Day 2 Soul ID</div>
-    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h30m · 실습 2h30m</div>
+    <div class="pill">🎯 <strong>목표</strong>: 내 30초 영상 시나리오 보드 완성</div>
+    <div class="pill">📦 <strong>준비물</strong>: Day 1~2에서 배운 이미지 기법</div>
+    <div class="pill">🖥️ <strong>비율</strong>: 강의·시연 1h40m · 실습 2h20m</div>
   </div>
 </div>
 
@@ -199,277 +217,373 @@ footer{max-width:960px;margin:0 auto;padding:2rem;border-top:1px solid var(--s3)
 <div class="tl-wrap" id="overview">
   <div class="tl-label">오늘 4시간 흐름</div>
   <div class="tl-bar">
-    <div class="tl-lec">📖 강의·시연 (1h 30m)</div>
-    <div class="tl-prac">🖥️ 실습 A·B·C·D (2h 30m)</div>
+    <div class="tl-lec">📖 강의·시연 (1h 40m)</div>
+    <div class="tl-prac">🖥️ 실습 A·B·C·D·E (2h 20m)</div>
   </div>
   <div class="tl-times">
-    <span>0:00 Studio란?</span>
-    <span>0:25 제품 등록</span>
-    <span>0:50 광고 포맷</span>
-    <span>1:20 워크플로</span>
-    <span>1:30 실습 시작</span>
+    <span>0:00 연출 문법</span>
+    <span>0:30 시나리오 보드</span>
+    <span>1:10 툴 지형도</span>
+    <span>1:40 실습 시작</span>
+    <span>3:50 공유</span>
     <span>4:00 끝</span>
   </div>
 </div>
 
 <div class="page">
 
-<!-- 복습 한 줄 -->
-<div class="callout c-info" style="margin-top:1.5rem"><span class="ico">🔁</span><p><strong>Day 2 복습</strong>: 어제 만든 <strong>Soul ID(AI 인플루언서)</strong>는 오늘 광고의 "모델"로 그대로 씁니다. 내 캐릭터가 내 제품을 들고 광고에 등장 = <strong>내 브랜드 전속 모델</strong>. Day 2의 일관성 기법을 제품 광고에 응용합니다.</p></div>
-
 <!-- ════════════════════════════════
-     강의 PART 1 · Marketing Studio란?
+     강의 PART 1 · 영상 연출 문법 기초
      ════════════════════════════════ -->
 <div class="sec" id="lec1">
-  <span class="badge b-lec">강의 핵심</span>
-  <h2>Part 1 · Marketing Studio란?</h2>
-  <span class="timer">0:00 – 0:25 · 25분</span>
-</div>
-
-<div class="card">
-  <h3>Marketing Studio란?</h3>
-  <p><strong>제품 이미지 또는 제품 페이지 URL만 넣으면</strong>, 광고용 이미지·영상을 자동으로 생성하는 힉스필드 도구입니다.<br>
-  프롬프트를 한 줄씩 쓰는 게 아니라 <strong>"제품 넣고 → 포맷 고르고 → 생성"</strong>. TikTok/Reels 등 SNS 광고에 최적화된 비율·연출이 내장돼 있습니다.</p>
-</div>
-
-<div class="shot">
-  <img src="screenshots/07-marketing.png" alt="힉스필드 Marketing Studio 실제 화면 — TURN ANY PRODUCT INTO A VIDEO AD" loading="lazy">
-  <div class="cap"><strong>실제 화면</strong> · Higgsfield Marketing Studio — "<strong>TURN ANY PRODUCT INTO A VIDEO AD</strong>". 제품 하나로 광고를 만드는 전용 워크스페이스.</div>
-</div>
-
-<!-- 일반 생성 vs Marketing Studio -->
-<div class="card">
-  <h3>일반 생성 vs Marketing Studio</h3>
-  <table>
-    <thead><tr><th>구분</th><th>일반 이미지 생성 (Day 1~2)</th><th>Marketing Studio (Day 3)</th></tr></thead>
-    <tbody>
-      <tr><td><strong>입력</strong></td><td>프롬프트를 일일이 작성</td><td><strong style="color:var(--green)">제품 이미지/URL 넣고 포맷 선택</strong></td></tr>
-      <tr><td><strong>광고 최적화</strong></td><td>직접 비율·연출 지정</td><td>TikTok/Reels 광고 포맷 내장</td></tr>
-      <tr><td><strong>일관성</strong></td><td>매번 따로 챙김</td><td>브랜드킷으로 톤·컬러 자동 유지</td></tr>
-      <tr><td><strong>적합</strong></td><td>탐색·아이디어·시안</td><td><strong>실제 판매용 제품 광고 양산</strong></td></tr>
-      <tr><td><strong>결과</strong></td><td>이미지 1장</td><td>광고 이미지/영상 세트 + A/B 시안</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- DTC Ads 개념 -->
-<div class="card">
-  <h3>DTC Ads란? — Direct-to-Consumer 광고</h3>
-  <p><strong>DTC = Direct-to-Consumer</strong>. 중간 유통 없이 <strong>브랜드가 소비자에게 직접</strong> 파는 광고입니다. (요즘 인스타·틱톡에서 보는 "그 제품 광고")<br>
-  Marketing Studio는 DTC 광고에 필요한 4가지를 결합합니다:</p>
-  <div class="formula" style="margin-top:.75rem">아바타(모델) + 브랜드킷(톤) + 제품 + 광고 포맷 = DTC 광고</div>
-</div>
-
-<!-- 어디에 쓰나 -->
-<div class="card">
-  <h3>어디에 쓰나요?</h3>
-  <ul>
-    <li><strong>쇼핑몰 제품컷</strong> — 깔끔한 제품 히어로 이미지, 상세페이지 컷</li>
-    <li><strong>SNS 제품 광고</strong> — 인스타/틱톡/릴스용 세로 광고</li>
-    <li><strong>빠른 A/B 시안</strong> — 같은 제품을 여러 포맷으로 뽑아 반응 비교</li>
-  </ul>
-  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">🎬</span><p><strong>영상 광고</strong>도 만들 수 있지만, 오늘은 <strong>광고 이미지 중심</strong>으로 배웁니다. 실제 광고 <strong>영상 제작</strong>은 Day 5(Seedance 영상)·<strong>Day 7~8(롱폼 광고 실전)</strong>에서 본격적으로 다룹니다.</p></div>
-</div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     강의 PART 2 · 제품·브랜드킷·아바타 등록
-     ════════════════════════════════ -->
-<div class="sec" id="lec2">
-  <span class="badge b-lec">강의 + 실습 안내</span>
-  <h2>Part 2 · 제품·브랜드킷·아바타 등록</h2>
-  <span class="timer">0:25 – 0:50 · 25분</span>
-</div>
-
-<div class="card">
-  <h3>광고에 필요한 3가지 재료</h3>
-  <p>좋은 DTC 광고는 <strong>① 제품 ② 브랜드 톤 ③ 모델</strong>이 맞물려야 합니다. Marketing Studio는 이 셋을 각각 등록해두고 조합합니다.</p>
-</div>
-
-<!-- 제품 등록 2가지 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">① 제품 등록 — 두 가지 방법</h3>
-<div class="card">
-  <table>
-    <thead><tr><th>방법</th><th>설명</th><th>이럴 때</th></tr></thead>
-    <tbody>
-      <tr><td><strong style="color:var(--gold)">이미지 업로드</strong></td><td>제품 사진을 직접 올림</td><td>아직 판매 페이지가 없을 때 / 시안 단계</td></tr>
-      <tr><td><strong style="color:var(--gold)">제품 페이지 URL</strong></td><td>쇼핑몰 링크 입력 → 이미지·정보 자동 fetch</td><td>이미 판매 중인 제품 (가장 빠름)</td></tr>
-    </tbody>
-  </table>
-  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>제품 사진은 <strong>단순·선명·배경 깔끔</strong>할수록 인식이 정확합니다. 어수선한 배경은 제품을 잘못 잡아낼 수 있어요.</p></div>
-</div>
-
-<!-- 등록 절차 steps -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">등록 절차</h3>
-<ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>Marketing Studio 열기</strong><span>힉스필드 좌측 메뉴 → <strong>Marketing Studio</strong> ("Turn any product into a video ad")</span></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>제품 등록</strong><span>제품 이미지 업로드 <strong>또는</strong> 제품 페이지 URL 붙여넣기 → 자동 인식</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>브랜드킷 설정</strong><span>로고·브랜드 컬러·톤을 등록 → 광고마다 톤이 자동으로 일관되게 유지</span></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>아바타(모델) 선택</strong><span>제품을 쓰는 인물 — <strong>Day 2 Soul ID</strong> 또는 기본 제공 아바타 중 선택</span></div></li>
-</ol>
-
-<!-- 브랜드킷 -->
-<div class="card">
-  <h3>② 브랜드킷 — 일관된 광고의 비결</h3>
-  <p><strong>로고 · 브랜드 컬러 · 톤(무드)</strong>을 한 번 등록해두면, 어떤 포맷의 광고를 뽑아도 <strong>같은 브랜드 느낌</strong>이 유지됩니다. (Day 2의 "색감 키워드 통일"을 브랜드 단위로 자동화한 것)</p>
-</div>
-
-<!-- 아바타 + Day 2 연계 -->
-<div class="card">
-  <h3>③ 아바타 — 제품을 사용하는 인물</h3>
-  <p>광고에 등장해 제품을 들고/입고/쓰는 모델입니다. <strong>기본 아바타</strong>를 골라도 되고, <strong>Day 2에서 만든 Soul ID</strong>를 그대로 쓸 수도 있습니다.</p>
-</div>
-
-<div class="callout c-tip"><span class="ico">⭐</span><p><strong>Day 2 연계</strong>: Day 2에서 만든 <strong>AI 인플루언서(Soul ID)를 아바타로 쓰면, 내 브랜드 전속 모델</strong>이 됩니다. 매 광고마다 같은 얼굴이 내 제품을 소개 → 팔로워가 "이 브랜드의 그 사람"으로 기억합니다.</p></div>
-
-<hr>
-
-<!-- ════════════════════════════════
-     강의 PART 3 · 광고 포맷·프리셋
-     ════════════════════════════════ -->
-<div class="sec" id="lec3">
   <span class="badge b-lec">강의</span>
-  <h2>Part 3 · 광고 포맷·프리셋 8종</h2>
-  <span class="timer">0:50 – 1:20 · 30분</span>
+  <h2>Part 1 · 영상 연출 문법 기초</h2>
+  <span class="timer">0:00 – 0:30 · 30분</span>
 </div>
 
-<div class="card">
-  <h3>포맷이 곧 광고 스타일</h3>
-  <p>같은 제품이라도 <strong>어떤 포맷</strong>을 고르느냐에 따라 완전히 다른 광고가 나옵니다. Marketing Studio는 검증된 광고 포맷을 프리셋으로 제공합니다 — 고르기만 하면 됩니다.</p>
-</div>
+<div class="callout c-info"><span class="ico">💡</span><p>오늘은 <strong>"AI가 어떻게 영상을 만드나"</strong>가 아니라 <strong>"사람이 영상을 어떻게 구성하나"</strong>를 배웁니다. AI 생성 기술의 원리는 내일 Day 4에서 다룹니다. 오늘은 <strong>연출 문법</strong>에 집중하세요.</p></div>
 
-<!-- 포맷 8종 표 -->
+<!-- 샷 사이즈 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .75rem">① 샷 사이즈 — 카메라가 피사체를 얼마나 가까이 잡나</h3>
+
 <table>
-  <thead><tr><th>포맷</th><th>특징</th><th>적합 제품</th></tr></thead>
+  <thead><tr><th>샷 사이즈</th><th>무엇을 보여주나</th><th>언제 쓰나</th></tr></thead>
   <tbody>
-    <tr><td><strong style="color:var(--gold)">UGC</strong></td><td>진짜 사람 리뷰 느낌 (내돈내산 톤)</td><td>모든 소비재</td></tr>
-    <tr><td><strong style="color:var(--gold)">Tutorial</strong></td><td>사용법 단계별 설명</td><td>기능성 제품</td></tr>
-    <tr><td><strong style="color:var(--gold)">Unboxing</strong></td><td>개봉 경험·언박싱</td><td>패키지 좋은 제품</td></tr>
-    <tr><td><strong style="color:var(--gold)">Hyper Motion</strong></td><td>역동적 제품 강조 (스피드감)</td><td>스포츠·테크</td></tr>
-    <tr><td><strong style="color:var(--gold)">Product Review</strong></td><td>디테일·스펙 설명</td><td>복잡한 제품</td></tr>
-    <tr><td><strong style="color:var(--gold)">TV Spot</strong></td><td>브랜드 감성 스토리</td><td>프리미엄</td></tr>
-    <tr><td><strong style="color:var(--gold)">Wild Card</strong></td><td>창의적 자유 연출</td><td>실험·바이럴</td></tr>
-    <tr><td><strong style="color:var(--gold)">Virtual Try-On</strong></td><td>착용·사용 가상 체험</td><td>패션·뷰티</td></tr>
+    <tr><td><strong style="color:var(--gold)">익스트림 와이드 (EWS)</strong></td><td>인물이 작게, 공간 전체</td><td>장소·분위기 소개 (오프닝)</td></tr>
+    <tr><td><strong style="color:var(--gold)">풀 샷 (Full)</strong></td><td>인물 전신 + 주변</td><td>동작·이동·상황 설명</td></tr>
+    <tr><td><strong style="color:var(--gold)">미디엄 샷 (Medium)</strong></td><td>상반신 (허리~머리)</td><td>대화·작업 장면, 가장 무난</td></tr>
+    <tr><td><strong style="color:var(--gold)">클로즈업 (CU)</strong></td><td>얼굴·손 등 한 부분</td><td>감정·디테일 강조</td></tr>
+    <tr><td><strong style="color:var(--gold)">익스트림 클로즈업 (ECU)</strong></td><td>눈·입술·물방울 등 극단적 확대</td><td>긴장감·임팩트 극대화</td></tr>
   </tbody>
 </table>
 
-<div class="callout c-tip"><span class="ico">📌</span><p>헷갈릴 땐 이 셋만 기억하세요 — <strong>UGC = 리뷰 감성</strong>, <strong>TV Spot = 브랜드 스토리</strong>, <strong>Hyper Motion = 역동적 강조</strong>.</p></div>
+<div class="callout c-tip"><span class="ico">📌</span><p>한 영상 안에서 <strong>와이드 → 클로즈업으로 좁혀 들어가면</strong> "공간을 보여주고 → 인물 안으로 들어가는" 자연스러운 흐름이 생깁니다.</p></div>
 
-<!-- 제품 광고 세트 예시 (이어버드) -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">제품 광고 세트 예시 — 무선 이어버드 (강사 생성)</h3>
-<p style="font-size:.88rem;color:var(--muted);margin-bottom:.5rem">한 제품으로 포맷·컷을 달리해 만든 실제 광고 세트입니다. 각 이미지가 어떤 광고 컷·포맷에 해당하는지 라벨로 표시했습니다.</p>
-
-<div class="grid-3">
-  <div class="img-card wide">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012421_7f0e79ad-4e6b-43c6-969f-a1ac6442fb25.png" alt="제품 히어로 16:9" loading="lazy">
+<p style="margin:1.25rem 0 .65rem;font-size:.88rem;color:var(--cream)"><strong>예시 — 같은 영상의 4장면, 샷 사이즈가 어떻게 다른가</strong></p>
+<div class="grid-4">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023638_7f123061-392c-47ea-b2c1-ffc337b8ddbc.png" alt="씬1 와이드" loading="lazy">
     <div class="img-info">
-      <span class="tag">제품 히어로 · 16:9</span>
-      <div class="kw-row"><span class="kw hi">TV Spot</span><span class="kw">hero shot</span></div>
-      <span class="desc">제품 단독 메인컷. 헤드라인 여백 확보. 쇼핑몰 대표 이미지·브랜드 감성.</span>
+      <span class="tag">씬 1 · 와이드</span>
+      <span class="desc">새벽 도시 아파트 창. 공간 전체를 보여주는 establishing shot.</span>
     </div>
   </div>
-  <div class="img-card wide">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012425_780e3036-9dd5-4c00-ab1e-5b2aa0b6b929.png" alt="라이프스타일 도시 착용" loading="lazy">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023643_b6673a6d-7327-41ff-b217-840ba847610e.png" alt="씬2 클로즈업" loading="lazy">
     <div class="img-info">
-      <span class="tag">라이프스타일 · 도시 착용</span>
-      <div class="kw-row"><span class="kw hi">UGC</span><span class="kw">lifestyle</span></div>
-      <span class="desc">실제 사용 장면. 도시에서 착용. 리뷰·일상 감성 광고.</span>
+      <span class="tag">씬 2 · 클로즈업</span>
+      <span class="desc">커피 드립하는 손. 한 부분을 확대해 디테일 강조.</span>
     </div>
   </div>
-  <div class="img-card wide">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012428_af23b8b0-7dd5-4000-8c6b-6f2b55ad9e91.png" alt="착용 클로즈업" loading="lazy">
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023648_4e92d5b5-a855-476d-9cc3-4c48da5f435f.png" alt="씬3 미디엄" loading="lazy">
     <div class="img-info">
-      <span class="tag">착용 클로즈업 · 디테일</span>
-      <div class="kw-row"><span class="kw hi">Product Review</span><span class="kw">close-up</span></div>
-      <span class="desc">제품 디테일·핏을 강조. 디테일 설명 광고에 사용.</span>
+      <span class="tag">씬 3 · 미디엄</span>
+      <span class="desc">책상에서 작업하는 인물. 상반신 + 상황 설명.</span>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023652_e570fbbc-6f08-47c8-a7d3-320363085d78.png" alt="씬4 클로즈업" loading="lazy">
+    <div class="img-info">
+      <span class="tag">씬 4 · 클로즈업</span>
+      <span class="desc">창밖 보며 미소. 감정을 클로즈업으로 마무리.</span>
     </div>
   </div>
 </div>
 
-<div class="grid-3">
-  <div class="img-card wide">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012431_de76aab1-8637-4d1e-b896-00848bfc056b.png" alt="데스크 작업 장면" loading="lazy">
-    <div class="img-info">
-      <span class="tag">데스크 작업 · 사용 맥락</span>
-      <div class="kw-row"><span class="kw hi">Tutorial</span><span class="kw">in-use</span></div>
-      <span class="desc">작업 환경에서 사용. "이럴 때 쓴다" 맥락을 보여주는 컷.</span>
-    </div>
+<!-- 카메라 앵글 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">② 카메라 앵글 — 어느 높이에서 보나</h3>
+
+<table>
+  <thead><tr><th>앵글</th><th>느낌</th><th>언제 쓰나</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">아이레벨 (Eye-level)</strong></td><td>중립·자연스러움</td><td>대부분의 일상 장면</td></tr>
+    <tr><td><strong style="color:var(--gold)">로우앵글 (Low)</strong></td><td>인물이 크고 강해 보임</td><td>당당함·권위·영웅적 연출</td></tr>
+    <tr><td><strong style="color:var(--gold)">하이앵글 (High)</strong></td><td>인물이 작고 약해 보임</td><td>고독·취약·관찰자 시점</td></tr>
+    <tr><td><strong style="color:var(--gold)">버즈아이 (Bird's-eye)</strong></td><td>위에서 수직으로 내려다봄</td><td>구도·패턴·전체 배치 강조</td></tr>
+  </tbody>
+</table>
+
+<!-- 카메라 무빙 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">③ 카메라 무빙 — 카메라가 어떻게 움직이나</h3>
+
+<div class="card">
+  <div class="kw-row" style="margin-top:.2rem">
+    <span class="kw hi">팬 (Pan)</span>
+    <span class="kw hi">틸트 (Tilt)</span>
+    <span class="kw hi">줌 (Zoom)</span>
+    <span class="kw hi">푸시인 (Push-in)</span>
+    <span class="kw hi">트래킹 (Tracking)</span>
   </div>
-  <div class="img-card wide">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012434_3468c842-38da-4304-a3b4-8094f6c5af09.png" alt="CTA 샷" loading="lazy">
-    <div class="img-info">
-      <span class="tag">CTA 샷 · 행동 유도</span>
-      <div class="kw-row"><span class="kw hi">CTA</span><span class="kw">copy space</span></div>
-      <span class="desc">"지금 구매" 같은 카피를 얹을 여백이 있는 마무리 컷.</span>
-    </div>
-  </div>
-  <div class="img-card wide">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_012449_424cf2f4-6309-4a16-ba6a-d9d9975b290a.png" alt="최종 광고 16:9" loading="lazy">
-    <div class="img-info">
-      <span class="tag">최종 광고 · 16:9 완성</span>
-      <div class="kw-row"><span class="kw hi">TV Spot</span><span class="kw">final ad</span></div>
-      <span class="desc">완성된 광고 비주얼. 그대로 게시 가능한 메인 광고컷.</span>
-    </div>
-  </div>
+  <ul style="margin-top:.65rem">
+    <li><strong>팬</strong> — 카메라가 좌우로 회전 (고정 위치에서 옆을 훑음)</li>
+    <li><strong>틸트</strong> — 카메라가 위아래로 회전 (건물을 아래→위로 훑기)</li>
+    <li><strong>줌</strong> — 렌즈로 당기거나 멀어짐 (카메라는 안 움직임)</li>
+    <li><strong>푸시인</strong> — 카메라 자체가 피사체로 다가감 (몰입감)</li>
+    <li><strong>트래킹</strong> — 카메라가 인물을 따라 같이 이동</li>
+  </ul>
+  <div class="callout c-tip" style="margin-top:.65rem"><span class="ico">💡</span><p>영상 프롬프트에 무빙 키워드(<code style="color:var(--gold);font-size:.82rem">slow push-in</code>, <code style="color:var(--gold);font-size:.82rem">gentle pan</code>)를 넣으면 AI가 그 움직임을 만들어 줍니다.</p></div>
 </div>
 
-<div class="callout c-info"><span class="ico">🎬</span><p>위 세트는 모두 <strong>광고 이미지</strong>입니다. 이런 컷들을 이어 붙여 <strong>광고 영상</strong>으로 만드는 작업은 Day 5·Day 7~8에서 배웁니다.</p></div>
+<!-- 컷과 시퀀스 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">④ 컷과 시퀀스 — 장면을 이어 이야기를 만든다</h3>
+
+<div class="card">
+  <h3>컷 편집의 기본</h3>
+  <p><strong>컷(Cut)</strong>은 한 장면에서 다른 장면으로 바뀌는 지점입니다. 여러 컷을 순서대로 이으면 <strong>시퀀스</strong>가 되고, 시퀀스가 모여 하나의 이야기가 됩니다.</p>
+  <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.85rem 0 .3rem;font-size:.85rem">
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">씬1 와이드</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">씬2 클로즈업</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--s2);padding:.3rem .7rem;border-radius:4px">씬3 미디엄</span>
+    <span style="color:var(--gold)">→</span>
+    <span style="background:var(--gold2);color:#000;padding:.3rem .7rem;border-radius:4px;font-weight:700">씬4 클로즈업 = 30초 영상</span>
+  </div>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">🎬</span><p><strong>좋은 시퀀스의 비결</strong>: 같은 샷 사이즈만 반복하면 지루합니다. 와이드 → 클로즈업처럼 <strong>변화를 줘야</strong> 시선이 살아납니다.</p></div>
+</div>
+
+<!-- 사운드 3층 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">⑤ 사운드 3층 레이어 — 영상의 절반은 소리다</h3>
+
+<table>
+  <thead><tr><th>레이어</th><th>무엇</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="snd-tag snd-voice">음성</span><strong style="color:var(--cream)">내레이션 / 대사</strong></td>
+      <td>사람이 말하는 소리</td>
+      <td>보이스오버, 인물 대사, 인터뷰</td>
+    </tr>
+    <tr>
+      <td><span class="snd-tag snd-music">음악</span><strong style="color:var(--cream)">BGM</strong></td>
+      <td>배경에 깔리는 음악</td>
+      <td>로파이 피아노, 시네마틱 스트링</td>
+    </tr>
+    <tr>
+      <td><span class="snd-tag snd-sfx">효과음</span><strong style="color:var(--cream)">앰비언트 / SFX</strong></td>
+      <td>환경음·상황음</td>
+      <td>새소리, 물 끓는 소리, 키보드 타이핑</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>세 레이어를 <strong>겹쳐 쌓으면</strong> 영상이 입체적이 됩니다. 시나리오 보드에서 각 씬마다 이 세 가지를 미리 설계합니다. (실제 사운드 생성은 Day 4 힉스필드 Audio·Lip Sync에서)</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     강의 PART 4 · 원클릭 광고 생성 워크플로
+     강의 PART 2 · 시나리오 보드란?
      ════════════════════════════════ -->
-<div class="sec" id="lec4">
-  <span class="badge b-lec">강의 + 시연</span>
-  <h2>Part 4 · 원클릭 광고 생성 워크플로</h2>
-  <span class="timer">1:20 – 1:30 · 10분 + 시연</span>
+<div class="sec" id="lec2">
+  <span class="badge b-lec">강의 핵심</span>
+  <h2>Part 2 · 시나리오 보드란?</h2>
+  <span class="timer">0:30 – 1:10 · 40분</span>
 </div>
 
 <div class="card">
-  <h3>전체 흐름 — 5단계</h3>
-  <ol class="steps" style="margin-top:.3rem">
-    <li><div class="snum">1</div><div class="sbody"><strong>제품 등록</strong><span>이미지 업로드 또는 URL 입력</span></div></li>
-    <li><div class="snum">2</div><div class="sbody"><strong>아바타 선택</strong><span>Day 2 Soul ID 또는 기본 아바타</span></div></li>
-    <li><div class="snum">3</div><div class="sbody"><strong>포맷 선택</strong><span>UGC / TV Spot / Hyper Motion 등 8종 중 하나</span></div></li>
-    <li><div class="snum">4</div><div class="sbody"><strong>생성</strong><span>광고 이미지(또는 영상) 자동 생성</span></div></li>
-    <li><div class="snum">5</div><div class="sbody"><strong>변형 / A·B</strong><span>다른 포맷·비율로 변형해 시안 비교</span></div></li>
-  </ol>
+  <h3>시나리오 보드 = 스토리보드 + 프롬프트 기획서</h3>
+  <p>영상을 만들기 <strong>전에</strong> "씬별로 무엇을·어떻게 보여주고 들려줄지"를 미리 설계하는 표입니다. 그림 콘티(스토리보드)에 <strong>AI에게 줄 프롬프트까지 함께 적은 것</strong>이 시나리오 보드입니다.</p>
 </div>
 
-<!-- 광고 이미지 생성 프롬프트 공식 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">광고 이미지 생성 프롬프트 공식</h3>
-<div class="prompt">
-  <div class="plabel">제품 광고 이미지 프롬프트 (대괄호만 내 제품에 맞게 교체)</div>
-  <code id="pf1">A premium [제품] product ad, [포맷 스타일: UGC review / cinematic TV spot / hyper motion],
-[배경/조명: clean studio softbox / urban golden hour / dark moody set],
-16:9 (또는 9:16),
-copy space for headline, commercial photography, photorealistic</code>
-  <button class="copy-btn" onclick="cp('pf1',this)">복사</button>
-</div>
-<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p><strong><code style="color:var(--gold);font-size:.82rem">copy space for headline</code></strong>를 꼭 넣으세요. 광고 카피·헤드라인을 얹을 <strong>여백</strong>이 생깁니다. 16:9는 유튜브·웹 배너, 9:16은 릴스·틱톡·쇼츠용입니다.</p></div>
-
-<!-- 영상 개념 -->
 <div class="card">
-  <h3>Marketing Studio 영상도 가능 (개념만)</h3>
-  <p>같은 제품으로 <strong>TikTok/Reels 광고 영상</strong>도 생성할 수 있습니다. 다만 오늘은 <strong>광고 이미지에 집중</strong>하고, 실제 영상화는:</p>
+  <h3>왜 필요한가?</h3>
   <ul>
-    <li><strong>Day 5</strong> — Seedance로 이미지를 움직이게 만들기</li>
-    <li><strong>Day 7~8</strong> — 롱폼 광고 실전 (오늘의 광고 감각이 그대로 이어짐)</li>
+    <li>AI 영상을 <strong>즉흥으로</strong> 만들면 씬마다 톤·인물·메시지가 제각각으로 무너집니다.</li>
+    <li>보드가 있으면 <strong>어떤 툴을 쓰든</strong> 같은 설계로 일관된 결과를 얻습니다.</li>
+    <li>오늘 만든 보드는 <strong>내일 Day 4에서 실제 영상화하는 재료</strong>가 됩니다.</li>
+  </ul>
+  <div class="callout c-info" style="margin-top:.65rem"><span class="ico">💡</span><p>설계도 없이 집을 지을 수 없듯, 보드 없이 좋은 AI 영상은 안 나옵니다. <strong>보드가 오늘의 핵심 산출물</strong>입니다.</p></div>
+</div>
+
+<!-- 표준 구조 -->
+<h3 style="color:var(--gold);font-size:1rem;margin:1.75rem 0 .75rem">시나리오 보드 표준 구조</h3>
+
+<table>
+  <thead><tr><th>씬 #</th><th>샷·연출</th><th>🎨 이미지 프롬프트</th><th>🎬 영상 프롬프트</th><th>🔊 사운드 프롬프트</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--gold)">씬 번호</strong></td>
+      <td>샷 사이즈 + 앵글 + 무빙</td>
+      <td>키프레임 이미지를 만들 프롬프트</td>
+      <td>그 이미지를 어떻게 움직일지</td>
+      <td>음성 / 음악 / 효과음</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>각 씬마다 <strong>4가지 프롬프트</strong>(연출 + 이미지 + 영상 + 사운드)를 채우는 게 핵심입니다. 이걸 다 채우면 어떤 영상 툴에 넣어도 같은 결과가 나옵니다.</p></div>
+
+<!-- 완성 예시 보드 -->
+<h3 style="color:var(--cream);font-size:1.05rem;margin:1.75rem 0 .75rem">완성 예시 — "퍼스널 브랜드 모닝 필름" 30초 · 4씬</h3>
+
+<p style="font-size:.86rem;color:var(--muted);margin-bottom:.5rem">아래는 실제로 만든 시나리오 보드입니다. 키프레임 4장을 각 씬에 넣고, 이미지·영상·사운드 프롬프트를 모두 채웠습니다. 각 프롬프트는 복사 버튼으로 바로 가져갈 수 있습니다.</p>
+
+<div class="board">
+<table>
+  <thead><tr>
+    <th class="scene-th">씬</th>
+    <th class="scene-img">키프레임</th>
+    <th>샷·연출</th>
+    <th>🎨 이미지 프롬프트</th>
+    <th>🎬 영상 프롬프트</th>
+    <th>🔊 사운드 프롬프트</th>
+  </tr></thead>
+  <tbody>
+    <!-- 씬 1 -->
+    <tr>
+      <td class="scene-num">1</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023638_7f123061-392c-47ea-b2c1-ffc337b8ddbc.png" alt="씬1" loading="lazy"></td>
+      <td><strong>익스트림 와이드</strong><br>아이레벨<br>slow push-in<br><span style="color:var(--muted);font-size:.76rem">establishing</span></td>
+      <td><div class="mini-prompt"><span id="b-img1">Wide establishing shot of a quiet city apartment at dawn, soft blue morning light through large window, minimal cozy interior, cinematic, film grain, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img1',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid1">Slow gentle push-in toward the window, soft light slowly brightening, dust particles floating in the air, calm cinematic motion, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid1',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-sfx">효과음</span>도시 새벽의 먼 자동차 소리, 새 지저귐, 고요한 실내 공기</div>
+        <div class="snd-line"><span class="snd-tag snd-music">음악</span>잔잔한 로파이 피아노 인트로</div>
+      </td>
+    </tr>
+    <!-- 씬 2 -->
+    <tr>
+      <td class="scene-num">2</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023643_b6673a6d-7327-41ff-b217-840ba847610e.png" alt="씬2" loading="lazy"></td>
+      <td><strong>클로즈업</strong><br>하이앵글<br>고정 + 미세 흔들림<br><span style="color:var(--muted);font-size:.76rem">detail</span></td>
+      <td><div class="mini-prompt"><span id="b-img2">Close-up of hands slowly pouring water over a coffee dripper, warm morning light, steam rising, shallow depth of field, photorealistic, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img2',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid2">Water dripping steadily through the filter, steam gently rising and swirling, hands moving slowly and carefully, intimate close-up motion, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid2',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-sfx">효과음</span>물 끓는 소리, 드립 커피 떨어지는 물방울 소리, 종이 필터 바스락</div>
+      </td>
+    </tr>
+    <!-- 씬 3 -->
+    <tr>
+      <td class="scene-num">3</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023648_4e92d5b5-a855-476d-9cc3-4c48da5f435f.png" alt="씬3" loading="lazy"></td>
+      <td><strong>미디엄</strong><br>아이레벨<br>slow tracking<br><span style="color:var(--muted);font-size:.76rem">action</span></td>
+      <td><div class="mini-prompt"><span id="b-img3">Medium shot of a person working focused at a desk by the window, soft natural light, laptop and notebook on desk, calm morning atmosphere, cinematic, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img3',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid3">The person typing and glancing at notes, subtle natural movements, slow tracking camera drifting sideways, warm focused mood, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid3',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-voice">내레이션</span>"매일 아침, 나는 가장 먼저 나만의 리듬을 찾는다"</div>
+        <div class="snd-line"><span class="snd-tag snd-sfx">효과음</span>키보드 타이핑 소리</div>
+      </td>
+    </tr>
+    <!-- 씬 4 -->
+    <tr>
+      <td class="scene-num">4</td>
+      <td class="scene-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023652_e570fbbc-6f08-47c8-a7d3-320363085d78.png" alt="씬4" loading="lazy"></td>
+      <td><strong>클로즈업</strong><br>아이레벨<br>slow zoom-out<br><span style="color:var(--muted);font-size:.76rem">emotional</span></td>
+      <td><div class="mini-prompt"><span id="b-img4">Emotional close-up of a person looking out the window with a soft warm smile, golden morning light on the face, serene and hopeful, cinematic film grain, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-img4',this)">복사</button></div></td>
+      <td><div class="mini-prompt"><span id="b-vid4">The person smiles softly while gazing outside, gentle hair movement, slow zoom-out revealing the peaceful room, warm hopeful ending, 9:16 vertical</span><button class="copy-btn" onclick="cp('b-vid4',this)">복사</button></div></td>
+      <td>
+        <div class="snd-line"><span class="snd-tag snd-music">음악</span>피아노에 현악기 레이어 추가, 따뜻하게 고조되며 마무리</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout c-ok"><span class="ico">✅</span><p>이 보드 하나면 키프레임 4장 → 영상 4컷 → 사운드 3층까지 전부 설계 완료. <strong>내일 Day 4에서 이 보드로 실제 영상을 만듭니다.</strong></p></div>
+
+<!-- AI로 보드 기획 -->
+<h3 style="color:var(--cream);font-size:1.05rem;margin:1.75rem 0 .75rem">AI로 시나리오 보드 기획하기 (ChatGPT · Claude 활용)</h3>
+
+<p style="font-size:.86rem;color:var(--muted);margin-bottom:.5rem">보드를 직접 다 짜기 어렵다면? <strong>ChatGPT나 Claude에게 보드 초안을 통째로 받아서</strong> 다듬는 방식이 훨씬 빠릅니다. 아래 메타 프롬프트를 내 주제로 바꿔 넣으세요.</p>
+
+<div class="prompt">
+  <div class="plabel">메타 프롬프트 · ChatGPT/Claude에게 보드 초안 요청</div>
+  <code id="p-meta">너는 숏폼 영상 기획자야. 아래 주제로 30초 영상의 시나리오 보드를 4씬으로 만들어줘.
+주제: [내 주제]
+각 씬마다 다음을 표로 작성해줘:
+① 샷 사이즈와 카메라 연출 (앵글·무빙 포함)
+② 이미지 생성 프롬프트 (영어, 힉스필드용)
+③ 영상 모션 프롬프트 (영어)
+④ 사운드 설계 (음성/내레이션 · 음악 · 효과음 각각)
+톤: [감성적 / 역동적 / 미니멀 등 택1]
+모든 씬의 조명·색감 키워드는 통일해서 일관성을 유지해줘.</code>
+  <button class="copy-btn" onclick="cp('p-meta',this)">복사</button>
+</div>
+
+<div class="card">
+  <h3>Claude Code로 보드를 구조화·관리하기</h3>
+  <ul>
+    <li>ChatGPT/Claude가 만든 보드를 <strong>markdown 표</strong>로 받아 <code style="color:var(--gold);font-size:.82rem">scenario-board.md</code> 파일로 저장</li>
+    <li>씬별 이미지 프롬프트를 <strong>힉스필드 MCP로 바로 실행</strong>해 키프레임 생성 (Day 1~2에서 연결한 MCP 활용)</li>
+    <li>보드를 파일로 관리하면 씬을 추가·수정·재정렬하기 쉽고, Day 4 영상화 때 그대로 재사용</li>
   </ul>
 </div>
 
-<!-- MCP 프롬프트 -->
-<h3 style="color:var(--gold);font-size:1rem;margin:1.5rem 0 .65rem">MCP로도 가능 (Claude Code 채팅)</h3>
 <div class="prompt">
-  <div class="plabel">MCP 프롬프트 — 광고 이미지 배치 생성</div>
-  <code id="pf-mcp">힉스필드 Marketing Studio로 [제품] 광고 이미지 5컷 만들어줘.
-히어로 / 사용장면 / 디테일 / 라이프스타일 / CTA 컷으로,
-TV Spot과 UGC 포맷 섞어서, copy space for headline 포함,
-16:9 3컷 + 9:16 2컷, photorealistic.</code>
-  <button class="copy-btn" onclick="cp('pf-mcp',this)">복사</button>
+  <div class="plabel">사운드 프롬프트를 AI로 뽑기 · ChatGPT에게 묻기</div>
+  <code id="p-sound">아래 영상 씬에 어울리는 사운드를 설계해줘. 음성/내레이션 · 음악(BGM) · 효과음(앰비언트/SFX)을 각각 구체적으로 적어줘. 영어 사운드 프롬프트도 함께 제시해줘.
+씬 설명: [예: 새벽 도시 아파트 창가, 커피 드립, 잔잔하고 따뜻한 톤]</code>
+  <button class="copy-btn" onclick="cp('p-sound',this)">복사</button>
 </div>
+
+<div class="callout c-info"><span class="ico">💡</span><p>"어떤 사운드가 필요할지 모르겠다"면 위 프롬프트처럼 <strong>씬 설명만 주고 AI에게 사운드 설계를 맡기세요.</strong> 그 결과를 보드의 🔊 칸에 채우면 됩니다.</p></div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     강의 PART 3 · 영상 툴 지형도 + 맛보기
+     ════════════════════════════════ -->
+<div class="sec" id="lec3">
+  <span class="badge b-lec">강의 + 시연</span>
+  <h2>Part 3 · 영상 생성 툴 지형도 + 맛보기</h2>
+  <span class="timer">1:10 – 1:40 · 30분</span>
+</div>
+
+<div class="card">
+  <h3>영상 생성 툴 한눈에 보기</h3>
+  <p>지금 AI 영상 툴은 종류가 많습니다. 각각 강점이 달라서 <strong>목적에 따라 골라 쓰는 것</strong>이 핵심입니다. 힉스필드 안에서는 여러 모델을 <strong>바꿔가며</strong> 쓸 수 있습니다.</p>
+</div>
+
+<table>
+  <thead><tr><th>툴</th><th>강점 한 줄</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:var(--gold)">Seedance 2.0</strong></td><td>인물 일관성, 시작/끝 프레임 정밀 제어</td><td style="color:var(--gold)">→ Day 4에서 깊게 다룸</td></tr>
+    <tr><td><strong>Kling</strong></td><td>부드러운 모션, 사운드 동기화</td><td>시네마틱 컷</td></tr>
+    <tr><td><strong>Veo</strong></td><td>빠르고 가벼움, 저렴한 시안</td><td>빠른 테스트용</td></tr>
+    <tr><td><strong>Hailuo (Minimax)</strong></td><td>자연스러운 물리·표정</td><td>인물 감정 표현</td></tr>
+    <tr><td><strong>Wan</strong></td><td>실험적·예술적 스타일</td><td>독특한 비주얼</td></tr>
+    <tr><td><strong>Sora</strong></td><td>고품질 장면 생성</td><td>완성도 높은 컷</td></tr>
+  </tbody>
+</table>
+
+<!-- 멀티툴 비교 -->
+<h3 style="color:var(--cream);font-size:1.05rem;margin:1.75rem 0 .75rem">같은 키프레임 1장 → 3개 툴로 영상화한 실제 결과</h3>
+
+<p style="font-size:.86rem;color:var(--muted);margin-bottom:.5rem">완성 예시 보드의 <strong>씬4 키프레임 1장</strong>을 세 개의 영상 툴에 똑같이 넣어 봤습니다. 같은 설계라도 툴마다 결과가 다릅니다. (재생 버튼을 눌러보세요)</p>
+
+<div class="grid-3">
+  <div class="vid-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px 8px 0 0">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023802_d19cde48-0915-4f44-be78-ba4ca2775e31.mp4" type="video/mp4">
+    </video>
+    <div class="vid-info">
+      <span class="tag">Kling 2.6 · 5초 · 사운드</span>
+      <span class="desc">부드러운 모션 + 사운드 포함. 완성도 높은 최종 컷에 적합.</span>
+    </div>
+  </div>
+  <div class="vid-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px 8px 0 0">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023805_65a3a3f7-98dc-417d-b584-080e3e265efb.mp4" type="video/mp4">
+    </video>
+    <div class="vid-info">
+      <span class="tag">Minimax Hailuo · 10초</span>
+      <span class="desc">자연스러운 물리·표정 + 길게(10초). 인물 감정 표현에 강함.</span>
+    </div>
+  </div>
+  <div class="vid-card">
+    <video controls loop muted playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px 8px 0 0">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38H4tqGIOaLtD8jt6vyQnxLPWg6/hf_20260604_023808_4ae240c4-7584-4ca3-8f5f-9a01b80a8e1e.mp4" type="video/mp4">
+    </video>
+    <div class="vid-info">
+      <span class="tag">Veo 3.1 Lite · 6초</span>
+      <span class="desc">빠르고 저렴. 여러 시안을 가볍게 테스트할 때 먼저 써보기 좋음.</span>
+    </div>
+  </div>
+</div>
+
+<div class="formula">시나리오 보드가 있으면 → 어떤 툴이든 같은 설계로 만든다 → 툴은 목적에 따라 선택</div>
+
+<div class="callout c-tip"><span class="ico">📌</span><p><strong>오늘의 핵심 교훈</strong>: 툴은 바뀌어도 보드는 그대로입니다. 빠른 시안은 Veo Lite, 자연스러운 표정은 Hailuo, 인물 일관성·정밀 제어는 Seedance(Day 4). 보드 한 장으로 전부 시도할 수 있습니다.</p></div>
 
 <hr>
 
@@ -478,183 +592,310 @@ TV Spot과 UGC 포맷 섞어서, copy space for headline 포함,
      ════════════════════════════════ -->
 <div class="sec" id="demo">
   <span class="badge b-demo">강사 시연</span>
-  <h2>강사 라이브 시연</h2>
-  <span class="timer">시연 · 30분</span>
+  <h2>강사 시연 — 보드 초안부터 영상 비교까지</h2>
+  <span class="timer">실습 직전 · 약 30분 (강의 시간에 분산)</span>
 </div>
 
-<div class="callout c-info"><span class="ico">👀</span><p>지금은 따라하지 말고 지켜보세요. 방법을 보고 나서 실습합니다.</p></div>
-
 <ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>제품 1개 등록</strong><span>Marketing Studio에서 제품 이미지 업로드(또는 URL) → 인식 확인</span></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>UGC 포맷으로 광고 이미지 생성</strong><span>리뷰 감성 톤 — "내돈내산" 느낌의 사용 장면 컷</span></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>같은 제품 → TV Spot 포맷으로 한 컷</strong><span>브랜드 감성 스토리 톤. 같은 제품, 완전히 다른 분위기 비교</span></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>이어버드 광고 세트 설명</strong><span>위 6장(히어로·라이프스타일·클로즈업·데스크·CTA·최종)이 이렇게 포맷을 달리해 만들어졌음을 설명</span></div></li>
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>ChatGPT로 시나리오 보드 초안 뽑기</strong>
+      <p>위 메타 프롬프트에 주제 하나를 넣어 ChatGPT가 4씬 보드를 표로 만드는 과정을 실시간으로 보여줍니다.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>보드의 이미지 프롬프트로 키프레임 생성</strong>
+      <p>보드의 🎨 이미지 프롬프트를 그대로 힉스필드에 넣어 씬별 키프레임을 만듭니다. (Day 1~2 이미지 기법 활용)</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>같은 키프레임을 Kling / Hailuo로 영상화 비교</strong>
+      <p>한 키프레임을 두 툴에 동시에 넣어 결과 차이를 나란히 비교합니다. "이 씬은 어떤 툴이 맞나"를 함께 판단합니다.</p>
+    </div>
+  </li>
 </ol>
+
+<div class="callout c-info"><span class="ico">🎬</span><p>시연을 보며 <strong>"나라면 어떤 주제로 보드를 짤까"</strong>를 머릿속에 그려두세요. 바로 이어지는 실습에서 직접 만듭니다.</p></div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 A · 내 제품 등록
+     실습 A · 영상 연출 문법 익히기
      ════════════════════════════════ -->
 <div class="sec" id="prac-a">
   <span class="badge b-prac">실습 A</span>
-  <h2>내 제품 등록 &amp; 브랜드킷 기본 설정</h2>
-  <span class="timer">1:30 – 2:00 · 30분</span>
+  <h2>영상 연출 문법 익히기 — 내 주제 + 4씬 샷 배분</h2>
+  <span class="timer">1:40 – 2:00 · 20분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">🖥️</span><p>지금부터 직접 따라합니다. 막히면 손을 들거나 옆 사람에게 물어보세요. 실제 제품이 없으면 <strong>가상 제품(아무 제품 사진)</strong>으로 진행해도 됩니다.</p></div>
+<div class="callout c-info"><span class="ico">🖥️</span><p>먼저 <strong>내가 만들 30초 영상의 주제</strong>를 정하고, 4씬으로 샷 사이즈를 배분합니다. 아직 프롬프트는 안 씁니다 — 설계만.</p></div>
 
 <ol class="steps">
-  <li><div class="snum">1</div><div class="sbody"><strong>제품 1개 정하기</strong><p>내가 팔(또는 만들고 싶은) 제품 1개. 없으면 마음에 드는 제품 사진 하나를 가상 제품으로.</p></div></li>
-  <li><div class="snum">2</div><div class="sbody"><strong>Marketing Studio에 등록</strong><p>제품 이미지 업로드 <strong>또는</strong> 제품 페이지 URL 입력 → 제품이 제대로 인식됐는지 확인.</p></div></li>
-  <li><div class="snum">3</div><div class="sbody"><strong>브랜드킷 기본 설정</strong><p>로고가 있으면 업로드, 없으면 <strong>브랜드 컬러 1~2개</strong>만이라도 지정. 톤(밝은/고급/캐주얼) 선택.</p></div></li>
-  <li><div class="snum">4</div><div class="sbody"><strong>아바타 정하기</strong><p>Day 2 Soul ID를 쓸지, 기본 아바타를 쓸지 결정해 선택.</p></div></li>
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>주제 정하기</strong>
+      <p>내 퍼스널 브랜드·취미·제품 등 30초로 보여줄 주제 하나. (예: "나의 운동 루틴", "수제 디저트 만들기")</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>4씬 샷 사이즈 배분</strong>
+      <p>와이드 → 클로즈업 흐름을 의식하며 4씬에 샷을 배치. 예시 보드처럼 <strong>establishing → detail → action → emotional</strong> 구조 추천.</p>
+      <ul>
+        <li>씬1: <strong>익스트림 와이드</strong> (공간·분위기 소개)</li>
+        <li>씬2: <strong>클로즈업</strong> (핵심 디테일)</li>
+        <li>씬3: <strong>미디엄</strong> (인물 동작)</li>
+        <li>씬4: <strong>클로즈업</strong> (감정 마무리)</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>앵글·무빙 메모</strong>
+      <p>각 씬에 카메라 앵글(아이레벨/로우/하이)과 무빙(push-in/pan/tracking)을 한 단어씩 메모.</p>
+    </div>
+  </li>
 </ol>
 
 <div class="challenge">
   <h4>🎯 실습 A 체크리스트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">제품 1개 선정 (실제 또는 가상)</li>
-    <li><input type="checkbox">제품 이미지/URL 등록 → 인식 확인</li>
-    <li><input type="checkbox">브랜드킷 기본 설정 (컬러 또는 로고)</li>
-    <li><input type="checkbox">아바타 선택 (Day 2 Soul ID 또는 기본)</li>
-    <li><input type="checkbox">제품명·브랜드 컨셉 한 줄 메모</li>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">30초 영상 주제 한 줄로 확정</li>
+    <li><input type="checkbox">4씬 샷 사이즈 배분 완료 (와이드→클로즈업 흐름)</li>
+    <li><input type="checkbox">각 씬에 카메라 앵글 메모</li>
+    <li><input type="checkbox">각 씬에 카메라 무빙 메모</li>
+    <li><input type="checkbox">씬 순서가 이야기로 이어지는지 확인</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 B · 광고 포맷 3종 비교
+     실습 B · ChatGPT로 보드 초안
      ════════════════════════════════ -->
 <div class="sec" id="prac-b">
   <span class="badge b-prac">실습 B</span>
-  <h2>광고 포맷 3종 비교</h2>
+  <h2>ChatGPT로 시나리오 보드 초안 만들기</h2>
   <span class="timer">2:00 – 2:40 · 40분</span>
 </div>
 
-<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">같은 제품으로 <strong>서로 다른 3가지 포맷</strong> 광고 이미지를 만들어, 어떤 포맷이 내 제품에 맞는지 직접 비교합니다.</p>
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">실습 A에서 정한 주제로 <strong>ChatGPT 또는 Claude에게 4씬 보드를 통째로 받습니다.</strong></p>
 
-<div class="prompt">
-  <div class="plabel">포맷 ① UGC (리뷰 감성)</div>
-  <code id="pb1">A premium [내 제품] product ad, authentic UGC review style, real person using it in a casual everyday setting, natural soft light, copy space for headline, commercial photography, photorealistic, 9:16 vertical</code>
-  <button class="copy-btn" onclick="cp('pb1',this)">복사</button>
-</div>
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>메타 프롬프트 가져오기</strong>
+      <p>Part 2의 메타 프롬프트를 복사 → <code style="color:var(--gold);font-size:.82rem">[내 주제]</code>와 <code style="color:var(--gold);font-size:.82rem">[톤]</code>을 내 것으로 교체.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>ChatGPT/Claude에 입력 → 표 받기</strong>
+      <p>4씬 표(샷·연출 / 이미지 프롬프트 / 영상 프롬프트 / 사운드)를 받습니다.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>검토·수정</strong>
+      <p>내 주제와 안 맞는 부분을 고치고, 4씬의 조명·색감 키워드가 통일됐는지 확인. 추상적이면 "더 구체적인 장면으로" 추가 요청.</p>
+    </div>
+  </li>
+</ol>
 
-<div class="prompt">
-  <div class="plabel">포맷 ② TV Spot (브랜드 스토리)</div>
-  <code id="pb2">A premium [내 제품] product ad, cinematic TV spot style, brand storytelling mood, dramatic studio lighting, elegant minimal background, copy space for headline, commercial photography, photorealistic, 16:9</code>
-  <button class="copy-btn" onclick="cp('pb2',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">포맷 ③ Hyper Motion (역동적 강조)</div>
-  <code id="pb3">A premium [내 제품] product ad, hyper motion dynamic style, energetic angle, motion blur accents, bold high-contrast lighting, copy space for headline, commercial photography, photorealistic, 9:16 vertical</code>
-  <button class="copy-btn" onclick="cp('pb3',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">💡</span><p>3장을 나란히 두고 보세요 — <strong>내 제품에 어떤 톤이 가장 어울리는지</strong> 한눈에 보입니다. (프리미엄 제품 → TV Spot, 일상 소비재 → UGC, 테크·스포츠 → Hyper Motion)</p></div>
+<div class="callout c-tip"><span class="ico">💡</span><p>받은 표를 Claude Code에서 <code style="color:var(--gold);font-size:.82rem">scenario-board.md</code>로 저장하면 Day 4까지 그대로 재사용할 수 있습니다.</p></div>
 
 <div class="challenge">
   <h4>🎯 실습 B 체크리스트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">포맷 ① UGC 광고 이미지 생성</li>
-    <li><input type="checkbox">포맷 ② TV Spot 광고 이미지 생성</li>
-    <li><input type="checkbox">포맷 ③ Hyper Motion 광고 이미지 생성</li>
-    <li><input type="checkbox">3장 나란히 비교</li>
-    <li><input type="checkbox">내 제품에 맞는 포맷 1개 메모 (이유 한 줄)</li>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">메타 프롬프트를 내 주제·톤으로 수정</li>
+    <li><input type="checkbox">ChatGPT/Claude에서 4씬 표 받기 완료</li>
+    <li><input type="checkbox">씬별 이미지·영상 프롬프트 검토·수정</li>
+    <li><input type="checkbox">4씬 조명·색감 키워드 통일 확인</li>
+    <li><input type="checkbox">보드를 표(또는 markdown)로 저장</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 C · 제품 광고 세트 5컷
+     실습 C · 키프레임 이미지 생성
      ════════════════════════════════ -->
 <div class="sec" id="prac-c">
   <span class="badge b-prac">실습 C</span>
-  <h2>제품 광고 세트 5컷</h2>
-  <span class="timer">2:40 – 3:20 · 40분</span>
+  <h2>키프레임 이미지 생성</h2>
+  <span class="timer">2:40 – 3:10 · 30분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">🖥️</span><p>앞의 이어버드 예시처럼, <strong>같은 제품으로 5가지 컷</strong>을 만들어 하나의 광고 세트를 완성합니다.</p></div>
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">보드의 🎨 이미지 프롬프트로 힉스필드에서 <strong>씬별 키프레임 4장</strong>을 생성합니다. (Day 1~2에서 배운 이미지 기법 활용)</p>
 
-<div class="prompt">
-  <div class="plabel">컷 ① 히어로 (제품 단독 메인)</div>
-  <code id="pc1">A premium [내 제품] product ad, hero shot, product centered on clean gradient background, soft studio lighting, copy space for headline, commercial photography, photorealistic, 16:9</code>
-  <button class="copy-btn" onclick="cp('pc1',this)">복사</button>
-</div>
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>Image 메뉴 진입 + 9:16 설정</strong>
+      <p>힉스필드 → Image → Aspect Ratio <strong style="color:var(--gold)">9:16</strong> 확인.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>씬별 이미지 프롬프트 입력 → 생성</strong>
+      <p>보드의 씬1~4 이미지 프롬프트를 순서대로 넣어 키프레임 생성. 톤이 흔들리면 공통 스타일 키워드를 모든 씬에 붙이세요.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>4장 톤 통일 확인</strong>
+      <p>4장을 나란히 놓고 조명·색감이 한 영상처럼 보이는지 확인. 안 맞는 씬만 재생성.</p>
+    </div>
+  </li>
+</ol>
 
-<div class="prompt">
-  <div class="plabel">컷 ② 사용 장면 (in-use)</div>
-  <code id="pc2">A premium [내 제품] product ad, person actively using the product in a real context, natural lifestyle scene, warm light, copy space, commercial photography, photorealistic, 9:16 vertical</code>
-  <button class="copy-btn" onclick="cp('pc2',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">컷 ③ 디테일 (클로즈업)</div>
-  <code id="pc3">A premium [내 제품] product ad, macro close-up highlighting texture and detail, shallow depth of field, premium feel, commercial photography, photorealistic, 16:9</code>
-  <button class="copy-btn" onclick="cp('pc3',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">컷 ④ 라이프스타일 (맥락)</div>
-  <code id="pc4">A premium [내 제품] product ad, lifestyle scene in a stylish everyday environment, aspirational mood, consistent brand color grading, copy space, photorealistic, 9:16 vertical</code>
-  <button class="copy-btn" onclick="cp('pc4',this)">복사</button>
-</div>
-
-<div class="prompt">
-  <div class="plabel">컷 ⑤ CTA (행동 유도)</div>
-  <code id="pc5">A premium [내 제품] product ad, bold CTA layout, product with large empty copy space for "Shop Now" headline, high-contrast commercial look, photorealistic, 16:9</code>
-  <button class="copy-btn" onclick="cp('pc5',this)">복사</button>
-</div>
-
-<div class="callout c-tip"><span class="ico">📌</span><p>5컷 전체에 <strong>같은 브랜드 컬러/조명 키워드</strong>를 공통으로 넣으면 세트가 하나의 캠페인처럼 통일됩니다. (Day 2의 "색감 통일" 그대로)</p></div>
+<div class="callout c-tip"><span class="ico">💡</span><p>모든 씬 프롬프트 끝에 <code style="color:var(--gold);font-size:.82rem">soft warm morning light, film grain, consistent color grading</code>처럼 <strong>공통 스타일 키워드</strong>를 붙이면 4장의 톤이 맞습니다.</p></div>
 
 <div class="challenge">
   <h4>🎯 실습 C 체크리스트</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">① 히어로 컷 생성</li>
-    <li><input type="checkbox">② 사용 장면 컷 생성</li>
-    <li><input type="checkbox">③ 디테일 컷 생성</li>
-    <li><input type="checkbox">④ 라이프스타일 컷 생성</li>
-    <li><input type="checkbox">⑤ CTA 컷 생성 → 5컷 세트 확인</li>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">9:16 비율 설정 확인</li>
+    <li><input type="checkbox">씬별 키프레임 생성 (최소 2장, 권장 4장)</li>
+    <li><input type="checkbox">4장 톤·조명 통일 확인</li>
+    <li><input type="checkbox">안 맞는 씬 재생성</li>
+    <li><input type="checkbox">키프레임을 보드 각 행에 매칭</li>
   </ul>
 </div>
 
 <hr>
 
 <!-- ════════════════════════════════
-     실습 D · MCP (선택)
+     실습 D · 멀티툴로 한 씬 영상화 비교
      ════════════════════════════════ -->
 <div class="sec" id="prac-d">
-  <span class="badge b-prac">실습 D · 선택</span>
-  <h2>MCP — 광고 배치 자동 생성</h2>
-  <span class="timer">선택 · 20분</span>
+  <span class="badge b-prac">실습 D</span>
+  <h2>멀티툴로 한 씬 영상화 비교</h2>
+  <span class="timer">3:10 – 3:40 · 30분</span>
 </div>
 
-<div class="callout c-info"><span class="ico">⚙️</span><p>Claude Code MCP가 연결돼 있다면, 채팅 한 번으로 <strong>광고 5컷을 한꺼번에</strong> 생성할 수 있습니다. (Day 2 MCP 자동화 연장)</p></div>
+<p style="font-size:.88rem;color:var(--muted);margin-bottom:.75rem">키프레임 1장을 골라 <strong>2개 이상의 툴로 영상화</strong>해 비교합니다. (깊은 파라미터는 다루지 않고 가볍게 체험)</p>
 
-<div class="prompt">
-  <div class="plabel">MCP 프롬프트 — 광고 5컷 배치 생성</div>
-  <code id="pd-mcp">힉스필드 Marketing Studio로 [내 제품] 광고 이미지를 한 번에 5컷 만들어줘.
-1) 히어로 (제품 단독, 깔끔한 배경) — 16:9
-2) 사용 장면 (사람이 실제로 쓰는 모습) — 9:16
-3) 디테일 클로즈업 — 16:9
-4) 라이프스타일 (감성 환경) — 9:16
-5) CTA (헤드라인 여백 크게) — 16:9
-전부 같은 브랜드 컬러로 통일, copy space for headline 포함, photorealistic.</code>
-  <button class="copy-btn" onclick="cp('pd-mcp',this)">복사</button>
-</div>
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>키프레임 1장 선택</strong>
+      <p>실습 C에서 만든 키프레임 중 움직임이 잘 살 것 같은 한 장 선택.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>2개 이상 툴로 영상화</strong>
+      <ul>
+        <li><strong style="color:var(--gold)">Veo Lite</strong> — 빠르고 저렴, 먼저 시안 확인</li>
+        <li><strong style="color:var(--gold)">Hailuo</strong> — 자연스러운 표정·물리</li>
+        <li><strong style="color:var(--gold)">Kling</strong> — 부드러운 모션·사운드</li>
+      </ul>
+      <p>같은 키프레임 + 같은 영상 프롬프트로 넣고 결과 비교.</p>
+    </div>
+  </li>
+  <li>
+    <div class="snum">3</div>
+    <div class="sbody">
+      <strong>비교 → 보드에 메모</strong>
+      <p>각 결과의 차이를 보고 "내 씬에는 어떤 툴이 맞는지"를 보드에 한 줄 메모.</p>
+    </div>
+  </li>
+</ol>
 
-<div class="callout c-tip" style="margin-top:-.2rem"><span class="ico">📌</span><p>MCP 연결이 안 되어 있으면 이 실습은 건너뛰고 웹 UI(실습 C)로 진행하세요.</p></div>
+<div class="callout c-info"><span class="ico">💡</span><p>인물 일관성이 가장 중요하다면 → Day 4의 <strong>Seedance 2.0</strong>이 답입니다. 오늘은 "툴마다 다르다"를 체감하는 게 목표입니다.</p></div>
 
 <div class="challenge">
-  <h4>🎯 실습 D 체크리스트 (선택)</h4>
-  <ul class="cklist">
-    <li><input type="checkbox">제품 정보 + MCP 프롬프트 전송</li>
-    <li><input type="checkbox">5컷 배치 생성 결과 확인</li>
-    <li><input type="checkbox">웹 UI 결과와 비교 → 어느 쪽이 편한지 메모</li>
+  <h4>🎯 실습 D 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">영상화할 키프레임 1장 선택</li>
+    <li><input type="checkbox">툴 1로 영상화 완료</li>
+    <li><input type="checkbox">툴 2로 영상화 완료</li>
+    <li><input type="checkbox">두 결과 비교</li>
+    <li><input type="checkbox">"내 씬에 맞는 툴" 보드에 메모</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     실습 E · 사운드 프롬프트 작성
+     ════════════════════════════════ -->
+<div class="sec" id="prac-e">
+  <span class="badge b-prac">실습 E</span>
+  <h2>사운드 프롬프트 작성</h2>
+  <span class="timer">3:40 – 4:00 · 20분</span>
+</div>
+
+<div class="callout c-info"><span class="ico">🔊</span><p>보드의 각 씬에 <strong>음성 / 음악 / 효과음</strong> 프롬프트를 채웁니다. 실제 사운드 생성은 Day 4 힉스필드 Audio·Lip Sync에서 하므로, 오늘은 <strong>"설계"까지</strong>입니다.</p></div>
+
+<ol class="steps">
+  <li>
+    <div class="snum">1</div>
+    <div class="sbody">
+      <strong>씬마다 3층 사운드 채우기</strong>
+      <ul>
+        <li><span class="snd-tag snd-voice">음성</span> 내레이션·대사가 필요한 씬에 한 줄 작성</li>
+        <li><span class="snd-tag snd-music">음악</span> 전체 BGM 톤 + 고조 지점 메모</li>
+        <li><span class="snd-tag snd-sfx">효과음</span> 각 씬의 환경음·상황음 메모</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    <div class="snum">2</div>
+    <div class="sbody">
+      <strong>막히면 AI에게 사운드 설계 맡기기</strong>
+      <p>Part 2의 "사운드 프롬프트를 AI로 뽑기" 프롬프트에 씬 설명을 넣어 결과를 받아 채우세요.</p>
+    </div>
+  </li>
+</ol>
+
+<div class="callout c-tip"><span class="ico">📌</span><p>예시 보드처럼 <strong>음악은 처음 잔잔 → 마지막 고조</strong>로 설계하면 30초 영상에 기승전결이 생깁니다.</p></div>
+
+<div class="challenge">
+  <h4>🎯 실습 E 체크리스트</h4>
+  <ul class="cklist" style="margin-top:.5rem">
+    <li><input type="checkbox">각 씬에 효과음 한 줄 이상 작성</li>
+    <li><input type="checkbox">전체 BGM 톤·고조 지점 설계</li>
+    <li><input type="checkbox">내레이션이 필요한 씬에 대사 작성</li>
+    <li><input type="checkbox">막힌 부분은 AI로 사운드 뽑아 채우기</li>
+    <li><input type="checkbox">보드 🔊 칸이 모두 채워졌는지 확인</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ════════════════════════════════
+     오늘의 공유
+     ════════════════════════════════ -->
+<div class="sec">
+  <span class="badge" style="background:#302010;color:#d09040">📤</span>
+  <h2>오늘의 공유</h2>
+  <span class="timer">3:50 – 4:00 · 10분</span>
+</div>
+
+<div class="card">
+  <p>오늘 만든 <strong>시나리오 보드</strong>를 강사가 안내한 채널에 올려주세요.</p>
+  <ul class="cklist" style="margin-top:.65rem">
+    <li><input type="checkbox">시나리오 보드 표 (4~5씬)</li>
+    <li><input type="checkbox">생성한 키프레임 이미지 (최소 2장)</li>
+    <li><input type="checkbox">멀티툴 비교에서 고른 "내 씬에 맞는 툴"</li>
+    <li><input type="checkbox">가장 어려웠던 부분 한 줄 메모</li>
   </ul>
 </div>
 
@@ -665,33 +906,34 @@ TV Spot과 UGC 포맷 섞어서, copy space for headline 포함,
      ════════════════════════════════ -->
 <div class="sec" id="final-task">
   <span class="badge" style="background:#302810;color:#e8c060">🏆 최종 과제</span>
-  <h2>내 제품 광고 세트 완성</h2>
+  <h2>내 30초 영상 시나리오 보드 완성</h2>
 </div>
 
-<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 것을 모아 <strong>제품 1개로 광고 세트</strong>를 완성합니다. 이 광고 감각은 <strong>Day 7~8 롱폼 광고 실전</strong>으로 이어집니다.</p></div>
+<div class="callout c-info"><span class="ico">🎯</span><p>오늘 배운 연출 문법·보드 구조·사운드 설계를 모두 모아 <strong>완성된 시나리오 보드</strong>를 만듭니다. 이 보드는 <strong>내일 Day 4에서 Seedance 2.0으로 실제 영상화하는 재료</strong>가 됩니다.</p></div>
 
 <div class="card">
   <h3>과제 조건</h3>
-  <table>
+  <table style="margin-top:.5rem">
     <thead><tr><th>항목</th><th>기준</th></tr></thead>
     <tbody>
-      <tr><td><strong>광고 세트</strong></td><td>제품 1개로 광고 이미지 <strong>5컷</strong> (히어로 / 사용 / 디테일 / 라이프스타일 / CTA)</td></tr>
-      <tr><td><strong>포맷</strong></td><td>광고 포맷 <strong>2종 이상</strong> 시도 (예: UGC + TV Spot)</td></tr>
-      <tr><td><strong>비율</strong></td><td><strong>16:9와 9:16</strong> 각각 최소 1컷씩 포함</td></tr>
-      <tr><td><strong>제출</strong></td><td>광고 세트 + 사용한 포맷/프롬프트</td></tr>
+      <tr><td><strong>씬 수</strong></td><td>4~5씬</td></tr>
+      <tr><td><strong>각 씬 필수 4종</strong></td><td>① 샷·연출 ② 이미지 프롬프트 ③ 영상 프롬프트 ④ 사운드 프롬프트 모두 작성</td></tr>
+      <tr><td><strong>키프레임</strong></td><td>이미지 최소 2장 실제 생성</td></tr>
+      <tr><td><strong>영상 테스트</strong></td><td>한 씬 이상 영상툴로 테스트</td></tr>
+      <tr><td><strong>제출</strong></td><td>시나리오 보드 표(markdown 또는 표) + 키프레임 이미지</td></tr>
+      <tr><td><strong>연결</strong></td><td style="color:var(--gold)">이 보드가 Day 4 영상화의 재료가 됩니다</td></tr>
     </tbody>
   </table>
 </div>
 
 <div class="challenge" style="border-color:#3a3010">
-  <h4 style="color:#e8c060">📤 제출 방법</h4>
-  <p>강사가 안내한 채널에 아래 내용을 함께 올려주세요.</p>
+  <h4 style="color:#e8c060">📋 최종 과제 체크리스트</h4>
   <ul class="cklist" style="margin-top:.65rem">
-    <li><input type="checkbox">제품 1개 광고 이미지 5컷 (히어로/사용/디테일/라이프스타일/CTA)</li>
-    <li><input type="checkbox">광고 포맷 2종 이상 시도</li>
-    <li><input type="checkbox">16:9 1컷 + 9:16 1컷 이상 포함</li>
-    <li><input type="checkbox">사용한 포맷 이름 (UGC / TV Spot / Hyper Motion 등)</li>
-    <li><input type="checkbox">사용한 프롬프트 전체 + 제품 컨셉 한 줄</li>
+    <li><input type="checkbox">4~5씬 시나리오 보드 표 완성 (각 씬 4종 프롬프트 모두)</li>
+    <li><input type="checkbox">키프레임 이미지 최소 2장 실제 생성</li>
+    <li><input type="checkbox">한 씬 이상 영상툴로 테스트 완료</li>
+    <li><input type="checkbox">4~5씬 조명·색감 키워드 통일 확인</li>
+    <li><input type="checkbox">보드를 Day 4용으로 저장 (markdown/파일 보관)</li>
   </ul>
 </div>
 
@@ -708,21 +950,22 @@ TV Spot과 UGC 포맷 섞어서, copy space for headline 포함,
 <table class="trouble">
   <thead><tr><th>이런 상황이면</th><th>이렇게 해보세요</th></tr></thead>
   <tbody>
-    <tr><td>제품이 잘못 인식됨</td><td>더 <strong>단순·선명한 제품 사진</strong>(배경 깔끔)으로 교체 후 다시 등록</td></tr>
-    <tr><td>광고에 카피 넣을 여백이 없음</td><td>프롬프트에 <code style="color:var(--gold);font-size:.82rem">copy space for headline</code>을 명시</td></tr>
-    <tr><td>포맷별 차이를 모르겠음</td><td><strong>UGC = 리뷰 감성</strong>, <strong>TV Spot = 브랜드 스토리</strong>, <strong>Hyper Motion = 역동적 강조</strong>로 구분</td></tr>
-    <tr><td>아바타(모델)가 어색</td><td><strong>Day 2에서 만든 Soul ID 캐릭터</strong>를 아바타로 사용</td></tr>
-    <tr><td>세트 톤이 제각각</td><td>5컷 모두 <strong>같은 브랜드 컬러/조명 키워드</strong> 공통 적용</td></tr>
-    <tr><td>영상으로 만들고 싶음</td><td>오늘은 이미지 중심. 영상화는 <strong>Day 5·Day 7~8</strong>에서 진행</td></tr>
-    <tr><td>MCP 연결 안 됨</td><td>웹 UI(실습 C)로 진행. 수업 후 강사와 함께 점검</td></tr>
+    <tr><td>ChatGPT 보드가 너무 추상적</td><td>톤·레퍼런스·구체적 장면(장소·시간·색감)을 프롬프트에 추가해서 다시 요청</td></tr>
+    <tr><td>키프레임 4장의 톤이 제각각</td><td>같은 스타일·조명 키워드(<code style="color:var(--gold);font-size:.82rem">soft warm light, film grain</code>)를 모든 씬 프롬프트에 공통 적용</td></tr>
+    <tr><td>어떤 영상툴을 써야 할지 모름</td><td>인물 일관성 = Seedance(Day 4) · 빠른 시안 = Veo Lite · 자연스러운 표정 = Hailuo</td></tr>
+    <tr><td>사운드를 어떻게 만들지 막막</td><td>지금은 설계만 하면 됩니다. 실제 생성은 Day 4 힉스필드 Audio로. 막히면 AI에게 사운드 설계 요청</td></tr>
+    <tr><td>씬 순서가 이야기로 안 이어짐</td><td>establishing(와이드) → detail → action → emotional 구조로 재배치</td></tr>
+    <tr><td>영상이 가로로 나옴</td><td>Aspect Ratio → 9:16 확인 후 재생성</td></tr>
+    <tr><td>크레딧 없다는 메시지</td><td>강사에게 손 들고 알리기. 영상은 이미지보다 크레딧을 많이 씁니다</td></tr>
+    <tr><td>MCP 연결 안 됨</td><td>웹 UI로 진행. 오늘 수업 후 강사와 함께 점검</td></tr>
   </tbody>
 </table>
 
 </div><!-- /page -->
 
 <footer>
-  <span>힉스필드 8일 워크숍 · Day 3 · Marketing Studio — 제품 광고 자동 생성 (DTC Ads)</span>
-  <span>예시 이미지: Higgsfield AI 생성 (Marketing Studio · 무선 이어버드 광고 세트) · 2026</span>
+  <span>힉스필드 7일 워크숍 · Day 3 · 영상 기초 &amp; 시나리오 보드 — AI로 영상 설계하기</span>
+  <span>예시 이미지·영상: Higgsfield AI 생성 (Kling / Hailuo / Veo) · 2026</span>
 </footer>
 
 <script>
